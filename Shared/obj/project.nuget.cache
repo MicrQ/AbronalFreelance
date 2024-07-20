@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "CvsvpEbfhvI=",
+  "success": true,
+  "projectFilePath": "/home/niq/AbronalFreelance/Shared/AbronalFreelance.Shared.csproj",
+  "expectedPackageFiles": [
+    "/home/niq/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
+    "/home/niq/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512"
+  ],
+  "logs": []
+}
