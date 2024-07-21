@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "JHK0B7ZbIE8=",
+  "dgSpecHash": "bWbXkEMs/tU=",
   "success": true,
   "projectFilePath": "/home/niq/AbronalFreelance/Client/AbronalFreelance.Client.csproj",
   "expectedPackageFiles": [
+    "/home/niq/.nuget/packages/blazored.localstorage/4.5.0/blazored.localstorage.4.5.0.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.authorization/6.0.32/microsoft.aspnetcore.authorization.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components/6.0.32/microsoft.aspnetcore.components.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.analyzers/6.0.32/microsoft.aspnetcore.components.analyzers.6.0.32.nupkg.sha512",
+    "/home/niq/.nuget/packages/microsoft.aspnetcore.components.authorization/6.0.32/microsoft.aspnetcore.components.authorization.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.forms/6.0.32/microsoft.aspnetcore.components.forms.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.web/6.0.32/microsoft.aspnetcore.components.web.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.webassembly/6.0.32/microsoft.aspnetcore.components.webassembly.6.0.32.nupkg.sha512",
@@ -48,9 +50,9 @@
     "/home/niq/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/niq/.nuget/packages/system.text.encodings.web/6.0.0/system.text.encodings.web.6.0.0.nupkg.sha512",
     "/home/niq/.nuget/packages/system.text.json/6.0.0/system.text.json.6.0.0.nupkg.sha512",
+    "/home/niq/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/6.0.31/microsoft.netcore.app.runtime.mono.browser-wasm.6.0.31.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512"
+    "/home/niq/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/6.0.31/microsoft.netcore.app.runtime.mono.browser-wasm.6.0.31.nupkg.sha512"
   ],
   "logs": []
 }

@@ -21,6 +21,17 @@
           "AbronalFreelance.Server.dll": {}
         }
       },
+      "Blazored.LocalStorage/4.5.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "6.0.32"
+        },
+        "runtime": {
+          "lib/net6.0/Blazored.LocalStorage.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -66,6 +77,18 @@
         }
       },
       "Microsoft.AspNetCore.Components.Analyzers/6.0.32": {},
+      "Microsoft.AspNetCore.Components.Authorization/6.0.32": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "6.0.32",
+          "Microsoft.AspNetCore.Components": "6.0.32"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.3224.31405"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Components.Forms/6.0.32": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "6.0.32"
@@ -714,6 +737,9 @@
       "AbronalFreelance.Client/1.0.0": {
         "dependencies": {
           "AbronalFreelance.Shared": "1.0.0",
+          "Blazored.LocalStorage": "4.5.0",
+          "Microsoft.AspNetCore.Authorization": "6.0.32",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.32",
           "Microsoft.AspNetCore.Components.WebAssembly": "6.0.32"
         },
         "runtime": {
@@ -735,6 +761,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Blazored.LocalStorage/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6nZuJwA7zNIKx83IsObiHXZb09ponJOpCClU3en+hI8ZFvrOKXeOw+H7TegQZQrvdR1n9fkrVkEBQZg8vx6ZTw==",
+      "path": "blazored.localstorage/4.5.0",
+      "hashPath": "blazored.localstorage.4.5.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -770,6 +803,13 @@
       "sha512": "sha512-uMa3fkFZYbpHT5DVgfdgYaF3rVDjeZeznZR2R2+H4M0Vdi5cy7coy2h8+5wbqDH4hT49jPYpS+7LEwTY87+fdA==",
       "path": "microsoft.aspnetcore.components.analyzers/6.0.32",
       "hashPath": "microsoft.aspnetcore.components.analyzers.6.0.32.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Authorization/6.0.32": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9CdNcSlXjaqywOi/akislA7qUYeh4Jx4Ofuh4dHwrEjR2HvjrIPbdn6l04aeWS5ibNsVJKtNuRVTpAVrI3fL0w==",
+      "path": "microsoft.aspnetcore.components.authorization/6.0.32",
+      "hashPath": "microsoft.aspnetcore.components.authorization.6.0.32.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.Forms/6.0.32": {
       "type": "package",

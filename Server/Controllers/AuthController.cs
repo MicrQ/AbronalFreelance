@@ -3,6 +3,10 @@ using AbronalFreelance.Shared.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace AbronalFreelance.Server.Controllers;
 
@@ -61,15 +65,45 @@ public class AuthController : ControllerBase
             var roles = await _userManager.GetRolesAsync(user);
             string redirectUrl = "";
 
-            if (roles.Contains("Admin"))
-                redirectUrl = "admin/";
-            else if (roles.Contains("Client"))
-                redirectUrl = "client/";
-            else if (roles.Contains("Freelancer"))
-                redirectUrl = "freelancer/";
-            return Ok(new { RedirectUrl = "api/Auth/" + redirectUrl + "Dashboard"});
+            var role = "";
+            if (roles.Contains("Admin")) {
+                redirectUrl = "admin";
+                role = "Admin";
+            }
+            else if (roles.Contains("Client")){
+                redirectUrl = "client";
+                role = "Client";
+            }
+            else if (roles.Contains("Freelancer")){
+                redirectUrl = "freelancer";
+                role = "Freelancer";
+            }
+
+            var token = GetJWTtoken(user, role);
+            return Ok(new { Token = token, RedirectUrl = redirectUrl});
         }
         return Unauthorized(new { Error = "Invalid login attempt."});
+    }
+
+    private string GetJWTtoken(IdentityUser user, string role) {
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        var userClaims = new List<Claim> {
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.Role, role)
+        };
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: userClaims,
+            expires: DateTime.Now.AddDays(5),
+            signingCredentials: credentials
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
 

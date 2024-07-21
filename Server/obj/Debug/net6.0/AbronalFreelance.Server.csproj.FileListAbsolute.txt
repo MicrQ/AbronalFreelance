@@ -94,3 +94,5 @@
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/ref/AbronalFreelance.Server.dll
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/Humanizer.dll
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+/home/niq/AbronalFreelance/Server/bin/Debug/net6.0/Blazored.LocalStorage.dll
+/home/niq/AbronalFreelance/Server/bin/Debug/net6.0/Microsoft.AspNetCore.Components.Authorization.dll

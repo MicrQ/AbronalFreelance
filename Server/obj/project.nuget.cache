@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "aXE4b7Vmd+c=",
+  "dgSpecHash": "bHFTisW5KsQ=",
   "success": true,
   "projectFilePath": "/home/niq/AbronalFreelance/Server/AbronalFreelance.Server.csproj",
   "expectedPackageFiles": [
+    "/home/niq/.nuget/packages/blazored.localstorage/4.5.0/blazored.localstorage.4.5.0.nupkg.sha512",
     "/home/niq/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.32/microsoft.aspnetcore.authentication.jwtbearer.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.authorization/6.0.32/microsoft.aspnetcore.authorization.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components/6.0.32/microsoft.aspnetcore.components.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.analyzers/6.0.32/microsoft.aspnetcore.components.analyzers.6.0.32.nupkg.sha512",
+    "/home/niq/.nuget/packages/microsoft.aspnetcore.components.authorization/6.0.32/microsoft.aspnetcore.components.authorization.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.forms/6.0.32/microsoft.aspnetcore.components.forms.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.web/6.0.32/microsoft.aspnetcore.components.web.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.aspnetcore.components.webassembly/6.0.32/microsoft.aspnetcore.components.webassembly.6.0.32.nupkg.sha512",

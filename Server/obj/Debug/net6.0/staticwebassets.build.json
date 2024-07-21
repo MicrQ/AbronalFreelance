@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tYBBGAO+c5fP7E/ABGbHFVOnYMmn7uCdkFpix+sl9SU=",
+  "Hash": "XMgP0PkEW10klCNl27m8sGDuAK1+PgpBfEmVNk+ApUM=",
   "Source": "AbronalFreelance.Server",
   "BasePath": "_content/AbronalFreelance.Server",
   "Mode": "Default",
@@ -143,6 +143,25 @@
       "OriginalItemSpec": "/home/niq/.nuget/packages/microsoft.aspnetcore.components.webassembly/6.0.32/build/net6.0/blazor.webassembly.js"
     },
     {
+      "Identity": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Blazored.LocalStorage.dll",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/home/niq/.nuget/packages/blazored.localstorage/4.5.0/lib/net6.0/Blazored.LocalStorage.dll"
+    },
+    {
       "Identity": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.31.so2l3nwee3.js",
       "SourceId": "AbronalFreelance.Client",
       "SourceType": "Project",
@@ -274,6 +293,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/home/niq/.nuget/packages/microsoft.aspnetcore.authorization/6.0.32/lib/net6.0/Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/home/niq/.nuget/packages/microsoft.aspnetcore.components.authorization/6.0.32/lib/net6.0/Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.dll",
@@ -5634,6 +5672,25 @@
       "OriginalItemSpec": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Logging.dll"
     },
     {
+      "Identity": "/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/g72isfy4tv.gz",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/gd46f2458i.gz",
       "SourceId": "AbronalFreelance.Client",
       "SourceType": "Project",
@@ -6905,6 +6962,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/System.dll"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/q2d4yi391j.gz",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Blazored.LocalStorage.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Blazored.LocalStorage.dll"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/q31bgucwqs.gz",

@@ -866,3 +866,11 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/refint/AbronalFreelance.Client.dll
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.pdb
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/ref/AbronalFreelance.Client.dll
+/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Blazored.LocalStorage.dll
+/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll
+/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz
+/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Blazored.LocalStorage.dll.gz
+/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/Blazored.LocalStorage.dll
+/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/Microsoft.AspNetCore.Components.Authorization.dll
+/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/q2d4yi391j.gz
+/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/g72isfy4tv.gz

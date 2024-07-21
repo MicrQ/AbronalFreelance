@@ -1,7 +1,9 @@
 ﻿@page "/login"
 @inject HttpClient Http
 @inject NavigationManager Navigation
-@using AbronalFreelance.Shared.DTOs
+@inject ILocalStorageService LocalStorage
+@inject AuthStateProvider AuthStateProvider
+
 
 <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
     <DataAnnotationsValidator />
@@ -23,6 +25,8 @@
         if (response.IsSuccessStatusCode)
         {
             var result = await response.Content.ReadFromJsonAsync<LoginResponseModel>();
+            await LocalStorage.SetItemAsync("authToken", result.Token);
+            AuthStateProvider.MarkUserAsAuthenticated(result.Token);
             Navigation.NavigateTo(result.RedirectUrl);
         }
     }
@@ -30,5 +34,6 @@
     private class LoginResponseModel
     {
         public string RedirectUrl { get; set; }
+        public string Token { get; set; }
     }
 }
