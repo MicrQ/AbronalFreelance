@@ -1,4 +1,4 @@
-﻿namespace AbronalFreelance.Server.DTO;
+﻿namespace AbronalFreelance.Shared.DTOs;
 
 public class LoginDTO
 {

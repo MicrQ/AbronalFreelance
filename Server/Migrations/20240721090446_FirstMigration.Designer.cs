@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbronalFreelance.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240720193137_FirstMigration")]
+    [Migration("20240721090446_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -688,6 +688,16 @@ namespace AbronalFreelance.Server.Migrations
                     b.Property<int>("LocationTypeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LocationTypeId");
@@ -709,9 +719,6 @@ namespace AbronalFreelance.Server.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
 
                     b.Property<string>("SysCode")
                         .IsRequired()

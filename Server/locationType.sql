@@ -1,0 +1,1 @@
+insert into LocationTypes (Name, SysCode, IsActive) values ("Country", "CNTRY", 1), ("Region", "RGN", 1), ("City", "CTY", 1)

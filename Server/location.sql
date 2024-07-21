@@ -1,0 +1,1 @@
+insert into Locations(Name, LocationTypeId, ParentId, isActive) values ("Ethiopia", 1,null,1),("Oromia", 2,1,1),("Sidama", 2,1,1),("Hawassa", 3,3,1),("Adama",3,2,1);

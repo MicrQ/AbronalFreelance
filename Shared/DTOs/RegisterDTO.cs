@@ -1,4 +1,4 @@
-﻿namespace AbronalFreelance.Server.DTOs;
+﻿namespace AbronalFreelance.Shared.DTOs;
 
 public class RegisterDTO
 {

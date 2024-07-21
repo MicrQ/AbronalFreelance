@@ -1,6 +1,5 @@
-﻿using AbronalFreelance.Server.DTO;
-using AbronalFreelance.Server.DTOs;
-using AbronalFreelance.Shared.Models;
+﻿using AbronalFreelance.Shared.Models;
+using AbronalFreelance.Shared.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,16 +12,18 @@ public class AuthController : ControllerBase
 {
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
-    private readonly RoleManager<User>  _roleManager;
+    private readonly RoleManager<IdentityRole>  _roleManager;
     private readonly IConfiguration _configuration;
 
     public AuthController(UserManager<User> userManager,
                             SignInManager<User> signInManager,
-                            IConfiguration configuration)
+                            IConfiguration configuration,
+                            RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _configuration = configuration;
+        _roleManager = roleManager;
     }
 
     [HttpPost("register")]
@@ -66,7 +67,7 @@ public class AuthController : ControllerBase
                 redirectUrl = "client/";
             else if (roles.Contains("Freelancer"))
                 redirectUrl = "freelancer/";
-            return Ok(new { RedirectUrl = redirectUrl + "Dashboard"});
+            return Ok(new { RedirectUrl = "api/Auth/" + redirectUrl + "Dashboard"});
         }
         return Unauthorized(new { Error = "Invalid login attempt."});
     }
@@ -78,5 +79,15 @@ public class AuthController : ControllerBase
         return Ok("Admin Dashboard");
     }
 
+    [Authorize(Roles = "Client")]
+    [HttpGet("client/Dashboard")]
+    public IActionResult ClientDashboared() {
+        return Ok("Client Dashboard");
+    }
 
+    [Authorize(Roles = "Freelancer")]
+    [HttpGet("freelancer/Dashboard")]
+    public IActionResult FreelancerDashboared() {
+        return Ok("Freelancer Dashboard");
+    }
 }
