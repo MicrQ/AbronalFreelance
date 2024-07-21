@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using AbronalFreelance.Server.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Extensions.DependencyInjection;
 using AbronalFreelance.Shared.Models;
+using AbronalFreelance.Server;
 //
 
 var builder = WebApplication.CreateBuilder(args);
@@ -78,5 +77,8 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
+
+SeedData.Initialize(app.Services.CreateScope().ServiceProvider).Wait();
 
 app.Run();
