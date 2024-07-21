@@ -7,7 +7,6 @@ public class Profile
     public User User { get; set; }
     public double AverageRating { get; set; }
     public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
     public string Picture { get; set; }
     public string Headline { get; set; }
 }
