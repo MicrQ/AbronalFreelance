@@ -42,8 +42,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/niq/AbronalFreelance/Client/Shared/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luLnJhem9y
+[/home/niq/AbronalFreelance/Client/Pages/Locations.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9jYXRpb25zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/LocationActions.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvY2F0aW9uQWN0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/niq/AbronalFreelance/Client/_Imports.razor]

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages/LocationActions.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.32" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.32" />
@@ -16,6 +20,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\AbronalFreelance.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages/LocationActions.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages/LocationActions.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages/LocationActions.razor" />
   </ItemGroup>
 
 </Project>
