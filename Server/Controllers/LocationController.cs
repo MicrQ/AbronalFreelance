@@ -27,7 +27,7 @@ public class LocationController : ControllerBase
         return Ok(locations);
     }
 
-    //get One
+    //get One loc
     [HttpGet("location/{id}")]
     public async Task<IActionResult> GetLocation(int id) {
         var location = await _db.Locations.FirstOrDefaultAsync(x => x.Id == id);

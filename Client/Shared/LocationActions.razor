@@ -1,34 +1,42 @@
-﻿@page "/location/edit/{id}"
+﻿@page "/location/{action}/{id?}"
 @inject HttpClient http
+@inject LocationService locationService
+@inject NavigationManager Navigate
+
 
 <EditForm Model="@Location" OnValidSubmit="UpdateLocation">
-    <InputText @bind-Value="@Location.Name" />
-    <InputText bind-Value="@Location.LocationTypeId.ToString()" />
-    <InputText bind-Value="@Location.ParentId" />
+    <label>Name</label>
+    <input @bind-value="@Location.Name" />
+    <label>Location Type Id</label>
+    <input @bind-value="@Location.LocationTypeId" />
+    <label>ParentId</label>
+    <input @bind-value="@Location.ParentId" />
     <button type="submit">Save Changes</button>
 </EditForm>
 
 
 @code {
     [Parameter]
-    public string Id { get; set; }
-    public LocationDTO LocationDTO = new LocationDTO();
-    private Location Location = new Location();
+    public string? Id { get; set; }
+    [Parameter]
+    public string Action { get; set; }
+    private Location Location;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id == null || Action == "add") return;
+        Location = locationService.CurrentLocation;
+        if (Location == null || Location.Id != Convert.ToInt32(Id))
+            Navigate.NavigateTo("/notfound");
+            return;
+        /// notfound should be used !!!!!!!!
+    }
+
 
     private async void UpdateLocation()
     {
-        await http.PutAsJsonAsync($"api/location/{Id}", Location);
-    }
-    protected override async Task OnInitializedAsync()
-    {
-        var location = await http.GetFromJsonAsync<Location>($"api/location/{Id}");
-        if (location != null)
-        {
-            Location = location;
-            LocationDTO.Name = Location.Name;
-            LocationDTO.LocationTypeId = Location.LocationTypeId.ToString();
-            LocationDTO.ParentId = Location.ParentId.ToString();
-        }
-        /// notfound should be used !!!!!!!!
+        //Location.LocationType = new LocationType { Name = "new ", SysCode = "code" };
+        await http.PutAsJsonAsync($"api/location", Location);
+        Navigate.NavigateTo("/locations");
     }
 }
