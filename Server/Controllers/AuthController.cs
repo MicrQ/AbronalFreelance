@@ -107,21 +107,4 @@ public class AuthController : ControllerBase
     }
 
 
-    [Authorize(Roles = "Admin")]
-    [HttpGet("admin/Dashboard")]
-    public IActionResult AdminDashboared() {
-        return Ok("Admin Dashboard");
-    }
-
-    [Authorize(Roles = "Client")]
-    [HttpGet("client/Dashboard")]
-    public IActionResult ClientDashboared() {
-        return Ok("Client Dashboard");
-    }
-
-    [Authorize(Roles = "Freelancer")]
-    [HttpGet("freelancer/Dashboard")]
-    public IActionResult FreelancerDashboared() {
-        return Ok("Freelancer Dashboard");
-    }
 }
