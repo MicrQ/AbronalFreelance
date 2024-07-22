@@ -4,13 +4,14 @@
 @inject NavigationManager Navigate
 
 
-<EditForm Model="@Location" OnValidSubmit="UpdateLocation">
+<EditForm EditContext="@editContext" OnValidSubmit="Submit">
     <label>Name</label>
     <input @bind-value="@Location.Name" />
     <label>Location Type Id</label>
-    <input @bind-value="@Location.LocationTypeId" />
+    <input type="number" @bind-value="@Location.LocationTypeId" />
     <label>ParentId</label>
-    <input @bind-value="@Location.ParentId" />
+    <input type="number" @bind-value="@Location.ParentId" />
+    <label>IsActive</label>
     <button type="submit">Save Changes</button>
 </EditForm>
 
@@ -20,23 +21,31 @@
     public string? Id { get; set; }
     [Parameter]
     public string Action { get; set; }
-    private Location Location;
+    private Location Location = new Location();
+    private EditContext editContext;
 
     protected override async Task OnInitializedAsync()
     {
-        if (Id == null || Action == "add") return;
-        Location = locationService.CurrentLocation;
-        if (Location == null || Location.Id != Convert.ToInt32(Id))
-            Navigate.NavigateTo("/notfound");
-            return;
+        if (Action == "edit" && Id != null)
+        {
+            Location = locationService.CurrentLocation;
+            if (Location == null || Location.Id != Convert.ToInt32(Id)) {
+                Navigate.NavigateTo("/notfound");
+                return;
+            }
+        }
         /// notfound should be used !!!!!!!!
+        editContext = new EditContext(Location);
     }
 
 
-    private async void UpdateLocation()
+    private async void Submit()
     {
-        //Location.LocationType = new LocationType { Name = "new ", SysCode = "code" };
-        await http.PutAsJsonAsync($"api/location", Location);
+        if (Action == "add")
+            await http.PostAsJsonAsync($"api/location", Location);
+        else if (Action == "edit")
+            await http.PutAsJsonAsync($"api/location", Location);
+
         Navigate.NavigateTo("/locations");
     }
 }
