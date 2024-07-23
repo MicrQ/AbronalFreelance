@@ -3,6 +3,7 @@
 @inject NavigationManager Navigate
 @inject IJSRuntime js
 @inject LocationService locationService
+@attribute [Authorize(Roles = "Admin")]
 
 <h3>Locations</h3>
 
@@ -64,3 +65,10 @@ else
         locations = await http.GetFromJsonAsync<List<Location>>("api/locations");
     }
 }
+    using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "/home/niq/AbronalFreelance/Client/Pages/Locations.razor"

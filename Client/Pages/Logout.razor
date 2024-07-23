@@ -1,0 +1,15 @@
+﻿@page "/logout"
+@using Microsoft.AspNetCore.Components.Authorization
+@using global::AbronalFreelance.Client.State
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager NavManager
+
+
+@code {
+    protected async override Task OnInitializedAsync() {
+        var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
+        await customAuthStateProvider.updateAuthenticationState(null!);
+        NavManager.NavigateTo("/", forceLoad: true);
+    }
+
+}
