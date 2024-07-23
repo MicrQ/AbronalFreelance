@@ -6,4 +6,5 @@ public interface IAccount
 {
     Task<RegisterResponse> RegisterUserAsync(RegisterDTO model);
     Task<LoginResponse> LoginUserAsync(LoginDTO model);
+    Task LogoutUserAsync();
 }

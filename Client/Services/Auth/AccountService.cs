@@ -18,6 +18,11 @@ public class AccountService : IAccount
         return result!;
     }
 
+    public async Task LogoutUserAsync()
+    {
+        await _http.PostAsync("api/Auth/logout", null);
+    }
+
     public async Task<RegisterResponse> RegisterUserAsync(RegisterDTO model)
     {
         var response = await _http.PostAsJsonAsync("api/Auth/register", model);

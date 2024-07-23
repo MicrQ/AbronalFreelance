@@ -3,11 +3,13 @@
 @using global::AbronalFreelance.Client.State
 @inject AuthenticationStateProvider AuthStateProvider
 @inject NavigationManager NavManager
+@inject IAccount AccountService
 
 
 @code {
     protected async override Task OnInitializedAsync() {
         var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
+        await AccountService.LogoutUserAsync();
         await customAuthStateProvider.updateAuthenticationState(null!);
         NavManager.NavigateTo("/", forceLoad: true);
     }

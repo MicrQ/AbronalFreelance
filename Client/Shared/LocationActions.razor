@@ -12,6 +12,11 @@
     <label>ParentId</label>
     <input type="number" @bind-value="@Location.ParentId" />
     <label>IsActive</label>
+    <select @bind="@value">
+        <option value="Select" selected></option>
+        <option value="true">Active</option>
+        <option value="false">Deactive</option>
+    </select>
     <button type="submit">Save Changes</button>
 </EditForm>
 
@@ -21,6 +26,7 @@
     public string? Id { get; set; }
     [Parameter]
     public string Action { get; set; }
+    private string value { get; set; }
     private Location Location = new Location();
     private EditContext editContext;
 
@@ -41,6 +47,7 @@
 
     private async void Submit()
     {
+        Location.isActive = value == "true";
         if (Action == "add")
             await http.PostAsJsonAsync($"api/location", Location);
         else if (Action == "edit")
