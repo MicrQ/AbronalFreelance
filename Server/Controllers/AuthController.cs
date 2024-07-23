@@ -58,7 +58,8 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByEmailAsync(loginDTO.Email);
 
         if (user == null)
-            return Unauthorized(new { Error = "Invalid login attempt."});
+            return Unauthorized(new { Error = "Invalid login attempt."}); 
+            // should be login errrorr !badreq
 
         var result = await _signInManager.PasswordSignInAsync(user.UserName, loginDTO.Password, false, false);
         if (result.Succeeded) {
