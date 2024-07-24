@@ -1,11 +1,99 @@
-:root {
-    --primary-color: #6f42c1;/*content bg*/
-    --secondary-color: #ffffff;/*color*/
-    --accent-color: #4a2975; /*hover*/
-    --background-color: #f8f9fa; /* main bg*/
-    --text-color: #333333;/*text color*/
-  }
-  /* :root {
+.nav {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    padding: 25px 5% 10px;
+    color: var(--secondary-color);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.nav-menu ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+.nav-menu ul li {
+    /* margin-right: 10px; */
+    display: flex;
+    cursor: pointer;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    /* border: 1px solid red; */
+    padding: 5px 10px;
+    transition: .3s;
+}
+
+.nav-menu ul li:not(.post-job):hover  a{
+    color: var(--action-color);
+}
+
+.nav-menu .action {
+    border-radius: 10px;
+}
+
+.nav-menu .post-job,
+.nav-menu .login {
+    margin-right: 15px;
+    padding: 0 10px;
+}
+
+.nav-menu .login {
+    border: 10px;
+    border: 2px solid var(--secondary-color);
+}
+
+.nav-menu .login a {
+    color: var(--action-color)
+} 
+
+.nav-menu .signup {
+    border: 10px;
+    border: 2px solid var(--action-color);
+}
+
+.nav-menu .signup:hover {
+    border: 2px solid var(--secondary-color);
+} 
+.nav-menu .login:hover {
+    border: 2px solid var(--action-color);
+}
+
+.nav-menu .post-job {
+    background-color: var(--action-color);
+}
+
+.nav-menu .post-job:hover a {
+    color: var(--primary-color);
+}
+
+
+
+
+
+/* 
+
+
+
+
+   :root {
     --primary-color: #20c997;
     --secondary-color: #ffffff;
     --accent-color: #107361;
@@ -27,4 +115,4 @@
     --accent-color: #0056b3; 
     --background-color: #f8f9fa;
     --text-color: #333333;
-  } */
+  }  */

@@ -1,5 +1,200 @@
-/* /Shared/MainLayout.razor.rz.scp.css */
-/* /Shared/NavMenu.razor.rz.scp.css */
-.navbar-brand[b-0qjqab5lr1] {
-    color: black;
+/* /Pages/Login.razor.rz.scp.css */
+.login-container[b-biqt6mjp5a] {
+    border: 1px solid rgba(0, 0, 0, 0);
+    height: 70vh;
+    background-color: #000000cb;
 }
+
+.login-container .hero-image[b-biqt6mjp5a] {
+    height: 70vh;
+}
+
+.login-box[b-biqt6mjp5a] {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    border: 2px solid var(--action-color);
+    width: 500px;
+    margin: 3% auto 0;
+    padding: 40px;
+    box-shadow: 2px 1px 7px var(--action-color);
+}
+
+.login-box h1[b-biqt6mjp5a] {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-box h6[b-biqt6mjp5a] {
+    text-align: right;
+}
+
+.login-box h6 a[b-biqt6mjp5a] {
+    color: var(--action-color);
+}
+
+.login-box input[b-biqt6mjp5a], .login-box button[b-biqt6mjp5a] {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+
+.login-box button[b-biqt6mjp5a] {
+    background-color: var(--action-color);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.login-box button:hover[b-biqt6mjp5a] {
+    opacity: 0.8;
+}
+
+/* /Shared/Footer.razor.rz.scp.css */
+.footer-items[b-eo39mtzlby] {
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 50px;
+    margin: 10px 0;
+    border: 1px solid ;
+}
+
+.footer-items .item[b-eo39mtzlby] {
+    color: var(--secondary-color);
+    width: 30%;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.footer-items .right[b-eo39mtzlby] {
+    text-align: right;
+}
+
+.footer-items .left[b-eo39mtzlby] {
+    text-align: left;
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.footer-container[b-4riwrvcvkx] {
+    background-color: var(--primary-hover);
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.nav[b-0qjqab5lr1] {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    padding: 25px 5% 10px;
+    color: var(--secondary-color);
+}
+
+.logo[b-0qjqab5lr1] {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.logo a[b-0qjqab5lr1] {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.nav-menu ul[b-0qjqab5lr1]{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+.nav-menu ul li[b-0qjqab5lr1] {
+    /* margin-right: 10px; */
+    display: flex;
+    cursor: pointer;
+}
+
+.nav-menu ul li a[b-0qjqab5lr1] {
+    text-decoration: none;
+    color: var(--text-color);
+    /* border: 1px solid red; */
+    padding: 5px 10px;
+    transition: .3s;
+}
+
+.nav-menu ul li:not(.post-job):hover  a[b-0qjqab5lr1]{
+    color: var(--action-color);
+}
+
+.nav-menu .action[b-0qjqab5lr1] {
+    border-radius: 10px;
+}
+
+.nav-menu .post-job[b-0qjqab5lr1],
+.nav-menu .login[b-0qjqab5lr1] {
+    margin-right: 15px;
+    padding: 0 10px;
+}
+
+.nav-menu .login[b-0qjqab5lr1] {
+    border: 10px;
+    border: 2px solid var(--secondary-color);
+}
+
+.nav-menu .login a[b-0qjqab5lr1] {
+    color: var(--action-color)
+} 
+
+.nav-menu .signup[b-0qjqab5lr1] {
+    border: 10px;
+    border: 2px solid var(--action-color);
+}
+
+.nav-menu .signup:hover[b-0qjqab5lr1] {
+    border: 2px solid var(--secondary-color);
+} 
+.nav-menu .login:hover[b-0qjqab5lr1] {
+    border: 2px solid var(--action-color);
+}
+
+.nav-menu .post-job[b-0qjqab5lr1] {
+    background-color: var(--action-color);
+}
+
+.nav-menu .post-job:hover a[b-0qjqab5lr1] {
+    color: var(--primary-color);
+}
+
+
+
+
+
+/* 
+
+
+
+
+   :root {
+    --primary-color: #20c997;
+    --secondary-color: #ffffff;
+    --accent-color: #107361;
+    --background-color: #f8f9fa;
+    --text-color: #333333;
+  }
+
+  :root {
+    --primary-color: #28a745;
+    --secondary-color: #ffffff;
+    --accent-color: #1c7430;
+    --background-color: #f8f9fa;
+    --text-color: #333333; 
+  }
+
+  :root {
+    --primary-color: #007bff; 
+    --secondary-color: #ffffff;
+    --accent-color: #0056b3; 
+    --background-color: #f8f9fa;
+    --text-color: #333333;
+  }  */

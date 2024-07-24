@@ -1,0 +1,52 @@
+.login-container {
+    border: 1px solid rgba(0, 0, 0, 0);
+    height: 70vh;
+    background-color: #000000cb;
+}
+
+.login-container .hero-image {
+    height: 70vh;
+}
+
+.login-box {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    border: 2px solid var(--action-color);
+    width: 500px;
+    margin: 3% auto 0;
+    padding: 40px;
+    box-shadow: 2px 1px 7px var(--action-color);
+}
+
+.login-box h1 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-box h6 {
+    text-align: right;
+}
+
+.login-box h6 a {
+    color: var(--action-color);
+}
+
+.login-box input, .login-box button {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+
+.login-box button {
+    background-color: var(--action-color);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.login-box button:hover {
+    opacity: 0.8;
+}
+

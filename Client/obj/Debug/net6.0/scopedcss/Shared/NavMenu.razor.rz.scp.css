@@ -1,3 +1,118 @@
-.navbar-brand[b-0qjqab5lr1] {
-    color: black;
+.nav[b-0qjqab5lr1] {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    padding: 25px 5% 10px;
+    color: var(--secondary-color);
 }
+
+.logo[b-0qjqab5lr1] {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.logo a[b-0qjqab5lr1] {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.nav-menu ul[b-0qjqab5lr1]{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+.nav-menu ul li[b-0qjqab5lr1] {
+    /* margin-right: 10px; */
+    display: flex;
+    cursor: pointer;
+}
+
+.nav-menu ul li a[b-0qjqab5lr1] {
+    text-decoration: none;
+    color: var(--text-color);
+    /* border: 1px solid red; */
+    padding: 5px 10px;
+    transition: .3s;
+}
+
+.nav-menu ul li:not(.post-job):hover  a[b-0qjqab5lr1]{
+    color: var(--action-color);
+}
+
+.nav-menu .action[b-0qjqab5lr1] {
+    border-radius: 10px;
+}
+
+.nav-menu .post-job[b-0qjqab5lr1],
+.nav-menu .login[b-0qjqab5lr1] {
+    margin-right: 15px;
+    padding: 0 10px;
+}
+
+.nav-menu .login[b-0qjqab5lr1] {
+    border: 10px;
+    border: 2px solid var(--secondary-color);
+}
+
+.nav-menu .login a[b-0qjqab5lr1] {
+    color: var(--action-color)
+} 
+
+.nav-menu .signup[b-0qjqab5lr1] {
+    border: 10px;
+    border: 2px solid var(--action-color);
+}
+
+.nav-menu .signup:hover[b-0qjqab5lr1] {
+    border: 2px solid var(--secondary-color);
+} 
+.nav-menu .login:hover[b-0qjqab5lr1] {
+    border: 2px solid var(--action-color);
+}
+
+.nav-menu .post-job[b-0qjqab5lr1] {
+    background-color: var(--action-color);
+}
+
+.nav-menu .post-job:hover a[b-0qjqab5lr1] {
+    color: var(--primary-color);
+}
+
+
+
+
+
+/* 
+
+
+
+
+   :root {
+    --primary-color: #20c997;
+    --secondary-color: #ffffff;
+    --accent-color: #107361;
+    --background-color: #f8f9fa;
+    --text-color: #333333;
+  }
+
+  :root {
+    --primary-color: #28a745;
+    --secondary-color: #ffffff;
+    --accent-color: #1c7430;
+    --background-color: #f8f9fa;
+    --text-color: #333333; 
+  }
+
+  :root {
+    --primary-color: #007bff; 
+    --secondary-color: #ffffff;
+    --accent-color: #0056b3; 
+    --background-color: #f8f9fa;
+    --text-color: #333333;
+  }  */

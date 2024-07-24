@@ -1,0 +1,23 @@
+.footer-items[b-eo39mtzlby] {
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 50px;
+    margin: 10px 0;
+    border: 1px solid ;
+}
+
+.footer-items .item[b-eo39mtzlby] {
+    color: var(--secondary-color);
+    width: 30%;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.footer-items .right[b-eo39mtzlby] {
+    text-align: right;
+}
+
+.footer-items .left[b-eo39mtzlby] {
+    text-align: left;
+}

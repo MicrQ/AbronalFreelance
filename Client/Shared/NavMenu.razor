@@ -1,9 +1,32 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">AbronalFreelance</a>
-        <button title="Navigation menu" class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+﻿<div class="nav">
+    <div class="logo"><a href="/">AbronalFreelance</a></div>
+    <div class="nav-menu">
+        <ul>
+            @* <AuthorizeView>
+                <Authorized> *@
+                    <li><a href="#">Home</a></li>
+                @* </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Freelancer">
+                <Authorized> *@
+                    <li><a href="#">Find Jobs</a></li>
+                @* </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Freelancer">
+                <Authorized> *@
+                    <li><a href="#">Find Freelancer</a></li>
+                @* </Authorized>
+            </AuthorizeView> *@
+            <li><a href="#">How it works</a></li>
+            <li><a href="#">About Us</a></li>
+            <li class="action post-job"><a href="#">Post Job</a></li>
+            @* <AuthorizeView>
+                <NotAuthorized> *@
+                    <li class="action login"><a href="login">Login</a></li>
+                    <li class="action signup"><a href="#">Sign Up</a></li>
+                @* </NotAuthorized>
+            </AuthorizeView> *@
+        </ul>
     </div>
 </div>
 

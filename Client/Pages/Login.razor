@@ -3,15 +3,21 @@
 @inject IAccount AccountService
 @using AbronalFreelance.Client.State
 
+<div class="login-container">
+    <div class="hero-image"></div>
+    <div class="login-box">
+        <h1>Login</h1>
+        <EditForm Model="loginModel" OnValidSubmit="LoginAsync">
+            <DataAnnotationsValidator />
 
-<EditForm Model="loginModel" OnValidSubmit="LoginAsync">
-    <DataAnnotationsValidator />
+            <input @bind="loginModel.Email" Placeholder="Email" class="email-input" /><br />
+            <input @bind="loginModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
 
-    <InputText @bind-Value="loginModel.Email" Placeholder="Email" class="form-control mb-3" /><br />
-    <InputText @bind-Value="loginModel.Password" Placeholder="Password" Type="password" class="form-control mb-3" /><br />
-
-    <button class="btn btn-primary mb-3" type="submit">Login</button>
-</EditForm>
+            <button class="login-btn" type="submit">Login</button>
+            <h6><a href="forgot-password">Forgot Password?</a></h6>
+        </EditForm>
+    </div>
+</div>
 
 @code {
     private LoginDTO loginModel = new();
