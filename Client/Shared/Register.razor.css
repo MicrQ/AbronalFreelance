@@ -1,0 +1,43 @@
+.register-container {
+    background-color: #000000cb;
+}
+
+.register-box {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    margin:auto;
+    width: 80%;
+    padding: 40px;
+    box-shadow: 1px 1px 7px var(--action-color);
+}
+
+.form-group {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+}
+
+.form-group .left-form,
+.form-group .right-form {
+    width: 40%;
+    padding: 15px;
+}
+
+.register-box label {
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+.register-box input {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px 15px;
+    font-size: 14px;
+    background-color: var(--third-color);
+}
+
+.company-form {
+    margin: auto;
+}

@@ -10,7 +10,7 @@
         <EditForm Model="loginModel" OnValidSubmit="LoginAsync">
             <DataAnnotationsValidator />
 
-            <input @bind="loginModel.Email" Placeholder="Email" class="email-input" /><br />
+            <input @bind="loginModel.Email" Placeholder="Email" Type="email" class="email-input" /><br />
             <input @bind="loginModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
 
             <button class="login-btn" type="submit">Login</button>
@@ -27,7 +27,7 @@
         var result = await AccountService.LoginUserAsync(loginModel);
         var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
         await customAuthStateProvider.updateAuthenticationState(result.Token);
-        Navigation.NavigateTo("/", forceLoad: true);
+        Navigation.NavigateTo(result.RedirectUrl, forceLoad: true);
         
     }
 

@@ -2,30 +2,20 @@
     <div class="logo"><a href="/">AbronalFreelance</a></div>
     <div class="nav-menu">
         <ul>
-            @* <AuthorizeView>
-                <Authorized> *@
-                    <li><a href="#">Home</a></li>
-                @* </Authorized>
-            </AuthorizeView>
-            <AuthorizeView Roles="Freelancer">
-                <Authorized> *@
-                    <li><a href="#">Find Jobs</a></li>
-                @* </Authorized>
-            </AuthorizeView>
-            <AuthorizeView Roles="Freelancer">
-                <Authorized> *@
-                    <li><a href="#">Find Freelancer</a></li>
-                @* </Authorized>
-            </AuthorizeView> *@
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Find Jobs</a></li>
+            <li><a href="#">Find Freelancer</a></li>
             <li><a href="#">How it works</a></li>
-            <li><a href="#">About Us</a></li>
             <li class="action post-job"><a href="#">Post Job</a></li>
-            @* <AuthorizeView>
-                <NotAuthorized> *@
+            <AuthorizeView>
+                <Authorized>
+                    <li class="action logout"><a href="logout">Logout</a></li>
+                </Authorized>
+                <NotAuthorized>
                     <li class="action login"><a href="login">Login</a></li>
-                    <li class="action signup"><a href="#">Sign Up</a></li>
-                @* </NotAuthorized>
-            </AuthorizeView> *@
+                    <li class="action signup"><a href="register">Sign Up</a></li>
+                </NotAuthorized>
+            </AuthorizeView>
         </ul>
     </div>
 </div>

@@ -1,0 +1,62 @@
+﻿@page "/register"
+@inject IAccount AccountService
+
+<div class="register-container">
+    @* <div class="hero-image"></div> *@
+    <div class="register-box">
+        <h1>Register</h1>
+        <EditForm Model="registerModel" OnValidSubmit="RegisterAsync">
+            <DataAnnotationsValidator />
+            @* <input @bind="registerModel.Role" Placeholder="Client" Type="text" class="role-input" /><br /> *@
+            <div class="form-group">
+                <div class="left-form">
+                    <label>First Name</label><br />
+                    <input @bind="registerModel.FirstName" Placeholder="Mike" class="firstname-input" Type="text"><br />
+                    <label>Last Name</label><br />
+                    <input @bind="registerModel.LastName" Placeholder="Tyson" class="lastname-input" Type="text"><br />
+                    <label>Username</label><br />
+                    <input @bind="registerModel.UserName" Placeholder="Mike_T" class="username-input" Type="text"><br />
+                    <label>Phone</label><br />
+                    <input @bind="registerModel.PhoneNumber" Placeholder="910123456" Type="text" class="phone-input" /><br />
+                </div>
+
+                <div class="right-form">
+                    <label>Email</label><br />
+                    <input @bind="registerModel.Email" Placeholder="Email" Type="email" class="email-input" /><br />
+                    <label>Password</label><br />
+                    <input @bind="registerModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
+                    <label>Confirm Password</label><br />
+                    <input @bind="registerModel.Password" Placeholder="Confirm Password" Type="password" class="pass-input" /><br />
+                    <label>Location</label><br />
+                    <input @bind="registerModel.LocationId" Placeholder="1" Type="number" class="location-input" /><br />
+                </div>
+            </div>
+
+            @* if client *@
+            <div class="company-form">
+                <label>Company Name: </label>
+                <input @bind="registerModel.CompanyName" Placeholder="Company Name" Type="text" class="companyName-input" /><br />
+                <label>Company Location: </label>
+                <input @bind="registerModel.CompanyLocationId" Placeholder="Company Location Id" Type="number" class="Comp-loc-input" /><br />
+                <label>TIN: </label>
+                <input @bind="registerModel.TinNo" Placeholder="TIN Number" Type="text" class="tin-input" /><br />
+                <label>Date Company Stablished: </label>
+                <input @bind="registerModel.CompanyPublished_at" Placeholder="DD/MM/YYYY" Type="text" class="comp-published-input" /><br />
+            </div>
+
+            <button class="signup-btn" type="submit">Sign Up</button>
+            <h6><a href="have-acc">Already have Account?</a></h6>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private RegisterDTO registerModel = new();
+    private async Task RegisterAsync()
+    {
+        var result = await AccountService.RegisterUserAsync(registerModel);
+        var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
+
+        Navigation.NavigateTo(result.RedirectUrl, forceLoad: true);
+    }
+}

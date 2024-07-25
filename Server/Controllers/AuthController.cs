@@ -32,23 +32,37 @@ public class AuthController : ControllerBase
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDTO registerDTO) {
+        if (!await _roleManager.RoleExistsAsync(registerDTO.Role))
+            return BadRequest(new { Error = "Invalid Role."});
+        
         var user = new User {
             FirstName = registerDTO.FirstName,
             LastName = registerDTO.LastName,
             UserName = registerDTO.UserName,
             Email = registerDTO.Email,
             LocationId = registerDTO.LocationId,
+            PhoneNumber = registerDTO.PhoneNumber,
             CreatedAt = DateTime.Now,
             IsActive = true
         };
         var result = await _userManager.CreateAsync(user, registerDTO.Password);
         if (result.Succeeded) {
-            if (!await _roleManager.RoleExistsAsync(registerDTO.Role))
-                return BadRequest(new { Error = "Invalid Role."});
-
             await _userManager.AddToRoleAsync(user, registerDTO.Role);
 
-            return Ok(new { Result = "Registration Compeleted."});
+            if (registerDTO.Role == "Client") {
+                var client = new Clientt {
+                    UserId = user.Id,
+                    CompanyName = registerDTO.CompanyName,
+                    CompanyLocationId = registerDTO.CompanyLocationId,
+                    TinNo = registerDTO.TinNo,
+                    CompanyEstablishedAt = registerDTO.CompanyPublished_at
+                };
+            }
+
+            return Ok(new {
+                Message = "Registration Compeleted.",
+                RedirectUrl = "login"
+            });
         }
         return BadRequest(result.Errors);
     }
@@ -81,7 +95,10 @@ public class AuthController : ControllerBase
             }
 
             var token = GetJWTtoken(user, role);
-            return Ok(new { Token = token, RedirectUrl = redirectUrl});
+            return Ok(new {
+                Token = token,
+                RedirectUrl = redirectUrl
+            });
         }
         return Unauthorized(new { Error = "Invalid login attempt."});
     }

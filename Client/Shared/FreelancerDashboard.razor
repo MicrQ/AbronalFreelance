@@ -1,0 +1,15 @@
+﻿@page "/freelancer"
+@attribute [Authorize(Roles = "Freelancer")]
+
+<AuthorizeView Roles="Freelancer">
+    <Authorized>
+        <h3>FreelancerDashboard</h3>
+    </Authorized>
+    <NotAuthorized>
+        404 page
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
