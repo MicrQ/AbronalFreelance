@@ -1,5 +1,5 @@
 .register-container[b-f8nox774gz] {
-    background-color: #000000cb;
+    background-color: #00000059;
 }
 
 .register-box[b-f8nox774gz] {
@@ -40,4 +40,52 @@
 
 .company-form[b-f8nox774gz] {
     margin: auto;
+    padding: 25px;
+    text-align: center;
 }
+
+.company-form input[b-f8nox774gz] {
+    padding: 5px 15px;
+    width: 60%;
+}
+
+.register-box .signup-btn[b-f8nox774gz] {
+    width: 60%;
+    padding: 5px 0;
+    margin: 0 auto;
+}
+
+/* the role option  */
+.option-container[b-f8nox774gz] {
+    padding: 60px 0;
+}
+
+.option-box[b-f8nox774gz] {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+    padding: 60px 0;
+    color: var(--secondary-color);
+    border-radius: 10px;
+    background-color: var(--primary-color);
+}
+
+.option-container h2[b-f8nox774gz] {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.option-box .option[b-f8nox774gz] {
+    border: 2px solid var(--action-color);
+    width: 40%;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.option-box .option:hover[b-f8nox774gz] {
+    box-shadow: 2px 2px 9px var(--action-color);
+} 

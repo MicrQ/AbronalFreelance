@@ -9,7 +9,6 @@ namespace AbronalFreelance.Server.Controllers;
 
 [Route("api")]
 [ApiController]
-[Authorize(Roles = "Admin")]
 public class LocationController : ControllerBase
 {
     private readonly AppDbContext _db;
@@ -22,6 +21,7 @@ public class LocationController : ControllerBase
 
     //get All
     [HttpGet("locations")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetLocations() {
         var locations = await _db.Locations.ToListAsync();
         return Ok(locations);
@@ -29,6 +29,7 @@ public class LocationController : ControllerBase
 
     //get One loc
     [HttpGet("location/{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetLocation(int id) {
         var location = await _db.Locations.FirstOrDefaultAsync(x => x.Id == id);
         return Ok(location);
@@ -36,6 +37,7 @@ public class LocationController : ControllerBase
 
     // add One loc
     [HttpPost("location")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateLocation(Location location) {
         await _db.Locations.AddAsync(location);
         await _db.SaveChangesAsync();
@@ -44,6 +46,7 @@ public class LocationController : ControllerBase
 
     // update loc
     [HttpPut("location")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateLocation(Location location) {
         var loc = await _db.Locations.FirstOrDefaultAsync(x => x.Id == location.Id);
         if (loc == null) return NotFound();
@@ -57,6 +60,7 @@ public class LocationController : ControllerBase
 
     // Delete Loc
     [HttpDelete("location/{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteLocation(int id) {
         var loc = await _db.Locations.FirstOrDefaultAsync(x => x.Id == id);
         if (loc == null) return NotFound();
@@ -64,5 +68,24 @@ public class LocationController : ControllerBase
         _db.Locations.Remove(loc);
         await _db.SaveChangesAsync();
         return Ok();
+    }
+
+    // location data for registration
+    // countries
+    [HttpGet("location/countries")]
+    public async Task<IActionResult> GetCountries() {
+        return Ok(await _db.Locations.Where(x => x.ParentId == null).ToListAsync());
+    }
+
+    // regions
+    [HttpGet("location/regions/{countryId}")]
+    public async Task<IActionResult> GetRegions(int countryId) {
+        return Ok(await _db.Locations.Where(x => x.ParentId == countryId).ToListAsync());
+    }
+
+    //cities
+    [HttpGet("location/cities/{regionId}")]
+    public async Task<IActionResult> GetCities(int regionId) {
+        return Ok(await _db.Locations.Where(x => x.ParentId == regionId).ToListAsync());
     }
 }

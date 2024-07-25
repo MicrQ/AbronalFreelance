@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using AbronalFreelance.Client.Services;
 using AbronalFreelance.Shared.DTOs;
+using AbronalFreelance.Shared.Models;
 
 namespace AbronalFreelance.Client;
 
@@ -28,5 +29,10 @@ public class AccountService : IAccount
         var response = await _http.PostAsJsonAsync("api/Auth/register", model);
         var result = await response.Content.ReadFromJsonAsync<RegisterResponse>();
         return result!;
+    }
+
+    public async Task<List<Location>> GetLocations(string endpoint)
+    {
+        return await _http.GetFromJsonAsync<List<Location>>("api/location/" + endpoint);
     }
 }

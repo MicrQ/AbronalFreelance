@@ -15,11 +15,4 @@ public class RegisterDTO
     public int LocationId { get; set; }
     public string Role { get; set; }
 
-    //for client
-    // all the followings should be optional for even 4 clinet || Database!!
-    public string CompanyName { get; set; }
-    public int CompanyLocationId { get; set; }
-    public string TinNo { get; set; }
-
-    public DateTime CompanyPublished_at { get; set; }
 }

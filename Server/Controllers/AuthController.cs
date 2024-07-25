@@ -49,15 +49,15 @@ public class AuthController : ControllerBase
         if (result.Succeeded) {
             await _userManager.AddToRoleAsync(user, registerDTO.Role);
 
-            if (registerDTO.Role == "Client") {
-                var client = new Clientt {
-                    UserId = user.Id,
-                    CompanyName = registerDTO.CompanyName,
-                    CompanyLocationId = registerDTO.CompanyLocationId,
-                    TinNo = registerDTO.TinNo,
-                    CompanyEstablishedAt = registerDTO.CompanyPublished_at
-                };
-            }
+            // if (registerDTO.Role == "Client") {
+            //     var client = new Clientt {
+            //         UserId = user.Id,
+            //         CompanyName = registerDTO.CompanyName,
+            //         CompanyLocationId = registerDTO.CompanyLocationId,
+            //         TinNo = registerDTO.TinNo,
+            //         CompanyEstablishedAt = registerDTO.CompanyPublished_at
+            //     };
+            // }
 
             return Ok(new {
                 Message = "Registration Compeleted.",

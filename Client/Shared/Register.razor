@@ -2,56 +2,101 @@
 @inject IAccount AccountService
 
 <div class="register-container">
-    @* <div class="hero-image"></div> *@
-    <div class="register-box">
-        <h1>Register</h1>
-        <EditForm Model="registerModel" OnValidSubmit="RegisterAsync">
-            <DataAnnotationsValidator />
-            @* <input @bind="registerModel.Role" Placeholder="Client" Type="text" class="role-input" /><br /> *@
-            <div class="form-group">
-                <div class="left-form">
-                    <label>First Name</label><br />
-                    <input @bind="registerModel.FirstName" Placeholder="Mike" class="firstname-input" Type="text"><br />
-                    <label>Last Name</label><br />
-                    <input @bind="registerModel.LastName" Placeholder="Tyson" class="lastname-input" Type="text"><br />
-                    <label>Username</label><br />
-                    <input @bind="registerModel.UserName" Placeholder="Mike_T" class="username-input" Type="text"><br />
-                    <label>Phone</label><br />
-                    <input @bind="registerModel.PhoneNumber" Placeholder="910123456" Type="text" class="phone-input" /><br />
-                </div>
+    <div class="hero-image"></div>
 
-                <div class="right-form">
-                    <label>Email</label><br />
-                    <input @bind="registerModel.Email" Placeholder="Email" Type="email" class="email-input" /><br />
-                    <label>Password</label><br />
-                    <input @bind="registerModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
-                    <label>Confirm Password</label><br />
-                    <input @bind="registerModel.Password" Placeholder="Confirm Password" Type="password" class="pass-input" /><br />
-                    <label>Location</label><br />
-                    <input @bind="registerModel.LocationId" Placeholder="1" Type="number" class="location-input" /><br />
+
+    @if (!showForm) {
+        <div class="option-container">
+            <h2>Create Account as</h2>
+            <div class="option-box">
+                <div class="option client">
+                    <h3>Client</h3>
+                    <p>Get your jobs done by professionals.</p>
+                </div>
+                <div class="option freelancer">
+                    <h3>Freelancer</h3>
+                    <p>Find a job. get unlimited income.</p>
                 </div>
             </div>
+        </div>
+    } else {
+        <div class="register-box">
+            <h1>Register</h1>
+            <EditForm Model="registerModel" OnValidSubmit="RegisterAsync">
+                <DataAnnotationsValidator />
+                @* <input @bind="registerModel.Role" Placeholder="Client" Type="text" class="role-input" /><br /> *@
+                <div class="form-group">
+                    <div class="left-form">
+                        <label>First Name</label><br />
+                        <input @bind="registerModel.FirstName" Placeholder="Mike" class="firstname-input" Type="text"><br />
+                        <label>Last Name</label><br />
+                        <input @bind="registerModel.LastName" Placeholder="Tyson" class="lastname-input" Type="text"><br />
+                        <label>Username</label><br />
+                        <input @bind="registerModel.UserName" Placeholder="Mike_T" class="username-input" Type="text"><br />
+                        <label>Phone</label><br />
+                        <input @bind="registerModel.PhoneNumber" Placeholder="910123456" Type="text" class="phone-input" /><br />
+                    </div>
 
-            @* if client *@
-            <div class="company-form">
-                <label>Company Name: </label>
-                <input @bind="registerModel.CompanyName" Placeholder="Company Name" Type="text" class="companyName-input" /><br />
-                <label>Company Location: </label>
-                <input @bind="registerModel.CompanyLocationId" Placeholder="Company Location Id" Type="number" class="Comp-loc-input" /><br />
-                <label>TIN: </label>
-                <input @bind="registerModel.TinNo" Placeholder="TIN Number" Type="text" class="tin-input" /><br />
-                <label>Date Company Stablished: </label>
-                <input @bind="registerModel.CompanyPublished_at" Placeholder="DD/MM/YYYY" Type="text" class="comp-published-input" /><br />
-            </div>
-
-            <button class="signup-btn" type="submit">Sign Up</button>
-            <h6><a href="have-acc">Already have Account?</a></h6>
-        </EditForm>
-    </div>
+                    <div class="right-form">
+                        <label>Email</label><br />
+                        <input @bind="registerModel.Email" Placeholder="Email" Type="email" class="email-input" /><br />
+                        <label>Password</label><br />
+                        <input @bind="registerModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
+                        <label>Confirm Password</label><br />
+                        <input @bind="registerModel.Password" Placeholder="Confirm Password" Type="password" class="pass-input" /><br />
+                        <label>Location</label><br />
+                        <label>Country</label>
+                        <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
+                            <option value="">Select Country</option>
+                            @foreach (var country in countries)
+                            {
+                                <option value="@country.Id">@country.Name</option>
+                            }
+                        </select><br />
+                        <label>Region</label>
+                        <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
+                            <option value="">Select Region</option>
+                            @if (regions != null) {
+                                @foreach (var region in regions)
+                                {
+                                    <option value="@region.Id">@region.Name</option>
+                                }
+                            }
+                        </select><br />
+                        <label>City</label>
+                        <select @bind="registerModel.LocationId">
+                            <option value="">Select City</option>
+                            @if (cities != null) {
+                                @foreach (var city in cities)
+                                {
+                                    <option value="@city.Id">@city.Name</option>
+                                }
+                            }
+                        </select><br />
+                    </div>
+                </div>
+                <div class="signup-btn">
+                    <button type="submit">Sign Up</button>
+                </div>
+                <h6><a href="have-acc">Already have Account?</a></h6>
+            </EditForm>
+        </div>
+    }
 </div>
+
 
 @code {
     private RegisterDTO registerModel = new();
+    private List<Location> countries = new();
+    private List<Location>? regions = null;
+    private List<Location>? cities = null;
+    private string endpoint = "countries";
+
+    private int countryId;
+    private int regionId;
+    private bool showForm = false;
+
+    
     private async Task RegisterAsync()
     {
         var result = await AccountService.RegisterUserAsync(registerModel);
@@ -59,4 +104,41 @@
 
         Navigation.NavigateTo(result.RedirectUrl, forceLoad: true);
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        countries = await AccountService.GetLocations(endpoint);
+        endpoint = "regions/";
+    }
+
+
+     private async Task OnCountryChange(ChangeEventArgs e)
+    {
+        var selectedCountryId = e.Value.ToString();
+        if (!string.IsNullOrEmpty(selectedCountryId))
+        {
+            regions = await AccountService.GetLocations(endpoint + selectedCountryId);
+            endpoint = "cities/";
+        }
+        else
+        {
+            regions = null;
+            cities = null;
+        }
+    }
+
+    private async Task OnRegionChange(ChangeEventArgs x)
+    {
+        var selectedRegionId = x.Value.ToString();
+        if (!string.IsNullOrEmpty(selectedRegionId))
+        {
+            cities = await AccountService.GetLocations(endpoint + selectedRegionId);
+        }
+        else
+        {
+            cities = null;
+        }
+    }
+
 }
+
