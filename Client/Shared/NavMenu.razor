@@ -2,11 +2,26 @@
     <div class="logo"><a href="/">AbronalFreelance</a></div>
     <div class="nav-menu">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Find Jobs</a></li>
-            <li><a href="#">Find Freelancer</a></li>
+            <AuthorizeView>
+                <Authorized>
+                    <li><a href="#">Dashboard</a></li>
+                </Authorized>
+                <NotAuthorized>
+                    <li><a href="#">Home</a></li>
+                </NotAuthorized>
+            </AuthorizeView>
             <li><a href="#">How it works</a></li>
-            <li class="action post-job"><a href="#">Post Job</a></li>
+            <AuthorizeView Roles="Client">
+                <NotAuthorized>
+                    <li><a href="#">Find Jobs</a></li>
+                </NotAuthorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Freelancer">
+                <NotAuthorized>
+                    <li><a href="#">Find Freelancer</a></li>                
+                    <li class="action post-job"><a href="#">Post Job</a></li>
+                </NotAuthorized>
+            </AuthorizeView>
             <AuthorizeView>
                 <Authorized>
                     <li class="action logout"><a href="logout">Logout</a></li>

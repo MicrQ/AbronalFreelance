@@ -1,8 +1,14 @@
 ﻿@page "/admin"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Admin")]
 
-<h3>AdminDashboard</h3>
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <h3>AdminDashboard</h3>
+    </Authorized>
+    <NotAuthorized>
+        404 page
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
 

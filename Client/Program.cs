@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using AbronalFreelance.Client;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
-using AbronalFreelance.Client.Services;
+using AbronalFreelance.Client.Services.LocationServices;
 using AbronalFreelance.Client.State;
+using AbronalFreelance.Client.Services.Auth;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -19,6 +20,7 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddSingleton<LocationService>();
 
 builder.Services.AddScoped<IAccount, AccountService>();
+builder.Services.AddScoped<ILocation, LocationService>();
 builder.Services.AddBlazoredLocalStorage();
 
 //

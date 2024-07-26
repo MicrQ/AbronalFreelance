@@ -84,7 +84,9 @@
     color: var(--primary-color);
 }
 
-
+.nav-menu .logout {
+    margin-left: 30px;
+}
 
 
 

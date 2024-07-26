@@ -1,9 +1,8 @@
 ﻿using System.Net.Http.Json;
-using AbronalFreelance.Client.Services;
 using AbronalFreelance.Shared.DTOs;
 using AbronalFreelance.Shared.Models;
 
-namespace AbronalFreelance.Client;
+namespace AbronalFreelance.Client.Services.Auth;
 
 public class AccountService : IAccount
 {
@@ -31,8 +30,4 @@ public class AccountService : IAccount
         return result!;
     }
 
-    public async Task<List<Location>> GetLocations(string endpoint)
-    {
-        return await _http.GetFromJsonAsync<List<Location>>("api/location/" + endpoint);
-    }
 }

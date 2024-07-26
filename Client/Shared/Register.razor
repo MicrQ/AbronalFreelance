@@ -1,5 +1,6 @@
 ﻿@page "/register"
 @inject IAccount AccountService
+@inject ILocation LocationService
 
 <div class="register-container">
     <div class="hero-image"></div>
@@ -107,37 +108,21 @@
 
     protected override async Task OnInitializedAsync()
     {
-        countries = await AccountService.GetLocations(endpoint);
+        countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
     }
 
 
      private async Task OnCountryChange(ChangeEventArgs e)
     {
-        var selectedCountryId = e.Value.ToString();
-        if (!string.IsNullOrEmpty(selectedCountryId))
-        {
-            regions = await AccountService.GetLocations(endpoint + selectedCountryId);
+        regions = await LocationService.OnLocationChange(e, endpoint);
+        if (regions != null)
             endpoint = "cities/";
-        }
-        else
-        {
-            regions = null;
-            cities = null;
-        }
     }
 
-    private async Task OnRegionChange(ChangeEventArgs x)
+    private async Task OnRegionChange(ChangeEventArgs e)
     {
-        var selectedRegionId = x.Value.ToString();
-        if (!string.IsNullOrEmpty(selectedRegionId))
-        {
-            cities = await AccountService.GetLocations(endpoint + selectedRegionId);
-        }
-        else
-        {
-            cities = null;
-        }
+        cities = await LocationService.OnLocationChange(e, endpoint);
     }
 
     private void regClient()
