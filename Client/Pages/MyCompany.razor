@@ -1,0 +1,91 @@
+﻿@page "/my-company"
+@inject ILocation LocationService
+
+
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <div class="hero-image"></div>
+        <div class="form-container">
+            <div class="form-box">
+                <h2>Company</h2>
+                <div class="form-data">
+                    <label>Name</label><br/>
+                    <input Type="text" class="name"><br />
+                    <label>TIN</label><br />
+                    <input Type="text" class="tin"><br />
+                    <label>Stablished At: </label>
+                    <input Type="date" class="dateStablished"><br />
+
+
+                    <label>Location</label><br />
+                    <div class="loc-options">
+                        <label>Country</label>
+                        <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
+                            <option value="">Select Country</option>
+                            @foreach (var country in countries)
+                            {
+                                <option value="@country.Id">@country.Name</option>
+                            }
+                        </select><br />
+                        <label>Region</label>
+                        <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
+                            <option value="">Select Region</option>
+                            @if (regions != null) {
+                                @foreach (var region in regions)
+                                {
+                                    <option value="@region.Id">@region.Name</option>
+                                }
+                            }
+                        </select><br />
+                        <label>City</label>
+                        <select @bind="companyInfo.CompanyLocationId">
+                            <option value="">Select City</option>
+                            @if (cities != null) {
+                                @foreach (var city in cities)
+                                {
+                                    <option value="@city.Id">@city.Name</option>
+                                }
+                            }
+                        </select><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </Authorized>
+    <NotAuthorized>
+        404 page
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private CompanyInfoDTO companyInfo = new();
+    private List<Location> countries = new();
+    private List<Location>? regions = null;
+    private List<Location>? cities = null;
+    private string endpoint = "countries";
+
+    private int countryId;
+    private int regionId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        countries = await LocationService.GetLocations(endpoint);
+        endpoint = "regions/";
+    }
+
+
+    private async Task OnCountryChange()
+    {
+        regions = await LocationService.OnLocationChange(countryId, endpoint);
+        if (regions != null)
+            endpoint = "cities/";
+    }
+
+    private async Task OnRegionChange()
+    {
+        cities = await LocationService.OnLocationChange(regionId, endpoint);
+    }
+}

@@ -1,0 +1,46 @@
+.form-container {
+    background-color: #000000cb;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+}
+
+.form-box {
+    width: 30%;
+    border: 1px solid var(--action-color);
+    padding: 40px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 1px 2px 7px var(--action-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color)
+}
+
+.form-box h2 {
+    text-align: center;
+}
+
+.form-data {
+    margin: 30px 20px;
+}
+
+.form-data label {
+    font-size: 14px;
+}
+
+.form-data input {
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background-color: var(--third-color);
+    border: none;
+    border-radius: 5px;
+}
+
+.form-data .name,
+.form-data .tin {
+    width: 100%;
+}
+
+.form-data .loc-options {
+    border: 1px solid red;
+}

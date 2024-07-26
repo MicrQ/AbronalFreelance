@@ -23,9 +23,9 @@ public class LocationService : ILocation
         return await _http.GetFromJsonAsync<List<Location>>("api/location/" + endpoint);
     }
 
-    public async Task<List<Location>> OnLocationChange(ChangeEventArgs e, string endpoint)
+    public async Task<List<Location>> OnLocationChange(int id, string endpoint)
     {
-        var locationId = e.Value.ToString();
+        var locationId = id.ToString();
         if (!string.IsNullOrEmpty(locationId)) {
             return await GetLocations(endpoint + locationId);
         }

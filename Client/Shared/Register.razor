@@ -113,16 +113,16 @@
     }
 
 
-     private async Task OnCountryChange(ChangeEventArgs e)
+     private async Task OnCountryChange()
     {
-        regions = await LocationService.OnLocationChange(e, endpoint);
+        regions = await LocationService.OnLocationChange(countryId, endpoint);
         if (regions != null)
             endpoint = "cities/";
     }
 
-    private async Task OnRegionChange(ChangeEventArgs e)
+    private async Task OnRegionChange()
     {
-        cities = await LocationService.OnLocationChange(e, endpoint);
+        cities = await LocationService.OnLocationChange(regionId, endpoint);
     }
 
     private void regClient()
