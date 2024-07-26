@@ -44,7 +44,7 @@
     justify-content: space-between;
     /* align-items: center; */
     width: 100%;
-    padding: 25px 5% 10px;
+    padding: 10px 5% 5px;
     color: var(--secondary-color);
 }
 
@@ -243,9 +243,9 @@
     padding: 40px 20px;
     border-radius: 10px;
     transition: .5s;
+    cursor: pointer;
 }
 
 .option-box .option:hover[b-f8nox774gz] {
     box-shadow: 2px 2px 9px var(--action-color);
 } 
-/* /Shared/RoleOptions.razor.rz.scp.css */

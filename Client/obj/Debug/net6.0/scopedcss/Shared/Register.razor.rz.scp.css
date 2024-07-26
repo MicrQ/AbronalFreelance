@@ -84,6 +84,7 @@
     padding: 40px 20px;
     border-radius: 10px;
     transition: .5s;
+    cursor: pointer;
 }
 
 .option-box .option:hover[b-f8nox774gz] {

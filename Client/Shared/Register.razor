@@ -9,11 +9,11 @@
         <div class="option-container">
             <h2>Create Account as</h2>
             <div class="option-box">
-                <div class="option client">
+                <div class="option client" @onclick="regClient">
                     <h3>Client</h3>
                     <p>Get your jobs done by professionals.</p>
                 </div>
-                <div class="option freelancer">
+                <div class="option freelancer" @onclick="regFreelancer">
                     <h3>Freelancer</h3>
                     <p>Find a job. get unlimited income.</p>
                 </div>
@@ -43,7 +43,7 @@
                         <label>Password</label><br />
                         <input @bind="registerModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
                         <label>Confirm Password</label><br />
-                        <input @bind="registerModel.Password" Placeholder="Confirm Password" Type="password" class="pass-input" /><br />
+                        <input @bind="registerModel.ConfirmPassword" Placeholder="Confirm Password" Type="password" class="pass-confirm" /><br />
                         <label>Location</label><br />
                         <label>Country</label>
                         <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
@@ -102,7 +102,7 @@
         var result = await AccountService.RegisterUserAsync(registerModel);
         var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
 
-        Navigation.NavigateTo(result.RedirectUrl, forceLoad: true);
+        Navigation.NavigateTo("/", forceLoad: true);
     }
 
     protected override async Task OnInitializedAsync()
@@ -140,5 +140,16 @@
         }
     }
 
+    private void regClient()
+    {
+        registerModel.Role = "Client";
+        showForm = true;
+    }
+
+    private void regFreelancer()
+    {
+        registerModel.Role = "Freelancer";
+        showForm = true;
+    }
 }
 
