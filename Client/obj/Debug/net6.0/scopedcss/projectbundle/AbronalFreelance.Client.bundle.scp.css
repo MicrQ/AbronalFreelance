@@ -54,7 +54,18 @@
 }
 
 .form-data .loc-options[b-qpq9ivgd6r] {
-    border: 1px solid red;
+    width: 80%;
+    padding: 0 20px;
+}
+
+.form-data .loc-options select[b-qpq9ivgd6r] {
+    text-align: left;
+    width: 80%;
+    padding: 5px;
+}
+
+.form-data .loc-options label[b-qpq9ivgd6r] {
+    font-size: 14px;
 }
 /* /Shared/Footer.razor.rz.scp.css */
 .footer-items[b-eo39mtzlby] {

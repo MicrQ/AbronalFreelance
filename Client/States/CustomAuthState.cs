@@ -23,11 +23,13 @@ public class CustomAuthState : AuthenticationStateProvider
         string token = await _localStorage.GetItemAsStringAsync(_tokenKey);
         if (string.IsNullOrWhiteSpace(token))
             return await Task.FromResult(new AuthenticationState(_anonymous));
-        var(role, email) = GetClaims(token);
-        if (string.IsNullOrEmpty(role) || string.IsNullOrEmpty(email))
+        var(role, email, userId) = GetClaims(token);
+        if (string.IsNullOrEmpty(role) ||
+            string.IsNullOrEmpty(email) ||
+            string.IsNullOrEmpty(userId))
             return await Task.FromResult(new AuthenticationState(_anonymous));
 
-        var claims = SetClaimPrincipal(role, email);
+        var claims = SetClaimPrincipal(role, email, userId);
         if (claims is null)
             return await Task.FromResult(new AuthenticationState(_anonymous));
         else
@@ -35,39 +37,43 @@ public class CustomAuthState : AuthenticationStateProvider
     }
 
 
-    public static ClaimsPrincipal SetClaimPrincipal(string role, string email)
+    public static ClaimsPrincipal SetClaimPrincipal(string role, string email, string userId)
     {
-        if (role is null || email is null) return new ClaimsPrincipal();
+        if (role is null || email is null || userId is null) return new ClaimsPrincipal();
             
         return new ClaimsPrincipal(new ClaimsIdentity(new[]
         {
             new Claim(ClaimTypes.Role, role!),
-            new Claim(ClaimTypes.Email, email!)
+            new Claim(ClaimTypes.Email, email!),
+            new Claim(ClaimTypes.NameIdentifier, userId!)
         }, "JwtAuth"));
     }
     
 
 
-    private (string, string) GetClaims(string jwtToken)
+    private (string, string, string) GetClaims(string jwtToken)
     {
-        if (string.IsNullOrEmpty(jwtToken)) return (null!, null!);
+        if (string.IsNullOrEmpty(jwtToken)) return (null!, null!, null!);
 
         var handler = new JwtSecurityTokenHandler();
         var token = handler.ReadJwtToken(jwtToken);
 
         var role = token.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Role)!.Value;
         var email = token.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)!.Value;
+        var userId = token.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)!.Value;
 
-        return (role, email);
+        return (role, email, userId);
     }
 
     public async Task updateAuthenticationState(string jwtToken) {
         var claims = new ClaimsPrincipal();
         if (!string.IsNullOrEmpty(jwtToken)) {
-            var (role, email) = GetClaims(jwtToken);
-            if (string.IsNullOrEmpty(role) || string.IsNullOrEmpty(email))
+            var (role, email, userId) = GetClaims(jwtToken);
+            if (string.IsNullOrEmpty(role) ||
+                string.IsNullOrEmpty(email) ||
+                string.IsNullOrEmpty(userId))
                 return;
-            var setClaims = SetClaimPrincipal(role, email);
+            var setClaims = SetClaimPrincipal(role, email, userId);
             if (setClaims is null) return;
 
             await _localStorage.SetItemAsStringAsync(_tokenKey, jwtToken);

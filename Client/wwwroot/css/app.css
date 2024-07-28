@@ -101,14 +101,17 @@
 .login-box input,
 .login-box button,
 .register-box input,
-.register-box button {
+.register-box button,
+.save-company-info {
     width: 100%;
     padding: 10px 20px;
     margin: 10px 0;
+    border-radius: 10px;
 }
 
 .login-box button,
-.register-box button {
+.register-box button,
+.save-company-info {
     background-color: var(--action-color);
     border: none;
     color: var(--secondary-color);
@@ -117,8 +120,10 @@
 }
 
 .login-box button:hover,
-.register-box button:hover {
+.register-box button:hover,
+.save-company-info:hover {
     opacity: 0.8;
+    box-shadow: 1px 1px 4px var(--action-color);
 }
 
 

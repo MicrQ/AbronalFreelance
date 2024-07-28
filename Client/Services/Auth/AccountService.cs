@@ -1,6 +1,5 @@
 ﻿using System.Net.Http.Json;
 using AbronalFreelance.Shared.DTOs;
-using AbronalFreelance.Shared.Models;
 
 namespace AbronalFreelance.Client.Services.Auth;
 

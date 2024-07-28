@@ -42,5 +42,16 @@
 }
 
 .form-data .loc-options {
-    border: 1px solid red;
+    width: 80%;
+    padding: 0 20px;
+}
+
+.form-data .loc-options select {
+    text-align: left;
+    width: 80%;
+    padding: 5px;
+}
+
+.form-data .loc-options label {
+    font-size: 14px;
 }

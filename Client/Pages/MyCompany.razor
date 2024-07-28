@@ -1,5 +1,5 @@
 ﻿@page "/my-company"
-@inject ILocation LocationService
+@using System.Security.Claims
 
 
 <AuthorizeView Roles="Client">
@@ -8,47 +8,50 @@
         <div class="form-container">
             <div class="form-box">
                 <h2>Company</h2>
-                <div class="form-data">
-                    <label>Name</label><br/>
-                    <input Type="text" class="name"><br />
-                    <label>TIN</label><br />
-                    <input Type="text" class="tin"><br />
-                    <label>Stablished At: </label>
-                    <input Type="date" class="dateStablished"><br />
+                <EditForm Model="companyInfo" OnValidSubmit="addCompany" Context="editContext">
+                    <div class="form-data">
+                        <label>Name</label><br/>
+                        <input @bind="companyInfo.CompanyName" Type="text" class="name"><br />
+                        <label>TIN</label><br />
+                        <input @bind="companyInfo.TinNo" Type="text" class="tin"><br />
+                        <label>Stablished At: </label>
+                        <input @bind="companyInfo.CompanyStablishedAt" Type="datetime" class="dateStablished"><br />
 
 
-                    <label>Location</label><br />
-                    <div class="loc-options">
-                        <label>Country</label>
-                        <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
-                            <option value="">Select Country</option>
-                            @foreach (var country in countries)
-                            {
-                                <option value="@country.Id">@country.Name</option>
-                            }
-                        </select><br />
-                        <label>Region</label>
-                        <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
-                            <option value="">Select Region</option>
-                            @if (regions != null) {
-                                @foreach (var region in regions)
+                        <label>Location</label><br />
+                        <div class="loc-options">
+                            <label>Country</label><br />
+                            <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
+                                <option value="">Select Country</option>
+                                @foreach (var country in countries)
                                 {
-                                    <option value="@region.Id">@region.Name</option>
+                                    <option value="@country.Id">@country.Name</option>
                                 }
-                            }
-                        </select><br />
-                        <label>City</label>
-                        <select @bind="companyInfo.CompanyLocationId">
-                            <option value="">Select City</option>
-                            @if (cities != null) {
-                                @foreach (var city in cities)
-                                {
-                                    <option value="@city.Id">@city.Name</option>
+                            </select><br />
+                            <label>Region</label><br />
+                            <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
+                                <option value="">Select Region</option>
+                                @if (regions != null) {
+                                    @foreach (var region in regions)
+                                    {
+                                        <option value="@region.Id">@region.Name</option>
+                                    }
                                 }
-                            }
-                        </select><br />
+                            </select><br />
+                            <label>City</label><br />
+                            <select @bind="companyInfo.CompanyLocationId">
+                                <option value="">Select City</option>
+                                @if (cities != null) {
+                                    @foreach (var city in cities)
+                                    {
+                                        <option value="@city.Id">@city.Name</option>
+                                    }
+                                }
+                            </select><br />
+                        </div>
                     </div>
-                </div>
+                    <button type="submit" class="save-company-info">Save</button>
+                </EditForm>
             </div>
         </div>
 
@@ -74,6 +77,12 @@
     {
         countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
+
+        // extracting loggedin user's id
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier);
+
+        companyInfo.UserId = user.Value;
     }
 
 
@@ -87,5 +96,9 @@
     private async Task OnRegionChange()
     {
         cities = await LocationService.OnLocationChange(regionId, endpoint);
+    }
+
+    private async void addCompany() {
+        //@* await ProfileService.AddCompanyAsync(companyInfo); *@
     }
 }
