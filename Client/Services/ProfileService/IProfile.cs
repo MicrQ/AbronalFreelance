@@ -4,5 +4,5 @@ namespace AbronalFreelance.Client.Services.ProfileService;
 
 public interface IProfile
 {
-    void AddCompanyAsync(CompanyInfoDTO companyInfo);
+    Task AddCompanyAsync(CompanyInfoDTO companyInfo);
 }

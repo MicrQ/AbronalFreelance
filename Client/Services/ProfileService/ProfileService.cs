@@ -11,7 +11,7 @@ public class ProfileService : IProfile
     {
         _http = http;
     }
-    public async void AddCompanyAsync(CompanyInfoDTO companyInfo)
+    public async Task AddCompanyAsync(CompanyInfoDTO companyInfo)
     {
         // will be changed to a Task function and will have a response object
         await _http.PostAsJsonAsync("api/company", companyInfo);

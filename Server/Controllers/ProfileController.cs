@@ -33,6 +33,6 @@ public class ProfileController : ControllerBase
         await _db.Clients.AddAsync(company);
         await _db.SaveChangesAsync();
 
-        return Ok();
+        return Ok(company);
     }
 }

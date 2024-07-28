@@ -98,7 +98,7 @@
         cities = await LocationService.OnLocationChange(regionId, endpoint);
     }
 
-    private async void addCompany() {
-        //@* await ProfileService.AddCompanyAsync(companyInfo); *@
+    private void addCompany() {
+        ProfileService.AddCompanyAsync(companyInfo);
     }
 }
