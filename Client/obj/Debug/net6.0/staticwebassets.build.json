@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MG2heqvcIlxNCy2XfiX5+Vvu1McgQo/sP3LJZ56OJtU=",
+  "Hash": "d1YnyiviHpo0VPxn9EdXokqesFFtsaH8NZ6MiNYUEFc=",
   "Source": "AbronalFreelance.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -8679,6 +8679,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/mainpage-bg.jpg"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/img/user.png",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "img/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/user.png"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/index.html",

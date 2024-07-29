@@ -5,6 +5,7 @@
             <AuthorizeView>
                 <Authorized>
                     <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Contracts</a></li>
                 </Authorized>
                 <NotAuthorized>
                     <li><a href="#">Home</a></li>
@@ -24,7 +25,17 @@
             </AuthorizeView>
             <AuthorizeView>
                 <Authorized>
-                    <li class="action logout"><a href="logout">Logout</a></li>
+                    <div class="user-profile" @onclick="profileAction">
+                        @* <img src="img/user.png" alt="user-profile"> *@
+                    </div>
+                    <div class="user-profile-actions" style="display: @showProfile;">
+                        <div class="user-img"></div>
+                        <div class="user-actions">
+                            <li class="user-action profile"><a href="profile">Edit Profile</a></li>
+                            <li class="user-action logout"><a href="logout">Logout</a></li>
+                        </div>
+                    </div>
+
                 </Authorized>
                 <NotAuthorized>
                     <li class="action login"><a href="login">Login</a></li>
@@ -37,5 +48,12 @@
 
 
 @code {
-
+    private string showProfile = "none";
+    private void profileAction() {
+        if (showProfile == "none") {
+            showProfile = "block";
+            return;
+        }
+        showProfile = "none";
+    }
 }

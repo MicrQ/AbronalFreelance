@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets/img/mainpage-bg.jpg"
     },
     {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/user.png",
+      "PackagePath": "staticwebassets/img/user.png"
+    },
+    {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },

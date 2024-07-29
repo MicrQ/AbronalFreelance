@@ -1,0 +1,18 @@
+.body-container[b-j94ijvz21j] {
+    height: 100vh;
+    border: 2px solid red;
+    display: flex;
+    padding: 10px;
+}
+
+.body-container .side-bar[b-j94ijvz21j] {
+    border: 2px solid green;
+    height: 100%;
+    width: 15%;
+    margin-right: 5px;
+}
+
+.body-container .main-bar[b-j94ijvz21j] {
+    border: 2px solid blue;
+    width: 85%;
+}
