@@ -67,22 +67,39 @@
 .form-data .loc-options label[b-qpq9ivgd6r] {
     font-size: 14px;
 }
-/* /Pages/Profile.razor.rz.scp.css */
-.body-container[b-j94ijvz21j] {
+/* /Pages/ProfilePage.razor.rz.scp.css */
+.body-container[b-5ibxfxw9r2] {
     height: 100vh;
     border: 2px solid red;
     display: flex;
     padding: 10px;
+    list-style: none;
 }
 
-.body-container .side-bar[b-j94ijvz21j] {
-    border: 2px solid green;
+.body-container .side-bar[b-5ibxfxw9r2] {
+    background-color: var(--primary-color);
     height: 100%;
     width: 15%;
     margin-right: 5px;
+    padding: 40px 10px;
+    text-align: center;
+    color: var(--secondary-color);
+    border-radius:0 35px 0 35px;
+    overflow:auto;
 }
 
-.body-container .main-bar[b-j94ijvz21j] {
+.side-bar .user-action[b-5ibxfxw9r2] {
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: .3s;
+}
+
+.side-bar .user-action:hover[b-5ibxfxw9r2] {
+    color: var(--action-color);
+    box-shadow: 0 -1px 6px var(--action-color);
+}
+
+.body-container .main-bar[b-5ibxfxw9r2] {
     border: 2px solid blue;
     width: 85%;
 }
@@ -234,18 +251,14 @@
     margin: 25px auto; 
 }
 
+
+
+
 /*  
+    more in app.css
  */
 
-.user-actions .user-action[b-0qjqab5lr1] {
-    border-top: 2px solid var(--action-color);
-    padding: 5px 0;
-    border-radius: 10px;
-}
 
-.user-actions .user-action a[b-0qjqab5lr1] {
-    margin: auto;
-}
 
 .user-profile-actions .user-actions .logout[b-0qjqab5lr1] {
     border-bottom: 2px solid var(--action-color);

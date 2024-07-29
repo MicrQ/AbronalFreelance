@@ -117,18 +117,14 @@
     margin: 25px auto; 
 }
 
+
+
+
 /*  
+    more in app.css
  */
 
-.user-actions .user-action[b-0qjqab5lr1] {
-    border-top: 2px solid var(--action-color);
-    padding: 5px 0;
-    border-radius: 10px;
-}
 
-.user-actions .user-action a[b-0qjqab5lr1] {
-    margin: auto;
-}
 
 .user-profile-actions .user-actions .logout[b-0qjqab5lr1] {
     border-bottom: 2px solid var(--action-color);

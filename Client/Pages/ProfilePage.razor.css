@@ -1,0 +1,35 @@
+.body-container {
+    height: 100vh;
+    border: 2px solid red;
+    display: flex;
+    padding: 10px;
+    list-style: none;
+}
+
+.body-container .side-bar {
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 15%;
+    margin-right: 5px;
+    padding: 40px 10px;
+    text-align: center;
+    color: var(--secondary-color);
+    border-radius:0 35px 0 35px;
+    overflow:auto;
+}
+
+.side-bar .user-action {
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: .3s;
+}
+
+.side-bar .user-action:hover {
+    color: var(--action-color);
+    box-shadow: 0 -1px 6px var(--action-color);
+}
+
+.body-container .main-bar {
+    border: 2px solid blue;
+    width: 85%;
+}

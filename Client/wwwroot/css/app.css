@@ -134,7 +134,15 @@
 
 
 
+.user-action {
+    border-top: 2px solid var(--action-color);
+    padding: 5px 0;
+    border-radius: 10px;
+}
 
+.user-action a {
+    margin: auto;
+}
 
 
 

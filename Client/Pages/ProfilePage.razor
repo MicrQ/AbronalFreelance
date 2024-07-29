@@ -1,0 +1,49 @@
+﻿@page "/user/profile"
+@using AbronalFreelance.Client.Shared
+
+<div class="body-container">
+    <div class="side-bar">
+            <li class="user-action" @onclick='@(() => show("profile"))'>Profile</li>
+            <AuthorizeView Roles="Freelancer">
+                <Authorized>
+                    <li class="user-action" @onclick='@(() => show("portfolio"))'>Portfolio</li>
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Client">
+                <Authorized>
+                    <li class="user-action" @onclick='@(() => show("company"))'>My Company</li>
+                </Authorized>
+            </AuthorizeView>
+    </div>
+
+    <div class="main-bar">
+        @if (showProfile) { <Profile /> }
+        else if (showPortfolio) { <Portfolio /> }
+        else if (showCompany) {<Company /> }
+
+    </div>
+</div>
+
+
+@code {
+    private bool showProfile = true;
+    private bool showPortfolio = false;
+    private bool showCompany = false;
+
+    private void show(string clicked) {
+        if (clicked == "profile") {
+            showProfile = true;
+            showPortfolio = false;
+            showCompany = false;
+        } else if (clicked == "portfolio") {
+            showProfile = false;
+            showPortfolio = true;
+            showCompany = false;
+        } else if (clicked == "company") {
+            showProfile = false;
+            showPortfolio = false;
+            showCompany = true;
+        }
+    }
+
+}
