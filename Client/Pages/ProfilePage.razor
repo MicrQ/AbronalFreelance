@@ -1,5 +1,4 @@
 ﻿@page "/user/profile"
-@using AbronalFreelance.Client.Shared
 
 <div class="body-container">
     <div class="side-bar">
@@ -17,6 +16,7 @@
     </div>
 
     <div class="main-bar">
+        
         @if (showProfile) { <Profile /> }
         else if (showPortfolio) { <Portfolio /> }
         else if (showCompany) {<Company /> }

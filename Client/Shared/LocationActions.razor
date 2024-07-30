@@ -1,58 +1,74 @@
 ﻿@page "/location/{action}/{id?}"
 @inject HttpClient http
-@inject LocationService locationService
+@inject ILocation locationService
 @inject NavigationManager Navigate
 
+@if (valid) {
+    <div class="main-container">
+        <h3>Location</h3>
+        <div class="form-box">
+            <EditForm Model="LocationDTO" OnValidSubmit="Save">
+                <label>Name</label><br />
+                <input @bind="LocationDTO.Name" Type="text"><br />
+                <label>Location Type</label><br />
+                <select @bind="LocationDTO.LocationTypeId" @bind:event="oninput" @onchange="fetchParent">
+                    @foreach (var locationType in LocationTypes) {
+                        <option value="@locationType.Id">@locationType.Name</option>
+                    }
+                </select><br />
 
-<EditForm EditContext="@editContext" OnValidSubmit="Submit">
-    <label>Name</label>
-    <input @bind-value="@Location.Name" />
-    <label>Location Type Id</label>
-    <input type="number" @bind-value="@Location.LocationTypeId" />
-    <label>ParentId</label>
-    <input type="number" @bind-value="@Location.ParentId" />
-    <label>IsActive</label>
-    <select @bind="@value">
-        <option value="Select" selected></option>
-        <option value="true">Active</option>
-        <option value="false">Deactive</option>
-    </select>
-    <button type="submit">Save Changes</button>
-</EditForm>
+                @* fetching possible parent locations based on the selected location type*@
+                <label>Parent</label><br />
+                <select @bind="LocationDTO.ParentId">
+                    @foreach (var parent in Parents) {
+                        <option value="@parent.Id">@parent.Name</option>
+                    }
+                </select><br />
+
+                
+            </EditForm>
+        </div>
+
+    </div>
+} else {
+    <h3>404 page</h3>
+}
+
 
 
 @code {
     [Parameter]
-    public string? Id { get; set; }
+    public string Id { get; set; }
     [Parameter]
     public string Action { get; set; }
     private string value { get; set; }
     private Location Location = new Location();
-    private EditContext editContext;
+    private LocationDTO LocationDTO = new LocationDTO();
+    private List<LocationType> LocationTypes = new List<LocationType>();
+    private List<Location>? Parents = new List<Location>();
+    private string BtnName { get; set; } = "Save";
+    private bool valid = true;
 
     protected override async Task OnInitializedAsync()
     {
         if (Action == "edit" && Id != null)
         {
-            Location = locationService.CurrentLocation;
-            if (Location == null || Location.Id != Convert.ToInt32(Id)) {
-                Navigate.NavigateTo("/notfound");
-                return;
-            }
+            BtnName += " Changes";
+            Location = await locationService.GetLocation(Convert.ToInt32(Id));
+            //if (Location == null)
+              //  valid = false;
         }
-        /// notfound should be used !!!!!!!!
-        editContext = new EditContext(Location);
+        LocationTypes = await locationService.GetLocationTypes();
     }
 
-
-    private async void Submit()
-    {
-        Location.isActive = value == "true";
-        if (Action == "add")
-            await http.PostAsJsonAsync($"api/location", Location);
-        else if (Action == "edit")
-            await http.PutAsJsonAsync($"api/location", Location);
-
-        Navigate.NavigateTo("/locations");
+    private async Task fetchParent() {
+        if (LocationDTO.LocationTypeId > 1) {
+            Parents = await locationService.GetLocationsByType(LocationDTO.LocationTypeId - 1);
+        }
     }
+
+    private void Save() {
+        
+    }
+    
 }

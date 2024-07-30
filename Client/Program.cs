@@ -18,7 +18,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 // my services
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthState>();
 builder.Services.AddAuthorizationCore();
-builder.Services.AddSingleton<LocationService>();
+// builder.Services.AddSingleton<LocationService>();
+// builder.Services.AddScoped<LocationService>();
+
 
 builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<ILocation, LocationService>();

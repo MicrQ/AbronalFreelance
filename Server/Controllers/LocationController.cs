@@ -70,6 +70,23 @@ public class LocationController : ControllerBase
         return Ok();
     }
 
+    // get location types
+    [HttpGet("location-types")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetLocationTypes() {
+        return Ok(await _db.LocationTypes.ToListAsync());
+    }
+
+    [HttpGet("locations/location-type/{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetLocationsByType(int id) {
+        return Ok(await _db.Locations.Where(loc => loc.LocationTypeId == id).ToListAsync());
+    }
+
+
+
+
+
     // location data for registration
     // countries
     [HttpGet("location/countries")]

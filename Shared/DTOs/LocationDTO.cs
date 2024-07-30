@@ -3,6 +3,7 @@
 public class LocationDTO
 {
     public string Name { get; set; }
-    public string LocationTypeId { get; set; }
-    public string? ParentId { get; set; }
+    public int LocationTypeId { get; set; }
+    public int? ParentId { get; set; }
+    public bool isActive { get; set; } = true;
 }

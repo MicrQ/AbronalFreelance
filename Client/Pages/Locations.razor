@@ -2,7 +2,7 @@
 @inject HttpClient http
 @inject NavigationManager Navigate
 @inject IJSRuntime js
-@inject LocationService locationService
+@inject ILocation locationService
 @attribute [Authorize(Roles = "Admin")]
 <AuthorizeView Roles="Admin">
     <Authorized>
@@ -14,7 +14,7 @@
         }
         else
         {
-            <button @onclick="@(add => Navigate.NavigateTo("/location/add"))">New Location</button>
+            <button @onclick="AddLocation">New Location</button>
             <table class="table">
                 <thead>
                     <tr>
@@ -37,7 +37,7 @@
                             } else { <td>NULL</td>}
                             <td>@location.isActive</td>
                             <td>
-                                <button @onclick="@(edit => Edit(@location))">EDIT</button>
+                                <button @onclick="@(edit => Edit(@location.Id))">EDIT</button>
                                 <button @onclick="@(del => Delete(@location.Id))">DELETE</button>
                             </td>
                         </tr>
@@ -54,19 +54,26 @@
 @code {
     private List<Location> locations;
 
-    private void Edit(Location Location)
-    {
-        locationService.CurrentLocation = Location;
-        Navigate.NavigateTo($"/location/edit/{Location.Id}");
+    private async Task FetchLocation() {
+        locations = await locationService.GetAllLocations();
     }
-    private async void Delete(int id)
+
+    private void AddLocation() {
+        Navigate.NavigateTo("/location/add");
+    }
+
+    private void Edit(int id)
     {
-        await http.DeleteAsync($"api/location/{id}");
-        await js.InvokeVoidAsync("location.reload");
+        Navigate.NavigateTo($"/location/edit/{id}");
+    }
+    private async Task Delete(int id)
+    {
+        await locationService.DeleteLocation(id);
+        await FetchLocation();
     }
 
     protected override async Task OnInitializedAsync()
     {
-        locations = await http.GetFromJsonAsync<List<Location>>("api/locations");
+        await FetchLocation();
     }
 }
