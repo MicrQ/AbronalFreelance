@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "awuR6qMGIeg=",
+  "dgSpecHash": "F4uhMrzXLPY=",
   "success": true,
   "projectFilePath": "/home/niq/AbronalFreelance/Client/AbronalFreelance.Client.csproj",
   "expectedPackageFiles": [
@@ -48,7 +48,7 @@
     "/home/niq/.nuget/packages/microsoft.jsinterop.webassembly/6.0.32/microsoft.jsinterop.webassembly.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.net.illink.analyzers/7.0.100-1.23401.1/microsoft.net.illink.analyzers.7.0.100-1.23401.1.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.net.illink.tasks/7.0.100-1.23401.1/microsoft.net.illink.tasks.7.0.100-1.23401.1.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.net.sdk.webassembly.pack/8.0.6/microsoft.net.sdk.webassembly.pack.8.0.6.nupkg.sha512",
+    "/home/niq/.nuget/packages/microsoft.net.sdk.webassembly.pack/8.0.7/microsoft.net.sdk.webassembly.pack.8.0.7.nupkg.sha512",
     "/home/niq/.nuget/packages/netcodehub.packages.components.validations/1.0.1/netcodehub.packages.components.validations.1.0.1.nupkg.sha512",
     "/home/niq/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/home/niq/.nuget/packages/system.diagnostics.diagnosticsource/6.0.1/system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
@@ -58,9 +58,7 @@
     "/home/niq/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "/home/niq/.nuget/packages/system.text.encodings.web/6.0.0/system.text.encodings.web.6.0.0.nupkg.sha512",
     "/home/niq/.nuget/packages/system.text.json/6.0.0/system.text.json.6.0.0.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/6.0.31/microsoft.netcore.app.runtime.mono.browser-wasm.6.0.31.nupkg.sha512"
+    "/home/niq/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/6.0.32/microsoft.netcore.app.runtime.mono.browser-wasm.6.0.32.nupkg.sha512"
   ],
   "logs": []
 }

@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <Content Remove="Pages/FreelancerDashboard.razor" />
-    <Content Remove="Shared/Company.razor" />
-    <Content Remove="Shared/Portfolio.razor" />
-    <Content Remove="Shared/Profile.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,32 +30,14 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages/FreelancerDashboard.razor" />
-    <_ContentIncludedByDefault Remove="Shared/Company.razor" />
-    <_ContentIncludedByDefault Remove="Shared/Portfolio.razor" />
-    <_ContentIncludedByDefault Remove="Shared/Profile.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages/FreelancerDashboard.razor" />
-    <None Include="Shared/Company.razor" />
-    <None Include="Shared/Portfolio.razor" />
-    <None Include="Shared/Profile.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Services/LocationServices/" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Shared/Profile.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Shared/Portfolio.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Shared/Company.razor" />
   </ItemGroup>
 
 </Project>
