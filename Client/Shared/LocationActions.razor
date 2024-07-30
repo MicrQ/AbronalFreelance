@@ -9,9 +9,10 @@
         <div class="form-box">
             <EditForm Model="LocationDTO" OnValidSubmit="Save">
                 <label>Name</label><br />
-                <input @bind="LocationDTO.Name" Type="text"><br />
+                <input @bind="LocationDTO.Name" Type="text"/><br />
                 <label>Location Type</label><br />
                 <select @bind="LocationDTO.LocationTypeId" @bind:event="oninput" @onchange="fetchParent">
+                    <option>Select Location Type</option>
                     @foreach (var locationType in LocationTypes) {
                         <option value="@locationType.Id">@locationType.Name</option>
                     }
@@ -20,12 +21,19 @@
                 @* fetching possible parent locations based on the selected location type*@
                 <label>Parent</label><br />
                 <select @bind="LocationDTO.ParentId">
+                    <option>Select Parent</option>
                     @foreach (var parent in Parents) {
                         <option value="@parent.Id">@parent.Name</option>
                     }
                 </select><br />
+                <label>Status</label>
+                <select @bind="LocationDTO.isActive">
+                    <option>Select status...</option>
+                    <option value="true">Active</option>
+                    <option value="false">Deactive</option>
+                </select>
 
-                
+                <button Type="submit">@BtnName</button>
             </EditForm>
         </div>
 
@@ -41,8 +49,7 @@
     public string Id { get; set; }
     [Parameter]
     public string Action { get; set; }
-    private string value { get; set; }
-    private Location Location = new Location();
+    public Location Location = new Location();
     private LocationDTO LocationDTO = new LocationDTO();
     private List<LocationType> LocationTypes = new List<LocationType>();
     private List<Location>? Parents = new List<Location>();
@@ -55,8 +62,11 @@
         {
             BtnName += " Changes";
             Location = await locationService.GetLocation(Convert.ToInt32(Id));
-            //if (Location == null)
+            if (Location != null){
+                LocationDTO.Name = Location.Name;
+                LocationDTO.isActive = Location.isActive;
               //  valid = false;
+            }
         }
         LocationTypes = await locationService.GetLocationTypes();
     }
@@ -67,8 +77,14 @@
         }
     }
 
-    private void Save() {
-        
+    private async Task Save() {
+        if (Action == "edit") {
+            await locationService.EditLocation(LocationDTO);
+            Navigate.NavigateTo("/locations");
+        } else if (Action == "add") {
+            await locationService.AddLocation(LocationDTO);
+            Navigate.NavigateTo("/locations");
+        }
     }
     
 }

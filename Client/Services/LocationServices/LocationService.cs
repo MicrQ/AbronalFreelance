@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using AbronalFreelance.Shared.Models;
+using AbronalFreelance.Shared.DTOs;
 
 
 namespace AbronalFreelance.Client.Services.LocationServices;
@@ -38,9 +39,28 @@ public class LocationService : ILocation
         return await _http.GetFromJsonAsync<Location>($"api/location/{id}");
     }
 
-    public Task<Location> EditLocation(int id)
+    public async Task AddLocation(LocationDTO locationDTO)
     {
-        throw new NotImplementedException();
+        Location location = new Location{
+            Name = locationDTO.Name,
+            LocationTypeId = locationDTO.LocationTypeId,
+            ParentId = locationDTO.ParentId,
+            isActive = locationDTO.isActive
+        };
+
+        await _http.PostAsJsonAsync("api/location", location);
+    }
+
+    public async Task EditLocation(LocationDTO locationDTO)
+    {
+        Location location = new Location{
+            Name = locationDTO.Name,
+            LocationTypeId = locationDTO.LocationTypeId,
+            ParentId = locationDTO.ParentId,
+            isActive = locationDTO.isActive
+        };
+
+        await _http.PutAsJsonAsync("api/location", location);
     }
     
     public async Task DeleteLocation(int id)
