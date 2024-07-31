@@ -900,3 +900,4 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/5u7p0ui4ib.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/ProfilePage.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Locations.razor.rz.scp.css
+/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Portfolio.razor.rz.scp.css

@@ -1,5 +1,27 @@
-﻿<h3>Portfolio</h3>
+﻿<h2 class="page-title mb-1">Portfolio</h2>
+
+<div class="add-btn">
+    <button class="btn btn-primary mb-3 p-2" @onclick="AddPortfolio">Add Portfolio</button>
+</div>
+    
+<div class="list-container">
+    <div class="list">
+        <div class="title-date">
+            <h3>Title of project</h3>
+            <p class="date">Date added: 12/02/2021</p>
+        </div>
+        <div class="action-btn">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+        
+</div>
+
+
 
 @code {
-
+    private void AddPortfolio() {
+        Navigation.NavigateTo("/add-portfolio");
+    }
 }

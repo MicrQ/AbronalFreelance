@@ -73,10 +73,63 @@ table[b-twgl6rf1ty] {
 .form-data .loc-options label[b-qpq9ivgd6r] {
     font-size: 14px;
 }
+/* /Pages/Portfolio.razor.rz.scp.css */
+.page-title[b-g6ct15667n] {
+    font-size: 35px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 2px var(--primary-color);
+}
+
+.add-btn button[b-g6ct15667n]{
+    position: relative;
+    left: 90%;
+    box-shadow: 2px 2px 7px var(--primary-color);
+}
+
+.add-btn button[b-g6ct15667n] {
+    box-shadow: 2px 2px 7px var(--action-color);
+}
+
+.list-container[b-g6ct15667n] {
+    border: 2px solid var(--action-color);
+    box-shadow: 2px 2px 7px var(--primary-color);
+    padding: 25px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+
+}
+
+.list-container .list[b-g6ct15667n] {
+    display: flex;
+    justify-content: space-between;
+    color: var(--secondary-color);
+    padding: 5px 10px;
+}
+
+.list .title-date[b-g6ct15667n] {
+    padding: 5px 10px;
+
+}
+
+.list .action-btn[b-g6ct15667n] {
+    padding: 5px 10px;
+    width: 220px;
+    display: flex;
+    height: 55px;
+    margin-top: 10px;
+}
+
+.action-btn button[b-g6ct15667n] {
+    width: 90px;
+    margin-right: 7px;
+}
+
+.action-btn button:hover[b-g6ct15667n] {
+    box-shadow: 1px 1px 5px var(--secondary-color);
+}
 /* /Pages/ProfilePage.razor.rz.scp.css */
 .body-container[b-5ibxfxw9r2] {
     height: 100vh;
-    border: 3px solid blue;
     display: flex;
     padding: 10px;
     list-style: none;
@@ -106,9 +159,14 @@ table[b-twgl6rf1ty] {
 }
 
 .body-container .main-bar[b-5ibxfxw9r2] {
-    border: 2px solid blue;
+    border-radius: 10px;
     width: 85%;
+    padding: 30px;
+    background-color: #02071a62;
+    overflow: auto;
 }
+
+
 /* /Shared/Footer.razor.rz.scp.css */
 .footer-items[b-eo39mtzlby] {
     border: 1px solid green;

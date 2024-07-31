@@ -1,6 +1,5 @@
 .body-container[b-5ibxfxw9r2] {
     height: 100vh;
-    border: 3px solid blue;
     display: flex;
     padding: 10px;
     list-style: none;
@@ -30,6 +29,11 @@
 }
 
 .body-container .main-bar[b-5ibxfxw9r2] {
-    border: 2px solid blue;
+    border-radius: 10px;
     width: 85%;
+    padding: 30px;
+    background-color: #02071a62;
+    overflow: auto;
 }
+
+
