@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AbronalFreelance.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56615c352d271bd2e4832c0870bd5244355c113e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+642911bb4f5f4abd2b3154dcce1bea8c4801aa7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("AbronalFreelance.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AbronalFreelance.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

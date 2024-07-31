@@ -20,8 +20,8 @@
                     <tr>
                         <th>Location Id</th>
                         <th>Location Name</th>
-                        <th>Location Type ID</th>
-                        <th>Parent ID</th>
+                        <th>Location Type</th>
+                        <th>Parent</th>
                         <th>IsActive</th>
                     </tr>
                 </thead>
@@ -31,10 +31,13 @@
                         <tr>
                             <td>@location.Id</td>
                             <td>@location.Name</td>
-                            <td>@location.LocationTypeId</td>
+                            <td>@locationTypes.FirstOrDefault(lt => lt.Id == location.LocationTypeId).Name</td>
+
+
                             @if (@location.ParentId != null) {
-                                <td>@location.ParentId</td>
+                                <td>@locations.FirstOrDefault(loc => loc.Id == location.ParentId).Name</td>
                             } else { <td>NULL</td>}
+                            
                             <td>@location.isActive</td>
                             <td>
                                 <button @onclick="@(edit => Edit(@location.Id))">EDIT</button>
@@ -52,7 +55,8 @@
 </AuthorizeView>
 
 @code {
-    private List<Location> locations;
+    private List<Location> locations = new List<Location>();
+    private List<LocationType> locationTypes = new List<LocationType>();
 
     private async Task FetchLocation() {
         locations = await locationService.GetAllLocations();
@@ -75,5 +79,6 @@
     protected override async Task OnInitializedAsync()
     {
         await FetchLocation();
+        locationTypes = await locationService.GetLocationTypes();
     }
 }

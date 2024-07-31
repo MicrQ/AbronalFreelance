@@ -15,7 +15,7 @@ public interface ILocation
     Task<Location> GetLocation(int id);
     Task AddLocation(LocationDTO locationDTO);
 
-    Task EditLocation(LocationDTO locationDTO);
+    Task EditLocation(Location location);
     Task DeleteLocation(int id);
 
 

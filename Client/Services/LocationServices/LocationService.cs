@@ -44,22 +44,14 @@ public class LocationService : ILocation
         Location location = new Location{
             Name = locationDTO.Name,
             LocationTypeId = locationDTO.LocationTypeId,
-            ParentId = locationDTO.ParentId,
-            isActive = locationDTO.isActive
+            ParentId = locationDTO.ParentId
         };
 
         await _http.PostAsJsonAsync("api/location", location);
     }
 
-    public async Task EditLocation(LocationDTO locationDTO)
+    public async Task EditLocation(Location location)
     {
-        Location location = new Location{
-            Name = locationDTO.Name,
-            LocationTypeId = locationDTO.LocationTypeId,
-            ParentId = locationDTO.ParentId,
-            isActive = locationDTO.isActive
-        };
-
         await _http.PutAsJsonAsync("api/location", location);
     }
     
