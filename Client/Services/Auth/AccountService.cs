@@ -1,5 +1,7 @@
 ﻿using System.Net.Http.Json;
+using System.Security.Claims;
 using AbronalFreelance.Shared.DTOs;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace AbronalFreelance.Client.Services.Auth;
 
@@ -28,5 +30,14 @@ public class AccountService : IAccount
         var result = await response.Content.ReadFromJsonAsync<RegisterResponse>();
         return result!;
     }
+
+    public Claim GetLoggedInUserIdAsync(AuthenticationState authState){
+        var loggedInUser = authState.User.FindFirst(
+            c => c.Type == ClaimTypes.NameIdentifier
+        );
+
+        return loggedInUser;
+    }
+
 
 }

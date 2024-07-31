@@ -12,19 +12,21 @@
 
 
 // my imports
-@using AbronalFreelance.Shared.DTOs
 @using Blazored.LocalStorage
-@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@using AbronalFreelance.Shared.DTOs
 @using AbronalFreelance.Shared.Models
 @using AbronalFreelance.Client.Services
 @using Microsoft.AspNetCore.Authorization
 @using AbronalFreelance.Client.Services.Auth
 @using global::AbronalFreelance.Client.State
+@using Microsoft.AspNetCore.Components.Authorization
 @using AbronalFreelance.Client.Services.LocationServices
 
 
 
+@inject IAccount AccountService
+@inject IProfile ProfileService
+@inject ILocation LocationService
 @inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthStateProvider
-@inject ILocation LocationService
-@inject IProfile ProfileService

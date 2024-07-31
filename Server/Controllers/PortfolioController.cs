@@ -25,8 +25,9 @@ public class PortfolioController : ControllerBase
 
     // Get all portfolios of a user
     [HttpGet]
-    public async Task<IActionResult> GetAllPortfolios() {
-        return Ok(await _db.FreelancerPortfolios.ToListAsync());
+    public async Task<IActionResult> GetAllPortfolios(string UserId) {
+        return Ok(await _db.FreelancerPortfolios.Where(p => p.UserId == UserId)
+            .ToListAsync());
     }
 
 
@@ -42,6 +43,7 @@ public class PortfolioController : ControllerBase
 
     // add new portfolio
     [HttpPost]
+    [Authorize(Roles = "Freelancer")]
     public async Task<IActionResult> AddPortfolio(PortfolioDTO portfolioDTO) {
         FreelancerPortfolio portfolio = new FreelancerPortfolio {
             UserId = portfolioDTO.UserId,
@@ -62,6 +64,7 @@ public class PortfolioController : ControllerBase
 
     // update portfolio
     [HttpPut]
+    [Authorize(Roles = "Freelancer")]
     public async Task<IActionResult> UpdatePortfolio(FreelancerPortfolio portfolio) {
         var ptf = await _db.FreelancerPortfolios.FirstOrDefaultAsync(p => p.Id == portfolio.Id);
         if (ptf == null) return NotFound();
@@ -84,6 +87,7 @@ public class PortfolioController : ControllerBase
 
     // delete a portfolio
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Freelancer")]
     public async Task<IActionResult> DeletePortfolio(int id) {
         var portfolio = await _db.FreelancerPortfolios.FirstOrDefaultAsync(p => p.Id == id);
         if (portfolio == null) return NotFound();

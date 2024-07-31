@@ -79,10 +79,7 @@
         endpoint = "regions/";
 
         // extracting loggedin user's id
-        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier);
-
-        companyInfo.UserId = user.Value;
+        //goes here....if needed
     }
 
 
