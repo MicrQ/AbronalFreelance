@@ -1,0 +1,31 @@
+﻿<div class="form-container">
+    <h3>@action Portfolio</h3>
+        <EditForm Model="portfolioDTO" OnValidSubmit="Save">
+            <div class="form-box">
+                <div class="left-box">
+                    <label>Title: </label>
+                    <input @bind="portfolioDTO.Title" type="text" placeholder="College Mgmt system...."><br />
+                    <label>Link: </label>
+                    <input @bind="portfolioDTO.Link" type="text" placeholder="https://github.com/repo..."><br />
+                </div>
+                <div class="right-box">
+                    <label>Description: </label>
+                    <textarea @bind="portfolioDTO.Description" type="text" /><br />
+                </div>
+            </div>
+            <button class="btn btn-primary">@BtnName</button>
+        </EditForm>
+</div>
+
+@code {
+    [Parameter]
+    public string action { get; set; }
+    private string BtnName = "Save";
+    private PortfolioDTO portfolioDTO = new();
+
+    private async Task Save() {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        portfolioDTO.UserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+        await PortfolioService.AddPortfolio(portfolioDTO);
+    }
+}

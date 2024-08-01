@@ -901,3 +901,4 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/ProfilePage.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Locations.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Portfolio.razor.rz.scp.css
+/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/AddorEditPortfolio.razor.rz.scp.css

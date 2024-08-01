@@ -1,37 +1,45 @@
-﻿<h2 class="page-title mb-1">Portfolio @LoggedInUserId</h2>
+﻿<h2 class="page-title mb-1">Portfolio</h2>
 
 <div class="add-btn">
-    <button class="btn btn-primary mb-3 p-2" @onclick="AddPortfolio">Add Portfolio</button>
+    <button class="btn btn-primary mb-3 p-2" @onclick="AddPortfolio">@btnName</button>
 </div>
 
-@if (freelancerPortfolios != null) {
-    foreach(var portfolio in freelancerPortfolios) {
-        <div class="list-container">
-            <div class="list">
-                <div class="title-date">
-                    <h3>@portfolio.Title</h3>
-                    <p><i>@portfolio.Description</i></p>
-                    <p class="date">Date added: <i>@portfolio.DateAdded</i></p>
-                </div>
+@if (!addEdit) {
+    @if (freelancerPortfolios != null) {
+        foreach(var portfolio in freelancerPortfolios) {
+            <div class="list-container">
+                <div class="list">
+                    <div class="title-date">
+                        <h3>@portfolio.Title</h3>
+                        <p><i>@portfolio.Description</i></p>
+                        <p class="date">Date added: <i>@portfolio.DateAdded</i></p>
+                    </div>
 
-                <div class="action-btn">
-                    <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-danger" @onclick="@(() => DeletePtf(@portfolio.Id))">Delete</button>
+                    <div class="action-btn">
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger" @onclick="@(() => DeletePtf(@portfolio.Id))">Delete</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
+} else {
+    <AddorEditPortfolio action="@action"/>
 }
-        
 
 
 @code {
-
+    public bool addEdit = false;
+    private string action;
+    private string btnName = "Add Portfolio";
     private string? LoggedInUserId;
     private List<FreelancerPortfolio>? freelancerPortfolios = new();
     private void AddPortfolio() {
-        Navigation.NavigateTo("/add-portfolio");
+        addEdit = !addEdit;
+        btnName = btnName == "Close" ? "Add Portfolio" : "Close";
+        action = "Add";
     }
+
 
     private async Task DeletePtf(int id) {
         await PortfolioService.DeletePortfolio(id, LoggedInUserId);

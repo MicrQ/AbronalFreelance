@@ -8,6 +8,7 @@
     position: relative;
     left: 90%;
     box-shadow: 2px 2px 7px var(--primary-color);
+    width: 150px;
 }
 
 .add-btn button[b-g6ct15667n] {

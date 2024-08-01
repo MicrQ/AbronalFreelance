@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using AbronalFreelance.Shared.DTOs;
 using AbronalFreelance.Shared.Models;
 using AbronalFreelance.Shared.ResponseModels;
 
@@ -14,12 +15,21 @@ public class PortfolioService : IPortfolio
         _http = http;
     }
 
+
+    // get user portfolios
     public async Task<List<FreelancerPortfolio>>? GetFreelancerPortfolios(string UserId)
     {
         return await _http.GetFromJsonAsync<List<FreelancerPortfolio>>(url + "?UserId=" + UserId);
     }
 
 
+    // add portfolio
+    public async Task AddPortfolio(PortfolioDTO portfolioDTO) {
+        await _http.PostAsJsonAsync(url, portfolioDTO);
+    }
+
+
+    // delete user portfolio
     public async Task DeletePortfolio(int id, string? UserId) {
         await _http.DeleteAsync(url + $"/{id}?userid={UserId}");
     }

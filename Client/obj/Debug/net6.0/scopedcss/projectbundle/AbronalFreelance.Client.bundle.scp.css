@@ -84,6 +84,7 @@ table[b-twgl6rf1ty] {
     position: relative;
     left: 90%;
     box-shadow: 2px 2px 7px var(--primary-color);
+    width: 150px;
 }
 
 .add-btn button[b-g6ct15667n] {
@@ -172,6 +173,53 @@ table[b-twgl6rf1ty] {
 }
 
 
+/* /Shared/AddorEditPortfolio.razor.rz.scp.css */
+.form-container[b-ukpiwm797k] {
+    border: 2px solid var(--action-color);
+    padding: 40px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.form-box[b-ukpiwm797k] {
+    margin: 30px auto;
+    padding: 10px 100px;
+    display: flex;
+}
+
+.form-box .left-box[b-ukpiwm797k] {
+    width: 40%;
+}
+
+.form-box .left-box input[b-ukpiwm797k] {
+    margin: 15px 10px;
+    background-color: var(--third-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 70%;
+}
+
+.form-box .right-box[b-ukpiwm797k] {
+    width: 60%;
+    overflow: scroll;
+}
+
+.form-box .right-box textarea[b-ukpiwm797k] {
+    width: 80%;
+    margin: 10px;
+    min-height: 100px;
+    overflow: auto;
+    max-height: 150px;
+    background-color: var(--third-color);
+    border-radius: 5px;
+}
+
+.form-container button[b-ukpiwm797k] {
+    margin: 0 100px;
+    width: 200px;
+    height: 50px;
+}
 /* /Shared/Footer.razor.rz.scp.css */
 .footer-items[b-eo39mtzlby] {
     border: 1px solid green;
