@@ -1,9 +1,9 @@
 ﻿:root {
-    --primary-color: #02061a;  /*050e38 030924 */
+    --primary-color: #02061a;
     --primary-hover: #01030ef0;
-    --secondary-color: #f8f9fa;/*text color*/
+    --secondary-color: #f8f9fa;
     --third-color: #dedfdf;
-    --action-color: #ff531a; /* actioon*/
+    --action-color: #ff531a;
 }
 
 * {
@@ -148,7 +148,78 @@
 
 
 
+/* /responsive/ */@media (max-width: 768px) {
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-menu ul li {
+        margin: 5px 0;
+    }
+    .hero-container {
+        height: auto;
+        padding: 15px 3%;
+    }
+    .hero-image {
+        height: 300px;
+    }
+    .hero-items p {
+        font-size: 18px;
+    }
+    .hero-actions a {
+        padding: 8px 30px;
+        margin: auto 20px;
+    }
+    .login-container, .register-container {
+        height: auto;
+    }
+    .login-container .hero-image, .register-container .hero-image {
+        height: 50vh;
+    }
+    .login-box h1, .register-box h1 {
+        margin-bottom: 20px;
+    }
+}
 
-
-
-
+@media (max-width: 480px) {
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-menu ul li {
+        margin: 5px 0;
+    }
+    .hero-container {
+        padding: 10px 2%;
+    }
+    .hero-image {
+        height: 200px;
+    }
+    .hero-items h1 {
+        font-size: 24px;
+    }
+    .hero-items p {
+        font-size: 16px;
+    }
+    .hero-actions a {
+        padding: 6px 20px;
+        margin: auto 10px;
+    }
+    .login-container, .register-container {
+        height: auto;
+    }
+    .login-container .hero-image, .register-container .hero-image {
+        height: 40vh;
+    }
+    .login-box h1, .register-box h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    .login-box input, .login-box button, .register-box input, .register-box button, .save-company-info {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    .login-box button, .register-box button, .save-company-info {
+        font-size: 16px;
+    }
+}
