@@ -20,14 +20,35 @@
 @code {
     [Parameter]
     public string action { get; set; }
+    [Parameter]
+    public FreelancerPortfolio? portfolio { get; set; }
     private string BtnName = "Save";
     private PortfolioDTO portfolioDTO = new();
 
     private async Task Save() {
-        if (!portfolioDTO.Title == null) {
+        if (!(portfolioDTO.Title == null)) {
             var authState = await AuthStateProvider.GetAuthenticationStateAsync();
             portfolioDTO.UserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-            await PortfolioService.AddPortfolio(portfolioDTO);
+
+            if (action == "Add") {
+                await PortfolioService.AddPortfolio(portfolioDTO);
+                Navigation.NavigateTo("user/profile", forceLoad: true);
+            } else if (action == "Edit"){
+                await PortfolioService.UpdatePortfolio(portfolioDTO, portfolio.Id);
+                Navigation.NavigateTo("user/profile", forceLoad: true);
+            }
+        } else {
+            //display error message
         }
+    }
+
+    protected async override Task OnParametersSetAsync() {
+        if (portfolio == null) return;
+
+        portfolioDTO.Title = portfolio.Title;
+        portfolioDTO.Description = portfolio.Description;
+        portfolioDTO.Link = portfolio.Link;
+
+        BtnName = action == "Edit" ? "Save Changes" : BtnName;
     }
 }

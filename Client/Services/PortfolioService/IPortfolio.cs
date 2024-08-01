@@ -9,4 +9,6 @@ public interface IPortfolio
     Task<List<FreelancerPortfolio>>? GetFreelancerPortfolios(string UserId);
     Task DeletePortfolio(int id, string? UserId);
     Task AddPortfolio(PortfolioDTO portfolioDTO);
+    Task UpdatePortfolio(PortfolioDTO portfolioDTO, int id);
+
 }

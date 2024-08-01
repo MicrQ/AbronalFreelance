@@ -1,7 +1,7 @@
-﻿<h2 class="page-title mb-1">Portfolio</h2>
+﻿<h2 class="page-title mb-1">Portfolio @LoggedInUserId</h2>
 
 <div class="add-btn">
-    <button class="btn btn-primary mb-3 p-2" @onclick="AddPortfolio">@btnName</button>
+    <button class="btn btn-primary mb-3 p-2" @onclick="@(() => ManagePortfolio(null))">@btnName</button>
 </div>
 
 @if (!addEdit) {
@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="action-btn">
-                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-primary" @onclick="@(() => ManagePortfolio(@portfolio.Id))">Edit</button>
                         <button class="btn btn-danger" @onclick="@(() => DeletePtf(@portfolio.Id))">Delete</button>
                     </div>
                 </div>
@@ -24,25 +24,37 @@
         }
     }
 } else {
-    <AddorEditPortfolio action="@action"/>
+    <AddorEditPortfolio action="@action" portfolio="@editPortfolio"/>
 }
 
 
 @code {
-    public bool addEdit = false;
+    public static bool addEdit = false;
     private string action;
     private string btnName = "Add Portfolio";
     private string? LoggedInUserId;
+    private FreelancerPortfolio? editPortfolio;
     private List<FreelancerPortfolio>? freelancerPortfolios = new();
-    private void AddPortfolio() {
+    private void ManagePortfolio(int? id) {
         addEdit = !addEdit;
         btnName = btnName == "Close" ? "Add Portfolio" : "Close";
-        action = "Add";
+        
+        if (id != null) {
+            action = "Edit";
+            editPortfolio = freelancerPortfolios!.FirstOrDefault(p => p.Id == id);
+            return;
+        }
+            action = "Add";
     }
 
 
     private async Task DeletePtf(int id) {
         await PortfolioService.DeletePortfolio(id, LoggedInUserId);
+        await FetchPortfolio();
+    }
+
+    private async Task FetchPortfolio() {
+        freelancerPortfolios = await PortfolioService.GetFreelancerPortfolios(LoggedInUserId);
     }
 
 
@@ -52,6 +64,6 @@
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
 
         // retriving portfolios of logged in user
-        freelancerPortfolios = await PortfolioService.GetFreelancerPortfolios(LoggedInUserId);
+        await FetchPortfolio();
     }
 }

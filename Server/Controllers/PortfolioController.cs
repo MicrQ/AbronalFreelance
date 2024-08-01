@@ -65,8 +65,14 @@ public class PortfolioController : ControllerBase
     [HttpPut]
     [Authorize(Roles = "Freelancer")]
     public async Task<IActionResult> UpdatePortfolio(FreelancerPortfolio portfolio) {
-        var ptf = await _db.FreelancerPortfolios.FirstOrDefaultAsync(p => p.Id == portfolio.Id);
-        if (ptf == null) return NotFound();
+        var ptf = await _db.FreelancerPortfolios
+            .FirstOrDefaultAsync(p => p.Id == portfolio.Id && p.UserId == portfolio.UserId);
+        if (ptf == null) return NotFound(
+            new PortfolioResponse {
+                Flag = true,
+                Message = "Failed to update"
+            }
+        );
 
 
         ptf.UserId = portfolio.UserId;

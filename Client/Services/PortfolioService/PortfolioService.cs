@@ -15,7 +15,6 @@ public class PortfolioService : IPortfolio
         _http = http;
     }
 
-
     // get user portfolios
     public async Task<List<FreelancerPortfolio>>? GetFreelancerPortfolios(string UserId)
     {
@@ -26,6 +25,16 @@ public class PortfolioService : IPortfolio
     // add portfolio
     public async Task AddPortfolio(PortfolioDTO portfolioDTO) {
         await _http.PostAsJsonAsync(url, portfolioDTO);
+    }
+
+    public async Task UpdatePortfolio(PortfolioDTO portfolioDTO, int id) {
+        await _http.PutAsJsonAsync(url, new FreelancerPortfolio() {
+            Id = id,
+            UserId = portfolioDTO.UserId,
+            Title = portfolioDTO.Title,
+            Description = portfolioDTO.Description,
+            Link = portfolioDTO.Link
+        });
     }
 
 
