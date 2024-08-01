@@ -4,7 +4,7 @@
             <div class="form-box">
                 <div class="left-box">
                     <label>Title: </label>
-                    <input @bind="portfolioDTO.Title" type="text" placeholder="College Mgmt system...."><br />
+                    <input @bind="portfolioDTO.Title" type="text" placeholder="College Mgmt system...." required><br />
                     <label>Link: </label>
                     <input @bind="portfolioDTO.Link" type="text" placeholder="https://github.com/repo..."><br />
                 </div>
@@ -24,8 +24,10 @@
     private PortfolioDTO portfolioDTO = new();
 
     private async Task Save() {
-        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-        portfolioDTO.UserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-        await PortfolioService.AddPortfolio(portfolioDTO);
+        if (!portfolioDTO.Title == null) {
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            portfolioDTO.UserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+            await PortfolioService.AddPortfolio(portfolioDTO);
+        }
     }
 }
