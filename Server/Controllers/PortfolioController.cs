@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using AbronalFreelance.Shared.DTOs;
 using AbronalFreelance.Shared.Models;
 using AbronalFreelance.Shared.ResponseModels;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 
 
 namespace AbronalFreelance.Server.Controllers;
@@ -88,8 +87,9 @@ public class PortfolioController : ControllerBase
     // delete a portfolio
     [HttpDelete("{id}")]
     [Authorize(Roles = "Freelancer")]
-    public async Task<IActionResult> DeletePortfolio(int id) {
-        var portfolio = await _db.FreelancerPortfolios.FirstOrDefaultAsync(p => p.Id == id);
+    public async Task<IActionResult> DeletePortfolio(int id, string? UserId) {
+        var portfolio = await _db.FreelancerPortfolios
+                        .FirstOrDefaultAsync(p => p.Id == id && p.UserId == UserId);
         if (portfolio == null) return NotFound();
 
         _db.FreelancerPortfolios.Remove(portfolio);

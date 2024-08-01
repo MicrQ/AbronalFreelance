@@ -17,22 +17,27 @@
 .list-container[b-g6ct15667n] {
     border: 2px solid var(--action-color);
     box-shadow: 2px 2px 7px var(--primary-color);
-    padding: 25px;
+    padding: 15px;
     border-radius: 10px;
     background-color: var(--primary-color);
-
+    margin: 15px 0;
 }
 
 .list-container .list[b-g6ct15667n] {
     display: flex;
     justify-content: space-between;
     color: var(--secondary-color);
-    padding: 5px 10px;
+    padding: 0px 10px;
 }
 
 .list .title-date[b-g6ct15667n] {
     padding: 5px 10px;
+}
 
+.list .title-date p[b-g6ct15667n] {
+    padding: 0 20px;
+    line-height: 10\px;
+    opacity: .7;
 }
 
 .list .action-btn[b-g6ct15667n] {
