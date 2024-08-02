@@ -15,6 +15,7 @@
     color: var(--secondary-color);
     border-radius:0 35px 0 35px;
     overflow:auto;
+    transition: .3s;
 }
 
 .side-bar .user-action[b-5ibxfxw9r2] {
@@ -35,5 +36,27 @@
     background-color: #02071a62;
     overflow: auto;
 }
+
+
+@media (max-width: 768px) {
+    .body-container[b-5ibxfxw9r2] {
+        flex-direction: column;
+    }
+
+    .body-container .side-bar[b-5ibxfxw9r2] {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 10px;
+        padding: 20px 10px;
+        border-radius: 10px;
+    }
+
+    .body-container .main-bar[b-5ibxfxw9r2] {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
 
 
