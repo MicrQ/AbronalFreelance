@@ -28,7 +28,6 @@
 }
 
 .nav-menu ul li {
-    /* margin-right: 10px; */
     display: flex;
     cursor: pointer;
 }
@@ -117,14 +116,30 @@
     margin: 25px auto; 
 }
 
+.nav .hamburger {
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+    transition: .5s;
+    display: none;
+    cursor: pointer;
+}
 
+.nav .hamburger div {
+    width: 40px;
+    height: 3px;
+    background-color: var(--action-color);
+    border-radius: 10px;
+}
 
+.nav .hamburger div:not(:last-child) {
+    margin-bottom: 10px;
+}
 
-/*  
-    more in app.css
- */
-
-
+.nav .hamburger:hover {
+    opacity: .8;
+    box-shadow: 1px 1px 4px var(--action-color);
+}
 
 .user-profile-actions .user-actions .logout {
     border-bottom: 2px solid var(--action-color);
@@ -132,4 +147,50 @@
 
 .user-action:hover {
     box-shadow: 0 -1px 4px var(--action-color);
+}
+
+
+@media (max-width: 1045px) {
+    .nav-menu {
+        /* display: none */
+        position: absolute;
+        right: 3%;
+        top: 80px;
+        width: 500px;
+        background-color: var(--primary-color);
+        border-radius: 10px;
+        transition: .5s;
+        padding: 20px;
+        border: 2px solid (--action-color);
+    }
+
+    .nav-menu ul li a {
+        margin: auto;
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .nav .hamburger {
+        display: block;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-menu ul li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .nav-menu ul li:not(.signup, .login) {
+        border-bottom: 2px solid var(--action-color);
+    }
+}
+
+@media (max-width: 511px) {
+    .nav-menu {
+        width: 96%;
+        left: 2%;
+    }
 }

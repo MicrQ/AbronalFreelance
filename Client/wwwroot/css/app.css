@@ -71,6 +71,7 @@
     border: 1px solid rgba(0, 0, 0, 0);
     height: 70vh;
     background-color: #000000cb;
+    /* overflow: auto; */
 }
 
 
@@ -148,14 +149,8 @@
 
 
 
-/* /responsive/ */@media (max-width: 768px) {
-    .nav-menu ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .nav-menu ul li {
-        margin: 5px 0;
-    }
+/* /responsive/ */
+@media (max-width: 768px) {
     .hero-container {
         height: auto;
         padding: 15px 3%;
@@ -170,25 +165,9 @@
         padding: 8px 30px;
         margin: auto 20px;
     }
-    .login-container, .register-container {
-        height: auto;
-    }
-    .login-container .hero-image, .register-container .hero-image {
-        height: 50vh;
-    }
-    .login-box h1, .register-box h1 {
-        margin-bottom: 20px;
-    }
 }
 
 @media (max-width: 480px) {
-    .nav-menu ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .nav-menu ul li {
-        margin: 5px 0;
-    }
     .hero-container {
         padding: 10px 2%;
     }
@@ -205,21 +184,5 @@
         padding: 6px 20px;
         margin: auto 10px;
     }
-    .login-container, .register-container {
-        height: auto;
-    }
-    .login-container .hero-image, .register-container .hero-image {
-        height: 40vh;
-    }
-    .login-box h1, .register-box h1 {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    .login-box input, .login-box button, .register-box input, .register-box button, .save-company-info {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
-    .login-box button, .register-box button, .save-company-info {
-        font-size: 16px;
-    }
+
 }

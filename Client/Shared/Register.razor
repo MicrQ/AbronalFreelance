@@ -5,7 +5,6 @@
 <div class="register-container">
     <div class="hero-image"></div>
 
-
     @if (!showForm) {
         <div class="option-container">
             <h2>Create Account as</h2>
@@ -16,7 +15,7 @@
                 </div>
                 <div class="option freelancer" @onclick="regFreelancer">
                     <h3>Freelancer</h3>
-                    <p>Find a job. get unlimited income.</p>
+                    <p>Find a job, get unlimited income.</p>
                 </div>
             </div>
         </div>
@@ -25,27 +24,25 @@
             <h1>Register</h1>
             <EditForm Model="registerModel" OnValidSubmit="RegisterAsync">
                 <DataAnnotationsValidator />
-                @* <input @bind="registerModel.Role" Placeholder="Client" Type="text" class="role-input" /><br /> *@
                 <div class="form-group">
                     <div class="left-form">
-                        <label>First Name</label><br />
-                        <input @bind="registerModel.FirstName" Placeholder="Mike" class="firstname-input" Type="text"><br />
-                        <label>Last Name</label><br />
-                        <input @bind="registerModel.LastName" Placeholder="Tyson" class="lastname-input" Type="text"><br />
-                        <label>Username</label><br />
-                        <input @bind="registerModel.UserName" Placeholder="Mike_T" class="username-input" Type="text"><br />
-                        <label>Phone</label><br />
-                        <input @bind="registerModel.PhoneNumber" Placeholder="910123456" Type="text" class="phone-input" /><br />
+                        <label>First Name</label>
+                        <input @bind="registerModel.FirstName" Placeholder="Mike" class="firstname-input" Type="text">
+                        <label>Last Name</label>
+                        <input @bind="registerModel.LastName" Placeholder="Tyson" class="lastname-input" Type="text">
+                        <label>Username</label>
+                        <input @bind="registerModel.UserName" Placeholder="Mike_T" class="username-input" Type="text">
+                        <label>Phone</label>
+                        <input @bind="registerModel.PhoneNumber" Placeholder="910123456" Type="text" class="phone-input">
                     </div>
-
                     <div class="right-form">
-                        <label>Email</label><br />
-                        <input @bind="registerModel.Email" Placeholder="Email" Type="email" class="email-input" /><br />
-                        <label>Password</label><br />
-                        <input @bind="registerModel.Password" Placeholder="Password" Type="password" class="pass-input" /><br />
-                        <label>Confirm Password</label><br />
-                        <input @bind="registerModel.ConfirmPassword" Placeholder="Confirm Password" Type="password" class="pass-confirm" /><br />
-                        <label>Location</label><br />
+                        <label>Email</label>
+                        <input @bind="registerModel.Email" Placeholder="Email" Type="email" class="email-input">
+                        <label>Password</label>
+                        <input @bind="registerModel.Password" Placeholder="Password" Type="password" class="pass-input">
+                        <label>Confirm Password</label>
+                        <input @bind="registerModel.ConfirmPassword" Placeholder="Confirm Password" Type="password" class="pass-confirm">
+                        <label>Location</label>
                         <label>Country</label>
                         <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
                             <option value="">Select Country</option>
@@ -53,7 +50,7 @@
                             {
                                 <option value="@country.Id">@country.Name</option>
                             }
-                        </select><br />
+                        </select>
                         <label>Region</label>
                         <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
                             <option value="">Select Region</option>
@@ -63,7 +60,7 @@
                                     <option value="@region.Id">@region.Name</option>
                                 }
                             }
-                        </select><br />
+                        </select>
                         <label>City</label>
                         <select @bind="registerModel.LocationId">
                             <option value="">Select City</option>
@@ -73,13 +70,13 @@
                                     <option value="@city.Id">@city.Name</option>
                                 }
                             }
-                        </select><br />
+                        </select>
                     </div>
                 </div>
                 <div class="signup-btn">
                     <button type="submit">Sign Up</button>
                 </div>
-                <h6><a href="have-acc">Already have Account?</a></h6>
+                <h6><a href="have-acc">Already have an account?</a></h6>
             </EditForm>
         </div>
     }
@@ -136,5 +133,12 @@
         registerModel.Role = "Freelancer";
         showForm = true;
     }
-}
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("setHeroImageHeight");
+        }
+    }
+}

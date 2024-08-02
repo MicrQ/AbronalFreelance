@@ -1,6 +1,6 @@
 ﻿<div class="nav">
     <div class="logo"><a href="/">AbronalFreelance</a></div>
-    <div class="nav-menu">
+    <div class="nav-menu" style="display: @displayMenu">
         <ul>
             <AuthorizeView>
                 <Authorized>
@@ -42,18 +42,29 @@
                     <li class="action signup"><a href="register">Sign Up</a></li>
                 </NotAuthorized>
             </AuthorizeView>
+            
         </ul>
+    </div>
+    <div class="hamburger" @onclick="showOptions">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 </div>
 
 
 @code {
     private string showProfile = "none";
+    private string displayMenu = "block";
     private void profileAction() {
         if (showProfile == "none") {
             showProfile = "block";
             return;
         }
         showProfile = "none";
+    }
+
+    private void showOptions() {
+        displayMenu = displayMenu == "none" ? "block" : "none";
     }
 }

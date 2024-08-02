@@ -8,3 +8,47 @@
     box-shadow: 1px 1px 7px var(--action-color);
 }
 
+/* responsive */
+@media (max-width: 768px) {
+    .login-box {
+        /* width: 90%; */
+        padding: 30px;
+    }
+
+    div.login-container {
+        height: 70vh;
+    }
+
+    div.hero-image {
+        height: 70vh;
+    }
+
+    .login-container,
+    .hero-image {
+        height: 50vh;
+    }
+
+    .login-box h1 {
+        font-size: 24px;
+    }
+
+    .login-box button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        width: 98%;
+        padding: 20px;
+    }
+
+    .login-box h1 {
+        font-size: 20px;
+    }
+
+    .login-box button {
+        font-size: 14px;
+    }
+    
+}

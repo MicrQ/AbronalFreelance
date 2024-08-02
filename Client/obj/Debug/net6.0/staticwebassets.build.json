@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4UZezIiM6O9kB+xv9SeMiNerGJyHJEa41ZPdlt2GDBI=",
+  "Hash": "z9f6riNSByW9sa4TIade40tjr3E/mV+2yHYHuL8Hbk8=",
   "Source": "AbronalFreelance.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -8717,6 +8717,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/script/script.js",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "script/script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/script/script.js"
     }
   ]
 }

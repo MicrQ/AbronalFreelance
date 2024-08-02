@@ -8,3 +8,47 @@
     box-shadow: 1px 1px 7px var(--action-color);
 }
 
+/* responsive */
+@media (max-width: 768px) {
+    .login-box[b-biqt6mjp5a] {
+        /* width: 90%; */
+        padding: 30px;
+    }
+
+    div.login-container[b-biqt6mjp5a] {
+        height: 70vh;
+    }
+
+    div.hero-image[b-biqt6mjp5a] {
+        height: 70vh;
+    }
+
+    .login-container[b-biqt6mjp5a],
+    .hero-image[b-biqt6mjp5a] {
+        height: 50vh;
+    }
+
+    .login-box h1[b-biqt6mjp5a] {
+        font-size: 24px;
+    }
+
+    .login-box button[b-biqt6mjp5a] {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box[b-biqt6mjp5a] {
+        width: 98%;
+        padding: 20px;
+    }
+
+    .login-box h1[b-biqt6mjp5a] {
+        font-size: 20px;
+    }
+
+    .login-box button[b-biqt6mjp5a] {
+        font-size: 14px;
+    }
+    
+}

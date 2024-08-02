@@ -85,6 +85,10 @@
       "PackagePath": "staticwebassets/index.html"
     },
     {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/script/script.js",
+      "PackagePath": "staticwebassets/script/script.js"
+    },
+    {
       "Id": "obj/Debug/net6.0/staticwebassets/msbuild.AbronalFreelance.Client.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
