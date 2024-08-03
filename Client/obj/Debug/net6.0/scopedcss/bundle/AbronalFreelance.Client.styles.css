@@ -177,61 +177,86 @@ table[b-twgl6rf1ty] {
 }
 
 /* /Pages/Profile.razor.rz.scp.css */
+:root[b-j94ijvz21j] {
+    --primary-color: #02061a;
+    --primary-hover: #01030ef0;
+    --secondary-color: #f8f9fa;
+    --third-color: #dedfdf;
+    --action-color: #ff531a;
+}
+
+*[b-j94ijvz21j] {
+    box-sizing: border-box;
+}
+
 .container[b-j94ijvz21j] {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    color: var(--secondary-color);
 }
+
 .container h1[b-j94ijvz21j] {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--action-color);
 }
+
 .form-group[b-j94ijvz21j] {
     margin-bottom: 15px;
 }
+
 .form-group label[b-j94ijvz21j] {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--secondary-color);
 }
+
 .form-group input[type="text"][b-j94ijvz21j],
 .form-group select[b-j94ijvz21j],
 .form-group input[type="file"][b-j94ijvz21j],
 .form-group textarea[b-j94ijvz21j] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--third-color);
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: var(--third-color);
+    color: #000;
 }
+
 .form-group textarea[b-j94ijvz21j] {
     resize: vertical;
 }
+
 .form-group img[b-j94ijvz21j] {
     max-width: 100px;
     display: block;
     margin-bottom: 10px;
+    border-radius: 50%;
 }
+
 .form-group button[b-j94ijvz21j] {
     width: 100%;
     padding: 10px;
-    background-color: #5cb85c;
+    background-color: var(--action-color);
     border: none;
-    color: #fff;
+    color: var(--secondary-color);
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
+
 .form-group button:hover[b-j94ijvz21j] {
-    background-color: #4cae4c;
+    background-color: var(--primary-color);
+    box-shadow: 1px 1px 4px var(--action-color);
 }
 
-
-
+/* Responsive Styles */
 @media (max-width: 768px) {
     .container[b-j94ijvz21j] {
         width: 90%;
@@ -260,6 +285,18 @@ table[b-twgl6rf1ty] {
     }
 }
 /* /Pages/ProfilePage.razor.rz.scp.css */
+:root[b-5ibxfxw9r2] {
+    --primary-color: #02061a;
+    --primary-hover: #01030ef0;
+    --secondary-color: #f8f9fa;
+    --third-color: #dedfdf;
+    --action-color: #ff531a;
+}
+
+*[b-5ibxfxw9r2] {
+    box-sizing: border-box;
+}
+
 .body-container[b-5ibxfxw9r2] {
     height: 100vh;
     display: flex;
@@ -275,15 +312,15 @@ table[b-twgl6rf1ty] {
     padding: 40px 10px;
     text-align: center;
     color: var(--secondary-color);
-    border-radius:0 35px 0 35px;
-    overflow:auto;
-    transition: .3s;
+    border-radius: 0 35px 0 35px;
+    overflow: auto;
+    transition: 0.3s;
 }
 
 .side-bar .user-action[b-5ibxfxw9r2] {
     cursor: pointer;
     margin-bottom: 5px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .side-bar .user-action:hover[b-5ibxfxw9r2] {
@@ -299,29 +336,54 @@ table[b-twgl6rf1ty] {
     overflow: auto;
 }
 
+.toggle-button[b-5ibxfxw9r2] {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--secondary-color);
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
 
 @media (max-width: 768px) {
     .body-container[b-5ibxfxw9r2] {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .body-container .side-bar[b-5ibxfxw9r2] {
-        width: 100%;
-        height: auto;
-        margin-right: 0;
-        margin-bottom: 10px;
-        padding: 20px 10px;
-        border-radius: 10px;
+        width: 250px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        z-index: 1000;
+        transition: left 0.3s ease;
     }
 
     .body-container .main-bar[b-5ibxfxw9r2] {
         width: 100%;
         padding: 20px;
+        margin-left: 0;
+    }
+
+    .toggle-button[b-5ibxfxw9r2] {
+        display: block;
+    }
+
+    .body-container.sidebar-visible .side-bar[b-5ibxfxw9r2] {
+        left: 0;
+    }
+
+    .body-container.sidebar-visible .main-bar[b-5ibxfxw9r2] {
+        margin-left: 250px;
     }
 }
-
-
-
 /* /Shared/AddorEditPortfolio.razor.rz.scp.css */
 /* .form-container {
     border: 2px solid var(--action-color);

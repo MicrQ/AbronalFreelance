@@ -1,58 +1,83 @@
+:root[b-j94ijvz21j] {
+    --primary-color: #02061a;
+    --primary-hover: #01030ef0;
+    --secondary-color: #f8f9fa;
+    --third-color: #dedfdf;
+    --action-color: #ff531a;
+}
+
+*[b-j94ijvz21j] {
+    box-sizing: border-box;
+}
+
 .container[b-j94ijvz21j] {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    color: var(--secondary-color);
 }
+
 .container h1[b-j94ijvz21j] {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--action-color);
 }
+
 .form-group[b-j94ijvz21j] {
     margin-bottom: 15px;
 }
+
 .form-group label[b-j94ijvz21j] {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--secondary-color);
 }
+
 .form-group input[type="text"][b-j94ijvz21j],
 .form-group select[b-j94ijvz21j],
 .form-group input[type="file"][b-j94ijvz21j],
 .form-group textarea[b-j94ijvz21j] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--third-color);
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: var(--third-color);
+    color: #000;
 }
+
 .form-group textarea[b-j94ijvz21j] {
     resize: vertical;
 }
+
 .form-group img[b-j94ijvz21j] {
     max-width: 100px;
     display: block;
     margin-bottom: 10px;
+    border-radius: 50%;
 }
+
 .form-group button[b-j94ijvz21j] {
     width: 100%;
     padding: 10px;
-    background-color: #5cb85c;
+    background-color: var(--action-color);
     border: none;
-    color: #fff;
+    color: var(--secondary-color);
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
+
 .form-group button:hover[b-j94ijvz21j] {
-    background-color: #4cae4c;
+    background-color: var(--primary-color);
+    box-shadow: 1px 1px 4px var(--action-color);
 }
 
-
-
+/* Responsive Styles */
 @media (max-width: 768px) {
     .container[b-j94ijvz21j] {
         width: 90%;
