@@ -149,10 +149,18 @@
     box-shadow: 0 -1px 4px var(--action-color);
 }
 
+.nav-menu {
+    display: block;
+}
+
+.nav-menu .edit-profile, .nav-menu .btn-logout {
+    display: none;
+}
+
 
 @media (max-width: 1045px) {
     .nav-menu {
-        /* display: none */
+        display: none;
         position: absolute;
         right: 3%;
         top: 80px;
@@ -162,6 +170,14 @@
         transition: .5s;
         padding: 20px;
         border: 2px solid (--action-color);
+    }
+
+    .nav-menu .edit-profile, .nav-menu .btn-logout {
+        display: flex;
+    }
+
+    .user-profile, .user-profile-actions {
+        display: none;
     }
 
     .nav-menu ul li a {
@@ -185,6 +201,7 @@
 
     .nav-menu ul li:not(.signup, .login) {
         border-bottom: 2px solid var(--action-color);
+        border-radius: 10px;
     }
 }
 

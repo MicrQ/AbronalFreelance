@@ -178,4 +178,8 @@
         width: 90%;
         padding: 20px;
     }
+
+    .option-box .option {
+        width: 90%;
+    }
 }

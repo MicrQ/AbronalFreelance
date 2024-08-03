@@ -1,6 +1,6 @@
 ﻿<div class="nav">
     <div class="logo"><a href="/">AbronalFreelance</a></div>
-    <div class="nav-menu" style="display: @displayMenu">
+    <div class="nav-menu">
         <ul>
             <AuthorizeView>
                 <Authorized>
@@ -35,6 +35,8 @@
                             <li class="user-action logout"><a href="logout">Logout</a></li>
                         </div>
                     </div>
+                    <li class="action edit-profile"><a href="user/profile">Edit Profile</a></li>
+                    <li class="action btn-logout"><a href="logout">Logout</a></li>
 
                 </Authorized>
                 <NotAuthorized>
@@ -45,7 +47,7 @@
             
         </ul>
     </div>
-    <div class="hamburger" @onclick="showOptions">
+    <div class="hamburger" @onclick="showNav">
         <div></div>
         <div></div>
         <div></div>
@@ -55,7 +57,6 @@
 
 @code {
     private string showProfile = "none";
-    private string displayMenu = "block";
     private void profileAction() {
         if (showProfile == "none") {
             showProfile = "block";
@@ -64,7 +65,7 @@
         showProfile = "none";
     }
 
-    private void showOptions() {
-        displayMenu = displayMenu == "none" ? "block" : "none";
+    private async Task showNav() {
+        await JSRuntime.InvokeVoidAsync("toggleNavMenu");
     }
 }

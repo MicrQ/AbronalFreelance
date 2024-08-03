@@ -4,6 +4,7 @@
     --secondary-color: #f8f9fa;
     --third-color: #dedfdf;
     --action-color: #ff531a;
+    --card-color: #0a154dfb;
 }
 
 * {
@@ -127,14 +128,6 @@
     box-shadow: 1px 1px 4px var(--action-color);
 }
 
-
-
-/*  ends here */
-
-
-
-
-
 .user-action {
     border-top: 2px solid var(--action-color);
     padding: 5px 0;
@@ -144,6 +137,61 @@
 .user-action a {
     margin: auto;
 }
+
+/* new */
+
+
+.available-jobs, .top-freelancers, .testimonials, .why-choose-us {
+    padding: 40px 5%;
+    /* background-color: var(--primary-color); */
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.available-jobs h2, .top-freelancers h2, .testimonials h2, .why-choose-us h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 4px var(--primary-color);
+    font-size: 40px;
+}
+
+.job-list, .freelancer-list, .testimonial-list, .reasons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.job-item, .freelancer-item, .testimonial-item, .reason-item {
+    background-color: var(--card-color);
+    margin: 10px;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+    width: 400px;
+}
+
+.job-item h3, .freelancer-item h3, .testimonial-item h4, .reason-item h3 {
+    margin-bottom: 10px;
+}
+
+.job-item p, .freelancer-item p, .testimonial-item p, .reason-item p {
+    margin-bottom: 20px;
+}
+
+.apply-btn, .hire-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--action-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.apply-btn:hover, .hire-btn:hover {
+    background-color: var(--primary-hover);
+}
+
 
 
 
@@ -164,6 +212,9 @@
     .hero-actions a {
         padding: 8px 30px;
         margin: auto 20px;
+    }
+    .job-item, .freelancer-item, .testimonial-item, .reason-item {
+        width: 100%;
     }
 }
 
