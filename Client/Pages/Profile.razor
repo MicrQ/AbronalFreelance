@@ -43,12 +43,25 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="fields">Fields (separated by commas)</label>
-                <textarea id="fields" name="fields" rows="3" required></textarea>
+                <label for="fields">Fields</label>
+                @foreach(string field in Fields) {
+                    <span @onclick="@(() => removeField(@field))">@field <i>x</i></span>
+                }
+                <div class="fields">
+                    <input @bind="@Field" type="text" class="skill-input">
+                    <button @onclick="AddField" class="add-btn">Add Fields</button>
+                </div>
             </div>
             <div class="form-group">
-                <label for="skills">Skills (separated by commas)</label>
-                <textarea id="skills" name="skills" rows="3" required></textarea>
+                <label for="skills">Skills</label>
+                @foreach(string skill in Skills) {
+                    <span @onclick="@(() => removeSkill(@skill))">@skill <i>x</i></span>
+                }
+                <div class="skills">
+                    <input @bind="@Skill" type="text" class="skill-input">
+                    <button @onclick="AddSkill" class="add-btn">Add Skill</button>
+                </div>
+                
             </div>
             <div class="form-group">
                 <button type="submit" @onclick="SaveChanges">Save Changes</button>
@@ -77,6 +90,32 @@
 @code {
     private bool isEditing = false;
 
+    private string Skill { get; set; } = string.Empty;
+    private string Field { get; set; } = string.Empty;
+
+    List<string> Skills = new List<string>();
+    List<string> Fields = new List<string>();
+    
+
+
+    private void AddSkill() {
+        if (!Skills.Contains(Skill) && !string.IsNullOrEmpty(Skill)){
+            Skills.Add(Skill);
+            Skill = string.Empty;
+        }
+    }
+    private void AddField() {
+        if (!Fields.Contains(Field) && !string.IsNullOrEmpty(Field)){
+            Fields.Add(Field);
+            Field = string.Empty;
+        }
+    }
+    private void removeSkill(string element) {
+        Skills.Remove(element);
+    }
+    private void removeField(string element) {
+        Fields.Remove(element);
+    }
     private void EditProfile()
     {
         isEditing = !isEditing;

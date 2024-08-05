@@ -42,7 +42,7 @@
     color: var(--secondary-color);
 }
 
-.form-group input[type="text"][b-j94ijvz21j],
+.form-group input[type="text"]:not(.skill-input )[b-j94ijvz21j],
 .form-group select[b-j94ijvz21j],
 .form-group input[type="file"][b-j94ijvz21j],
 .form-group textarea[b-j94ijvz21j] {
@@ -55,8 +55,20 @@
     color: #000;
 }
 
+.form-group input[class="skill-input"][b-j94ijvz21j] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid var(--third-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--third-color);
+    color: #000;
+}
+
+
 .form-group textarea[b-j94ijvz21j] {
     resize: vertical;
+    margin-top: 15px;
 }
 
 .form-group img[b-j94ijvz21j] {
@@ -66,7 +78,7 @@
     border-radius: 50%;
 }
 
-.form-group button[b-j94ijvz21j] {
+.form-group button:not(.add-btn)[b-j94ijvz21j] {
     width: 100%;
     padding: 10px;
     background-color: var(--action-color);
@@ -76,6 +88,25 @@
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+}
+
+.form-group button[class="add-btn"][b-j94ijvz21j] {
+    width: 15%;
+    padding: 10px;
+    background-color: var(--action-color);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.form-group .skills[b-j94ijvz21j],
+.form-group .fields[b-j94ijvz21j] {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
 }
 
 .form-group button:hover[b-j94ijvz21j] {
@@ -90,6 +121,24 @@
     text-align: center;
     transition: .3s;
 }
+
+/* skills and fields */
+.form-group span[b-j94ijvz21j] {
+    padding: 3px 10px;
+    margin: 5px 3px;
+    border-radius: 12px;
+    background-color: #696969;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.form-group span i[b-j94ijvz21j] {
+    border-radius: 50%;
+    font-size: 12px;
+    font-style: normal;
+    color: #000;
+}
+
 
 .form-group .close:hover[b-j94ijvz21j] {
     text-decoration: underline;
@@ -144,6 +193,17 @@
     .profile-info p[b-j94ijvz21j] {
         margin: 5px 0;
     }
+    .form-group .skills[b-j94ijvz21j] {
+        display: block;
+    }
+    .form-group input[class="skill-input"][b-j94ijvz21j] {
+        width: 100%;
+    }
+    .form-group button[class="add-btn"][b-j94ijvz21j] {
+        width: 40%;
+        margin-top: 15px;
+    }
+
 }
 
 @media (max-width: 480px) {
