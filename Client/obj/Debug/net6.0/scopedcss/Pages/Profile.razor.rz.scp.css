@@ -11,16 +11,22 @@
 }
 
 .container[b-j94ijvz21j] {
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 40px;
     background-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     color: var(--secondary-color);
 }
 
-.container h1[b-j94ijvz21j] {
+.page-title[b-j94ijvz21j] {
+    font-size: 35px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 2px var(--primary-color);
+}
+
+.container h2[b-j94ijvz21j] {
     text-align: center;
     margin-bottom: 20px;
     color: var(--action-color);
@@ -77,6 +83,51 @@
     box-shadow: 1px 1px 4px var(--action-color);
 }
 
+.form-group .close[b-j94ijvz21j] {
+    color: var(--action-color);
+    cursor: pointer;
+    margin-top: 15px;
+    text-align: center;
+    transition: .3s;
+}
+
+.form-group .close:hover[b-j94ijvz21j] {
+    text-decoration: underline;
+}
+
+/* display profile */
+
+.profile-details[b-j94ijvz21j] {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.profile-details .profile-image[b-j94ijvz21j] {
+    width: 100px;
+    margin: 40px;
+    border-radius: 50%;
+}
+.profile-info p[b-j94ijvz21j] {
+    margin: 5px 25px;
+}
+
+.edit-button[b-j94ijvz21j] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--action-color);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.edit-button:hover[b-j94ijvz21j] {
+    background-color: #ff6b35;
+}
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container[b-j94ijvz21j] {
@@ -85,6 +136,13 @@
     }
     .form-group img[b-j94ijvz21j] {
         max-width: 80px;
+    }
+    .profile-details[b-j94ijvz21j] {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile-info p[b-j94ijvz21j] {
+        margin: 5px 0;
     }
 }
 
@@ -103,5 +161,12 @@
     }
     .form-group img[b-j94ijvz21j] {
         max-width: 60px;
+    }
+    .profile-details[b-j94ijvz21j] {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile-details .profile-image[b-j94ijvz21j] {
+        width: 80px;
     }
 }

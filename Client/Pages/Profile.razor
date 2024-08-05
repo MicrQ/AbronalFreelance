@@ -1,60 +1,87 @@
-﻿<h3>Profile</h3>
+﻿<h2 class="page-title mb-1">Profile</h2>
 
 <div class="container">
-    <h1>Edit Profile</h1>
-    <form>
-        <div class="form-group">
-            <label for="profileImage">Profile Image</label>
-            <img id="profileImagePreview" src="default-avatar.png" alt="Profile Image Preview">
-            <input type="file" id="profileImage" name="profileImage" accept="image/*">
+    @if (isEditing) {
+        <h2>Edit Profile</h2>
+        <form>
+            <div class="form-group">
+                <label for="profileImage">Profile Image</label>
+                <img id="profileImagePreview" src="img/default-avatar" alt="Profile Image Preview">
+                <input type="file" id="profileImage" name="profileImage" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="">Select Location</option>
+                    <option value="New York">New York</option>
+                    <option value="San Francisco">San Francisco</option>
+                    <option value="Chicago">Chicago</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="headline">Headline</label>
+                <input type="text" id="headline" name="headline" required>
+            </div>
+            <div class="form-group">
+                <label for="educationLevel">Education Level</label>
+                <select id="educationLevel" name="educationLevel" required>
+                    <option value="">Select Education Level</option>
+                    <option value="High School">High School</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="PhD">PhD</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fields">Fields (separated by commas)</label>
+                <textarea id="fields" name="fields" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills (separated by commas)</label>
+                <textarea id="skills" name="skills" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" @onclick="SaveChanges">Save Changes</button>
+                <h6 class="close" @onclick="EditProfile">Close</h6>
+            </div>
+        </form>
+
+    } else {
+        <h2>User Profile</h2>
+        <div class="profile-details">
+            <img src="img/default-avatar.png" alt="Profile Image" class="profile-image">
+            <div class="profile-info">
+                <p><strong>First Name:</strong> firstName</p>
+                <p><strong>Last Name:</strong> lastName</p>
+                <p><strong>Location:</strong> location</p>
+                <p><strong>Headline:</strong> headline</p>
+                <p><strong>Education Level:</strong> educationLevel</p>
+                <p><strong>Fields:</strong> fields</p>
+                <p><strong>Skills:</strong> skills</p>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" required>
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" required>
-        </div>
-        <div class="form-group">
-            <label for="location">Location</label>
-            <select id="location" name="location" required>
-                <option value="">Select Location</option>
-                <option value="New York">New York</option>
-                <option value="San Francisco">San Francisco</option>
-                <option value="Chicago">Chicago</option>
-                <!-- Add more options as needed -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="headline">Headline</label>
-            <input type="text" id="headline" name="headline" required>
-        </div>
-        <div class="form-group">
-            <label for="educationLevel">Education Level</label>
-            <select id="educationLevel" name="educationLevel" required>
-                <option value="">Select Education Level</option>
-                <option value="High School">High School</option>
-                <option value="Bachelor's Degree">Bachelor's Degree</option>
-                <option value="Master's Degree">Master's Degree</option>
-                <option value="PhD">PhD</option>
-                <!-- Add more options as needed -->
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="fields">Fields (separated by commas)</label>
-            <textarea id="fields" name="fields" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="skills">Skills (separated by commas)</label>
-            <textarea id="skills" name="skills" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit">Save Changes</button>
-        </div>
-    </form>
+        <button class="edit-button" @onclick="EditProfile">Edit Profile</button>
+    }
 </div>
 
 @code {
+    private bool isEditing = false;
 
+    private void EditProfile()
+    {
+        isEditing = !isEditing;
+    }
+    private void SaveChanges() {
+
+    }
 }

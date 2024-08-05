@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets/icon-192.png"
     },
     {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/default-avatar.png",
+      "PackagePath": "staticwebassets/img/default-avatar.png"
+    },
+    {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/img1.jpeg",
       "PackagePath": "staticwebassets/img/img1.jpeg"
     },
