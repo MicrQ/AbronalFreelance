@@ -6,7 +6,7 @@
         <form>
             <div class="form-group">
                 <label for="profileImage">Profile Image</label>
-                <img id="profileImagePreview" src="img/default-avatar" alt="Profile Image Preview">
+                <img id="profileImagePreview" src="img/default-avatar.png" alt="Profile Image Preview">
                 <input type="file" id="profileImage" name="profileImage" accept="image/*">
             </div>
             <div class="form-group">
@@ -19,12 +19,32 @@
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
-                <select id="location" name="location" required>
-                    <option value="">Select Location</option>
-                    <option value="New York">New York</option>
-                    <option value="San Francisco">San Francisco</option>
-                    <option value="Chicago">Chicago</option>
-                    
+                <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
+                    <option value="">Select Country</option>
+                    @foreach (var country in countries)
+                    {
+                        <option value="@country.Id">@country.Name</option>
+                    }
+                </select>
+                <label>Region</label>
+                <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
+                    <option value="">Select Region</option>
+                    @if (regions != null) {
+                        @foreach (var region in regions)
+                        {
+                            <option value="@region.Id">@region.Name</option>
+                        }
+                    }
+                </select>
+                <label>City</label>
+                <select > @*bind city Id here*@
+                    <option value="">Select City</option>
+                    @if (cities != null) {
+                        @foreach (var city in cities)
+                        {
+                            <option value="@city.Id">@city.Name</option>
+                        }
+                    }
                 </select>
             </div>
             <div class="form-group">
@@ -90,8 +110,15 @@
 @code {
     private bool isEditing = false;
 
+    private int countryId { get; set; }
+    private int regionId { get; set; }
+    private List<Location> countries = new();
+    private List<Location>? regions = null;
+    private List<Location>? cities = null;
+
     private string Skill { get; set; } = string.Empty;
     private string Field { get; set; } = string.Empty;
+    private string endpoint = "countries";
 
     List<string> Skills = new List<string>();
     List<string> Fields = new List<string>();
@@ -122,5 +149,24 @@
     }
     private void SaveChanges() {
 
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        countries = await LocationService.GetLocations(endpoint);
+        endpoint = "regions/";
+    }
+
+
+     private async Task OnCountryChange()
+    {
+        regions = await LocationService.OnLocationChange(countryId, endpoint);
+        if (regions != null)
+            endpoint = "cities/";
+    }
+
+    private async Task OnRegionChange()
+    {
+        cities = await LocationService.OnLocationChange(regionId, endpoint);
     }
 }

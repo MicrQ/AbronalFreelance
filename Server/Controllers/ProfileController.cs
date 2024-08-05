@@ -24,24 +24,23 @@ public class ProfileController : ControllerBase
     [Authorize]
     public async Task<IActionResult> GetUserProfiles(string UserId) {
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
-        if (user == null) return NotFound();
-        Profile? profile = await _db.Profiles.FirstOrDefaultAsync(u => u.UserId == UserId);
+        if (user == null) return NotFound("User Not Found!");
 
-        var userProfile = new ProfileDTO() {
+        List<FreelancerSkill> freelancerSkills = _db.FreelancerSkills.Where(fs => fs.UserId == UserId).ToList();
+        List<FreelancerField> freelancerFields= _db.FreelancerFields.Where(ff => ff.UserId == UserId).ToList();
+
+        ProfileDTO profileDTO = new ProfileDTO() {
             FullName = user.FirstName + " " + user.LastName,
             UserName = user.UserName,
-            Headline = profile.Headline,
             Email = user.Email,
             Phone = user.PhoneNumber,
-            Location = string.Join(",", GetUserLocation(user.LocationId)),
-            TopSkills = _db.FreelancerSkills.Where(s => s.UserId == UserId).ToList()!
-            // field of user ...
+            TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
+            TopFields = freelancerFields != null ? freelancerFields : new List<FreelancerField>(),
+            Location = string.Join(", ", GetUserLocation(user.LocationId))
         };
-
-        return Ok(userProfile);
     }
 
-    private List<string?> GetUserLocation(int LocationId) {
+    private List<string> GetUserLocation(int LocationId) {
         int? loc_id;
         List<string> location = new List<string>();
         List<Location> locations = _db.Locations.ToList();
@@ -55,7 +54,7 @@ public class ProfileController : ControllerBase
                     loc_id = Loc.ParentId;
                 }
 
-                break;
+                return location;
             }
         }
 

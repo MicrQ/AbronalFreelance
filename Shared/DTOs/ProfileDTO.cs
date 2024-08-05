@@ -10,7 +10,7 @@ public class ProfileDTO
     public string Email { get; set; }
     public string Phone { get; set; }
     public string Location { get; set; }
-    public List<FreelancerSkill?>? TopSkills { get; set; }
-    // public List<Field>? TopFields { get; set; }
+    public List<FreelancerSkill>? TopSkills { get; set; }
+    public List<FreelancerField>? TopFields { get; set; }
 }
 

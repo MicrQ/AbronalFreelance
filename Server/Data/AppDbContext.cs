@@ -39,6 +39,7 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<JobStatus> JobStatuses { get; set; }
     public DbSet<ApprovalStatus> ApprovalStatuses { get; set; }
     public DbSet<EducationLevel> EducationLevels { get; set; }
+    public DbSet<FreelancerField> FreelancerFields { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

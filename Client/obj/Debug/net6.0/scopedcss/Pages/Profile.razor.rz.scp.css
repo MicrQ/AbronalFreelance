@@ -76,6 +76,7 @@
     display: block;
     margin-bottom: 10px;
     border-radius: 50%;
+    margin: 20px auto;
 }
 
 .form-group button:not(.add-btn)[b-j94ijvz21j] {
@@ -193,7 +194,7 @@
     .profile-info p[b-j94ijvz21j] {
         margin: 5px 0;
     }
-    .form-group .skills[b-j94ijvz21j] {
+    .form-group .skills[b-j94ijvz21j], .form-group .fields[b-j94ijvz21j] {
         display: block;
     }
     .form-group input[class="skill-input"][b-j94ijvz21j] {
