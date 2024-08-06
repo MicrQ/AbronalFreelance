@@ -108,17 +108,14 @@
         <div class="profile-details">
             <img src="img/default-avatar.png" alt="Profile Image" class="profile-image">
             <div class="profile-info">
-                @if (profileDTO.Flag) {
                 <p><strong>Full Name:</strong> @profileDTO.FirstName @profileDTO.LastName</p>
-                <p><strong>Location:</strong> @profileDTO.Location</p>
                 <p><strong>Headline:</strong> @profileDTO.Headline</p>
+                <p><strong>Location:</strong> @profileDTO.Location</p>
+                <p><strong>Phone:</strong> @profileDTO.Phone</p>
+                <p><strong>Email:</strong> @profileDTO.Email</p>
                 <p><strong>Education Level:</strong> Not specified</p>
-                <p><strong>Fields:</strong>
-                    @foreach (var ff in profileDTO.TopFields) {
-                        <p>@ff.FieldId, </p>
-                    }
-                </p>
-                <p><strong>Skills:</strong> skills</p>}
+                <p><strong>Fields:</strong></p>
+                <p><strong>Skills:</strong> </p>
             </div>
         </div>
         <button class="edit-button" @onclick="EditProfile">Edit Profile</button>
@@ -177,8 +174,8 @@
     {
         isEditing = !isEditing;
     }
-    private void SaveChanges() {
-
+    private async Task SaveChanges() {
+        await ProfileService.UpdateProfileAsync(profileDTO, LoggedInUserId);
     }
 
     protected override async Task OnInitializedAsync()

@@ -23,6 +23,7 @@ public class ProfileController : ControllerBase
     [HttpGet("user/profile")]
     [Authorize]
     public async Task<IActionResult> GetUserProfiles(string UserId) {
+        // GET /api/user/profile?UserId={id}
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
         if (user == null) return NotFound(
             new ProfileDTO { Flag = false, Message = "User not found!" }
@@ -40,6 +41,7 @@ public class ProfileController : ControllerBase
             TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
             TopFields = freelancerFields != null ? freelancerFields : new List<FreelancerField>(),
             Location = string.Join(", ", GetUserLocation(user.LocationId)),
+            LocationId = user.LocationId,
             Flag = true,
             Message = "Request Succeed."
         };
@@ -48,6 +50,7 @@ public class ProfileController : ControllerBase
     }
 
     private List<string> GetUserLocation(int LocationId) {
+        // used to generate the string version of the user address
         int? loc_id;
         List<string> location = new List<string>();
         List<Location> locations = _db.Locations.ToList();
@@ -64,6 +67,46 @@ public class ProfileController : ControllerBase
         }
 
         return location;
+    }
+
+
+    [HttpPut("user/profile")]
+    public async Task<IActionResult> UpdateProfile(ProfileDTO profileDTO, string UserId) {
+        // PUT /api/user/profile?userid={id}
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
+        if (user == null) return NotFound(new { Message = "User Not Found" });
+
+        user.FirstName = profileDTO.FirstName;
+        user.LastName = profileDTO.LastName;
+        user.LocationId = profileDTO.LocationId;
+
+        _db.Users.Update(user);
+
+        var profile = await _db.Profiles.FirstOrDefaultAsync(p => p.UserId == UserId);
+        bool isNew = false;
+        if (profile == null) {
+            isNew = true;
+            profile = new Profile() { UserId = UserId };
+        }
+        
+        profile.Headline = profileDTO.Headline;
+
+        if (isNew)
+            _db.Profiles.Add(profile);
+        else
+            _db.Profiles.Update(profile);
+
+        var fields = _db.FreelancerFields.Where(ff => ff.UserId == UserId).ToList();
+        foreach (var field in fields) {
+            _db.FreelancerFields.Remove(field);
+        }
+
+        foreach (var field in profileDTO.TopFields) {
+            _db.FreelancerFields.Add(field);
+        }
+        await _db.SaveChangesAsync();
+
+        return Ok(new { Message = "Profile Updated Successfully." });
     }
     
 }

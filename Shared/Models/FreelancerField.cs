@@ -8,7 +8,7 @@ public class FreelancerField
     public int FieldId { get; set; }
     public string UserId { get; set; }
     [ForeignKey("UserId")]
-    public virtual User User { get; set; }
+    public virtual User? User { get; set; }
     [ForeignKey("FieldId")]
-    public virtual Field Field { get; set; }
+    public virtual Field? Field { get; set; }
 }

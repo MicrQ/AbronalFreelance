@@ -11,10 +11,9 @@ public class ProfileDTO
     public string? Email { get; set; }
     public string? Phone { get; set; }
     public string? Location { get; set; }
-    public int? LocationId { get; set; }
+    public int LocationId { get; set; }
     public List<FreelancerSkill>? TopSkills { get; set; }
     public List<FreelancerField>? TopFields { get; set; }
     public bool Flag { get; set; } = false;
     public string? Message { get; set; }
 }
-

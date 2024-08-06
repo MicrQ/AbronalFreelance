@@ -17,4 +17,9 @@ public class ProfileService : IProfile
         ProfileDTO profileDTO = await _http.GetFromJsonAsync<ProfileDTO>(_url + UserId);
         return profileDTO;
     }
+
+    public async Task UpdateProfileAsync(ProfileDTO profileDTO, string UserId)
+    {
+        await _http.PostAsJsonAsync(_url + UserId, profileDTO);
+    }
 }
