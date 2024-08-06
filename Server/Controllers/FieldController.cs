@@ -16,7 +16,8 @@ public class FieldController : ControllerBase
 
     [HttpGet("fields")]
     public async Task<IActionResult> GetAllFields() {
-        // GET: /api/fields
+        // GET /api/fields
         return Ok(await _db.Fields.ToListAsync());
     }
+
 }

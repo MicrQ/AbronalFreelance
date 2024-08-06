@@ -67,7 +67,7 @@
                 @foreach(string field in Fields) {
                     <span @onclick="@(() => removeField(@field))">@field <i>x</i></span>
                 }
-                <select @bind="@Field" required>
+                <select @bind="@FieldId" required>
                     <option value="">Select Fields</option>
                     @foreach (var fld in AllFields) {
                         <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
@@ -127,6 +127,7 @@
 
 @code {
     private bool isEditing = false;
+    private string LoggedInUserId;
 
     private int countryId { get; set; }
     private int regionId { get; set; }
@@ -135,7 +136,7 @@
     private List<Location>? cities = null;
 
     private string Skill { get; set; } = string.Empty;
-    private int Field { get; set; }
+    private int FieldId { get; set; }
     private string endpoint = "countries";
 
     List<string> Skills = new List<string>();
@@ -155,9 +156,15 @@
         }
     }
     private void AddField() {
-        string FieldName = AllFields.FirstOrDefault(f => f.Id == Field).Name;
-        if (!Fields.Contains(FieldName) && !string.IsNullOrEmpty(FieldName)){
-            Fields.Add(FieldName);
+        Field field  = AllFields.FirstOrDefault(f => f.Id == FieldId);
+        if (!Fields.Contains(field.Name) && !string.IsNullOrEmpty(field.Name)){
+            Fields.Add(field.Name);
+            profileDTO.TopFields.Add(
+                new FreelancerField {
+                    FieldId = field.Id,
+                    UserId = LoggedInUserId
+                }
+            );
         }
     }
     private void removeSkill(string element) {
@@ -180,7 +187,7 @@
         endpoint = "regions/";
 
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-        string LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
         profileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
 
         AllFields = await FieldService.GetAllFieldsAsync();
