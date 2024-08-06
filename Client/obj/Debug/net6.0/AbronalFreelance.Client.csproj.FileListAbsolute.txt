@@ -628,7 +628,6 @@
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/icudt_no_CJK.dat
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/AbronalFreelance.Shared.dll
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/AbronalFreelance.Shared.pdb
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.csproj.AssemblyReference.cache
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.GeneratedMSBuildEditorConfig.editorconfig
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.AssemblyInfoInputs.cache
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.AssemblyInfo.cs
@@ -723,7 +722,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/Footer.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Login.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/Register.razor.rz.scp.css
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/MyCompany.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.32.vufugzb32n.js
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.32.vufugzb32n.js.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/y0pl1nib75.gz
@@ -903,3 +901,4 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Portfolio.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/AddorEditPortfolio.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Profile.razor.rz.scp.css
+/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.csproj.AssemblyReference.cache

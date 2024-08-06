@@ -1,15 +1,16 @@
 ﻿@using System.Net.Http
-@using System.Net.Http.Json
-@using AbronalFreelance.Client.Services.ProfileService
-@using AbronalFreelance.Client.Services.PortfolioService
-@using Microsoft.AspNetCore.Components.Forms
-@using Microsoft.AspNetCore.Components.Routing
-@using Microsoft.AspNetCore.Components.Web
-@using Microsoft.AspNetCore.Components.Web.Virtualization
-@using Microsoft.AspNetCore.Components.WebAssembly.Http
 @using Microsoft.JSInterop
+@using System.Net.Http.Json
 @using AbronalFreelance.Client
 @using AbronalFreelance.Client.Shared
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using AbronalFreelance.Client.Services.FieldService
+@using AbronalFreelance.Client.Services.ProfileService
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using AbronalFreelance.Client.Services.PortfolioService
+@using Microsoft.AspNetCore.Components.Web.Virtualization
 
 
 // my imports
@@ -27,11 +28,12 @@
 
 
 
+@inject IField FieldService
 @inject IJSRuntime JSRuntime
 @inject IAccount AccountService
 @inject IProfile ProfileService
-@inject IPortfolio PortfolioService
 @inject ILocation LocationService
+@inject IPortfolio PortfolioService
 @inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthStateProvider
 

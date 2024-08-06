@@ -8,6 +8,7 @@ using AbronalFreelance.Client.State;
 using AbronalFreelance.Client.Services.Auth;
 using AbronalFreelance.Client.Services.ProfileService;
 using AbronalFreelance.Client.Services.PortfolioService;
+using AbronalFreelance.Client.Services.FieldService;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<ILocation, LocationService>();
 builder.Services.AddScoped<IProfile, ProfileService>();
 builder.Services.AddScoped<IPortfolio, PortfolioService>();
+builder.Services.AddScoped<IField, FieldService>();
 
 
 builder.Services.AddBlazoredLocalStorage();

@@ -1,19 +1,20 @@
 ﻿using System.Net.Http.Json;
 using AbronalFreelance.Shared.DTOs;
 
-
 namespace AbronalFreelance.Client.Services.ProfileService;
 
 public class ProfileService : IProfile
 {
     private readonly HttpClient _http;
+    private readonly string _url = "api/user/profile?UserId=";
     public ProfileService(HttpClient http)
     {
         _http = http;
     }
-    public async Task AddCompanyAsync(CompanyInfoDTO companyInfo)
+
+    public async Task<ProfileDTO> GetUserProfileAsync(string UserId)
     {
-        // will be changed to a Task function and will have a response object
-        await _http.PostAsJsonAsync("api/company", companyInfo);
+        ProfileDTO profileDTO = await _http.GetFromJsonAsync<ProfileDTO>(_url + UserId);
+        return profileDTO;
     }
 }

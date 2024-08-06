@@ -59,64 +59,6 @@ table[b-twgl6rf1ty] {
     }
     
 }
-/* /Pages/MyCompany.razor.rz.scp.css */
-.form-container[b-qpq9ivgd6r] {
-    background-color: #000000cb;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 0;
-}
-
-.form-box[b-qpq9ivgd6r] {
-    width: 30%;
-    border: 1px solid var(--action-color);
-    padding: 40px;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 1px 2px 7px var(--action-color);
-    background-color: var(--primary-color);
-    color: var(--secondary-color)
-}
-
-.form-box h2[b-qpq9ivgd6r] {
-    text-align: center;
-}
-
-.form-data[b-qpq9ivgd6r] {
-    margin: 30px 20px;
-}
-
-.form-data label[b-qpq9ivgd6r] {
-    font-size: 14px;
-}
-
-.form-data input[b-qpq9ivgd6r] {
-    margin-bottom: 12px;
-    padding: 5px 10px;
-    background-color: var(--third-color);
-    border: none;
-    border-radius: 5px;
-}
-
-.form-data .name[b-qpq9ivgd6r],
-.form-data .tin[b-qpq9ivgd6r] {
-    width: 100%;
-}
-
-.form-data .loc-options[b-qpq9ivgd6r] {
-    width: 80%;
-    padding: 0 20px;
-}
-
-.form-data .loc-options select[b-qpq9ivgd6r] {
-    text-align: left;
-    width: 80%;
-    padding: 5px;
-}
-
-.form-data .loc-options label[b-qpq9ivgd6r] {
-    font-size: 14px;
-}
 /* /Pages/Portfolio.razor.rz.scp.css */
 .page-title[b-g6ct15667n] {
     font-size: 35px;

@@ -10,12 +10,12 @@
                 <input type="file" id="profileImage" name="profileImage" accept="image/*">
             </div>
             <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <label>First Name</label>
+                <input @bind="profileDTO.FirstName" type="text" required>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <label>Last Name</label>
+                <input @bind="profileDTO.LastName" type="text" required>
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
@@ -37,7 +37,7 @@
                     }
                 </select>
                 <label>City</label>
-                <select > @*bind city Id here*@
+                <select @bind="profileDTO.LocationId">
                     <option value="">Select City</option>
                     @if (cities != null) {
                         @foreach (var city in cities)
@@ -48,8 +48,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="headline">Headline</label>
-                <input type="text" id="headline" name="headline" required>
+                <label>Headline</label>
+                <input @bind="profileDTO.Headline" type="text" required>
             </div>
             <div class="form-group">
                 <label for="educationLevel">Education Level</label>
@@ -67,20 +67,34 @@
                 @foreach(string field in Fields) {
                     <span @onclick="@(() => removeField(@field))">@field <i>x</i></span>
                 }
-                <div class="fields">
+                <select @bind="@Field" required>
+                    <option value="">Select Fields</option>
+                    @foreach (var fld in AllFields) {
+                        <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
+                    }
+                </select>
+
+                @* <div class="fields">
                     <input @bind="@Field" type="text" class="skill-input">
                     <button @onclick="AddField" class="add-btn">Add Fields</button>
-                </div>
+                </div> *@
             </div>
             <div class="form-group">
                 <label for="skills">Skills</label>
                 @foreach(string skill in Skills) {
                     <span @onclick="@(() => removeSkill(@skill))">@skill <i>x</i></span>
                 }
-                <div class="skills">
+                <select @bind="@Skill" required>
+                    <option value="">Select Skills</option>
+                    @foreach (var skl in AllSkills) {
+                        <option value="@skl" @onclick="AddSkill">@skl</option>
+                    }
+                </select>
+
+                @* <div class="skills">
                     <input @bind="@Skill" type="text" class="skill-input">
                     <button @onclick="AddSkill" class="add-btn">Add Skill</button>
-                </div>
+                </div> *@
                 
             </div>
             <div class="form-group">
@@ -94,13 +108,17 @@
         <div class="profile-details">
             <img src="img/default-avatar.png" alt="Profile Image" class="profile-image">
             <div class="profile-info">
-                <p><strong>First Name:</strong> firstName</p>
-                <p><strong>Last Name:</strong> lastName</p>
-                <p><strong>Location:</strong> location</p>
-                <p><strong>Headline:</strong> headline</p>
-                <p><strong>Education Level:</strong> educationLevel</p>
-                <p><strong>Fields:</strong> fields</p>
-                <p><strong>Skills:</strong> skills</p>
+                @if (profileDTO.Flag) {
+                <p><strong>Full Name:</strong> @profileDTO.FirstName @profileDTO.LastName</p>
+                <p><strong>Location:</strong> @profileDTO.Location</p>
+                <p><strong>Headline:</strong> @profileDTO.Headline</p>
+                <p><strong>Education Level:</strong> Not specified</p>
+                <p><strong>Fields:</strong>
+                    @foreach (var ff in profileDTO.TopFields) {
+                        <p>@ff.FieldId, </p>
+                    }
+                </p>
+                <p><strong>Skills:</strong> skills</p>}
             </div>
         </div>
         <button class="edit-button" @onclick="EditProfile">Edit Profile</button>
@@ -117,11 +135,16 @@
     private List<Location>? cities = null;
 
     private string Skill { get; set; } = string.Empty;
-    private string Field { get; set; } = string.Empty;
+    private int Field { get; set; }
     private string endpoint = "countries";
 
     List<string> Skills = new List<string>();
     List<string> Fields = new List<string>();
+
+    ProfileDTO profileDTO = new ProfileDTO();
+    List<Field> AllFields = new List<Field>();
+    List<string> AllSkills = new List<string>() {"C#", ".NET", "Blazor"};
+
     
 
 
@@ -132,9 +155,9 @@
         }
     }
     private void AddField() {
-        if (!Fields.Contains(Field) && !string.IsNullOrEmpty(Field)){
-            Fields.Add(Field);
-            Field = string.Empty;
+        string FieldName = AllFields.FirstOrDefault(f => f.Id == Field).Name;
+        if (!Fields.Contains(FieldName) && !string.IsNullOrEmpty(FieldName)){
+            Fields.Add(FieldName);
         }
     }
     private void removeSkill(string element) {
@@ -155,6 +178,12 @@
     {
         countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
+
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        string LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+        profileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
+
+        AllFields = await FieldService.GetAllFieldsAsync();
     }
 
 

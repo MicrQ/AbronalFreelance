@@ -24,20 +24,27 @@ public class ProfileController : ControllerBase
     [Authorize]
     public async Task<IActionResult> GetUserProfiles(string UserId) {
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
-        if (user == null) return NotFound("User Not Found!");
+        if (user == null) return NotFound(
+            new ProfileDTO { Flag = false, Message = "User not found!" }
+        );
 
         List<FreelancerSkill> freelancerSkills = _db.FreelancerSkills.Where(fs => fs.UserId == UserId).ToList();
         List<FreelancerField> freelancerFields= _db.FreelancerFields.Where(ff => ff.UserId == UserId).ToList();
 
         ProfileDTO profileDTO = new ProfileDTO() {
-            FullName = user.FirstName + " " + user.LastName,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
             UserName = user.UserName,
             Email = user.Email,
             Phone = user.PhoneNumber,
             TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
             TopFields = freelancerFields != null ? freelancerFields : new List<FreelancerField>(),
-            Location = string.Join(", ", GetUserLocation(user.LocationId))
+            Location = string.Join(", ", GetUserLocation(user.LocationId)),
+            Flag = true,
+            Message = "Request Succeed."
         };
+
+        return Ok(profileDTO);
     }
 
     private List<string> GetUserLocation(int LocationId) {
@@ -53,8 +60,6 @@ public class ProfileController : ControllerBase
                     location.Add(Loc.Name);
                     loc_id = Loc.ParentId;
                 }
-
-                return location;
             }
         }
 

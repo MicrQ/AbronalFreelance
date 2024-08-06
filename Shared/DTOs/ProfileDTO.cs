@@ -1,16 +1,20 @@
 ﻿using AbronalFreelance.Shared.Models;
 
-namespace AbronalFreelance.Shared;
+namespace AbronalFreelance.Shared.DTOs;
 
 public class ProfileDTO
 {
-    public string FullName { get; set; }
-    public string UserName { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? UserName { get; set; }
     public string? Headline { get; set; }
-    public string Email { get; set; }
-    public string Phone { get; set; }
-    public string Location { get; set; }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
+    public string? Location { get; set; }
+    public int? LocationId { get; set; }
     public List<FreelancerSkill>? TopSkills { get; set; }
     public List<FreelancerField>? TopFields { get; set; }
+    public bool Flag { get; set; } = false;
+    public string? Message { get; set; }
 }
 
