@@ -14,12 +14,10 @@ public class ProfileDTO
     public int LocationId { get; set; }
     public string? FreelancerFields { get; set; }
     public string? FreelancerSkills { get; set; }
+    // educatioon and other info`s to be added in another sidebaar tab
 
     public List<FreelancerSkill>? TopSkills { get; set; }
     public List<FreelancerField>? TopFields { get; set; }
     public bool Flag { get; set; } = false;
     public string? Message { get; set; }
-
-    public string? EducationLevel { get; set; }
-
 }

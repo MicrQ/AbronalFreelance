@@ -38,11 +38,11 @@ public class ProfileController : ControllerBase
             FirstName = user.FirstName,
             LastName = user.LastName,
             UserName = user.UserName,
-            Headline = profile != null ? profile.Headline : null,
-            FreelancerFields = GetFreelancerFieldString(freelancerFields),
-            FreelancerSkills = GetFreelancerSkillString(freelancerSkills),
             Email = user.Email,
             Phone = user.PhoneNumber,
+            Headline = profile != null ? profile.Headline : null,
+            FreelancerFields = GetFreelancerFieldString(freelancerFields) + ", ...",
+            FreelancerSkills = GetFreelancerSkillString(freelancerSkills) + ", ...",
             TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
             TopFields = freelancerFields != null ? freelancerFields : new List<FreelancerField>(),
             Location = string.Join(", ", GetUserLocation(user.LocationId)),
@@ -52,50 +52,6 @@ public class ProfileController : ControllerBase
         };
 
         return Ok(profileDTO);
-    }
-
-    private List<string> GetUserLocation(int LocationId) {
-        // used to generate the string version of the user address
-        int? loc_id;
-        List<string> location = new List<string>();
-        List<Location> locations = _db.Locations.ToList();
-
-        foreach (var loc in locations){
-            if (loc.Id == LocationId) {
-                loc_id = loc.Id;
-                while (loc_id != null) {
-                    Location Loc = locations.FirstOrDefault(l => l.Id == loc_id);
-                    location.Add(Loc.Name);
-                    loc_id = Loc.ParentId;
-                }
-            }
-        }
-
-        return location;
-    }
-    private string GetFreelancerFieldString(List<FreelancerField> ff) {
-        if (ff == null || ff.Count == 0) return "";
-
-        var field = _db.Fields.ToList();
-        List<string> fields = new List<string>();
-
-        foreach (FreelancerField f in ff) {
-            fields.Add(field.FirstOrDefault(fld => fld.Id == f.FieldId).Name);
-        }
-
-        return string.Join(", ", fields);
-    }
-    private string GetFreelancerSkillString(List<FreelancerSkill>? ss) {
-        if (ss == null || ss.Count == 0) return "";
-
-        var skill = _db.Skills.ToList();
-        List<string> skills = new List<string>();
-
-        foreach (FreelancerSkill s in ss) {
-            skills.Add(skill.FirstOrDefault(skl => skl.Id == s.SkillId).Name);
-        }
-
-        return string.Join(", ", skills);
     }
 
 
@@ -113,6 +69,9 @@ public class ProfileController : ControllerBase
         user.FirstName = profileDTO.FirstName;
         user.LastName = profileDTO.LastName;
         user.LocationId = profileDTO.LocationId;
+        user.UserName = profileDTO.UserName;
+        user.Email = profileDTO.Email;
+        user.PhoneNumber = profileDTO.Phone;
 
         // Update or add profile
         var Profile = _db.Profiles.FirstOrDefault(p => p.UserId == user.Id);
@@ -159,5 +118,55 @@ public class ProfileController : ControllerBase
         await _db.SaveChangesAsync();
 
         return Ok(new { Message = "Profile Updated Successfully." });
+    }
+
+
+
+    private List<string> GetUserLocation(int LocationId) {
+        // used to generate the string version of the user address
+        int? loc_id;
+        List<string> location = new List<string>();
+        List<Location> locations = _db.Locations.ToList();
+
+        foreach (var loc in locations){
+            if (loc.Id == LocationId) {
+                loc_id = loc.Id;
+                while (loc_id != null) {
+                    Location Loc = locations.FirstOrDefault(l => l.Id == loc_id);
+                    location.Add(Loc.Name);
+                    loc_id = Loc.ParentId;
+                }
+            }
+        }
+
+        return location;
+    }
+    private string GetFreelancerFieldString(List<FreelancerField> ff) {
+        if (ff == null || ff.Count == 0) return "";
+
+        var field = _db.Fields.ToList();
+        List<string> fields = new List<string>();
+        int count = 0;
+
+        foreach (FreelancerField f in ff) {
+            if (count++ == 5) break;
+            fields.Add(field.FirstOrDefault(fld => fld.Id == f.FieldId).Name);
+        }
+
+        return string.Join(", ", fields);
+    }
+    private string GetFreelancerSkillString(List<FreelancerSkill>? ss) {
+        if (ss == null || ss.Count == 0) return "";
+
+        var skill = _db.Skills.ToList();
+        List<string> skills = new List<string>();
+        int count = 0;
+
+        foreach (FreelancerSkill s in ss) {
+            if (count++ == 5) break;
+            skills.Add(skill.FirstOrDefault(skl => skl.Id == s.SkillId).Name);
+        }
+
+        return string.Join(", ", skills);
     }
 }

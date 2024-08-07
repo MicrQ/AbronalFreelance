@@ -44,6 +44,7 @@
 
 .form-group input[type="text"]:not(.skill-input )[b-j94ijvz21j],
 .form-group select[b-j94ijvz21j],
+.form-group input[type="number"][b-j94ijvz21j],
 .form-group input[type="file"][b-j94ijvz21j],
 .form-group textarea[b-j94ijvz21j] {
     width: 100%;
