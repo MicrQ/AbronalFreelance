@@ -3,7 +3,7 @@
 <div class="container">
     @if (isEditing) {
         <h2>Edit Profile</h2>
-        <form>
+        <EditForm Model="profileDTO" OnValidSubmit="SaveChanges">
             <div class="form-group">
                 <label for="profileImage">Profile Image</label>
                 <img id="profileImagePreview" src="img/default-avatar.png" alt="Profile Image Preview">
@@ -88,11 +88,10 @@
                 
             </div>
             <div class="form-group">
-                <button type="submit" @onclick="SaveChanges">Save Changes</button>
+                <button type="submit">Save Changes</button>
                 <h6 class="close" @onclick="EditProfile">Close</h6>
-                <div>@profileDTO</div>
             </div>
-        </form>
+        </EditForm>
 
     } else {
         <h2>User Profile</h2>
@@ -173,6 +172,7 @@
     }
     private async Task SaveChanges() {
         await ProfileService.UpdateProfileAsync(profileDTO, LoggedInUserId);
+        Navigation.NavigateTo("/user/profile", forceLoad: true);
     }
 
     protected override async Task OnInitializedAsync()
