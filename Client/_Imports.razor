@@ -6,6 +6,7 @@
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
+@using AbronalFreelance.Client.Services.SkillService
 @using AbronalFreelance.Client.Services.FieldService
 @using AbronalFreelance.Client.Services.ProfileService
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
@@ -28,6 +29,7 @@
 
 
 
+@inject ISkill SkillService
 @inject IField FieldService
 @inject IJSRuntime JSRuntime
 @inject IAccount AccountService
@@ -36,4 +38,3 @@
 @inject IPortfolio PortfolioService
 @inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthStateProvider
-

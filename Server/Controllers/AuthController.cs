@@ -49,6 +49,9 @@ public class AuthController : ControllerBase
         if (result.Succeeded) {
             await _userManager.AddToRoleAsync(user, registerDTO.Role);
 
+            // add a trigger on the Users Table to create a profile
+            // for the new user on the Profiles table(if necessary)
+
             return Ok(new {
                 Message = "Registration Compeleted.",
                 RedirectUrl = "login"

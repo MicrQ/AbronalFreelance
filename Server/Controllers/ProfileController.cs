@@ -29,6 +29,8 @@ public class ProfileController : ControllerBase
             new ProfileDTO { Flag = false, Message = "User not found!" }
         );
 
+        var profile = await _db.Profiles.FirstOrDefaultAsync(u => u.UserId == UserId);
+
         List<FreelancerSkill> freelancerSkills = _db.FreelancerSkills.Where(fs => fs.UserId == UserId).ToList();
         List<FreelancerField> freelancerFields= _db.FreelancerFields.Where(ff => ff.UserId == UserId).ToList();
 
@@ -36,6 +38,8 @@ public class ProfileController : ControllerBase
             FirstName = user.FirstName,
             LastName = user.LastName,
             UserName = user.UserName,
+            Headline = profile != null ? profile.Headline : null,
+            FreelancerFields = GetFreelancerFieldString(freelancerFields),
             Email = user.Email,
             Phone = user.PhoneNumber,
             TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
@@ -67,6 +71,18 @@ public class ProfileController : ControllerBase
         }
 
         return location;
+    }
+    private string GetFreelancerFieldString(List<FreelancerField> ff) {
+        if (ff == null || ff.Count == 0) return "";
+
+        var field = _db.Fields.ToList();
+        List<string> fields = new List<string>();
+
+        foreach (FreelancerField f in ff) {
+            fields.Add(field.FirstOrDefault(fld => fld.Id == f.FieldId).Name);
+        }
+
+        return string.Join(", ", fields);
     }
 
 
@@ -101,9 +117,16 @@ public class ProfileController : ControllerBase
             _db.FreelancerFields.Remove(field);
         }
 
-        foreach (var field in profileDTO.TopFields) {
-            _db.FreelancerFields.Add(field);
+        await _db.SaveChangesAsync();
+        foreach (var fld in profileDTO.TopFields) {
+            // delete all data of user before any update here
+            await _db.FreelancerFields.AddAsync(fld);
         }
+
+        // foreach (var skill in profileDTO.TopSkills) {
+        //     _db.FreelancerSkills.Add(skill);
+        // }
+
         await _db.SaveChangesAsync();
 
         return Ok(new { Message = "Profile Updated Successfully." });

@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="profileImage">Profile Image</label>
                 <img id="profileImagePreview" src="img/default-avatar.png" alt="Profile Image Preview">
-                <input type="file" id="profileImage" name="profileImage" accept="image/*">
+                @* <input type="file" id="profileImage" name="profileImage" accept="image/*"> *@
             </div>
             <div class="form-group">
                 <label>First Name</label>
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label for="educationLevel">Education Level</label>
-                <select id="educationLevel" name="educationLevel" required>
+                <select @bind="profileDTO.EducationLevel" required>
                     <option value="">Select Education Level</option>
                     <option value="High School">High School</option>
                     <option value="Bachelor's Degree">Bachelor's Degree</option>
@@ -73,28 +73,18 @@
                         <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
                     }
                 </select>
-
-                @* <div class="fields">
-                    <input @bind="@Field" type="text" class="skill-input">
-                    <button @onclick="AddField" class="add-btn">Add Fields</button>
-                </div> *@
             </div>
             <div class="form-group">
                 <label for="skills">Skills</label>
                 @foreach(string skill in Skills) {
                     <span @onclick="@(() => removeSkill(@skill))">@skill <i>x</i></span>
                 }
-                <select @bind="@Skill" required>
+                <select @bind="@SkillId">
                     <option value="">Select Skills</option>
                     @foreach (var skl in AllSkills) {
-                        <option value="@skl" @onclick="AddSkill">@skl</option>
+                        <option value="@skl.Id" @onclick="AddSkill">@skl.Name</option>
                     }
                 </select>
-
-                @* <div class="skills">
-                    <input @bind="@Skill" type="text" class="skill-input">
-                    <button @onclick="AddSkill" class="add-btn">Add Skill</button>
-                </div> *@
                 
             </div>
             <div class="form-group">
@@ -114,8 +104,8 @@
                 <p><strong>Phone:</strong> @profileDTO.Phone</p>
                 <p><strong>Email:</strong> @profileDTO.Email</p>
                 <p><strong>Education Level:</strong> Not specified</p>
-                <p><strong>Fields:</strong></p>
-                <p><strong>Skills:</strong> </p>
+                <p><strong>Fields:</strong> @profileDTO.FreelancerFields</p>
+                <p><strong>Skills:</strong> @profileDTO.FreelancerSkills</p>
             </div>
         </div>
         <button class="edit-button" @onclick="EditProfile">Edit Profile</button>
@@ -132,7 +122,7 @@
     private List<Location>? regions = null;
     private List<Location>? cities = null;
 
-    private string Skill { get; set; } = string.Empty;
+    private int SkillId { get; set; }
     private int FieldId { get; set; }
     private string endpoint = "countries";
 
@@ -141,15 +131,21 @@
 
     ProfileDTO profileDTO = new ProfileDTO();
     List<Field> AllFields = new List<Field>();
-    List<string> AllSkills = new List<string>() {"C#", ".NET", "Blazor"};
+    List<Skill> AllSkills = new List<Skill>();
 
     
 
 
     private void AddSkill() {
-        if (!Skills.Contains(Skill) && !string.IsNullOrEmpty(Skill)){
-            Skills.Add(Skill);
-            Skill = string.Empty;
+        Skill skill = AllSkills.FirstOrDefault(s => s.Id == SkillId);
+        if (!Skills.Contains(skill.Name) && !string.IsNullOrEmpty(skill.Name)) {
+            Skills.Add(skill.Name);
+            profileDTO.TopSkills.Add(
+                new FreelancerSkill() {
+                    SkillId = skill.Id,
+                    UserId = LoggedInUserId
+                }
+            );
         }
     }
     private void AddField() {
@@ -188,6 +184,7 @@
         profileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
 
         AllFields = await FieldService.GetAllFieldsAsync();
+        AllSkills = await SkillService.GetAllSkillsAsync();
     }
 
 
