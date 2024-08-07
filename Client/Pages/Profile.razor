@@ -64,8 +64,8 @@
             </div>
             <div class="form-group">
                 <label for="fields">Fields</label>
-                @foreach(string field in Fields) {
-                    <span @onclick="@(() => removeField(@field))">@field <i>x</i></span>
+                @foreach(var field in freelancerFields) {
+                    <span @onclick="@(() => removeField(@field))">@AllFields.FirstOrDefault(f => f.Id == field.FieldId).Name<i>x</i></span>
                 }
                 <select @bind="@FieldId" required>
                     <option value="">Select Fields</option>
@@ -76,8 +76,8 @@
             </div>
             <div class="form-group">
                 <label for="skills">Skills</label>
-                @foreach(string skill in Skills) {
-                    <span @onclick="@(() => removeSkill(@skill))">@skill <i>x</i></span>
+                @foreach(var skill in freelancerSkills) {
+                    <span @onclick="@(() => removeSkill(@skill))">@AllSkills.FirstOrDefault(s => s.Id == skill.SkillId).Name<i>x</i></span>
                 }
                 <select @bind="@SkillId">
                     <option value="">Select Skills</option>
@@ -118,16 +118,16 @@
 
     private int countryId { get; set; }
     private int regionId { get; set; }
-    private List<Location> countries = new();
-    private List<Location>? regions = null;
-    private List<Location>? cities = null;
+    private List<Location> countries = new List<Location>();
+    private List<Location>? regions = new List<Location>();
+    private List<Location>? cities = new List<Location>();
 
     private int SkillId { get; set; }
     private int FieldId { get; set; }
     private string endpoint = "countries";
 
-    List<string> Skills = new List<string>();
-    List<string> Fields = new List<string>();
+    List<FreelancerSkill> freelancerSkills = new List<FreelancerSkill>();
+    List<FreelancerField> freelancerFields = new List<FreelancerField>();
 
     ProfileDTO profileDTO = new ProfileDTO();
     List<Field> AllFields = new List<Field>();
@@ -137,42 +137,41 @@
 
 
     private void AddSkill() {
-        Skill skill = AllSkills.FirstOrDefault(s => s.Id == SkillId);
-        if (!Skills.Contains(skill.Name) && !string.IsNullOrEmpty(skill.Name)) {
-            Skills.Add(skill.Name);
-            profileDTO.TopSkills.Add(
-                new FreelancerSkill() {
-                    SkillId = skill.Id,
-                    UserId = LoggedInUserId
-                }
-            );
+        foreach(var ss in freelancerSkills) {
+            if (ss.SkillId == SkillId)
+                return;
         }
+        freelancerSkills.Add(new FreelancerSkill() {
+            SkillId = SkillId,
+            UserId = LoggedInUserId
+        });
     }
     private void AddField() {
-        Field field  = AllFields.FirstOrDefault(f => f.Id == FieldId);
-        if (!Fields.Contains(field.Name) && !string.IsNullOrEmpty(field.Name)){
-            Fields.Add(field.Name);
-            profileDTO.TopFields.Add(
-                new FreelancerField {
-                    FieldId = field.Id,
-                    UserId = LoggedInUserId
-                }
-            );
+
+        foreach(var ff in freelancerFields) {
+            if (ff.FieldId == FieldId)
+                return;
         }
+        freelancerFields.Add(new FreelancerField() {
+            FieldId = FieldId,
+            UserId = LoggedInUserId
+        });
     }
-    private void removeSkill(string element) {
-        Skills.Remove(element);
+    private void removeSkill(FreelancerSkill element) {
+        freelancerSkills.Remove(element);
     }
-    private void removeField(string element) {
-        Fields.Remove(element);
+    private void removeField(FreelancerField element) {
+        freelancerFields.Remove(element);
     }
-    private void EditProfile()
-    {
+    private void EditProfile() {
         isEditing = !isEditing;
     }
+
     private async Task SaveChanges() {
+        profileDTO.TopFields = freelancerFields;
+        profileDTO.TopSkills = freelancerSkills;
         await ProfileService.UpdateProfileAsync(profileDTO, LoggedInUserId);
-        Navigation.NavigateTo("/user/profile", forceLoad: true);
+        //Navigation.NavigateTo("/user/profile", forceLoad: true);
     }
 
     protected override async Task OnInitializedAsync()
@@ -186,6 +185,23 @@
 
         AllFields = await FieldService.GetAllFieldsAsync();
         AllSkills = await SkillService.GetAllSkillsAsync();
+
+        foreach(var ff in profileDTO.TopFields) {
+            freelancerFields.Add(
+                new FreelancerField {
+                    FieldId = ff.FieldId,
+                    UserId = ff.UserId
+                }
+            );
+        }
+        foreach(var ss in profileDTO.TopSkills) {
+            freelancerSkills.Add(
+                new FreelancerSkill {
+                    SkillId = ss.SkillId,
+                    UserId = ss.UserId
+                }
+            );
+        }
     }
 
 

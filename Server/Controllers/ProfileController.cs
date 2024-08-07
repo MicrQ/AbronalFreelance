@@ -40,6 +40,7 @@ public class ProfileController : ControllerBase
             UserName = user.UserName,
             Headline = profile != null ? profile.Headline : null,
             FreelancerFields = GetFreelancerFieldString(freelancerFields),
+            FreelancerSkills = GetFreelancerSkillString(freelancerSkills),
             Email = user.Email,
             Phone = user.PhoneNumber,
             TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
@@ -84,52 +85,79 @@ public class ProfileController : ControllerBase
 
         return string.Join(", ", fields);
     }
+    private string GetFreelancerSkillString(List<FreelancerSkill>? ss) {
+        if (ss == null || ss.Count == 0) return "";
+
+        var skill = _db.Skills.ToList();
+        List<string> skills = new List<string>();
+
+        foreach (FreelancerSkill s in ss) {
+            skills.Add(skill.FirstOrDefault(skl => skl.Id == s.SkillId).Name);
+        }
+
+        return string.Join(", ", skills);
+    }
 
 
     [HttpPut("user/profile")]
-    public async Task<IActionResult> UpdateProfile(ProfileDTO profileDTO, string UserId) {
+    public async Task<IActionResult> UpdateProfile(ProfileDTO profileDTO, string UserId)
+    {
         // PUT /api/user/profile?userid={id}
-        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
-        if (user == null) return NotFound(new { Message = "User Not Found" });
+        var user = await _db.Users
+            .FirstOrDefaultAsync(u => u.Id == UserId);
+        
+        if (user == null) 
+            return NotFound(new { Message = "User Not Found" });
 
+        // Update user fields...more to be added
         user.FirstName = profileDTO.FirstName;
         user.LastName = profileDTO.LastName;
         user.LocationId = profileDTO.LocationId;
 
-        _db.Users.Update(user);
-
-        var profile = await _db.Profiles.FirstOrDefaultAsync(p => p.UserId == UserId);
-        bool isNew = false;
-        if (profile == null) {
-            isNew = true;
-            profile = new Profile() { UserId = UserId };
-        }
-        
-        profile.Headline = profileDTO.Headline;
-
-        if (isNew)
+        // Update or add profile
+        var Profile = _db.Profiles.FirstOrDefault(p => p.UserId == user.Id);
+        if (Profile == null) 
+        {
+            Profile profile = new Profile { UserId = UserId, Headline = profileDTO.Headline };
             _db.Profiles.Add(profile);
-        else
-            _db.Profiles.Update(profile);
-
-        var fields = _db.FreelancerFields.Where(ff => ff.UserId == UserId).ToList();
-        foreach (var field in fields) {
-            _db.FreelancerFields.Remove(field);
+        } 
+        else 
+        {
+            Profile.Headline = profileDTO.Headline;
+            _db.Profiles.Update(Profile);
         }
 
-        await _db.SaveChangesAsync();
-        foreach (var fld in profileDTO.TopFields) {
-            // delete all data of user before any update here
-            await _db.FreelancerFields.AddAsync(fld);
+        // Remove old FreelancerFields and add new ones
+        var FreelancerFields = _db.FreelancerFields.Where(ff => ff.UserId == UserId);
+        if (FreelancerFields != null) {
+            foreach (var freefield in FreelancerFields) {
+                _db.FreelancerFields.Remove(freefield);
+            }
+            await _db.SaveChangesAsync();
         }
 
-        // foreach (var skill in profileDTO.TopSkills) {
-        //     _db.FreelancerSkills.Add(skill);
-        // }
+        foreach (var fld in profileDTO.TopFields) 
+        {
+            _db.FreelancerFields.Add(fld);
+        }
+
+        // Remove old FreelancerSkills and add new ones
+        var FreelancerSkills = _db.FreelancerSkills.Where(ss => ss.UserId == UserId);
+        if (FreelancerSkills != null) {
+            foreach (var freeskill in FreelancerSkills) {
+                _db.FreelancerSkills.Remove(freeskill);
+            }
+            await _db.SaveChangesAsync();
+        }
+
+        foreach (var skl in profileDTO.TopSkills) 
+        {
+            _db.FreelancerSkills.Add(skl);
+        }
+
 
         await _db.SaveChangesAsync();
 
         return Ok(new { Message = "Profile Updated Successfully." });
     }
-    
 }
