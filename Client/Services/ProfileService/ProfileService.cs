@@ -20,8 +20,6 @@ public class ProfileService : IProfile
 
     public async Task UpdateProfileAsync(ProfileDTO profileDTO, string UserId)
     {
-
-        Console.WriteLine($"\n\n\n\n\n {profileDTO} \n\n\n\n\n");
         await _http.PutAsJsonAsync(_url + UserId, profileDTO);
     }
 }
