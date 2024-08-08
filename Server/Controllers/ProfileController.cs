@@ -56,6 +56,7 @@ public class ProfileController : ControllerBase
 
 
     [HttpPut("user/profile")]
+    [Authorize]
     public async Task<IActionResult> UpdateProfile(ProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}

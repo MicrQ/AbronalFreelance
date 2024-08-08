@@ -26,7 +26,7 @@
                 <input @bind="profileDTO.Phone" type="number" minlength="10" maxlength="10" required>
             </div>
             <div class="form-group">
-                <label for="location">Location</label>
+                <label for="location">Country</label>
                 <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
                     <option value="">Select Country</option>
                     @foreach (var country in countries)
@@ -59,32 +59,35 @@
                 <label>Headline</label>
                 <input @bind="profileDTO.Headline" type="text">
             </div>
-            
-            <div class="form-group">
-                <label for="fields">Fields</label>
-                @foreach(var field in freelancerFields) {
-                    <span @onclick="@(() => removeField(@field))">@AllFields.FirstOrDefault(f => f.Id == field.FieldId).Name<i>x</i></span>
-                }
-                <select @bind="@FieldId">
-                    <option value="">Select Fields</option>
-                    @foreach (var fld in AllFields) {
-                        <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="skills">Skills</label>
-                @foreach(var skill in freelancerSkills) {
-                    <span @onclick="@(() => removeSkill(@skill))">@AllSkills.FirstOrDefault(s => s.Id == skill.SkillId).Name<i>x</i></span>
-                }
-                <select @bind="@SkillId">
-                    <option value="">Select Skills</option>
-                    @foreach (var skl in AllSkills) {
-                        <option value="@skl.Id" @onclick="AddSkill">@skl.Name</option>
-                    }
-                </select>
-                
-            </div>
+            <AuthorizeView Roles="Freelancer">
+                <Authorized Context="form">
+                    <div class="form-group">
+                        <label for="fields">Fields</label>
+                        @foreach(var field in freelancerFields) {
+                            <span @onclick="@(() => removeField(@field))">@AllFields.FirstOrDefault(f => f.Id == field.FieldId).Name<i>x</i></span>
+                        }
+                        <select @bind="@FieldId">
+                            <option value="">Select Fields</option>
+                            @foreach (var fld in AllFields) {
+                                <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Skills</label>
+                        @foreach(var skill in freelancerSkills) {
+                            <span @onclick="@(() => removeSkill(@skill))">@AllSkills.FirstOrDefault(s => s.Id == skill.SkillId).Name<i>x</i></span>
+                        }
+                        <select @bind="@SkillId">
+                            <option value="">Select Skills</option>
+                            @foreach (var skl in AllSkills) {
+                                <option value="@skl.Id" @onclick="AddSkill">@skl.Name</option>
+                            }
+                        </select>
+                        
+                    </div>
+                </Authorized>
+            </AuthorizeView>
             <div class="form-group">
                 <button type="submit">Save Changes</button>
                 <h6 class="close" @onclick="EditProfile">Close</h6>
@@ -102,8 +105,12 @@
                 <p><strong>Phone: </strong> @profileDTO.Phone </p>
                 <p><strong>Email: </strong> @profileDTO.Email </p>
                 <p><strong>Location: </strong> @profileDTO.Location </p>
-                <p><strong>Fields: </strong> @profileDTO.FreelancerFields </p>
-                <p><strong>Skills: </strong> @profileDTO.FreelancerSkills </p>
+                <AuthorizeView Roles="Freelancer1">
+                    <Authorized>
+                        <p><strong>Fields: </strong> @profileDTO.FreelancerFields </p>
+                        <p><strong>Skills: </strong> @profileDTO.FreelancerSkills </p>
+                    </Authorized>
+                </AuthorizeView>
             </div>
         </div>
         <button class="edit-button" @onclick="EditProfile">Edit Profile</button>
@@ -111,8 +118,9 @@
 </div>
 
 @code {
+    [Parameter]
+    public string LoggedInUserId { get; set; }
     private bool isEditing = false;
-    private string LoggedInUserId;
 
     private int countryId { get; set; }
     private int regionId { get; set; }
@@ -177,8 +185,6 @@
         countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
 
-        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
         profileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
 
         AllFields = await FieldService.GetAllFieldsAsync();
@@ -203,7 +209,7 @@
     }
 
 
-     private async Task OnCountryChange()
+    private async Task OnCountryChange()
     {
         regions = await LocationService.OnLocationChange(countryId, endpoint);
         if (regions != null)

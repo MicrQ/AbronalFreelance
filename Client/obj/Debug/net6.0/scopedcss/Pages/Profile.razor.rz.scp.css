@@ -173,9 +173,11 @@
     cursor: pointer;
     border-radius: 4px;
     margin-top: 20px;
+    transition: .3s;
 }
 .edit-button:hover[b-j94ijvz21j] {
-    background-color: #ff6b35;
+    background-color: var(--primary-color);
+    box-shadow: 1px 1px 4px var(--action-color);
 }
 
 

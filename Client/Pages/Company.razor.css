@@ -1,14 +1,9 @@
-:root {
-    --primary-color: #02061a;
-    --primary-hover: #01030ef0;
-    --secondary-color: #f8f9fa;
-    --third-color: #dedfdf;
-    --action-color: #ff531a;
+.page-title {
+    font-size: 35px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 2px var(--primary-color);
 }
 
-* {
-    box-sizing: border-box;
-}
 
 .container {
     max-width: 800px;
@@ -42,11 +37,9 @@
     color: var(--secondary-color);
 }
 
-.form-group input[type="text"]:not(.skill-input ),
+.form-group input[type="text"],
 .form-group select,
-.form-group input[type="number"],
-.form-group input[type="file"],
-.form-group textarea {
+.form-group input[type="date"] {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--third-color);
@@ -56,31 +49,7 @@
     color: #000;
 }
 
-.form-group input[class="skill-input"] {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid var(--third-color);
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: var(--third-color);
-    color: #000;
-}
-
-
-.form-group textarea {
-    resize: vertical;
-    margin-top: 15px;
-}
-
-.form-group img {
-    max-width: 100px;
-    display: block;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    margin: 20px auto;
-}
-
-.form-group button:not(.add-btn) {
+.form-group button {
     width: 100%;
     padding: 10px;
     background-color: var(--action-color);
@@ -89,26 +58,7 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.form-group button[class="add-btn"] {
-    width: 15%;
-    padding: 10px;
-    background-color: var(--action-color);
-    border: none;
-    color: var(--secondary-color);
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.form-group .skills,
-.form-group .fields {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+    transition: 0.3s;
 }
 
 .form-group button:hover {
@@ -124,40 +74,17 @@
     transition: .3s;
 }
 
-/* skills and fields */
-.form-group span {
-    padding: 3px 10px;
-    margin: 5px 3px;
-    border-radius: 12px;
-    background-color: #696969;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.form-group span i {
-    border-radius: 50%;
-    font-size: 12px;
-    font-style: normal;
-    color: #000;
-}
-
-
 .form-group .close:hover {
     text-decoration: underline;
 }
 
-/* display profile */
-
+/* display company info */
 .profile-details {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.profile-details .profile-image {
-    width: 100px;
-    margin: 40px;
-    border-radius: 50%;
-}
+
 .profile-info p {
     margin: 5px 25px;
 }
@@ -180,34 +107,21 @@
     box-shadow: 1px 1px 4px var(--action-color);
 }
 
-
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container {
         width: 90%;
         margin: 20px auto;
     }
-    .form-group img {
-        max-width: 80px;
-    }
+
     .profile-details {
         flex-direction: column;
         align-items: center;
     }
+
     .profile-info p {
         margin: 5px 0;
     }
-    .form-group .skills, .form-group .fields {
-        display: block;
-    }
-    .form-group input[class="skill-input"] {
-        width: 100%;
-    }
-    .form-group button[class="add-btn"] {
-        width: 40%;
-        margin-top: 15px;
-    }
-
 }
 
 @media (max-width: 480px) {
@@ -216,21 +130,11 @@
         margin: 10px;
         padding: 15px;
     }
+
     .form-group label,
     .form-group input,
     .form-group select,
-    .form-group textarea,
     .form-group button {
         font-size: 14px;
-    }
-    .form-group img {
-        max-width: 60px;
-    }
-    .profile-details {
-        flex-direction: column;
-        align-items: center;
-    }
-    .profile-details .profile-image {
-        width: 80px;
     }
 }

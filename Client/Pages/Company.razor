@@ -1,5 +1,115 @@
-﻿<h3>Company</h3>
+﻿<h2 class="page-title mb-1">Company</h2>
+
+<div class="container">
+    @if (isEditing) {
+        <h2>Edit Company Information</h2>
+        <EditForm Model="companyDTO" OnValidSubmit="SaveChanges">
+            <div class="form-group">
+                <label>Company Name</label>
+                <input @bind="companyDTO.Name" type="text" required>
+            </div>
+            <div class="form-group">
+                <label>TIN No</label>
+                <input @bind="companyDTO.TinNo" type="text">
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
+                    <option value="">Select Country</option>
+                    @foreach (var country in countries)
+                    {
+                        <option value="@country.Id">@country.Name</option>
+                    }
+                </select>
+                <label>Region</label>
+                <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
+                    <option value="">Select Region</option>
+                    @if (regions != null) {
+                        @foreach (var region in regions)
+                        {
+                            <option value="@region.Id">@region.Name</option>
+                        }
+                    }
+                </select>
+                <label>City</label>
+                <select @bind="companyDTO.LocationId">
+                    <option value="">Select City</option>
+                    @if (cities != null) {
+                        @foreach (var city in cities)
+                        {
+                            <option value="@city.Id">@city.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Established Date</label>
+                <input @bind="companyDTO.EstablishedDate" type="date" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Save Changes</button>
+                <h6 class="close" @onclick="EditCompany">Close</h6>
+            </div>
+        </EditForm>
+    } else {
+        <h2>Company Details</h2>
+        <div class="profile-details">
+            <div class="profile-info">
+                @if (companyDTO.Flag) {
+                    <p><strong>Company Name: </strong> @companyDTO.Name </p>
+                    <p><strong>TIN No: </strong> @companyDTO.TinNo </p>
+                    <p><strong>Location: </strong> @companyDTO.LocationString </p>
+                    <p><strong>Established Date: </strong> @companyDTO.EstablishedDate </p>
+                } else {
+                    <p><ul><li>No company information available</li></ul></p>
+                }
+            </div>
+        </div>
+        <button class="edit-button" @onclick="EditCompany">Edit Company Info</button>
+    }
+</div>
 
 @code {
+    [Parameter]
+    public string LoggedInUserId { get; set; }
+    private bool isEditing = false;
+    private int locationId { get; set; }
+    private int countryId { get; set; }
+    private int regionId { get; set; }
+    private List<Location> countries = new List<Location>();
+    private List<Location>? regions = new List<Location>();
+    private List<Location>? cities = new List<Location>();
+    private List<Location> locations = new List<Location>();
+    private CompanyDTO? companyDTO = new CompanyDTO();
+    private string endpoint = "countries";
 
+
+    private void EditCompany() {
+        isEditing = !isEditing;
+    }
+
+    private async Task SaveChanges() {
+        await CompanyService.UpdateCompany(companyDTO, LoggedInUserId);
+        Navigation.NavigateTo("/company/info", forceLoad: true);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        locations = await LocationService.GetLocations(endpoint);
+        endpoint = "regions/";
+
+        companyDTO = await CompanyService.GetCompany(LoggedInUserId);
+    }
+
+    private async Task OnCountryChange()
+    {
+        regions = await LocationService.OnLocationChange(countryId, endpoint);
+        if (regions != null)
+            endpoint = "cities/";
+    }
+
+    private async Task OnRegionChange()
+    {
+        cities = await LocationService.OnLocationChange(regionId, endpoint);
+    }
 }
