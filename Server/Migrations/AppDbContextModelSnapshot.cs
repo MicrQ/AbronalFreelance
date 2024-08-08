@@ -107,7 +107,7 @@ namespace AbronalFreelance.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CompanyEstablishedAt")
+                    b.Property<DateTime?>("CompanyEstablishedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CompanyLocationId")
@@ -118,7 +118,6 @@ namespace AbronalFreelance.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TinNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -333,18 +332,8 @@ namespace AbronalFreelance.Server.Migrations
                     b.Property<int>("EducationLevelId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("FieldId")
+                    b.Property<int?>("FieldId")
                         .HasColumnType("int");
-
-                    b.Property<string>("InstituteName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartingDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -1239,9 +1228,7 @@ namespace AbronalFreelance.Server.Migrations
 
                     b.HasOne("AbronalFreelance.Shared.Models.Field", "Field")
                         .WithMany()
-                        .HasForeignKey("FieldId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FieldId");
 
                     b.HasOne("AbronalFreelance.Shared.Models.User", "User")
                         .WithMany()
