@@ -1,75 +1,98 @@
 ﻿@page "/findfreelancer"
 
-<div class="main-container">
-    <h2 class="page-title">Find Your Best Freelancer</h2>
-    <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Search by username...">
-        <button class="search-button">Search</button>
-    </div>
-    <div class="result-filter">
-        <p class="display-filters" @onclick="displayFiltersFunc">
-            <span><i class="bi bi-funnel-fill"> </i> Filters</span>
-        </p>
-        <div class="filter-container" style="@displayFilters">
-            <div class="filter-group">
-                <h3>Filter by Skills</h3>
-                <label><input type="checkbox" value="skill1"> JavaScript</label>
-                <label><input type="checkbox" value="skill2"> Python</label>
-                <label><input type="checkbox" value="skill3"> Java</label>
-                <label><input type="checkbox" value="skill4"> C#</label>
-                <label><input type="checkbox" value="skill5"> React</label>
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <div class="main-container">
+            <h2 class="page-title">Find Your Best Freelancer</h2>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search by username...">
+                <button class="search-button">Search</button>
             </div>
-            <div class="filter-group">
-                <h3>Filter by Fields</h3>
-                <label><input type="checkbox" value="field1"> Web Development</label>
-                <label><input type="checkbox" value="field2"> Data Science</label>
-                <label><input type="checkbox" value="field3"> Mobile Development</label>
-                <label><input type="checkbox" value="field4"> DevOps</label>
-                <label><input type="checkbox" value="field5"> Cyber Security</label>
+            <div class="result-filter">
+                <p class="display-filters" @onclick="displayFiltersFunc">
+                    <span><i class="bi bi-funnel-fill"> </i> Filters</span>
+                </p>
+                <div class="filter-container" style="@displayFilters">
+                    <div class="filter-group">
+                        <h3>Filter by Skills</h3>
+                        @foreach (var skill in AllSkills) {
+                            <label><input type="checkbox" value="@skill.Id"> @skill.Name</label>
+                        }
+                    </div>
+                    <div class="filter-group">
+                        <h3>Filter by Fields</h3>
+                        @foreach (var field in AllFields) {
+                            <label><input type="checkbox" value="@field.Id"> @field.Name</label>
+                        }
+                    </div>
+                    <div class="filter-group">
+                        <h3>Filter by Locations</h3>
+                        @foreach (var city in Cities) {
+                            <label><input type="checkbox" value="@city.Id"> @city.Name</label>
+                        }
+                    </div>
+                </div>
+                <div class="result-container">
+                    <div class="result-item">
+                        <div class="profile-picture">
+                            <img src="img/default-avatar.png" alt="Profile Picture">
+                        </div>
+                        <div class="result-details">
+                            <p><strong>Michael Jordan</strong></p>
+                            <p><i>@("@michael")</i></p>
+                            <p><strong></strong> Fullstack Software Engineer| Python</p>
+                            <p class="rating"><span class="star-icon">&#9733;</span> 4.5/5</p>
+                        </div>
+                    </div>
+                    <div class="result-item">
+                        <div class="profile-picture">
+                            <img src="img/default-avatar.png" alt="Profile Picture">
+                        </div>
+                        <div class="result-details">
+                            <p><strong>Michael Jordan</strong></p>
+                            <p><i>@("@michael")</i></p>
+                            <p><strong></strong> Fullstack Software Engineer| Python</p>
+                            <p class="rating"><span class="star-icon">&#9733;</span> 4.5/5</p>
+                        </div>
+                    </div>
+                <div class="result-item">
+                        <div class="profile-picture">
+                            <img src="img/default-avatar.png" alt="Profile Picture">
+                        </div>
+                        <div class="result-details">
+                            <p><strong>Michael Jordan</strong></p>
+                            <p><i>@("@michael")</i></p>
+                            <p><strong></strong> Fullstack Software Engineer| Python</p>
+                            <p class="rating"><span class="star-icon">&#9733;</span> 4.5/5</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="result-container">
-            <div class="result-item">
-                <div class="profile-picture">
-                    <img src="img/default-avatar.png" alt="Profile Picture">
-                </div>
-                <div class="result-details">
-                    <p><strong>Michael Jordan</strong></p>
-                    <p><i>@("@michael")</i></p>
-                    <p><strong></strong> Fullstack Software Engineer| Python</p>
-                    <p class="rating"><span class="star-icon">&#9733;</span> 4.5/5</p>
-                </div>
-            </div>
-            <div class="result-item">
-                <div class="profile-picture">
-                    <img src="img/default-avatar.png" alt="Profile Picture">
-                </div>
-                <div class="result-details">
-                    <p><strong>Michael Jordan</strong></p>
-                    <p><i>@("@michael")</i></p>
-                    <p><strong></strong> Fullstack Software Engineer| Python</p>
-                    <p class="rating"><span class="star-icon">&#9733;</span> 4.5/5</p>
-                </div>
-            </div>
-           <div class="result-item">
-                <div class="profile-picture">
-                    <img src="img/default-avatar.png" alt="Profile Picture">
-                </div>
-                <div class="result-details">
-                    <p><strong>Michael Jordan</strong></p>
-                    <p><i>@("@michael")</i></p>
-                    <p><strong></strong> Fullstack Software Engineer| Python</p>
-                    <p class="rating"><span class="star-icon">&#9733;</span> 4.5/5</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </Authorized>
+    <NotAuthorized>
+        401 page
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
     private string displayFilters = "";
+    private List<Skill> AllSkills = new List<Skill>();
+    private List<Field> AllFields = new List<Field>();
+    private List<Location> Cities = new List<Location>();
+
+    private List<int> Skills = new List<int>();
+    private List<int> Fields = new List<int>();
+    private List<int> Locations = new List<int>();
+
 
     private void displayFiltersFunc() {
         displayFilters = "" == displayFilters ? "display: block;" : "";
+    }
+
+    protected async override Task OnInitializedAsync() {
+        AllSkills = await SkillService.GetAllSkillsAsync();
+        AllFields = await FieldService.GetAllFieldsAsync();
+        Cities = await LocationService.GetAllCities();
     }
 }

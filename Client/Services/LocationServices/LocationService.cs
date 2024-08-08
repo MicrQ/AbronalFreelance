@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using AbronalFreelance.Shared.Models;
 using AbronalFreelance.Shared.DTOs;
+using System.Reflection.Metadata;
 
 
 namespace AbronalFreelance.Client.Services.LocationServices;
@@ -8,6 +9,7 @@ namespace AbronalFreelance.Client.Services.LocationServices;
 public class LocationService : ILocation
 {
     private readonly HttpClient _http;
+    private readonly string _url = "api/location";
 
     public LocationService(HttpClient http)
     {
@@ -18,7 +20,7 @@ public class LocationService : ILocation
 
     public async Task<List<Location>> GetLocations(string endpoint)
     {
-        return await _http.GetFromJsonAsync<List<Location>>("api/location/" + endpoint);
+        return await _http.GetFromJsonAsync<List<Location>>(_url + endpoint);
     }
 
     public async Task<List<Location>> OnLocationChange(int id, string endpoint)
@@ -31,12 +33,12 @@ public class LocationService : ILocation
     }
    
     public async Task<List<Location>> GetAllLocations() {
-        return await _http.GetFromJsonAsync<List<Location>>($"api/locations");
+        return await _http.GetFromJsonAsync<List<Location>>("api/locations");
     }
 
     public async Task<Location> GetLocation(int id)
     {
-        return await _http.GetFromJsonAsync<Location>($"api/location/{id}");
+        return await _http.GetFromJsonAsync<Location>(_url + id);
     }
 
     public async Task AddLocation(LocationDTO locationDTO)
@@ -47,12 +49,12 @@ public class LocationService : ILocation
             ParentId = locationDTO.ParentId
         };
 
-        await _http.PostAsJsonAsync("api/location", location);
+        await _http.PostAsJsonAsync(_url, location);
     }
 
     public async Task EditLocation(Location location)
     {
-        await _http.PutAsJsonAsync("api/location", location);
+        await _http.PutAsJsonAsync(_url, location);
     }
     
     public async Task DeleteLocation(int id)
@@ -70,4 +72,7 @@ public class LocationService : ILocation
         return await _http.GetFromJsonAsync<List<Location>>($"api/locations/location-type/{id}");
     }
 
+    public async Task<List<Location>> GetAllCities() {
+        return await _http.GetFromJsonAsync<List<Location>>(_url + "/cities");
+    }
 }

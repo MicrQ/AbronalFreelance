@@ -17,6 +17,7 @@ public interface ILocation
 
     Task EditLocation(Location location);
     Task DeleteLocation(int id);
+    Task<List<Location>> GetAllCities();
 
 
     // for location types
