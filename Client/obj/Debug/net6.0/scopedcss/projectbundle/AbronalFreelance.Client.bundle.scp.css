@@ -139,6 +139,117 @@
         font-size: 14px;
     }
 }
+/* /Pages/FindFreelancer.razor.rz.scp.css */
+
+.container[b-jhg0ia8qh3] {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: var(--secondary-color);
+}
+
+.page-title[b-jhg0ia8qh3] {
+    font-size: 35px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 2px var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-section[b-jhg0ia8qh3] {
+    margin-bottom: 30px;
+}
+
+.form-group[b-jhg0ia8qh3] {
+    margin-bottom: 15px;
+}
+
+.form-group label[b-jhg0ia8qh3] {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+.form-group input[type="text"][b-jhg0ia8qh3],
+.form-group select[b-jhg0ia8qh3] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--third-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--third-color);
+    color: #000;
+}
+
+.form-group select[b-jhg0ia8qh3] {
+    height: 100px;
+}
+
+.search-button[b-jhg0ia8qh3] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--action-color);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover[b-jhg0ia8qh3] {
+    background-color: var(--primary-hover);
+    box-shadow: 1px 1px 4px var(--action-color);
+}
+
+.results-section[b-jhg0ia8qh3] {
+    margin-top: 30px;
+}
+
+.results-section h3[b-jhg0ia8qh3] {
+    margin-bottom: 20px;
+    color: var(--action-color);
+    text-align: center;
+}
+
+.result-item[b-jhg0ia8qh3] {
+    background-color: var(--third-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.result-item p[b-jhg0ia8qh3] {
+    margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container[b-jhg0ia8qh3] {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container[b-jhg0ia8qh3] {
+        width: 100%;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .form-group label[b-jhg0ia8qh3],
+    .form-group input[b-jhg0ia8qh3],
+    .form-group select[b-jhg0ia8qh3],
+    .search-button[b-jhg0ia8qh3] {
+        font-size: 14px;
+    }
+}
 /* /Pages/Locations.razor.rz.scp.css */
 table[b-twgl6rf1ty] {
     width: 70%;

@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcGFueS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-giwb823e2q
 
+[/home/niq/AbronalFreelance/Client/Pages/FindFreelancer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmluZEZyZWVsYW5jZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-jhg0ia8qh3
+
 [/home/niq/AbronalFreelance/Client/Pages/Locations.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9jYXRpb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-twgl6rf1ty

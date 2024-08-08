@@ -57,14 +57,14 @@ namespace AbronalFreelance.Server.Controllers
                     UserId = userId,
                     CompanyName = companyDTO.Name,
                     TinNo = companyDTO.TinNo,
-                    CompanyLocationId = companyDTO.LocationId ?? 0,
+                    CompanyLocationId = companyDTO.LocationId,
                     CompanyEstablishedAt = companyDTO.EstablishedDate
                 };
                 await _db.Clients.AddAsync(company);
             } else {
                 company.CompanyName = companyDTO.Name;
                 company.TinNo = companyDTO.TinNo;
-                company.CompanyLocationId = companyDTO.LocationId ?? 0;
+                company.CompanyLocationId = companyDTO.LocationId;
                 company.CompanyEstablishedAt = companyDTO.EstablishedDate;
             }
 
@@ -77,7 +77,7 @@ namespace AbronalFreelance.Server.Controllers
         }
 
 
-        private List<string> GetLocationString(int LocationId) {
+        private List<string> GetLocationString(int? LocationId) {
         // used to generate the string version of the givel address id
         int? loc_id;
         List<string> location = new List<string>();

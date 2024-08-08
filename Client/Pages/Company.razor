@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
-                <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange">
+                <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange" required>
                     <option value="">Select Country</option>
                     @foreach (var country in countries)
                     {
@@ -22,7 +22,7 @@
                     }
                 </select>
                 <label>Region</label>
-                <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange">
+                <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange" required>
                     <option value="">Select Region</option>
                     @if (regions != null) {
                         @foreach (var region in regions)
@@ -32,7 +32,7 @@
                     }
                 </select>
                 <label>City</label>
-                <select @bind="companyDTO.LocationId">
+                <select @bind="companyDTO.LocationId" required>
                     <option value="">Select City</option>
                     @if (cities != null) {
                         @foreach (var city in cities)
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label>Established Date</label>
-                <input @bind="companyDTO.EstablishedDate" type="date" required>
+                <input @bind="companyDTO.EstablishedDate" type="date">
             </div>
             <div class="form-group">
                 <button type="submit">Save Changes</button>
@@ -88,6 +88,7 @@
     }
 
     private async Task SaveChanges() {
+        companyDTO.UserId = LoggedInUserId;
         await CompanyService.UpdateCompany(companyDTO, LoggedInUserId);
         Navigation.NavigateTo("/user/profile", forceLoad: true);
     }

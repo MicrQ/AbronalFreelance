@@ -70,7 +70,7 @@ public class ProfileController : ControllerBase
         user.FirstName = profileDTO.FirstName;
         user.LastName = profileDTO.LastName;
         user.LocationId = profileDTO.LocationId;
-        user.UserName = profileDTO.UserName;
+        // user.UserName = profileDTO.UserName;
         user.PhoneNumber = profileDTO.Phone;
 
         // Update or add profile

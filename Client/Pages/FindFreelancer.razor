@@ -1,0 +1,60 @@
+﻿@page "/findfreelancer"
+
+<div class="container">
+    <h2 class="page-title">User Search</h2>
+    <div class="search-section">
+        <div class="form-group">
+            <label for="username">Search by Username</label>
+            <input type="text" id="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label for="skills">Filter by Skills</label>
+            <select id="skills" multiple>
+                <option value="skill1">JavaScript</option>
+                <option value="skill2">Python</option>
+                <option value="skill3">Java</option>
+                <option value="skill4">C#</option>
+                <option value="skill5">React</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fields">Filter by Fields</label>
+            <select id="fields" multiple>
+                <option value="field1">Web Development</option>
+                <option value="field2">Data Science</option>
+                <option value="field3">Mobile Development</option>
+                <option value="field4">DevOps</option>
+                <option value="field5">Cyber Security</option>
+            </select>
+        </div>
+        <button class="search-button">Search</button>
+    </div>
+    <div class="results-section">
+        <h3>Search Results</h3>
+        <div class="result-item">
+            <p><strong>Username:</strong> user123</p>
+            <p><strong>Skills:</strong> JavaScript, Python</p>
+            <p><strong>Fields:</strong> Web Development, Data Science</p>
+        </div>
+        <div class="result-item">
+            <p><strong>Username:</strong> dev456</p>
+            <p><strong>Skills:</strong> C#, React</p>
+            <p><strong>Fields:</strong> Web Development, Mobile Development</p>
+        </div>
+        <div class="result-item">
+            <p><strong>Username:</strong> dev456</p>
+            <p><strong>Skills:</strong> C#, React</p>
+            <p><strong>Fields:</strong> Web Development, Mobile Development</p>
+        </div>
+        <div class="result-item">
+            <p><strong>Username:</strong> dev456</p>
+            <p><strong>Skills:</strong> C#, React</p>
+            <p><strong>Fields:</strong> Web Development, Mobile Development</p>
+        </div>
+        <!-- Add more results as needed -->
+    </div>
+</div>
+
+@code {
+
+}
