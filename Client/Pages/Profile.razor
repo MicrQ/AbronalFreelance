@@ -22,10 +22,6 @@
                 <input @bind="profileDTO.UserName" type="text" required>
             </div>
             <div class="form-group">
-                <label>Email</label>
-                <input @bind="profileDTO.Email" type="text" required>
-            </div>
-            <div class="form-group">
                 <label>Phone Number</label>
                 <input @bind="profileDTO.Phone" type="number" minlength="10" maxlength="10" required>
             </div>
@@ -173,7 +169,7 @@
         profileDTO.TopFields = freelancerFields;
         profileDTO.TopSkills = freelancerSkills;
         await ProfileService.UpdateProfileAsync(profileDTO, LoggedInUserId);
-        //Navigation.NavigateTo("/user/profile", forceLoad: true);
+        Navigation.NavigateTo("/user/profile", forceLoad: true);
     }
 
     protected override async Task OnInitializedAsync()

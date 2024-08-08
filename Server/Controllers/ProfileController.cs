@@ -41,8 +41,8 @@ public class ProfileController : ControllerBase
             Email = user.Email,
             Phone = user.PhoneNumber,
             Headline = profile != null ? profile.Headline : null,
-            FreelancerFields = GetFreelancerFieldString(freelancerFields) + ", ...",
-            FreelancerSkills = GetFreelancerSkillString(freelancerSkills) + ", ...",
+            FreelancerFields = GetFreelancerFieldString(freelancerFields).Length > 0 ? GetFreelancerFieldString(freelancerFields) + ", ..." : "",
+            FreelancerSkills = GetFreelancerSkillString(freelancerSkills).Length > 0 ? GetFreelancerSkillString(freelancerSkills) + ", ..." : "",
             TopSkills = freelancerSkills != null ? freelancerSkills : new List<FreelancerSkill>(),
             TopFields = freelancerFields != null ? freelancerFields : new List<FreelancerField>(),
             Location = string.Join(", ", GetUserLocation(user.LocationId)),
@@ -70,7 +70,6 @@ public class ProfileController : ControllerBase
         user.LastName = profileDTO.LastName;
         user.LocationId = profileDTO.LocationId;
         user.UserName = profileDTO.UserName;
-        user.Email = profileDTO.Email;
         user.PhoneNumber = profileDTO.Phone;
 
         // Update or add profile

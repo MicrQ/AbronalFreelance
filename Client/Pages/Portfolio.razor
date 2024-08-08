@@ -1,11 +1,11 @@
-﻿<h2 class="page-title mb-1">Portfolio @LoggedInUserId</h2>
+﻿<h2 class="page-title mb-1">Portfolio</h2>
 
 <div class="add-btn">
     <button class="btn btn-primary mb-3 p-2" @onclick="@(() => ManagePortfolio(null))">@btnName</button>
 </div>
 
 @if (!addEdit) {
-    @if (freelancerPortfolios != null) {
+    @if (freelancerPortfolios != null || freelancerPortfolios.Count != 0) {
         foreach(var portfolio in freelancerPortfolios) {
             <div class="list-container">
                 <div class="list">
