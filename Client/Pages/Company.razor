@@ -58,7 +58,7 @@
                 @if (companyDTO.Flag) {
                     <p><strong>Company Name: </strong> @companyDTO.Name </p>
                     <p><strong>TIN No: </strong> @companyDTO.TinNo </p>
-                    <p><strong>Location: </strong> @companyDTO.LocationString </p>
+                    <p><strong>Company Location: </strong> @companyDTO.LocationString </p>
                     <p><strong>Established Date: </strong> @companyDTO.EstablishedDate </p>
                 } else {
                     <p><ul><li>No company information available</li></ul></p>
@@ -79,7 +79,6 @@
     private List<Location> countries = new List<Location>();
     private List<Location>? regions = new List<Location>();
     private List<Location>? cities = new List<Location>();
-    private List<Location> locations = new List<Location>();
     private CompanyDTO? companyDTO = new CompanyDTO();
     private string endpoint = "countries";
 
@@ -90,12 +89,12 @@
 
     private async Task SaveChanges() {
         await CompanyService.UpdateCompany(companyDTO, LoggedInUserId);
-        Navigation.NavigateTo("/company/info", forceLoad: true);
+        Navigation.NavigateTo("/user/profile", forceLoad: true);
     }
 
     protected override async Task OnInitializedAsync()
     {
-        locations = await LocationService.GetLocations(endpoint);
+        countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
 
         companyDTO = await CompanyService.GetCompany(LoggedInUserId);

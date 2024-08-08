@@ -32,7 +32,15 @@ namespace AbronalFreelance.Server.Controllers
             return Ok(company == null ? new CompanyDTO {
                     Message = "No Company Information",
                     Flag = false
-                } : company);
+                } : new CompanyDTO {
+                    UserId = company.UserId,
+                    Name = company.CompanyName,
+                    TinNo = company.TinNo,
+                    LocationId = company.CompanyLocationId,
+                    LocationString = string.Join(", ", GetLocationString(company.CompanyLocationId)),
+                    EstablishedDate = company.CompanyEstablishedAt,
+                    Flag = true
+                });
         }
 
         [HttpPut]
@@ -49,15 +57,15 @@ namespace AbronalFreelance.Server.Controllers
                     UserId = userId,
                     CompanyName = companyDTO.Name,
                     TinNo = companyDTO.TinNo,
-                    CompanyLocationId = (int)companyDTO.LocationId,
-                    CompanyEstablishedAt = (DateTime)companyDTO.EstablishedDate
+                    CompanyLocationId = companyDTO.LocationId ?? 0,
+                    CompanyEstablishedAt = companyDTO.EstablishedDate
                 };
                 await _db.Clients.AddAsync(company);
             } else {
                 company.CompanyName = companyDTO.Name;
                 company.TinNo = companyDTO.TinNo;
-                company.CompanyLocationId = (int)companyDTO.LocationId;
-                company.CompanyEstablishedAt = (DateTime)companyDTO.EstablishedDate;
+                company.CompanyLocationId = companyDTO.LocationId ?? 0;
+                company.CompanyEstablishedAt = companyDTO.EstablishedDate;
             }
 
             await _db.SaveChangesAsync();
@@ -67,5 +75,26 @@ namespace AbronalFreelance.Server.Controllers
                 Flag = true
             });
         }
+
+
+        private List<string> GetLocationString(int LocationId) {
+        // used to generate the string version of the givel address id
+        int? loc_id;
+        List<string> location = new List<string>();
+        List<Location> locations = _db.Locations.ToList();
+
+        foreach (var loc in locations){
+            if (loc.Id == LocationId) {
+                loc_id = loc.Id;
+                while (loc_id != null) {
+                    Location Loc = locations.FirstOrDefault(l => l.Id == loc_id);
+                    location.Add(Loc.Name);
+                    loc_id = Loc.ParentId;
+                }
+            }
+        }
+
+        return location;
+    }
     }
 }
