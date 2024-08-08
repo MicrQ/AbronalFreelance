@@ -1,110 +1,233 @@
-
-.container {
-    max-width: 800px;
+.main-container {
+    width: 96%;
     margin: 50px auto;
-    padding: 40px;
+    padding: 20px;
     background-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .page-title {
-    font-size: 35px;
+    font-size: 32px;
     color: var(--secondary-color);
-    text-shadow: 1px 1px 2px var(--primary-color);
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.search-section {
-    margin-bottom: 30px;
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--secondary-color);
-}
-
-.form-group input[type="text"],
-.form-group select {
-    width: 100%;
+.search-input {
+    width: 40%;
     padding: 10px;
     border: 1px solid var(--third-color);
-    border-radius: 4px;
-    box-sizing: border-box;
+    border-radius: 4px 0 0 4px;
     background-color: var(--third-color);
     color: #000;
-}
-
-.form-group select {
-    height: 100px;
+    font-size: 16px;
 }
 
 .search-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
+    padding: 10px 30px;
     background-color: var(--action-color);
     border: none;
+    border-radius: 0 4px 4px 0;
     color: var(--secondary-color);
-    font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
     background-color: var(--primary-hover);
-    box-shadow: 1px 1px 4px var(--action-color);
 }
 
-.results-section {
-    margin-top: 30px;
+.result-filter {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.results-section h3 {
-    margin-bottom: 20px;
-    color: var(--action-color);
-    text-align: center;
-}
-
-.result-item {
+.result-container {
+    flex: 4;
     background-color: var(--third-color);
     padding: 20px;
     border-radius: 8px;
-    margin-bottom: 15px;
     color: #000;
+    overflow: auto;
 }
 
-.result-item p {
+/* Result Item */
+.result-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid var(--third-color);
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.result-item:hover {
+    background-color: var(--third-color);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-picture {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+}
+
+.result-details {
+    flex-grow: 1;
+}
+
+.result-details p {
     margin: 5px 0;
+}
+
+.result-details p strong {
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.result-details p i {
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+.result-details p.rating {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--action-color);
+}
+
+.star-icon {
+    font-size: 20px;
+    color: #ffb400;
+    margin-right: 5px;
+}
+
+.filter-container {
+    flex: 1;
+    background-color: var(--third-color);
+    padding: 20px;
+    border-radius: 8px;
+    color: #000;
+    overflow: auto;
+}
+
+.display-filters span {
+    background-color: rgb(100, 84, 84);
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.display-filters {
+    display: none;
+
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 10px;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
-        margin: 20px auto;
+    .display-filters {
+        display: block;
+    }
+    .result-filter {
+        flex-direction: column;
+    }
+    .search-input {
+        width: 70%;
+    }
+    .filter-container {
+        display: none;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .search-input {
+        width: 100%;
+    }
+
+    .result-filter {
+        flex-direction: column;
+    }
+
+    .filter-container {
+        display: none;
+    }
+
+    .result-container {
+        flex: 1;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        width: 100%;
-        margin: 10px;
-        padding: 15px;
+    .filter-container {
+        margin-bottom: 20px;
     }
 
-    .form-group label,
-    .form-group input,
-    .form-group select,
-    .search-button {
-        font-size: 14px;
+    .filter-container.collapsed {
+        display: none;
+    }
+}
+
+.show-filters-button {
+    display: none;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: var(--action-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.show-filters-button:hover {
+    background-color: var(--primary-hover);
+}
+
+@media (max-width: 480px) {
+    .show-filters-button {
+        display: block;
     }
 }

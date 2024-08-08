@@ -59,7 +59,7 @@
                     <p><strong>Company Name: </strong> @companyDTO.Name </p>
                     <p><strong>TIN No: </strong> @companyDTO.TinNo </p>
                     <p><strong>Company Location: </strong> @companyDTO.LocationString </p>
-                    <p><strong>Established Date: </strong> @companyDTO.EstablishedDate </p>
+                    <p><strong>Established Date: </strong> @companyDTO.EstablishedDate.Value.ToString("dd/MM/yyyy") </p>
                 } else {
                     <p><ul><li>No company information available</li></ul></p>
                 }
