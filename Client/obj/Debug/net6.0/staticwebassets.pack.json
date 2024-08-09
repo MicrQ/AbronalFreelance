@@ -1,95 +1,135 @@
 {
   "Files": [
     {
-      "Id": "/home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/blazor.webassembly.js",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/blazor.webassembly.js",
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/3faqqu9jxw.gz",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/obj/Debug/net6.0/compressed/3faqqu9jxw.gz",
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/bundle/AbronalFreelance.Client.styles.css",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/bundle/AbronalFreelance.Client.styles.css",
       "PackagePath": "staticwebassets/AbronalFreelance.Client.styles.css"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/app.css",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/aos.css",
+      "PackagePath": "staticwebassets/css/aos.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/app.css",
       "PackagePath": "staticwebassets/css/app.css"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/bootstrap/bootstrap.min.css",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/bootstrap/bootstrap.min.css",
       "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/bootstrap/bootstrap.min.css.map",
       "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/FONT-LICENSE",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/font-awesome-all.min.css",
+      "PackagePath": "staticwebassets/css/font-awesome-all.min.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/glightbox.min.css",
+      "PackagePath": "staticwebassets/css/glightbox.min.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/nice-select.css",
+      "PackagePath": "staticwebassets/css/nice-select.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/FONT-LICENSE",
       "PackagePath": "staticwebassets/css/open-iconic"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/ICON-LICENSE",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/ICON-LICENSE",
       "PackagePath": "staticwebassets/css/open-iconic"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/README.md",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/README.md",
       "PackagePath": "staticwebassets/css/open-iconic/README.md"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "PackagePath": "staticwebassets/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
       "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.eot"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
       "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.otf"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
       "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.svg"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
       "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.ttf"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
       "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.woff"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/favicon.ico",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/quill.core.css",
+      "PackagePath": "staticwebassets/css/quill.core.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/quill.snow.css",
+      "PackagePath": "staticwebassets/css/quill.snow.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/resposive.css",
+      "PackagePath": "staticwebassets/css/resposive.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/style.css",
+      "PackagePath": "staticwebassets/css/style.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/css/swiper-bundle.min.css",
+      "PackagePath": "staticwebassets/css/swiper-bundle.min.css"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/icon-192.png",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/icon-192.png",
       "PackagePath": "staticwebassets/icon-192.png"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/default-avatar.png",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/img/default-avatar.png",
       "PackagePath": "staticwebassets/img/default-avatar.png"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/img1.jpeg",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/img/img1.jpeg",
       "PackagePath": "staticwebassets/img/img1.jpeg"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/mainpage-bg.jpg",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/img/mainpage-bg.jpg",
       "PackagePath": "staticwebassets/img/mainpage-bg.jpg"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/user.png",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/img/user.png",
       "PackagePath": "staticwebassets/img/user.png"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/index.html",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },
     {
-      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/script/script.js",
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/script/script.js",
       "PackagePath": "staticwebassets/script/script.js"
     },
     {
