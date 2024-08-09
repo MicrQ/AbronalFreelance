@@ -1,0 +1,24 @@
+HTTrack3.49-2 launched on Fri, 09 Aug 2024 09:38:52 at https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048
+(httrack https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048 -O abronal-template -w -%c20 -%e5 -s0 -%k )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+09:38:52	Warning: 	* security warning: maximum number of connections per second limited to 5.000000 to avoid server overload
+09:39:22	Error: 	"Forbidden" (403) at link s3.envato.com/ (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:39:22	Error: 	"Not Found" (404) at link https://codecanyon.net/item/workzone-freelancer-gig-service-order-job-posting-marketpl..." (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:39:22	Error: 	"Bad Request" (400) at link https://www.googletagmanager.com/gtm.js?id= (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:40:57	Error: 	"Gone" (410) at link https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/linkid.js (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:40:57	Warning: 	Retry after error -5 (error:00000005:lib(0):func(0):DH lib) at link https://localhost/ (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:40:58	Error: 	"Gone" (410) at link https://preview.themeforest.net/ (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:42:35	Error: 	"Not Found" (404) at link https://themeforest.net/item/workzone-freelance-marketplace-html-template/linkid.js (from https://themeforest.net/item/workzone-freelance-marketplace-html-template/51220508)
+09:45:15	Warning: 	Retry after error -5 (error:00000005:lib(0):func(0):DH lib) at link https://localhost/ (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+09:45:15	Error: 	"Not Found" (404) at link https://themeforest.net/item/workzone-freelance-marketplace-html-template/reviews/linkid.js (from https://themeforest.net/item/workzone-freelance-marketplace-html-template/reviews/51220508)
+09:45:15	Error: 	"Not Found" (404) at link https://themeforest.net/item/workzone-freelance-marketplace-html-template/51220508/linkid.js (from https://themeforest.net/item/workzone-freelance-marketplace-html-template/51220508/comments)
+09:45:15	Error: 	"Not Found" (404) at link https://themeforest.net/item/workzone-freelance-marketplace-html-template/screenshots/linkid.js (from https://themeforest.net/item/workzone-freelance-marketplace-html-template/screenshots/51220508)
+09:45:31	Error: 	"error:00000005:lib(0):func(0):DH lib" (-5) after 2 retries at link https://localhost/ (from https://preview.themeforest.net/item/workzone-freelance-marketplace-html-template/full_screen_preview/51220508?_ga=2.243963013.1055154810.1723183048-735251897.1723183048)
+
+HTTrack Website Copier/3.49-2 mirror complete in 6 minutes 46 seconds : 351 links scanned, 339 files written (40135983 bytes overall) [26892183 bytes received at 66236 bytes/sec], 27520904 bytes transferred using HTTP compression in 181 files, ratio 50%, 1.2 requests per connection
+(10 errors, 3 warnings, 0 messages)
