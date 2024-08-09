@@ -105,6 +105,38 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-brands-400.ttf",
+      "PackagePath": "staticwebassets/fonts/fa-brands-400.ttf"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-brands-400.woff2",
+      "PackagePath": "staticwebassets/fonts/fa-brands-400.woff2"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-regular-400.ttf",
+      "PackagePath": "staticwebassets/fonts/fa-regular-400.ttf"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-regular-400.woff2",
+      "PackagePath": "staticwebassets/fonts/fa-regular-400.woff2"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-solid-900.ttf",
+      "PackagePath": "staticwebassets/fonts/fa-solid-900.ttf"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-solid-900.woff2",
+      "PackagePath": "staticwebassets/fonts/fa-solid-900.woff2"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets/fonts/fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/fonts/fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets/fonts/fa-v4compatibility.woff2"
+    },
+    {
       "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/icon-192.png",
       "PackagePath": "staticwebassets/icon-192.png"
     },
@@ -875,6 +907,62 @@
     {
       "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/aos.js",
+      "PackagePath": "staticwebassets/js/aos.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/glightbox.min.js",
+      "PackagePath": "staticwebassets/js/glightbox.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/imagesloaded.pkgd.min.js",
+      "PackagePath": "staticwebassets/js/imagesloaded.pkgd.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/isotope.pkgd.min.js",
+      "PackagePath": "staticwebassets/js/isotope.pkgd.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/jquery-migrate.min.js",
+      "PackagePath": "staticwebassets/js/jquery-migrate.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/jquery.counterup.min.js",
+      "PackagePath": "staticwebassets/js/jquery.counterup.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/jquery.min.js",
+      "PackagePath": "staticwebassets/js/jquery.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/jquery.nice-select.min.js",
+      "PackagePath": "staticwebassets/js/jquery.nice-select.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/main.js",
+      "PackagePath": "staticwebassets/js/main.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/popper.min.js",
+      "PackagePath": "staticwebassets/js/popper.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/quill.js",
+      "PackagePath": "staticwebassets/js/quill.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/swiper-bundle.min.js",
+      "PackagePath": "staticwebassets/js/swiper-bundle.min.js"
+    },
+    {
+      "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/js/waypoints.min.js",
+      "PackagePath": "staticwebassets/js/waypoints.min.js"
     },
     {
       "Id": "/home/niq/mock/AbronalFreelance/Client/wwwroot/script/script.js",
