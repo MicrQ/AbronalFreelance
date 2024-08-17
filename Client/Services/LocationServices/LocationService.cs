@@ -9,7 +9,7 @@ namespace AbronalFreelance.Client.Services.LocationServices;
 public class LocationService : ILocation
 {
     private readonly HttpClient _http;
-    private readonly string _url = "api/location";
+    private readonly string _url = "api/location/";
 
     public LocationService(HttpClient http)
     {
