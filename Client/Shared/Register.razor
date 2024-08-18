@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="phone" class="form-label">Email <span class="text-lime-300">*</span></label>
-                                <input @bind="registerModel.Email" type="text" id="email" placeholder="example@email.com" class="form-control shadow-none" />
+                                <input @bind="registerModel.Email" type="email" id="email" placeholder="example@email.com" class="form-control shadow-none" />
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="country" class="form-label">Country <span class="text-lime-300">*</span></label>
@@ -116,12 +116,8 @@
                                 </select>
                             </div>
                             <div class="form-input col-lg-12">
-                                <label for="password" class="form-label">Address <span class="text-lime-300">*</span></label>
-                                <input type="text" id="password" placeholder="Address here" class="form-control shadow-none" />
-                            </div>
-                            <div class="form-input col-lg-12">
                                 <label for="password" class="form-label">Password <span class="text-lime-300">*</span></label>
-                                <input type="text" id="password" placeholder="********" class="form-control shadow-none" />
+                                <input type="password" id="password" placeholder="********" class="form-control shadow-none" />
                             </div>
                         </div>
                         <div class="d-grid mt-4">
@@ -157,7 +153,6 @@
 
     private int countryId;
     private int regionId;
-    private bool showForm = false;
 
     
     private async Task RegisterAsync()
@@ -190,13 +185,11 @@
     private void regClient()
     {
         registerModel.Role = "Client";
-        showForm = true;
     }
 
     private void regFreelancer()
     {
         registerModel.Role = "Freelancer";
-        showForm = true;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
