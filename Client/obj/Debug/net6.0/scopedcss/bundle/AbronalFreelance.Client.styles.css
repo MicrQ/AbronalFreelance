@@ -494,7 +494,7 @@ table[b-twgl6rf1ty] {
 }
 
 /* /Pages/Profile.razor.rz.scp.css */
-:root[b-j94ijvz21j] {
+/* :root {
     --primary-color: #02061a;
     --primary-hover: #01030ef0;
     --secondary-color: #f8f9fa;
@@ -502,11 +502,11 @@ table[b-twgl6rf1ty] {
     --action-color: #ff531a;
 }
 
-*[b-j94ijvz21j] {
+* {
     box-sizing: border-box;
 }
 
-.container[b-j94ijvz21j] {
+.container {
     max-width: 800px;
     margin: 50px auto;
     padding: 40px;
@@ -516,33 +516,33 @@ table[b-twgl6rf1ty] {
     color: var(--secondary-color);
 }
 
-.page-title[b-j94ijvz21j] {
+.page-title {
     font-size: 35px;
     color: var(--secondary-color);
     text-shadow: 1px 1px 2px var(--primary-color);
 }
 
-.container h2[b-j94ijvz21j] {
+.container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--action-color);
 }
 
-.form-group[b-j94ijvz21j] {
+.form-group {
     margin-bottom: 15px;
 }
 
-.form-group label[b-j94ijvz21j] {
+.form-group label {
     display: block;
     margin-bottom: 5px;
     color: var(--secondary-color);
 }
 
-.form-group input[type="text"]:not(.skill-input )[b-j94ijvz21j],
-.form-group select[b-j94ijvz21j],
-.form-group input[type="number"][b-j94ijvz21j],
-.form-group input[type="file"][b-j94ijvz21j],
-.form-group textarea[b-j94ijvz21j] {
+.form-group input[type="text"]:not(.skill-input ),
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="file"],
+.form-group textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--third-color);
@@ -552,7 +552,7 @@ table[b-twgl6rf1ty] {
     color: #000;
 }
 
-.form-group input[class="skill-input"][b-j94ijvz21j] {
+.form-group input[class="skill-input"] {
     width: 80%;
     padding: 10px;
     border: 1px solid var(--third-color);
@@ -563,12 +563,12 @@ table[b-twgl6rf1ty] {
 }
 
 
-.form-group textarea[b-j94ijvz21j] {
+.form-group textarea {
     resize: vertical;
     margin-top: 15px;
 }
 
-.form-group img[b-j94ijvz21j] {
+.form-group img {
     max-width: 100px;
     display: block;
     margin-bottom: 10px;
@@ -576,7 +576,7 @@ table[b-twgl6rf1ty] {
     margin: 20px auto;
 }
 
-.form-group button:not(.add-btn)[b-j94ijvz21j] {
+.form-group button:not(.add-btn) {
     width: 100%;
     padding: 10px;
     background-color: var(--action-color);
@@ -588,7 +588,7 @@ table[b-twgl6rf1ty] {
     transition: background-color 0.3s ease;
 }
 
-.form-group button[class="add-btn"][b-j94ijvz21j] {
+.form-group button[class="add-btn"] {
     width: 15%;
     padding: 10px;
     background-color: var(--action-color);
@@ -600,28 +600,28 @@ table[b-twgl6rf1ty] {
     transition: background-color 0.3s ease;
 }
 
-.form-group .skills[b-j94ijvz21j],
-.form-group .fields[b-j94ijvz21j] {
+.form-group .skills,
+.form-group .fields {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
 }
 
-.form-group button:hover[b-j94ijvz21j] {
+.form-group button:hover {
     background-color: var(--primary-color);
     box-shadow: 1px 1px 4px var(--action-color);
 }
 
-.form-group .close[b-j94ijvz21j] {
+.form-group .close {
     color: var(--action-color);
     cursor: pointer;
     margin-top: 15px;
     text-align: center;
     transition: .3s;
-}
+} */
 
 /* skills and fields */
-.form-group span[b-j94ijvz21j] {
+/* .form-group span {
     padding: 3px 10px;
     margin: 5px 3px;
     border-radius: 12px;
@@ -630,7 +630,7 @@ table[b-twgl6rf1ty] {
     display: inline-block;
 }
 
-.form-group span i[b-j94ijvz21j] {
+.form-group span i {
     border-radius: 50%;
     font-size: 12px;
     font-style: normal;
@@ -638,27 +638,27 @@ table[b-twgl6rf1ty] {
 }
 
 
-.form-group .close:hover[b-j94ijvz21j] {
+.form-group .close:hover {
     text-decoration: underline;
-}
+} */
 
 /* display profile */
-
-.profile-details[b-j94ijvz21j] {
+/* 
+.profile-details {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.profile-details .profile-image[b-j94ijvz21j] {
+.profile-details .profile-image {
     width: 100px;
     margin: 40px;
     border-radius: 50%;
 }
-.profile-info p[b-j94ijvz21j] {
+.profile-info p {
     margin: 5px 25px;
 }
 
-.edit-button[b-j94ijvz21j] {
+.edit-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -671,35 +671,35 @@ table[b-twgl6rf1ty] {
     margin-top: 20px;
     transition: .3s;
 }
-.edit-button:hover[b-j94ijvz21j] {
+.edit-button:hover {
     background-color: var(--primary-color);
     box-shadow: 1px 1px 4px var(--action-color);
-}
+} */
 
 
 /* Responsive Styles */
-@media (max-width: 768px) {
-    .container[b-j94ijvz21j] {
+/* @media (max-width: 768px) {
+    .container {
         width: 90%;
         margin: 20px auto;
     }
-    .form-group img[b-j94ijvz21j] {
+    .form-group img {
         max-width: 80px;
     }
-    .profile-details[b-j94ijvz21j] {
+    .profile-details {
         flex-direction: column;
         align-items: center;
     }
-    .profile-info p[b-j94ijvz21j] {
+    .profile-info p {
         margin: 5px 0;
     }
-    .form-group .skills[b-j94ijvz21j], .form-group .fields[b-j94ijvz21j] {
+    .form-group .skills, .form-group .fields {
         display: block;
     }
-    .form-group input[class="skill-input"][b-j94ijvz21j] {
+    .form-group input[class="skill-input"] {
         width: 100%;
     }
-    .form-group button[class="add-btn"][b-j94ijvz21j] {
+    .form-group button[class="add-btn"] {
         width: 40%;
         margin-top: 15px;
     }
@@ -707,29 +707,29 @@ table[b-twgl6rf1ty] {
 }
 
 @media (max-width: 480px) {
-    .container[b-j94ijvz21j] {
+    .container {
         width: 100%;
         margin: 10px;
         padding: 15px;
     }
-    .form-group label[b-j94ijvz21j],
-    .form-group input[b-j94ijvz21j],
-    .form-group select[b-j94ijvz21j],
-    .form-group textarea[b-j94ijvz21j],
-    .form-group button[b-j94ijvz21j] {
+    .form-group label,
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .form-group button {
         font-size: 14px;
     }
-    .form-group img[b-j94ijvz21j] {
+    .form-group img {
         max-width: 60px;
     }
-    .profile-details[b-j94ijvz21j] {
+    .profile-details {
         flex-direction: column;
         align-items: center;
     }
-    .profile-details .profile-image[b-j94ijvz21j] {
+    .profile-details .profile-image {
         width: 80px;
     }
-}
+} */
 /* /Pages/ProfilePage.razor.rz.scp.css */
 :root[b-5ibxfxw9r2] {
     --primary-color: #02061a;

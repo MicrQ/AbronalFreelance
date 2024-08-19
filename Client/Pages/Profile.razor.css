@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --primary-color: #02061a;
     --primary-hover: #01030ef0;
     --secondary-color: #f8f9fa;
@@ -122,10 +122,10 @@
     margin-top: 15px;
     text-align: center;
     transition: .3s;
-}
+} */
 
 /* skills and fields */
-.form-group span {
+/* .form-group span {
     padding: 3px 10px;
     margin: 5px 3px;
     border-radius: 12px;
@@ -144,10 +144,10 @@
 
 .form-group .close:hover {
     text-decoration: underline;
-}
+} */
 
 /* display profile */
-
+/* 
 .profile-details {
     display: flex;
     align-items: center;
@@ -178,11 +178,11 @@
 .edit-button:hover {
     background-color: var(--primary-color);
     box-shadow: 1px 1px 4px var(--action-color);
-}
+} */
 
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .container {
         width: 90%;
         margin: 20px auto;
@@ -233,4 +233,4 @@
     .profile-details .profile-image {
         width: 80px;
     }
-}
+} */

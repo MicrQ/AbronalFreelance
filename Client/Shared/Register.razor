@@ -42,8 +42,8 @@
         <div class="row justify-content-center">
             <div class="col-auto">
                 <div class="d-flex align-items-center gap-3">
-                    <a href="#" class="w-form-btn">Freelancer</a>
-                    <a href="#" class="w-form-btn-outline">Client</a> <!-- change the class based on the user action -->
+                    <p style="cursor: pointer;" class="@freelancerClass" @onclick="regFreelancer">Freelancer</p>
+                    <p style="cursor: pointer;" class="@clientClass" @onclick="regFreelancer">Client</p> <!-- change the class based on the user action -->
                 </div>
             </div>
         </div>
@@ -60,28 +60,28 @@
                         <div class="row gy-3">
                             <div class="form-input col-lg-6">
                                 <label for="fname" class="form-label">First Name <span class="text-lime-300">*</span></label>
-                                <input @bind="registerModel.FirstName" type="text" id="fname" placeholder="First Name" class="form-control shadow-none" />
+                                <input @bind="registerModel.FirstName" type="text" id="fname" placeholder="First Name" class="form-control shadow-none" required />
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="lname" class="form-label">Last Name <span class="text-lime-300">*</span></label>
-                                <input @bind="registerModel.LastName" type="text" id="lname" placeholder="Last Name" class="form-control shadow-none" />
+                                <input @bind="registerModel.LastName" type="text" id="lname" placeholder="Last Name" class="form-control shadow-none" required />
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="username" class="form-label">Username <span class="text-lime-300">*</span></label>
-                                <input @bind="registerModel.UserName" type="text" id="username" placeholder="Username" class="form-control shadow-none" />
+                                <input @bind="registerModel.UserName" type="text" id="username" placeholder="Username" class="form-control shadow-none" required />
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="phone" class="form-label">Phone <span class="text-lime-300">*</span></label>
-                                <input @bind="registerModel.PhoneNumber" type="text" id="phone" placeholder="09403817190" class="form-control shadow-none" />
+                                <input @bind="registerModel.PhoneNumber" type="text" id="phone" placeholder="09403817190" class="form-control shadow-none" required />
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="phone" class="form-label">Email <span class="text-lime-300">*</span></label>
-                                <input @bind="registerModel.Email" type="email" id="email" placeholder="example@email.com" class="form-control shadow-none" />
+                                <input @bind="registerModel.Email" type="email" id="email" placeholder="example@email.com" class="form-control shadow-none" required />
                             </div>
                             <div class="form-input col-lg-6">
                                 <label for="country" class="form-label">Country <span class="text-lime-300">*</span></label>
                                 <select @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange"
-                                class="form-select shadow-none" name="country" id="country">
+                                class="form-select shadow-none" name="country" id="country" required>
                                     <option value="1">Select Country</option>
                                     @foreach (var country in countries)
                                     {
@@ -92,7 +92,7 @@
                             <div class="form-input col-lg-6">
                                 <label for="region" class="form-label">Region <span class="text-lime-300">*</span></label>
                                 <select @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange"
-                                class="form-select shadow-none" name="country" id="country">
+                                class="form-select shadow-none" name="country" id="country" required>
                                     <option value="1">Select City</option>
                                     @if (regions != null) {
                                         @foreach (var region in regions)
@@ -105,7 +105,7 @@
                             <div class="form-input col-lg-6">
                                 <label for="city" class="form-label">City <span class="text-lime-300">*</span></label>
                                 <select @bind="registerModel.LocationId"
-                                class="form-select shadow-none" name="country" id="country">
+                                class="form-select shadow-none" name="country" id="country" required>
                                     <option value="1">Select City</option>
                                     @if (cities != null) {
                                         @foreach (var city in cities)
@@ -117,7 +117,11 @@
                             </div>
                             <div class="form-input col-lg-12">
                                 <label for="password" class="form-label">Password <span class="text-lime-300">*</span></label>
-                                <input type="password" id="password" placeholder="********" class="form-control shadow-none" />
+                                <input @bind="registerModel.Password" type="password" id="password" placeholder="********" class="form-control shadow-none" required />
+                            </div>
+                            <div class="form-input col-lg-12">
+                                <label for="confirm-password" class="form-label">Confirm Password <span class="text-lime-300">*</span></label>
+                                <input @bind="registerModel.ConfirmPassword" type="password" id="confirm-password" placeholder="********" class="form-control shadow-none" required />
                             </div>
                         </div>
                         <div class="d-grid mt-4">
@@ -150,6 +154,8 @@
     private List<Location>? regions = null;
     private List<Location>? cities = null;
     private string endpoint = "countries";
+    private string clientClass = "w-form-btn-outline";
+    private string freelancerClass = "w-form-btn";
 
     private int countryId;
     private int regionId;
@@ -167,6 +173,8 @@
     {
         countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
+
+        registerModel.Role = "Freelancer";
     }
 
 
@@ -185,11 +193,16 @@
     private void regClient()
     {
         registerModel.Role = "Client";
+        clientClass = clientClass == "w-form-btn" ? "w-form-btn-outline" : "w-form-btn";
+        freelancerClass = freelancerClass == "w-form-btn" ? "w-form-btn-outline" : "w-form-btn";
+
     }
 
     private void regFreelancer()
     {
         registerModel.Role = "Freelancer";
+        clientClass = clientClass == "w-form-btn" ? "w-form-btn-outline" : "w-form-btn";
+        freelancerClass = freelancerClass == "w-form-btn" ? "w-form-btn-outline" : "w-form-btn";
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
