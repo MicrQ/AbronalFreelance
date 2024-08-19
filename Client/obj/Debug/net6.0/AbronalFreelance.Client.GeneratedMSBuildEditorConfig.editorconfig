@@ -42,12 +42,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0ZyZWVsYW5jZXJEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/niq/AbronalFreelance/Client/Shared/HeaderFreelancer.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0hlYWRlckZyZWVsYW5jZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/niq/AbronalFreelance/Client/Shared/LocationActions.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvY2F0aW9uQWN0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/niq/AbronalFreelance/Client/Shared/Logout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ291dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/LogoutPopUp.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ291dFBvcFVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/MobileMenuFreelancer.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01vYmlsZU1lbnVGcmVlbGFuY2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/SideBar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1NpZGVCYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/niq/AbronalFreelance/Client/_Imports.razor]

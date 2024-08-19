@@ -23,21 +23,6 @@
                 data-bs-auto-close="outside"
                 aria-expanded="false"
                 >Home</a>
-            <div class="dropdown-menu">
-                <div class="d-flex flex-column flex-xl-row">
-                <ul>
-                    <li>
-                    <a href="index-2.html" class="dropdown-item"
-                        ><span>Home Main</span></a>
-                    </li>
-
-                    <li>
-                    <a href="index-3.html" class="dropdown-item"
-                        ><span>Home Two</span></a>
-                    </li>
-                </ul>
-                </div>
-            </div>
             </li>
             <li class="nav-item dropdown">
             <a
@@ -153,7 +138,7 @@
         </ul>
         <div class="d-flex align-items-center gap-4 mt-4">
             <div class="d-flex d-lg-none">
-            <a href="login" class="header-btn">
+            <a @onclick="Login" style="cursor: pointer;" class="header-btn">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="13"
@@ -221,7 +206,7 @@
             </div>
         </div>
         <div class="align-items-center d-none d-lg-flex">
-            <a href="login" class="w-btn-secondary-lg">
+            <a @onclick="Login" style="cursor: pointer;" class="w-btn-secondary-lg">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="13"
@@ -305,16 +290,7 @@
 
 
 @code {
-    private string showProfile = "none";
-    private void profileAction() {
-        if (showProfile == "none") {
-            showProfile = "block";
-            return;
-        }
-        showProfile = "none";
-    }
-
-    private async Task showNav() {
-        await JSRuntime.InvokeVoidAsync("toggleNavMenu");
+    private void Login() {
+        Navigation.NavigateTo("/login", forceLoad: true);
     }
 }
