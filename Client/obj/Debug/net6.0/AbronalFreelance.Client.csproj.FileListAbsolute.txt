@@ -644,7 +644,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.AbronalFreelance.Client.props
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/staticwebassets.pack.json
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/NavMenu.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/bundle/AbronalFreelance.Client.styles.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/projectbundle/AbronalFreelance.Client.bundle.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/3faqqu9jxw.gz
@@ -900,7 +899,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Locations.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Portfolio.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/AddorEditPortfolio.razor.rz.scp.css
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Profile.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.csproj.AssemblyReference.cache
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Company.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/FindFreelancer.razor.rz.scp.css
