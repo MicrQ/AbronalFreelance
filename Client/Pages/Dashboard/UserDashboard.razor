@@ -1,0 +1,22 @@
+@page "/dashboard"
+
+<AuthorizeView Roles="Client,Freelancer">
+    <Authorized>
+        <AuthorizeView Roles="Client" Context="diffrentdashboard">
+            <Authorized>
+                <ClientDashboard />
+            </Authorized>
+            <NotAuthorized>
+                <FreelancerDashboard />
+            </NotAuthorized>
+        </AuthorizeView>
+    </Authorized>
+    <NotAuthorized>
+        401 page
+    </NotAuthorized>
+</AuthorizeView>
+
+
+@code {
+
+}

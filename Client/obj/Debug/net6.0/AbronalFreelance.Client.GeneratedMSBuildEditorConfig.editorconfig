@@ -50,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkL0ZyZWVsYW5jZXJEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/niq/AbronalFreelance/Client/Pages/Dashboard/UserDashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkL1VzZXJEYXNoYm9hcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/niq/AbronalFreelance/Client/Pages/Freelancer/FindJobs.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJlZWxhbmNlci9GaW5kSm9icy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,18 +70,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0Zvb3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/niq/AbronalFreelance/Client/Shared/Freelancer/DashboardHeader.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0ZyZWVsYW5jZXIvRGFzaGJvYXJkSGVhZGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/niq/AbronalFreelance/Client/Shared/Freelancer/MobileMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0ZyZWVsYW5jZXIvTW9iaWxlTWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/niq/AbronalFreelance/Client/Shared/Freelancer/SideBar.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0ZyZWVsYW5jZXIvU2lkZUJhci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/niq/AbronalFreelance/Client/Shared/LocationActions.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvY2F0aW9uQWN0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -92,6 +84,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/niq/AbronalFreelance/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/PageLayouts/DashboardHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1BhZ2VMYXlvdXRzL0Rhc2hib2FyZEhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/PageLayouts/MobileMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1BhZ2VMYXlvdXRzL01vYmlsZU1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/niq/AbronalFreelance/Client/Shared/PageLayouts/SideBar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1BhZ2VMYXlvdXRzL1NpZGVCYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/niq/AbronalFreelance/Client/_Imports.razor]

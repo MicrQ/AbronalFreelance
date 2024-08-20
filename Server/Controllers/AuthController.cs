@@ -71,7 +71,7 @@ public class AuthController : ControllerBase
         var result = await _signInManager.PasswordSignInAsync(user.UserName, loginDTO.Password, false, false);
         if (result.Succeeded) {
             var roles = await _userManager.GetRolesAsync(user);
-            string redirectUrl = "";
+            string redirectUrl = "dashboard";
 
             var role = "";
             if (roles.Contains("Admin")) {
@@ -79,11 +79,11 @@ public class AuthController : ControllerBase
                 role = "Admin";
             }
             else if (roles.Contains("Client")){
-                redirectUrl = "client";
+                // redirectUrl = "client";
                 role = "Client";
             }
             else if (roles.Contains("Freelancer")){
-                redirectUrl = "freelancer";
+                // redirectUrl = "freelancer";
                 role = "Freelancer";
             }
 

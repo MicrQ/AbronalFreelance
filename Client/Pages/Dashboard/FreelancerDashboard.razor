@@ -1,205 +1,196 @@
-﻿@page "/freelancer"
-@attribute [Authorize(Roles = "Freelancer")]
-
-<AuthorizeView Roles="Freelancer">
-    <Authorized>
-        <div class="d-xl-flex">
-        <SideBar />
-        <MobileMenu />
-        <!-- Right -->
-        <div class="flex-grow-1 align-items-center position-relative">
-            <DashboardHeader />
-            <!-- Main -->
-            <main class="dashboard-main min-vh-100">
-            <div class="d-flex flex-column gap-4">
-                <!-- Page Header -->
-                <div
-                class="d-flex gap-4 flex-column flex-md-row align-items-md-center justify-content-between"
-                >
-                <div>
-                    <h3 class="text-24 fw-bold text-dark-300 mb-2">Dashboard</h3>
-                    <ul class="d-flex align-items-center gap-2">
-                    <li class="text-dark-200 fs-6">Dashboard</li>
-                    </ul>
-                </div>
-                </div>
-                <div class="row g-4">
-                
-                <div class="col-xl col-md-6">
-                    <div
-                    class="p-4 d-flex align-items-center dashobard-widget justify-content-between bg-white rounded-4"
-                    >
-                    <div>
-                        <h3 class="dashboard-widget-title fw-bold text-dark-300">
-                        50
-                        </h3>
-                        <p class="text-18 text-dark-200">Total Job</p>
-                    </div>
-                    <div class="dashboard-widget-icon">
-                        <img src="img/dashboard/icon/icon-2.png" alt="" />
-                    </div>
-                    </div>
-                </div>
-                <div class="col-xl col-md-6">
-                    <div
-                    class="p-4 d-flex align-items-center dashobard-widget justify-content-between bg-white rounded-4"
-                    >
-                    <div>
-                        <h3 class="dashboard-widget-title fw-bold text-dark-300">
-                        35
-                        </h3>
-                        <p class="text-18 text-dark-200">Complete Jobs</p>
-                    </div>
-                    <div class="dashboard-widget-icon">
-                        <img src="img/dashboard/icon/icon-3.png" alt="" />
-                    </div>
-                    </div>
-                </div>
-                <div class="col-xl col-md-6">
-                    <div
-                    class="p-4 d-flex align-items-center dashobard-widget justify-content-between bg-white rounded-4"
-                    >
-                    <div>
-                        <h3 class="dashboard-widget-title fw-bold text-dark-300">
-                        02
-                        </h3>
-                        <p class="text-18 text-dark-200">Active Jobs</p>
-                    </div>
-                    <div class="dashboard-widget-icon">
-                        <img src="img/dashboard/icon/icon-4.png" alt="" />
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <!-- Content -->
-                <div>
-                <h3 class="text-24 fw-bold text-dark-300 mb-2">Latest Jobs</h3>
-                <!-- Table -->
-                <div class="overflow-x-auto">
-                    <div class="w-100">
-                    <table class="w-100 dashboard-table">
-                        <thead class="pb-3">
-                        <tr>
-                            <th scope="col" class="ps-4">Project Name</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Expected Delivery Date</th>
-                            <th scope="col" class="text-start">Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                            <div
-                                class="d-flex gap-3 align-items-center project-name"
-                            >
-                                <div class="order-img">
-                                <img
-                                    src="img/dashboard/orders/o-1.png"
-                                    alt=""
-                                />
-                                </div>
-                                <div>
-                                <a
-                                    href="service-details.html"
-                                    class="project-link"
-                                >
-                                    Brote - Cleanin Service Elementor Template Kit
-                                </a>
-                                <ul class="d-flex gap-1 order-category">
-                                    <li class="text-dark-200">WordPress</li>
-                                    <li class="text-dark-200">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="5"
-                                        height="10"
-                                        viewBox="0 0 5 10"
-                                        fill="none"
-                                    >
-                                        <path
-                                        d="M1 9L4 5L1 1"
-                                        stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    </li>
-                                    <li class="text-dark-200">Creative</li>
-                                </ul>
-                                </div>
-                            </div>
-                            </td>
-                            <td class="text-dark-200">$15</td>
-                            <td class="text-dark-200">Waiting for requirements</td>
-                            <td class="text-start">
-                            <span class="status-badge pending">
-                                Pending payment
-                            </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <div
-                                class="d-flex gap-3 align-items-center project-name"
-                            >
-                                <div class="order-img">
-                                <img
-                                    src="img/dashboard/orders/o-2.png"
-                                    alt=""
-                                />
-                                </div>
-                                <div>
-                                <a
-                                    href="service-details.html"
-                                    class="project-link"
-                                >
-                                    Nas Best Digital Agency Website Design
-                                </a>
-                                <ul class="d-flex gap-1 order-category">
-                                    <li class="text-dark-200">WordPress</li>
-                                    <li class="text-dark-200">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="5"
-                                        height="10"
-                                        viewBox="0 0 5 10"
-                                        fill="none"
-                                    >
-                                        <path
-                                        d="M1 9L4 5L1 1"
-                                        stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    </li>
-                                    <li class="text-dark-200">Creative</li>
-                                </ul>
-                                </div>
-                            </div>
-                            </td>
-                            <td class="text-dark-200">$15</td>
-                            <td class="text-dark-200">January 18, 2024 02:51 PM</td>
-                            <td class="text-start">
-                            <span class="status-badge in-progress">
-                                Pending payment
-                            </span>
-                            </td>
-                        </tr>                        
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                </div>
+﻿
+<div class="d-xl-flex">
+<SideBar />
+<MobileMenu />
+<!-- Right -->
+<div class="flex-grow-1 align-items-center position-relative">
+    <DashboardHeader />
+    <!-- Main -->
+    <main class="dashboard-main min-vh-100">
+    <div class="d-flex flex-column gap-4">
+        <!-- Page Header -->
+        <div
+        class="d-flex gap-4 flex-column flex-md-row align-items-md-center justify-content-between"
+        >
+        <div>
+            <h3 class="text-24 fw-bold text-dark-300 mb-2">Dashboard</h3>
+            <ul class="d-flex align-items-center gap-2">
+            <li class="text-dark-200 fs-6">Dashboard</li>
+            </ul>
+        </div>
+        </div>
+        <div class="row g-4">
+        
+        <div class="col-xl col-md-6">
+            <div
+            class="p-4 d-flex align-items-center dashobard-widget justify-content-between bg-white rounded-4"
+            >
+            <div>
+                <h3 class="dashboard-widget-title fw-bold text-dark-300">
+                50
+                </h3>
+                <p class="text-18 text-dark-200">Total Job</p>
             </div>
-            </main>
+            <div class="dashboard-widget-icon">
+                <img src="img/dashboard/icon/icon-2.png" alt="" />
+            </div>
+            </div>
+        </div>
+        <div class="col-xl col-md-6">
+            <div
+            class="p-4 d-flex align-items-center dashobard-widget justify-content-between bg-white rounded-4"
+            >
+            <div>
+                <h3 class="dashboard-widget-title fw-bold text-dark-300">
+                35
+                </h3>
+                <p class="text-18 text-dark-200">Complete Jobs</p>
+            </div>
+            <div class="dashboard-widget-icon">
+                <img src="img/dashboard/icon/icon-3.png" alt="" />
+            </div>
+            </div>
+        </div>
+        <div class="col-xl col-md-6">
+            <div
+            class="p-4 d-flex align-items-center dashobard-widget justify-content-between bg-white rounded-4"
+            >
+            <div>
+                <h3 class="dashboard-widget-title fw-bold text-dark-300">
+                02
+                </h3>
+                <p class="text-18 text-dark-200">Active Jobs</p>
+            </div>
+            <div class="dashboard-widget-icon">
+                <img src="img/dashboard/icon/icon-4.png" alt="" />
+            </div>
+            </div>
         </div>
         </div>
-        <LogoutPopUp />
-    </Authorized>
-    <NotAuthorized>
-        401 page
-    </NotAuthorized>
-</AuthorizeView>
+        <!-- Content -->
+        <div>
+        <h3 class="text-24 fw-bold text-dark-300 mb-2">Latest Jobs</h3>
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <div class="w-100">
+            <table class="w-100 dashboard-table">
+                <thead class="pb-3">
+                <tr>
+                    <th scope="col" class="ps-4">Project Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Expected Delivery Date</th>
+                    <th scope="col" class="text-start">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                    <div
+                        class="d-flex gap-3 align-items-center project-name"
+                    >
+                        <div class="order-img">
+                        <img
+                            src="img/dashboard/orders/o-1.png"
+                            alt=""
+                        />
+                        </div>
+                        <div>
+                        <a
+                            href="service-details.html"
+                            class="project-link"
+                        >
+                            Brote - Cleanin Service Elementor Template Kit
+                        </a>
+                        <ul class="d-flex gap-1 order-category">
+                            <li class="text-dark-200">WordPress</li>
+                            <li class="text-dark-200">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="5"
+                                height="10"
+                                viewBox="0 0 5 10"
+                                fill="none"
+                            >
+                                <path
+                                d="M1 9L4 5L1 1"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                />
+                            </svg>
+                            </li>
+                            <li class="text-dark-200">Creative</li>
+                        </ul>
+                        </div>
+                    </div>
+                    </td>
+                    <td class="text-dark-200">$15</td>
+                    <td class="text-dark-200">Waiting for requirements</td>
+                    <td class="text-start">
+                    <span class="status-badge pending">
+                        Pending payment
+                    </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <div
+                        class="d-flex gap-3 align-items-center project-name"
+                    >
+                        <div class="order-img">
+                        <img
+                            src="img/dashboard/orders/o-2.png"
+                            alt=""
+                        />
+                        </div>
+                        <div>
+                        <a
+                            href="service-details.html"
+                            class="project-link"
+                        >
+                            Nas Best Digital Agency Website Design
+                        </a>
+                        <ul class="d-flex gap-1 order-category">
+                            <li class="text-dark-200">WordPress</li>
+                            <li class="text-dark-200">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="5"
+                                height="10"
+                                viewBox="0 0 5 10"
+                                fill="none"
+                            >
+                                <path
+                                d="M1 9L4 5L1 1"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                />
+                            </svg>
+                            </li>
+                            <li class="text-dark-200">Creative</li>
+                        </ul>
+                        </div>
+                    </div>
+                    </td>
+                    <td class="text-dark-200">$15</td>
+                    <td class="text-dark-200">January 18, 2024 02:51 PM</td>
+                    <td class="text-start">
+                    <span class="status-badge in-progress">
+                        Pending payment
+                    </span>
+                    </td>
+                </tr>                        
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    </main>
+</div>
+</div>
+<LogoutPopUp />
 
 @code {
     private void Logout() {
