@@ -643,7 +643,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.AbronalFreelance.Client.props
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.AbronalFreelance.Client.props
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/staticwebassets.pack.json
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/bundle/AbronalFreelance.Client.styles.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/projectbundle/AbronalFreelance.Client.bundle.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/3faqqu9jxw.gz
@@ -718,9 +717,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/3clx6y6nx8.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/bangdsmd19.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/04hqh3kyro.gz
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/Footer.razor.rz.scp.css
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Login.razor.rz.scp.css
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/Register.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.32.vufugzb32n.js
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.32.vufugzb32n.js.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/y0pl1nib75.gz
@@ -895,7 +891,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/8797tm1o4w.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/t9vx815syr.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/5u7p0ui4ib.gz
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/ProfilePage.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Locations.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Portfolio.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/AddorEditPortfolio.razor.rz.scp.css
