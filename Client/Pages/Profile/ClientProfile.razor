@@ -37,7 +37,7 @@
             <div>
                 <div class="row justify-content-center">
                 <div class="col-xl-8">
-                    <EditForm Model="FreelancerProfileDTO" OnValidSubmit="SaveChanges">
+                    <EditForm Model="clientProfileDTO" OnValidSubmit="SaveChanges">
                     <div class="d-flex flex-column gap-4">
                         <!-- Profile Info -->
                         <div class="profile-info-card">
@@ -56,7 +56,7 @@
                                     <span class="text-lime-300">*</span>
                                 </label>
                                 <input
-                                    @bind="FreelancerProfileDTO.FirstName"
+                                    @bind="clientProfileDTO.FirstName"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Mansa"
@@ -70,7 +70,7 @@
                                     Last Name
                                     <span class="text-lime-300">*</span></label>
                                 <input
-                                    @bind="FreelancerProfileDTO.LastName"
+                                    @bind="clientProfileDTO.LastName"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Musa"
@@ -84,7 +84,7 @@
                                     Email Address
                                     <span class="text-lime-300">*</span></label>
                                 <input
-                                @bind="FreelancerProfileDTO.Email"
+                                @bind="clientProfileDTO.Email"
                                     type="email"
                                     class="form-control shadow-none"
                                     placeholder="example@email.com"
@@ -94,11 +94,23 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-container">
+                                <label for="phone" class="form-label">
+                                    Phone
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                    @bind="clientProfileDTO.Phone"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="0912345678"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
                                 <label for="headline" class="form-label">
                                     Headline
                                     <span class="text-lime-300">*</span></label>
                                 <input
-                                    @bind="FreelancerProfileDTO.Headline"
+                                    @bind="clientProfileDTO.Headline"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Aspiring Software Engineer | ..."/>
@@ -113,8 +125,7 @@
                                     @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange"
                                     id="country"
                                     autocomplete="off"
-                                    class="form-select shadow-none"
-                                    required >
+                                    class="form-select shadow-none">
                                     <option value="">Select Country</option>
                                     @foreach (var country in countries)
                                     {
@@ -132,8 +143,7 @@
                                 @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange"
                                     id="region"
                                     autocomplete="off"
-                                    class="form-select shadow-none"
-                                required >
+                                    class="form-select shadow-none">
                                     <option value="">Select City</option>
                                     @if (regions != null) {
                                         @foreach (var region in regions)
@@ -150,11 +160,10 @@
                                     City
                                     <span class="text-lime-300">*</span></label>
                                 <select
-                                @bind="FreelancerProfileDTO.LocationId"
+                                @bind="clientProfileDTO.LocationId"
                                     id="city"
                                     autocomplete="off"
-                                    class="form-select shadow-none"
-                                required >
+                                    class="form-select shadow-none">
                                     <option value="">Select City</option>
                                     @if (cities != null) {
                                         @foreach (var city in cities)
@@ -170,10 +179,10 @@
                         </div>
 
                         <div class="profile-info-card">
-                        <!-- Header -->
+                        <!-- Company Information form -->
                         <div class="profile-info-header">
                             <h4 class="text-18 fw-semibold text-dark-300">
-                            Profile Info
+                            Company Info
                             </h4>
                         </div>
                         <div class="profile-info-body bg-white">
@@ -181,58 +190,100 @@
                                 <div class="col-md-6">
                                     <div class="form-container">
                                     <label for="fname" class="form-label">
-                                        First Name
+                                        Company Name
                                         <span class="text-lime-300">*</span>
                                     </label>
                                     <input
-                                        @bind="FreelancerProfileDTO.FirstName"
+                                        @bind="clientProfileDTO.CompanyName"
                                         type="text"
                                         class="form-control shadow-none"
-                                        placeholder="Mansa"
-                                        required
+                                        placeholder="Abronal Technologies PLC"
                                     />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-container">
                                     <label for="lname" class="form-label">
-                                        Last Name
+                                        TIN
                                         <span class="text-lime-300">*</span></label>
                                     <input
-                                        @bind="FreelancerProfileDTO.LastName"
+                                        @bind="clientProfileDTO.TinNo"
                                         type="text"
                                         class="form-control shadow-none"
-                                        placeholder="Musa"
-                                        required
                                     />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-container">
                                     <label for="email" class="form-label">
-                                        Email Address
+                                        Established Date
                                         <span class="text-lime-300">*</span></label>
                                     <input
-                                    @bind="FreelancerProfileDTO.Email"
-                                        type="email"
+                                    @bind="clientProfileDTO.EstablishedDate"
+                                        type="datetime"
                                         class="form-control shadow-none"
                                         placeholder="example@email.com"
-                                        required
                                     />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-container">
-                                    <label for="headline" class="form-label">
-                                        Headline
-                                        <span class="text-lime-300">*</span></label>
-                                    <input
-                                        @bind="FreelancerProfileDTO.Headline"
-                                        type="text"
-                                        class="form-control shadow-none"
-                                        placeholder="Aspiring Software Engineer | ..."/>
-                                    </div>
+                                <div class="form-container">
+                                <label for="category" class="form-label">
+                                    Country
+                                    <span class="text-lime-300">*</span></label>
+                                <select
+                                    @bind="companyCountryId" @bind:event="oninput" @onchange="OnCompanyCountryChange"
+                                    id="country"
+                                    autocomplete="off"
+                                    class="form-select shadow-none">
+                                    <option value="">Select Country</option>
+                                    @foreach (var country in companyCountries)
+                                    {
+                                    <option value="@country.Id">@country.Name</option>
+                                    }
+                                </select>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="state" class="form-label"
+                                    >Region
+                                    <span class="text-lime-300">*</span></label>
+                                <select
+                                @bind="companyRegionId" @bind:event="oninput" @onchange="OnCompanyRegionChange"
+                                    id="region"
+                                    autocomplete="off"
+                                    class="form-select shadow-none">
+                                    <option value="">Select City</option>
+                                    @if (companyRegions != null) {
+                                        @foreach (var region in companyRegions)
+                                        {
+                                            <option value="@region.Id">@region.Name</option>
+                                        }
+                                    }
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-container">
+                                <label for="country" class="form-label">
+                                    City
+                                    <span class="text-lime-300">*</span></label>
+                                <select
+                                @bind="clientProfileDTO.CompanyLocationId"
+                                    id="city"
+                                    autocomplete="off"
+                                    class="form-select shadow-none">
+                                    <option value="">Select City</option>
+                                    @if (companyCities != null) {
+                                        @foreach (var city in companyCities)
+                                        {
+                                            <option value="@city.Id">@city.Name</option>
+                                        }
+                                    }
+                                </select>
+                                </div>
+                            </div>
                             </div>
                         </div>
                         </div>
@@ -276,94 +327,37 @@
 
 @code {
     private string LoggedInUserId { get; set; }
-    private bool isEditing = false;
 
     private int countryId { get; set; }
     private int regionId { get; set; }
+    private int companyCountryId { get; set; }
+    private int companyRegionId { get; set; }
+    private List<Location> companyCountries = new List<Location>();
+    private List<Location>? companyRegions = new List<Location>();
+    private List<Location>? companyCities = new List<Location>();
     private List<Location> countries = new List<Location>();
     private List<Location>? regions = new List<Location>();
     private List<Location>? cities = new List<Location>();
 
-    private int SkillId { get; set; }
-    private int FieldId { get; set; }
     private string endpoint = "countries";
 
-    List<FreelancerSkill> freelancerSkills = new List<FreelancerSkill>();
-    List<FreelancerField> freelancerFields = new List<FreelancerField>();
+    private ClientProfileDTO clientProfileDTO = new ClientProfileDTO();
 
-    FreelancerProfileDTO FreelancerProfileDTO = new FreelancerProfileDTO();
-    List<Field> AllFields = new List<Field>();
-    List<Skill> AllSkills = new List<Skill>();
-
-    
-
-
-    private void AddSkill() {
-        foreach(var ss in freelancerSkills) {
-            if (ss.SkillId == SkillId)
-                return;
-        }
-        freelancerSkills.Add(new FreelancerSkill() {
-            SkillId = SkillId,
-            UserId = LoggedInUserId
-        });
-    }
-    private void AddField() {
-
-        foreach(var ff in freelancerFields) {
-            if (ff.FieldId == FieldId)
-                return;
-        }
-        freelancerFields.Add(new FreelancerField() {
-            FieldId = FieldId,
-            UserId = LoggedInUserId
-        });
-    }
-    private void removeSkill(FreelancerSkill element) {
-        freelancerSkills.Remove(element);
-    }
-    private void removeField(FreelancerField element) {
-        freelancerFields.Remove(element);
-    }
-    private void EditProfile() {
-        isEditing = !isEditing;
-    }
-
-    private async Task SaveChanges() {
-        FreelancerProfileDTO.TopFields = freelancerFields;
-        FreelancerProfileDTO.TopSkills = freelancerSkills;
-        await ProfileService.UpdateProfileAsync(FreelancerProfileDTO, LoggedInUserId);
-        Navigation.NavigateTo("/user/profile", forceLoad: true);
+    private void SaveChanges() {
     }
 
     protected override async Task OnInitializedAsync()
     {
         countries = await LocationService.GetLocations(endpoint);
+        companyCountries = countries;
         endpoint = "regions/";
 
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-        FreelancerProfileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
+        // get client profile here 
+        //clientProfileDTO.UserId = 
 
-        AllFields = await FieldService.GetAllFieldsAsync();
-        AllSkills = await SkillService.GetAllSkillsAsync();
-
-        foreach(var ff in FreelancerProfileDTO.TopFields) {
-            freelancerFields.Add(
-                new FreelancerField {
-                    FieldId = ff.FieldId,
-                    UserId = ff.UserId
-                }
-            );
-        }
-        foreach(var ss in FreelancerProfileDTO.TopSkills) {
-            freelancerSkills.Add(
-                new FreelancerSkill {
-                    SkillId = ss.SkillId,
-                    UserId = ss.UserId
-                }
-            );
-        }
+        
     }
 
 
@@ -377,5 +371,17 @@
     private async Task OnRegionChange()
     {
         cities = await LocationService.OnLocationChange(regionId, endpoint);
+    }
+
+    private async Task OnCompanyCountryChange()
+    {
+        companyRegions = await LocationService.OnLocationChange(countryId, endpoint);
+        if (regions != null)
+            endpoint = "cities/";
+    }
+
+    private async Task OnCompanyRegionChange()
+    {
+        companyCities = await LocationService.OnLocationChange(companyRegionId, endpoint);
     }
 }
