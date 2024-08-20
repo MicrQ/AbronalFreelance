@@ -12,14 +12,14 @@ public class ProfileService : IProfile
         _http = http;
     }
 
-    public async Task<ProfileDTO> GetUserProfileAsync(string UserId)
+    public async Task<FreelancerProfileDTO> GetUserProfileAsync(string UserId)
     {
-        ProfileDTO profileDTO = await _http.GetFromJsonAsync<ProfileDTO>(_url + UserId);
-        return profileDTO;
+        FreelancerProfileDTO FreelancerProfileDTO = await _http.GetFromJsonAsync<FreelancerProfileDTO>(_url + UserId);
+        return FreelancerProfileDTO;
     }
 
-    public async Task UpdateProfileAsync(ProfileDTO profileDTO, string UserId)
+    public async Task UpdateProfileAsync(FreelancerProfileDTO FreelancerProfileDTO, string UserId)
     {
-        await _http.PutAsJsonAsync(_url + UserId, profileDTO);
+        await _http.PutAsJsonAsync(_url + UserId, FreelancerProfileDTO);
     }
 }

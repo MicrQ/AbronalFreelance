@@ -4,6 +4,6 @@ namespace AbronalFreelance.Client.Services.ProfileService;
 
 public interface IProfile
 {
-    Task<ProfileDTO> GetUserProfileAsync(string UserId);
-    Task UpdateProfileAsync(ProfileDTO profileDTO, string UserId); //return response object...maybe
+    Task<FreelancerProfileDTO> GetUserProfileAsync(string UserId);
+    Task UpdateProfileAsync(FreelancerProfileDTO FreelancerProfileDTO, string UserId); //return response object...maybe
 }

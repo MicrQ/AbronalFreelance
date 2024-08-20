@@ -30,36 +30,16 @@
                 </NotAuthorized>
             </AuthorizeView>
 
-            <AuthorizeView Roles="Freelancer">
-                <Authorized>
-                    <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        href="/freelancer"
-                        role="button"
-                        data-bs-auto-close="outside"
-                        aria-expanded="false">
-                        Dashboard
-                    </a>
-                    </li>
-                </Authorized>
-            </AuthorizeView>
-            <AuthorizeView Roles="Client">
-                <Authorized>
-                    <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        href="/client"
-                        role="button"
-                        data-bs-auto-close="outside"
-                        aria-expanded="false">
-                        Dashboard
-                    </a>
-                    </li>
-                </Authorized>
-            </AuthorizeView>
-
-
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="/dashboard"
+                    role="button"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    Dashboard
+                </a>
+            </li>
             <AuthorizeView Roles="Client">
                 <NotAuthorized>
                     <li class="nav-item">

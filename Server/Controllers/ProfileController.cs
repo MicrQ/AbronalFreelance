@@ -26,7 +26,7 @@ public class ProfileController : ControllerBase
         // GET /api/user/profile?UserId={id}
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
         if (user == null) return NotFound(
-            new ProfileDTO { Flag = false, Message = "User not found!" }
+            new FreelancerProfileDTO { Flag = false, Message = "User not found!" }
         );
 
         var profile = await _db.Profiles.FirstOrDefaultAsync(u => u.UserId == UserId);
@@ -34,7 +34,7 @@ public class ProfileController : ControllerBase
         List<FreelancerSkill> freelancerSkills = _db.FreelancerSkills.Where(fs => fs.UserId == UserId).ToList();
         List<FreelancerField> freelancerFields= _db.FreelancerFields.Where(ff => ff.UserId == UserId).ToList();
 
-        ProfileDTO profileDTO = new ProfileDTO() {
+        FreelancerProfileDTO profileDTO = new FreelancerProfileDTO() {
             FirstName = user.FirstName,
             LastName = user.LastName,
             UserName = user.UserName,
@@ -57,7 +57,7 @@ public class ProfileController : ControllerBase
 
     [HttpPut("user/profile")]
     [Authorize]
-    public async Task<IActionResult> UpdateProfile(ProfileDTO profileDTO, string UserId)
+    public async Task<IActionResult> UpdateProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}
         var user = await _db.Users

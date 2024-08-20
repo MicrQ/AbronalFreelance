@@ -1,0 +1,381 @@
+<div class="d-xl-flex">
+    <SideBar />
+    <MobileMenu />
+    <!-- Right -->
+    <div class="flex-grow-1 align-items-center position-relative">
+    <DashboardHeader />
+    <!-- Main -->
+        <main class="dashboard-main min-vh-100">
+            <div class="d-flex flex-column gap-4">
+            <div>
+                <h3 class="text-24 fw-bold text-dark-300 mb-2">
+                Profile Settings
+                </h3>
+                <ul class="d-flex align-items-center gap-2">
+                <li class="text-dark-200 fs-6">Dashboard</li>
+                <li>
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="5"
+                    height="11"
+                    viewBox="0 0 5 11"
+                    fill="none">
+                    <path
+                        d="M1 10L4 5.5L1 1"
+                        stroke="#5B5B5B"
+                        stroke-width="1.2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                    </svg>
+                </li>
+                <li class="text-lime-300 fs-6">Profile Settings</li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div>
+                <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <EditForm Model="FreelancerProfileDTO" OnValidSubmit="SaveChanges">
+                    <div class="d-flex flex-column gap-4">
+                        <!-- Profile Info -->
+                        <div class="profile-info-card">
+                        <!-- Header -->
+                        <div class="profile-info-header">
+                            <h4 class="text-18 fw-semibold text-dark-300">
+                            Profile Info
+                            </h4>
+                        </div>
+                        <div class="profile-info-body bg-white">
+                            <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="fname" class="form-label">
+                                    First Name
+                                    <span class="text-lime-300">*</span>
+                                </label>
+                                <input
+                                    @bind="FreelancerProfileDTO.FirstName"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="Mansa"
+                                    required
+                                />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="lname" class="form-label">
+                                    Last Name
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                    @bind="FreelancerProfileDTO.LastName"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="Musa"
+                                    required
+                                />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-container">
+                                <label for="email" class="form-label">
+                                    Email Address
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                @bind="FreelancerProfileDTO.Email"
+                                    type="email"
+                                    class="form-control shadow-none"
+                                    placeholder="example@email.com"
+                                    required
+                                />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="headline" class="form-label">
+                                    Headline
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                    @bind="FreelancerProfileDTO.Headline"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="Aspiring Software Engineer | ..."/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="category" class="form-label">
+                                    Country
+                                    <span class="text-lime-300">*</span></label>
+                                <select
+                                    @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange"
+                                    id="country"
+                                    autocomplete="off"
+                                    class="form-select shadow-none"
+                                    required >
+                                    <option value="">Select Country</option>
+                                    @foreach (var country in countries)
+                                    {
+                                    <option value="@country.Id">@country.Name</option>
+                                    }
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="state" class="form-label"
+                                    >Region
+                                    <span class="text-lime-300">*</span></label>
+                                <select
+                                @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange"
+                                    id="region"
+                                    autocomplete="off"
+                                    class="form-select shadow-none"
+                                required >
+                                    <option value="">Select City</option>
+                                    @if (regions != null) {
+                                        @foreach (var region in regions)
+                                        {
+                                            <option value="@region.Id">@region.Name</option>
+                                        }
+                                    }
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-container">
+                                <label for="country" class="form-label">
+                                    City
+                                    <span class="text-lime-300">*</span></label>
+                                <select
+                                @bind="FreelancerProfileDTO.LocationId"
+                                    id="city"
+                                    autocomplete="off"
+                                    class="form-select shadow-none"
+                                required >
+                                    <option value="">Select City</option>
+                                    @if (cities != null) {
+                                        @foreach (var city in cities)
+                                        {
+                                            <option value="@city.Id">@city.Name</option>
+                                        }
+                                    }
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="profile-info-card">
+                        <!-- Header -->
+                        <div class="profile-info-header">
+                            <h4 class="text-18 fw-semibold text-dark-300">
+                            Profile Info
+                            </h4>
+                        </div>
+                        <div class="profile-info-body bg-white">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-container">
+                                    <label for="fname" class="form-label">
+                                        First Name
+                                        <span class="text-lime-300">*</span>
+                                    </label>
+                                    <input
+                                        @bind="FreelancerProfileDTO.FirstName"
+                                        type="text"
+                                        class="form-control shadow-none"
+                                        placeholder="Mansa"
+                                        required
+                                    />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-container">
+                                    <label for="lname" class="form-label">
+                                        Last Name
+                                        <span class="text-lime-300">*</span></label>
+                                    <input
+                                        @bind="FreelancerProfileDTO.LastName"
+                                        type="text"
+                                        class="form-control shadow-none"
+                                        placeholder="Musa"
+                                        required
+                                    />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-container">
+                                    <label for="email" class="form-label">
+                                        Email Address
+                                        <span class="text-lime-300">*</span></label>
+                                    <input
+                                    @bind="FreelancerProfileDTO.Email"
+                                        type="email"
+                                        class="form-control shadow-none"
+                                        placeholder="example@email.com"
+                                        required
+                                    />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-container">
+                                    <label for="headline" class="form-label">
+                                        Headline
+                                        <span class="text-lime-300">*</span></label>
+                                    <input
+                                        @bind="FreelancerProfileDTO.Headline"
+                                        type="text"
+                                        class="form-control shadow-none"
+                                        placeholder="Aspiring Software Engineer | ..."/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- Profile Info -->
+                        
+                        <!-- Submit Btn -->
+                        <div class="d-flex align-items-center gap-4">
+                        <button class="w-btn-secondary-lg">
+                            Save Now
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="10"
+                            viewBox="0 0 14 10"
+                            fill="none">
+                            <path
+                                d="M9 9L13 5M13 5L9 1M13 5L1 5"
+                                stroke="white"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            </svg>
+                        </button>
+                        <a href="/dashboard" style="cursor: pointer;" class="text-danger text-decoration-underline">
+                            Cancel
+                        </a>
+                        </div>
+                    </div>
+                    </EditForm>
+                </div>
+                </div>
+            </div>
+            </div>
+        </main>
+        </div>
+</div>
+<LogoutPopUp />
+
+
+
+@code {
+    private string LoggedInUserId { get; set; }
+    private bool isEditing = false;
+
+    private int countryId { get; set; }
+    private int regionId { get; set; }
+    private List<Location> countries = new List<Location>();
+    private List<Location>? regions = new List<Location>();
+    private List<Location>? cities = new List<Location>();
+
+    private int SkillId { get; set; }
+    private int FieldId { get; set; }
+    private string endpoint = "countries";
+
+    List<FreelancerSkill> freelancerSkills = new List<FreelancerSkill>();
+    List<FreelancerField> freelancerFields = new List<FreelancerField>();
+
+    FreelancerProfileDTO FreelancerProfileDTO = new FreelancerProfileDTO();
+    List<Field> AllFields = new List<Field>();
+    List<Skill> AllSkills = new List<Skill>();
+
+    
+
+
+    private void AddSkill() {
+        foreach(var ss in freelancerSkills) {
+            if (ss.SkillId == SkillId)
+                return;
+        }
+        freelancerSkills.Add(new FreelancerSkill() {
+            SkillId = SkillId,
+            UserId = LoggedInUserId
+        });
+    }
+    private void AddField() {
+
+        foreach(var ff in freelancerFields) {
+            if (ff.FieldId == FieldId)
+                return;
+        }
+        freelancerFields.Add(new FreelancerField() {
+            FieldId = FieldId,
+            UserId = LoggedInUserId
+        });
+    }
+    private void removeSkill(FreelancerSkill element) {
+        freelancerSkills.Remove(element);
+    }
+    private void removeField(FreelancerField element) {
+        freelancerFields.Remove(element);
+    }
+    private void EditProfile() {
+        isEditing = !isEditing;
+    }
+
+    private async Task SaveChanges() {
+        FreelancerProfileDTO.TopFields = freelancerFields;
+        FreelancerProfileDTO.TopSkills = freelancerSkills;
+        await ProfileService.UpdateProfileAsync(FreelancerProfileDTO, LoggedInUserId);
+        Navigation.NavigateTo("/user/profile", forceLoad: true);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        countries = await LocationService.GetLocations(endpoint);
+        endpoint = "regions/";
+
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+        FreelancerProfileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
+
+        AllFields = await FieldService.GetAllFieldsAsync();
+        AllSkills = await SkillService.GetAllSkillsAsync();
+
+        foreach(var ff in FreelancerProfileDTO.TopFields) {
+            freelancerFields.Add(
+                new FreelancerField {
+                    FieldId = ff.FieldId,
+                    UserId = ff.UserId
+                }
+            );
+        }
+        foreach(var ss in FreelancerProfileDTO.TopSkills) {
+            freelancerSkills.Add(
+                new FreelancerSkill {
+                    SkillId = ss.SkillId,
+                    UserId = ss.UserId
+                }
+            );
+        }
+    }
+
+
+    private async Task OnCountryChange()
+    {
+        regions = await LocationService.OnLocationChange(countryId, endpoint);
+        if (regions != null)
+            endpoint = "cities/";
+    }
+
+    private async Task OnRegionChange()
+    {
+        cities = await LocationService.OnLocationChange(regionId, endpoint);
+    }
+}

@@ -37,7 +37,7 @@
             <div>
                 <div class="row justify-content-center">
                 <div class="col-xl-8">
-                    <EditForm Model="profileDTO" OnValidSubmit="SaveChanges">
+                    <EditForm Model="FreelancerProfileDTO" OnValidSubmit="SaveChanges">
                     <div class="d-flex flex-column gap-4">
                         <!-- Profile Info -->
                         <div class="profile-info-card">
@@ -56,7 +56,7 @@
                                     <span class="text-lime-300">*</span>
                                 </label>
                                 <input
-                                    @bind="profileDTO.FirstName"
+                                    @bind="FreelancerProfileDTO.FirstName"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Mansa"
@@ -70,7 +70,7 @@
                                     Last Name
                                     <span class="text-lime-300">*</span></label>
                                 <input
-                                    @bind="profileDTO.LastName"
+                                    @bind="FreelancerProfileDTO.LastName"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Musa"
@@ -84,7 +84,7 @@
                                     Email Address
                                     <span class="text-lime-300">*</span></label>
                                 <input
-                                @bind="profileDTO.Email"
+                                @bind="FreelancerProfileDTO.Email"
                                     type="email"
                                     class="form-control shadow-none"
                                     placeholder="example@email.com"
@@ -94,14 +94,38 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-container">
+                                <label for="username" class="form-label">
+                                    Username
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                    @bind="FreelancerProfileDTO.UserName"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="mansa_m"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
                                 <label for="headline" class="form-label">
                                     Headline
                                     <span class="text-lime-300">*</span></label>
                                 <input
-                                    @bind="profileDTO.Headline"
+                                    @bind="FreelancerProfileDTO.Headline"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Aspiring Software Engineer | ..."/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                <label for="phone" class="form-label">
+                                    Phone
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                    @bind="FreelancerProfileDTO.Phone"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="0912345678"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -150,7 +174,7 @@
                                     City
                                     <span class="text-lime-300">*</span></label>
                                 <select
-                                @bind="profileDTO.LocationId"
+                                @bind="FreelancerProfileDTO.LocationId"
                                     id="city"
                                     autocomplete="off"
                                     class="form-select shadow-none"
@@ -282,9 +306,9 @@
                             />
                             </svg>
                         </button>
-                        <p style="cursor: pointer;" class="text-danger text-decoration-underline">
+                        <a href="/dashboard" style="cursor: pointer;" class="text-danger text-decoration-underline">
                             Cancel
-                        </p>
+                        </a>
                         </div>
                     </div>
                     </EditForm>
@@ -316,7 +340,7 @@
     List<FreelancerSkill> freelancerSkills = new List<FreelancerSkill>();
     List<FreelancerField> freelancerFields = new List<FreelancerField>();
 
-    ProfileDTO profileDTO = new ProfileDTO();
+    FreelancerProfileDTO FreelancerProfileDTO = new FreelancerProfileDTO();
     List<Field> AllFields = new List<Field>();
     List<Skill> AllSkills = new List<Skill>();
 
@@ -355,9 +379,9 @@
     }
 
     private async Task SaveChanges() {
-        profileDTO.TopFields = freelancerFields;
-        profileDTO.TopSkills = freelancerSkills;
-        await ProfileService.UpdateProfileAsync(profileDTO, LoggedInUserId);
+        FreelancerProfileDTO.TopFields = freelancerFields;
+        FreelancerProfileDTO.TopSkills = freelancerSkills;
+        await ProfileService.UpdateProfileAsync(FreelancerProfileDTO, LoggedInUserId);
         Navigation.NavigateTo("/user/profile", forceLoad: true);
     }
 
@@ -368,12 +392,12 @@
 
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-        profileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
+        FreelancerProfileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
 
         AllFields = await FieldService.GetAllFieldsAsync();
         AllSkills = await SkillService.GetAllSkillsAsync();
 
-        foreach(var ff in profileDTO.TopFields) {
+        foreach(var ff in FreelancerProfileDTO.TopFields) {
             freelancerFields.Add(
                 new FreelancerField {
                     FieldId = ff.FieldId,
@@ -381,7 +405,7 @@
                 }
             );
         }
-        foreach(var ss in profileDTO.TopSkills) {
+        foreach(var ss in FreelancerProfileDTO.TopSkills) {
             freelancerSkills.Add(
                 new FreelancerSkill {
                     SkillId = ss.SkillId,
