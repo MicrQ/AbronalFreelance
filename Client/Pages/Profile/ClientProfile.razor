@@ -94,6 +94,18 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-container">
+                                <label for="username" class="form-label">
+                                    Username
+                                    <span class="text-lime-300">*</span></label>
+                                <input
+                                    @bind="clientProfileDTO.UserName"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    placeholder="mansa_m"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-container">
                                 <label for="phone" class="form-label">
                                     Phone
                                     <span class="text-lime-300">*</span></label>
@@ -113,7 +125,7 @@
                                     @bind="clientProfileDTO.Headline"
                                     type="text"
                                     class="form-control shadow-none"
-                                    placeholder="Aspiring Software Engineer | ..."/>
+                                    placeholder="CEO @("@MicrQ")"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
