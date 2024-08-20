@@ -14,43 +14,87 @@
                 </a>
             </div>
             </li>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/"
+                        role="button"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false">
+                        Home
+                    </a>
+                    </li>
+                </NotAuthorized>
+            </AuthorizeView>
+
+            <AuthorizeView Roles="Freelancer">
+                <Authorized>
+                    <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/freelancer"
+                        role="button"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false">
+                        Dashboard
+                    </a>
+                    </li>
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Client">
+                <Authorized>
+                    <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/client"
+                        role="button"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false">
+                        Dashboard
+                    </a>
+                    </li>
+                </Authorized>
+            </AuthorizeView>
+
+
+            <AuthorizeView Roles="Client">
+                <NotAuthorized>
+                    <li class="nav-item">
+                    <a class="nav-link" href="find-jobs">Find Jobs</a>
+                    </li>
+                </NotAuthorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Freelancer">
+                <NotAuthorized>
+                    
+                    <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="find-freelancer"
+                        role="button"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false">
+                        Find Freelancer
+                    </a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a
+                        class="nav-link "
+                        href="post-jobs"
+                        role="button"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false"
+                        >Post Jobs</a>
+                    </li>
+                </NotAuthorized>
+            </AuthorizeView>
             <li class="nav-item">
             <a
                 class="nav-link"
-                href="/"
-                role="button"
-                data-bs-auto-close="outside"
-                aria-expanded="false">
-                Home
-            </a>
-            </li>
-            <li class="nav-item">
-            <a
-                class="nav-link"
-                href="find-freelancer"
-                role="button"
-                data-bs-auto-close="outside"
-                aria-expanded="false">
-                Find Freelancer
-            </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/find-job">Find Job</a>
-            </li>
-            <li class="nav-item">
-            <a
-                class="nav-link "
-                href="#"
-                role="button"
-                data-bs-auto-close="outside"
-                aria-expanded="false"
-                >Post Jobs</a>
-            
-            </li>
-            <li class="nav-item">
-            <a
-                class="nav-link"
-                href="#"
+                href="about-us"
                 role="button"
                 data-bs-auto-close="outside"
                 aria-expanded="false">
@@ -60,43 +104,51 @@
             <a class="nav-link" href="contact-us">Contact Us</a>
             </li>
         </ul>
-        <div class="d-flex align-items-center gap-4 mt-4">
-            <div class="d-flex d-lg-none">
-            <a @onclick="Login" style="cursor: pointer;" class="header-btn">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="13"
-                height="17"
-                viewBox="0 0 13 17"
-                fill="none">
-                <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M6.5 7.55556C8.55134 7.55556 10.2143 5.86419 10.2143 3.77778C10.2143 1.69137 8.55134 0 6.5 0C4.44866 0 2.78571 1.69137 2.78571 3.77778C2.78571 5.86419 4.44866 7.55556 6.5 7.55556ZM6.5 17C10.0899 17 13 15.3086 13 13.2222C13 11.1358 10.0899 9.44444 6.5 9.44444C2.91015 9.44444 0 11.1358 0 13.2222C0 15.3086 2.91015 17 6.5 17Z"
-                    fill="white"
-                /></svg>Login
-            </a>
-            </div>
-        </div>
+        <AuthorizeView>
+            <NotAuthorized>
+                <div class="d-flex align-items-center gap-4 mt-4">
+                    <div class="d-flex d-lg-none">
+                    <a @onclick="Login" style="cursor: pointer;" class="header-btn">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="13"
+                        height="17"
+                        viewBox="0 0 13 17"
+                        fill="none">
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M6.5 7.55556C8.55134 7.55556 10.2143 5.86419 10.2143 3.77778C10.2143 1.69137 8.55134 0 6.5 0C4.44866 0 2.78571 1.69137 2.78571 3.77778C2.78571 5.86419 4.44866 7.55556 6.5 7.55556ZM6.5 17C10.0899 17 13 15.3086 13 13.2222C13 11.1358 10.0899 9.44444 6.5 9.44444C2.91015 9.44444 0 11.1358 0 13.2222C0 15.3086 2.91015 17 6.5 17Z"
+                            fill="white"
+                        /></svg>Login
+                    </a>
+                    </div>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
         </div>
         <div class="navbar-right d-flex align-items-center gap-4">
-        <div class="align-items-center d-none d-lg-flex">
-            <a @onclick="Login" style="cursor: pointer;" class="w-btn-secondary-lg">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="13"
-                height="17"
-                viewBox="0 0 13 17"
-                fill="none">
-                <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M6.5 7.55556C8.55134 7.55556 10.2143 5.86419 10.2143 3.77778C10.2143 1.69137 8.55134 0 6.5 0C4.44866 0 2.78571 1.69137 2.78571 3.77778C2.78571 5.86419 4.44866 7.55556 6.5 7.55556ZM6.5 17C10.0899 17 13 15.3086 13 13.2222C13 11.1358 10.0899 9.44444 6.5 9.44444C2.91015 9.44444 0 11.1358 0 13.2222C0 15.3086 2.91015 17 6.5 17Z"
-                fill="white"
-                />
-            </svg>Login
-            </a>
-        </div>
+        <AuthorizeView>
+            <NotAuthorized>
+                <div class="align-items-center d-none d-lg-flex">
+                    <a @onclick="Login" style="cursor: pointer;" class="w-btn-secondary-lg">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="13"
+                        height="17"
+                        viewBox="0 0 13 17"
+                        fill="none">
+                        <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M6.5 7.55556C8.55134 7.55556 10.2143 5.86419 10.2143 3.77778C10.2143 1.69137 8.55134 0 6.5 0C4.44866 0 2.78571 1.69137 2.78571 3.77778C2.78571 5.86419 4.44866 7.55556 6.5 7.55556ZM6.5 17C10.0899 17 13 15.3086 13 13.2222C13 11.1358 10.0899 9.44444 6.5 9.44444C2.91015 9.44444 0 11.1358 0 13.2222C0 15.3086 2.91015 17 6.5 17Z"
+                        fill="white"
+                        />
+                    </svg>Login
+                    </a>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
         <button
             class="navbar-toggler d-block d-xl-none"
             type="button"
