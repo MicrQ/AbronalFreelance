@@ -4,11 +4,11 @@
 <AuthorizeView>
     <Authorized Context="auth">
         <div class="d-xl-flex">
-            <SideBarFreelancer />
-            <MobileMenuFreelancer />
+            <SideBar />
+            <MobileMenu />
             <!-- Right -->
           <div class="flex-grow-1 align-items-center position-relative">
-            <HeaderFreelancer />
+            <DashboardHeader />
             <!-- Main -->
                 <main class="dashboard-main min-vh-100">
                   <div class="d-flex flex-column gap-4">
@@ -284,6 +284,8 @@
                                   </div>
                                 </div>
                               </div> *@
+                      <AuthorizeView Roles="Freelancer">
+                          <Authorized Context="authView">
                               <!-- Profile Info -->
                               <div class="profile-info-card">
                                 <!-- Header -->
@@ -379,6 +381,8 @@
                                   </div>
                                 </div>
                             </div>
+                          </Authorized>
+                      </AuthorizeView>
                               <!-- Submit Btn -->
                               <div class="d-flex align-items-center gap-4">
                                 <button class="w-btn-secondary-lg">
@@ -411,6 +415,7 @@
                 </main>
               </div>
         </div>
+        <Company />
         <LogoutPopUp />
     </Authorized>
     <NotAuthorized>
