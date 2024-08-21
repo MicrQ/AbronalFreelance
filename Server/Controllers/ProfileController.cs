@@ -21,7 +21,6 @@ public class ProfileController : ControllerBase
     }
 
     [HttpGet("freelancer/profile")]
-    [Authorize]
     public async Task<IActionResult> GetFreelancerProfiles(string UserId) {
         // GET /api/user/profile?UserId={id}
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
@@ -56,7 +55,7 @@ public class ProfileController : ControllerBase
 
 
     [HttpPut("freelancer/profile")]
-    [Authorize]
+    [Authorize(Roles = "Freelancer")]
     public async Task<IActionResult> UpdateFreelancerProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}
@@ -122,8 +121,8 @@ public class ProfileController : ControllerBase
 
 
     [HttpGet("client/profile")]
-    [Authorize]
     public async Task<IActionResult> GetClientProfile(string UserId) {
+        // GET /api/client/profile?userid=clinetid
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
         if (user == null) return NotFound(new {
             Flag = false,
@@ -151,6 +150,56 @@ public class ProfileController : ControllerBase
         }
 
         return Ok(profile);
+    }
+
+    [HttpPut("client/profile")]
+    [Authorize(Roles = "Client")]
+    public async Task<IActionResult> UpdateClientProfile(ClientProfileDTO cpDTO) {
+        // PUT /api/client/profile?userid={userid}
+        var user = await _db.Users.FirstOrDefaultAsync(
+            u => u.Id == cpDTO.UserId
+        );
+        if (user == null) return NotFound(new { Flag = false, Message = "User Not Found" });
+
+        var profile = await _db.Profiles.FirstOrDefaultAsync(p => p.UserId == cpDTO.UserId);
+
+        user.FirstName = cpDTO.FirstName;
+        user.LastName = cpDTO.LastName;
+        // user.UserName = cpDTO.UserName;
+        // user.Email = cpDTO.Email;
+        user.PhoneNumber = cpDTO.Phone;
+        user.LocationId = cpDTO.LocationId;
+        if (profile == null) {
+            _db.Profiles.Add(new Profile {
+                UserId = cpDTO.UserId,
+                Headline = cpDTO.Headline
+            });
+        } else {
+            profile.Headline = cpDTO.Headline;
+            _db.Profiles.Update(profile);
+        }
+
+        if (cpDTO.hasCompany) {
+            var company = await _db.Clients.FirstOrDefaultAsync(c => c.UserId == cpDTO.UserId);
+            if (company == null) {
+                _db.Clients.Add(new Clientt {
+                    UserId = cpDTO.UserId,
+                    CompanyName = cpDTO.CompanyName,
+                    TinNo = cpDTO.TinNo,
+                    CompanyLocationId = (int)cpDTO.CompanyLocationId,
+                    CompanyEstablishedAt = cpDTO.EstablishedDate
+                });
+            } else {
+                company.CompanyName = cpDTO.CompanyName;
+                company.TinNo = cpDTO.TinNo;
+                company.CompanyLocationId = (int)cpDTO.CompanyLocationId;
+                company.CompanyEstablishedAt = cpDTO.EstablishedDate;
+                _db.Clients.Update(company);
+            }
+        }
+        await _db.SaveChangesAsync();
+
+        return Ok(new { Flag = true, Message = "Profile Updated Successfully."});
     }
 
 
