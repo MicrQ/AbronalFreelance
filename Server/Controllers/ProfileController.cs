@@ -208,7 +208,25 @@ public class ProfileController : ControllerBase
         return Ok(new { Flag = true, Message = "Profile Updated Successfully."});
     }
 
+    [HttpPut("user/change-password")]
+    public async Task<IActionResult> ChangePassword(string UserId, PasswordDTO passwordDTO) {
+        // PUT /api/user/change-password?userid={userid}
+        var user = await _userManager.FindByIdAsync(UserId);
+        if (user == null) return NotFound(new PasswordDTO { Message = "User Not Found" });
 
+        if (await _userManager.CheckPasswordAsync(user, passwordDTO.OldPassword)) {
+            await _userManager.ChangePasswordAsync(user, passwordDTO.OldPassword, passwordDTO.NewPassword);
+            return Ok(new PasswordDTO {
+                Flag = true,
+                Message = "Password Changed Successfully."
+            });
+        }
+
+        return BadRequest(new PasswordDTO {
+            Flag = false,
+            Message = "Old Password is Incorrect."
+        });
+    }
 
     private List<string> GetUserLocation(int LocationId) {
         // used to generate the string version of the user address
