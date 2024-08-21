@@ -137,9 +137,8 @@
                                     @bind="countryId" @bind:event="oninput" @onchange="OnCountryChange"
                                     id="country"
                                     autocomplete="off"
-                                    class="form-select shadow-none"
-                                    required >
-                                    <option value="">Select Country</option>
+                                    class="form-select shadow-none">
+                                    <option value="" selected>Select Country</option>
                                     @foreach (var country in countries)
                                     {
                                     <option value="@country.Id">@country.Name</option>
@@ -156,9 +155,8 @@
                                 @bind="regionId" @bind:event="oninput" @onchange="OnRegionChange"
                                     id="region"
                                     autocomplete="off"
-                                    class="form-select shadow-none"
-                                required >
-                                    <option value="">Select City</option>
+                                    class="form-select shadow-none">
+                                    <option value="" selected>Select City</option>
                                     @if (regions != null) {
                                         @foreach (var region in regions)
                                         {
@@ -177,9 +175,8 @@
                                 @bind="FreelancerProfileDTO.LocationId"
                                     id="city"
                                     autocomplete="off"
-                                    class="form-select shadow-none"
-                                required >
-                                    <option value="">Select City</option>
+                                    class="form-select shadow-none">
+                                    <option value="" selected>Select City</option>
                                     @if (cities != null) {
                                         @foreach (var city in cities)
                                         {
@@ -382,7 +379,7 @@
         FreelancerProfileDTO.TopFields = freelancerFields;
         FreelancerProfileDTO.TopSkills = freelancerSkills;
         await ProfileService.UpdateFreelancerProfileAsync(FreelancerProfileDTO, LoggedInUserId);
-        Navigation.NavigateTo("/user/profile", forceLoad: true);
+        Navigation.NavigateTo("/dashboard");
     }
 
     protected override async Task OnInitializedAsync()

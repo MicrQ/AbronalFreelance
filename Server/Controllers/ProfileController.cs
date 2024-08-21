@@ -62,9 +62,7 @@ public class ProfileController : ControllerBase
     public async Task<IActionResult> UpdateFreelancerProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}
-        var user = await _db.Users
-            .FirstOrDefaultAsync(u => u.Id == UserId);
-        // var user = await _userManager.FindByIdAsync(UserId);
+        var user = await _userManager.FindByIdAsync(UserId);
         
         if (user == null) 
             return NotFound(new { Message = "User Not Found" });
@@ -75,6 +73,10 @@ public class ProfileController : ControllerBase
         user.LastName = profileDTO.LastName;
         user.LocationId = profileDTO.LocationId;
         user.PhoneNumber = profileDTO.Phone;
+        user.Email = profileDTO.Email;
+        user.UserName = profileDTO.UserName;
+
+        await _userManager.UpdateAsync(user);
 
         // Update or add profile
         var Profile = _db.Profiles.FirstOrDefault(p => p.UserId == user.Id);
