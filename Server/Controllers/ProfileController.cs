@@ -3,6 +3,7 @@ using AbronalFreelance.Shared;
 using AbronalFreelance.Shared.DTOs;
 using AbronalFreelance.Shared.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,10 +15,12 @@ namespace AbronalFreelance.Server.Controllers;
 public class ProfileController : ControllerBase
 {
     private readonly AppDbContext _db;
+    private readonly UserManager<User> _userManager;
 
-    public ProfileController(AppDbContext db)
+    public ProfileController(AppDbContext db, UserManager<User> userManager)
     {
         _db = db;
+        _userManager = userManager;
     }
 
     [HttpGet("freelancer/profile")]
@@ -59,17 +62,18 @@ public class ProfileController : ControllerBase
     public async Task<IActionResult> UpdateFreelancerProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}
-        var user = await _db.Users
-            .FirstOrDefaultAsync(u => u.Id == UserId);
+        // var user = await _db.Users
+        //     .FirstOrDefaultAsync(u => u.Id == UserId);
+        var user = await _userManager.FindByIdAsync(UserId);
         
         if (user == null) 
             return NotFound(new { Message = "User Not Found" });
+
 
         // Update user fields...more to be added
         user.FirstName = profileDTO.FirstName;
         user.LastName = profileDTO.LastName;
         user.LocationId = profileDTO.LocationId;
-        // user.UserName = profileDTO.UserName;
         user.PhoneNumber = profileDTO.Phone;
 
         // Update or add profile

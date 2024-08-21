@@ -19,5 +19,6 @@ public class ClientProfileDTO {
     public DateTime? EstablishedDate { get; set; }
 
     public bool hasCompany { get; set; } = false;
+    public bool Flag { get; set; } = true;
     public string? Message { get; set; }
 }
