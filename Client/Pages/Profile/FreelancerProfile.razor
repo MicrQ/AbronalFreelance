@@ -381,7 +381,7 @@
     private async Task SaveChanges() {
         FreelancerProfileDTO.TopFields = freelancerFields;
         FreelancerProfileDTO.TopSkills = freelancerSkills;
-        await ProfileService.UpdateProfileAsync(FreelancerProfileDTO, LoggedInUserId);
+        await ProfileService.UpdateFreelancerProfileAsync(FreelancerProfileDTO, LoggedInUserId);
         Navigation.NavigateTo("/user/profile", forceLoad: true);
     }
 
@@ -392,7 +392,7 @@
 
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-        FreelancerProfileDTO = await ProfileService.GetUserProfileAsync(LoggedInUserId);
+        FreelancerProfileDTO = await ProfileService.GetFreelancerProfileAsync(LoggedInUserId);
 
         AllFields = await FieldService.GetAllFieldsAsync();
         AllSkills = await SkillService.GetAllSkillsAsync();

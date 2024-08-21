@@ -215,7 +215,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-container">
-                                    <label for="lname" class="form-label">
+                                    <label for="tin" class="form-label">
                                         TIN
                                         <span class="text-lime-300">*</span></label>
                                     <input
@@ -227,14 +227,14 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-container">
-                                    <label for="email" class="form-label">
+                                    <label for="establishedDate" class="form-label">
                                         Established Date
                                         <span class="text-lime-300">*</span></label>
                                     <input
                                     @bind="clientProfileDTO.EstablishedDate"
-                                        type="datetime"
+                                        type="date"
                                         class="form-control shadow-none"
-                                        placeholder="example@email.com"
+                                        placeholder="31/12/2018"
                                     />
                                     </div>
                                 </div>
@@ -355,7 +355,9 @@
 
     private ClientProfileDTO clientProfileDTO = new ClientProfileDTO();
 
-    private void SaveChanges() {
+    private async Task SaveChanges() {
+        await ProfileService.UpdateClientProfileAsync(clientProfileDTO);
+        Navigation.NavigateTo("/dashboard");
     }
 
     protected override async Task OnInitializedAsync()
@@ -366,10 +368,7 @@
 
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-        // get client profile here 
-        //clientProfileDTO.UserId = 
-
-        
+        clientProfileDTO = await ProfileService.GetClientProfileAsync(LoggedInUserId);
     }
 
 
