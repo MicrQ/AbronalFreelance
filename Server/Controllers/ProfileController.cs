@@ -20,7 +20,7 @@ public class ProfileController : ControllerBase
         _db = db;
     }
 
-    [HttpGet("user/profile")]
+    [HttpGet("freelancer/profile")]
     [Authorize]
     public async Task<IActionResult> GetUserProfiles(string UserId) {
         // GET /api/user/profile?UserId={id}
@@ -55,7 +55,7 @@ public class ProfileController : ControllerBase
     }
 
 
-    [HttpPut("user/profile")]
+    [HttpPut("freelancer/profile")]
     [Authorize]
     public async Task<IActionResult> UpdateProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
@@ -119,6 +119,9 @@ public class ProfileController : ControllerBase
 
         return Ok(new { Message = "Profile Updated Successfully." });
     }
+
+
+
 
 
 

@@ -6,7 +6,8 @@ namespace AbronalFreelance.Client.Services.ProfileService;
 public class ProfileService : IProfile
 {
     private readonly HttpClient _http;
-    private readonly string _url = "api/user/profile?UserId=";
+    private readonly string _url_freelancer = "api/freelancer/profile?UserId=";
+    private readonly string _url_client = "api/client/profile?UserId=";
     public ProfileService(HttpClient http)
     {
         _http = http;
@@ -14,12 +15,12 @@ public class ProfileService : IProfile
 
     public async Task<FreelancerProfileDTO> GetUserProfileAsync(string UserId)
     {
-        FreelancerProfileDTO FreelancerProfileDTO = await _http.GetFromJsonAsync<FreelancerProfileDTO>(_url + UserId);
+        FreelancerProfileDTO FreelancerProfileDTO = await _http.GetFromJsonAsync<FreelancerProfileDTO>(_url_freelancer + UserId);
         return FreelancerProfileDTO;
     }
 
     public async Task UpdateProfileAsync(FreelancerProfileDTO FreelancerProfileDTO, string UserId)
     {
-        await _http.PutAsJsonAsync(_url + UserId, FreelancerProfileDTO);
+        await _http.PutAsJsonAsync(_url_freelancer + UserId, FreelancerProfileDTO);
     }
 }
