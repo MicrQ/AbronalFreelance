@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QMJpYjoGQNJZbM/WejE6VRQhctwFv2dcksh4ubuIf/I=",
+  "Hash": "NjikfDzVM1ALFW7XW2Sc00a9ma2n7rpiX/JOCMnavYQ=",
   "Source": "AbronalFreelance.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -12593,6 +12593,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/top-seller/5.png"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/img/user-avatar.webp",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "img/user-avatar.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/user-avatar.webp"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/img/user.png",

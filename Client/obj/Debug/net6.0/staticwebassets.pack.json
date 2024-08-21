@@ -901,6 +901,10 @@
       "PackagePath": "staticwebassets/img/top-seller/5.png"
     },
     {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/user-avatar.webp",
+      "PackagePath": "staticwebassets/img/user-avatar.webp"
+    },
+    {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/img/user.png",
       "PackagePath": "staticwebassets/img/user.png"
     },
