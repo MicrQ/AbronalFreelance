@@ -22,7 +22,7 @@ public class ProfileController : ControllerBase
 
     [HttpGet("freelancer/profile")]
     [Authorize]
-    public async Task<IActionResult> GetUserProfiles(string UserId) {
+    public async Task<IActionResult> GetFreelancerProfiles(string UserId) {
         // GET /api/user/profile?UserId={id}
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
         if (user == null) return NotFound(
@@ -57,7 +57,7 @@ public class ProfileController : ControllerBase
 
     [HttpPut("freelancer/profile")]
     [Authorize]
-    public async Task<IActionResult> UpdateProfile(FreelancerProfileDTO profileDTO, string UserId)
+    public async Task<IActionResult> UpdateFreelancerProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}
         var user = await _db.Users
@@ -121,7 +121,37 @@ public class ProfileController : ControllerBase
     }
 
 
+    [HttpGet("client/profile")]
+    [Authorize]
+    public async Task<IActionResult> GetClientProfile(string UserId) {
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);
+        if (user == null) return NotFound(new {
+            Flag = false,
+            Message = "User doesn't exsist"
+        });
+        var company = await _db.Clients.FirstOrDefaultAsync(c => c.UserId == UserId);
+        var userProfile = await _db.Profiles.FirstOrDefaultAsync(p => p.UserId == UserId);
 
+        var profile = new ClientProfileDTO {
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            UserName = user.UserName,
+            Headline = userProfile != null ? userProfile.Headline : null,
+            Email = user.Email,
+            Phone = user.PhoneNumber,
+            LocationId = user.LocationId,
+            UserId = user.Id
+        };
+        if (company != null) {
+            profile.hasCompany = true;
+            profile.CompanyName = company.CompanyName;
+            profile.TinNo = company.TinNo;
+            profile.CompanyLocationId = company.CompanyLocationId;
+            profile.EstablishedDate = company.CompanyEstablishedAt;
+        }
+
+        return Ok(profile);
+    }
 
 
 

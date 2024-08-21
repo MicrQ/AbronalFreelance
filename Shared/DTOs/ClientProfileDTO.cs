@@ -18,6 +18,6 @@ public class ClientProfileDTO {
     public int? CompanyLocationId { get; set; }
     public DateTime? EstablishedDate { get; set; }
 
-    public bool Flag { get; set; } = false;
+    public bool hasCompany { get; set; } = false;
     public string? Message { get; set; }
 }
