@@ -62,9 +62,9 @@ public class ProfileController : ControllerBase
     public async Task<IActionResult> UpdateFreelancerProfile(FreelancerProfileDTO profileDTO, string UserId)
     {
         // PUT /api/user/profile?userid={id}
-        // var user = await _db.Users
-        //     .FirstOrDefaultAsync(u => u.Id == UserId);
-        var user = await _userManager.FindByIdAsync(UserId);
+        var user = await _db.Users
+            .FirstOrDefaultAsync(u => u.Id == UserId);
+        // var user = await _userManager.FindByIdAsync(UserId);
         
         if (user == null) 
             return NotFound(new { Message = "User Not Found" });
