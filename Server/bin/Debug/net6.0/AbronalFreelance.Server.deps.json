@@ -729,7 +729,10 @@
           "System.IdentityModel.Tokens.Jwt": "6.36.0"
         },
         "runtime": {
-          "AbronalFreelance.Client.dll": {}
+          "AbronalFreelance.Client.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "AbronalFreelance.Shared/1.0.0": {
@@ -737,7 +740,10 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.32"
         },
         "runtime": {
-          "AbronalFreelance.Shared.dll": {}
+          "AbronalFreelance.Shared.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
