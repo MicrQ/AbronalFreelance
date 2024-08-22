@@ -8,7 +8,7 @@ using AbronalFreelance.Shared.Models;
 namespace AbronalFreelance.Server.Controllers;
 
 [ApiController]
-[Route("api/{userid}/job")]
+[Route("api")]
 [Authorize]
 public class JobController : ControllerBase
 {
@@ -19,10 +19,10 @@ public class JobController : ControllerBase
         _db = db;
     }
 
-    [HttpPost]
+    [HttpPost("jobs")]
     [Authorize(Roles = "Client")]
     public async Task<IActionResult> AddJob(JobDTO jobDTO) {
-        // POST api/{userid}/job
+        // POST api/jobs
         if (await _db.Users.FirstOrDefaultAsync(u => u.Id == jobDTO.UserId) == null) {
             return NotFound(new JobDTO { Message = "User not found"});
         }
