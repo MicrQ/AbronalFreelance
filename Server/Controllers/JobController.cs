@@ -21,6 +21,7 @@ public class JobController : ControllerBase
 
     [HttpGet("job/{id}")]
     public async Task<IActionResult> GetJob(int id) {
+        // GET api/job/{id}
         var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == id);
 
         if (job == null) return NotFound(new JobDTO {
@@ -38,6 +39,7 @@ public class JobController : ControllerBase
             LocationId = job.LocationId,
             PaymentTypeId = job.PaymentTypeId,
             JobTypeId = job.JobTypeId,
+            CreatedAt = job.CreatedAt,
             Flag = true
         });
     }
