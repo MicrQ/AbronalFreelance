@@ -19,6 +19,31 @@ public class JobController : ControllerBase
         _db = db;
     }
 
+    [HttpGet("job/{id}")]
+    public async Task<IActionResult> GetJob(int id) {
+        var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == id);
+
+        if (job == null) return NotFound(new JobDTO {
+            Message = "Job with the given id is not found"
+        });
+
+        return Ok(new JobDTO {
+            Id = job.Id,
+            Title = job.Title,
+            Description = job.Description,
+            Budget = job.Budget,
+            Duration = job.Duration,
+            UserId = job.UserId,
+            Deadline = job.Deadline,
+            LocationId = job.LocationId,
+            PaymentTypeId = job.PaymentTypeId,
+            JobTypeId = job.JobTypeId,
+            Flag = true
+        });
+    }
+
+
+
     [HttpPost("jobs")]
     [Authorize(Roles = "Client")]
     public async Task<IActionResult> AddJob(JobDTO jobDTO) {
@@ -47,4 +72,5 @@ public class JobController : ControllerBase
             Message = "Job Posted Successfully."
         });
     }
+
 }

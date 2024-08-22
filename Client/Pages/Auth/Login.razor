@@ -182,7 +182,7 @@
         var result = await AccountService.LoginUserAsync(loginModel);
         var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
         await customAuthStateProvider.updateAuthenticationState(result.Token);
-        Navigation.NavigateTo(result.RedirectUrl, forceLoad: true);
+        Navigation.NavigateTo(result.RedirectUrl);
     }
 
 }
