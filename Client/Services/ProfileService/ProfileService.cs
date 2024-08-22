@@ -34,4 +34,10 @@ public class ProfileService : IProfile
     {
         await _http.PutAsJsonAsync(_url_freelancer + UserId, FreelancerProfileDTO);
     }
+
+    public async Task<PasswordDTO> ChangePasswordAsync(string UserId, PasswordDTO PasswordDTO)
+    {
+        var response = await _http.PutAsJsonAsync("api/user/change-password?UserId=" + UserId, PasswordDTO);
+        return await response.Content.ReadFromJsonAsync<PasswordDTO>();
+    }
 }

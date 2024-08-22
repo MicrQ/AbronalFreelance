@@ -214,6 +214,12 @@ public class ProfileController : ControllerBase
         var user = await _userManager.FindByIdAsync(UserId);
         if (user == null) return NotFound(new PasswordDTO { Message = "User Not Found" });
 
+        if (passwordDTO.OldPassword == null || passwordDTO.NewPassword == null) {
+            return BadRequest(new PasswordDTO {
+                Message = "Old Password and New Password are required."
+            });
+        }
+
         if (await _userManager.CheckPasswordAsync(user, passwordDTO.OldPassword)) {
             await _userManager.ChangePasswordAsync(user, passwordDTO.OldPassword, passwordDTO.NewPassword);
             return Ok(new PasswordDTO {
@@ -223,7 +229,6 @@ public class ProfileController : ControllerBase
         }
 
         return BadRequest(new PasswordDTO {
-            Flag = false,
             Message = "Old Password is Incorrect."
         });
     }
