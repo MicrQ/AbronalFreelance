@@ -11,7 +11,7 @@
         var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
         await AccountService.LogoutUserAsync();
         await customAuthStateProvider.updateAuthenticationState(null!);
-        NavManager.NavigateTo("/", forceLoad: true);
+        NavManager.NavigateTo("/");
     }
 
 }
