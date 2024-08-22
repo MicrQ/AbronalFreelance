@@ -721,7 +721,6 @@
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Portfolio.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Shared/AddorEditPortfolio.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/AbronalFreelance.Client.csproj.AssemblyReference.cache
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Company.razor.rz.scp.css
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/FindFreelancer.razor.rz.scp.css
 /home/niq/mock/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/blazor.webassembly.js
 /home/niq/mock/AbronalFreelance/Client/bin/Debug/net6.0/wwwroot/_framework/Blazored.LocalStorage.dll
