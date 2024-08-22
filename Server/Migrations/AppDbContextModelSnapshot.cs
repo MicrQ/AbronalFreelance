@@ -761,23 +761,6 @@ namespace AbronalFreelance.Server.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("AbronalFreelance.Shared.Models.PaymentMethod", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PaymentMethods");
-                });
-
             modelBuilder.Entity("AbronalFreelance.Shared.Models.PaymentType", b =>
                 {
                     b.Property<int>("Id")
@@ -790,12 +773,7 @@ namespace AbronalFreelance.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PaymentMethodId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PaymentMethodId");
 
                     b.ToTable("PaymentTypes");
                 });
@@ -1440,17 +1418,6 @@ namespace AbronalFreelance.Server.Migrations
                     b.Navigation("Receiver");
 
                     b.Navigation("Sender");
-                });
-
-            modelBuilder.Entity("AbronalFreelance.Shared.Models.PaymentType", b =>
-                {
-                    b.HasOne("AbronalFreelance.Shared.Models.PaymentMethod", "PaymentMethod")
-                        .WithMany()
-                        .HasForeignKey("PaymentMethodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PaymentMethod");
                 });
 
             modelBuilder.Entity("AbronalFreelance.Shared.Models.Profile", b =>

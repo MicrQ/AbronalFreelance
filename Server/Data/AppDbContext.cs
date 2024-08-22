@@ -30,7 +30,6 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Contract> Contracts { get; set; }
     public DbSet<JobPool> JobPools { get; set; }
     public DbSet<PaymentType> PaymentTypes { get; set; }
-    public DbSet<PaymentMethod> PaymentMethods { get; set; }
     public DbSet<ContractStatusType> ContractStatusTypes { get; set; }
     public DbSet<ContractStatus> ContractStatuses { get; set; }
     public DbSet<SkillsForJob> SkillsForJobs { get; set; }
