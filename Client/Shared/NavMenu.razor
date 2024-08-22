@@ -16,6 +16,18 @@
             </div>
             </li>
             <AuthorizeView>
+                <Authorized>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="/dashboard"
+                            role="button"
+                            data-bs-auto-close="outside"
+                            aria-expanded="false">
+                            Dashboard
+                        </a>
+                    </li>
+                </Authorized>
                 <NotAuthorized>
                     <li class="nav-item">
                     <a
@@ -30,16 +42,6 @@
                 </NotAuthorized>
             </AuthorizeView>
 
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="/dashboard"
-                    role="button"
-                    data-bs-auto-close="outside"
-                    aria-expanded="false">
-                    Dashboard
-                </a>
-            </li>
             <AuthorizeView Roles="Client">
                 <NotAuthorized>
                     <li class="nav-item">

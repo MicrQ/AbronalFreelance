@@ -75,4 +75,36 @@ public class JobController : ControllerBase
         });
     }
 
+
+    [HttpPut("job/{id}")]
+    [Authorize(Roles = "Client")]
+    public async Task<IActionResult> UpdateJob(int id, string UserId, JobDTO jobDTO) {
+        // PUT api/job/{id}?userid={userid}
+        if (UserId != jobDTO.UserId) {
+            return BadRequest(new JobDTO {
+                Message = "You don't have the permission to update this job"
+            });
+        }
+
+        var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == id && j.UserId == UserId);
+        if (job == null) return NotFound(new JobDTO {
+            Message = "Job with the given id is not found"
+        });
+
+        job.Title = jobDTO.Title;
+        job.Description = jobDTO.Description;
+        job.Budget = jobDTO.Budget;
+        job.Duration = jobDTO.Duration;
+        job.Deadline = (DateTime)jobDTO.Deadline;
+        job.LocationId = (int)jobDTO.LocationId;
+        job.PaymentTypeId = (int)jobDTO.PaymentTypeId;
+        job.JobTypeId = (int)jobDTO.JobTypeId;
+        _db.Jobs.Update(job);
+        await _db.SaveChangesAsync();
+
+        return Ok(new JobDTO {
+            Flag = true,
+            Message = "Job Updated Successfully."
+        });
+    }
 }
