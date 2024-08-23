@@ -81,7 +81,7 @@
                                 <div class="col-6">
                                 <div class="form-container">
                                     <label for="budget" class="form-label"
-                                    >Budget(ETB) [ Optional ]</label>
+                                    >Budget(ETB) <span style="opacity: .5;">[ Optional ]</span></label>
                                     <input @bind="jobDTO.Budget"
                                     id="budget"
                                     type="text"
@@ -270,7 +270,7 @@
     private bool hasError = false;
 
 
-     protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
@@ -278,8 +278,8 @@
         jobTypes = await JobTypeService.GetAllJobTypesAsync();
         paymentTypes = await PaymentTypeService.GetAllPaymentTypesAsync();
 
-        var authState = AuthStateProvider.GetAuthenticationStateAsync();
-        LoggedInUserId = authState.Result.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
     }
 
 
@@ -326,7 +326,6 @@
             errorMessages.Add("Duration cannot be empty.");
         }
 
-        // display success message if necessaryhere
         jobDTO.UserId = LoggedInUserId;
         var res = await JobService.CreateJobAsync(jobDTO);
         if (res.Flag)

@@ -50,7 +50,8 @@ public class JobController : ControllerBase
     [Authorize(Roles = "Client")]
     public async Task<IActionResult> AddJob(JobDTO jobDTO) {
         // POST api/jobs
-        if (await _db.Users.FirstOrDefaultAsync(u => u.Id == jobDTO.UserId) == null) {
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == jobDTO.UserId);
+        if (user == null) {
             return NotFound(new JobDTO { Message = "User not found"});
         }
 
