@@ -1,6 +1,6 @@
 @page "/post-job"
 
-<AuthorizeView Roles="Client">
+<AuthorizeView Roles="Client" Context="auth_post_job">
     <Authorized>
         <div class="d-xl-flex">
         <!-- Sidebar -->
@@ -43,7 +43,7 @@
                 <div>
                 <div class="row justify-content-center">
                     <div class="col-xl-8">
-                    <form>
+                    <EditForm Model="jobDTO" OnValidSubmit="PublishJob">
                         <div class="d-flex flex-column gap-4">
                         <!-- Project Info -->
                         <div class="gig-info-card">
@@ -59,30 +59,30 @@
                                 <div class="form-container">
                                     <label for="title" class="form-label">Job Title
                                     <span class="text-lime-300">*</span></label>
-                                    <input
+                                    <input @bind="jobDTO.Title"
                                     type="text"
                                     class="form-control shadow-none"
                                     placeholder="Title name here"
-                                    />
+                                    required/>
                                 </div>
                                 </div>
                                 <div class="col-12">
                                 <label for="description" class="form-label"
                                     >Description*</label>
-                                    <textarea
+                                    <textarea @bind="jobDTO.Description"
                                     type="text"
                                     id="description"
                                     class="form-control shadow-none"
                                     placeholder="We are seeking a skilled and experienced technical ..."
                                     style="min-height: 160px;"
-                                    />
+                                    required/>
                                 </div>
                                 
                                 <div class="col-6">
                                 <div class="form-container">
                                     <label for="budget" class="form-label"
                                     >Budget(ETB)</label>
-                                    <input
+                                    <input @bind="jobDTO.Budget"
                                     id="budget"
                                     type="text"
                                     class="form-control shadow-none"
@@ -96,18 +96,17 @@
                                     Job Duration<span class="text-lime-300"
                                         >*</span>
                                     </label><br />
-                                    <input
+                                    <input @bind="jobDurationNumber"
                                     id="jobDuration-number"
                                     type="number"
                                     class="form-control shadow-none"
                                     style="width: 180px; display: inline-block;"
-                                    value="1"
-                                    />
-                                    <select
+                                    required/>
+                                    <select @bind="jobDurationText"
                                         id="jobDuration"
                                         autocomplete="off"
                                         class="form-select shadow-none"
-                                        style="width: 180px; display: inline-block;">
+                                        style="width: 180px; display: inline-block;" required>
                                         <option value="Days">Days</option>
                                         <option value="Weeks">Weeks</option>
                                         <option value="Months">Months</option>
@@ -122,10 +121,10 @@
                                     <span class="text-lime-300">*</span></label>
                                     <input
                                     id="location"
-                                    type="text"
+                                    type="date"
                                     class="form-control shadow-none"
                                     placeholder="Location here"
-                                    />
+                                    required/>
                                 </div>
                                 </div>
                                 <div class="col-md-6">
@@ -136,9 +135,11 @@
                                     id="jobType"
                                     autocomplete="off"
                                     class="form-select shadow-none"
-                                    >
-                                    <option value="0">Remote</option>
-                                    <option value="1">On-Site</option>
+                                    required>
+                                    <option value="">Select Job Type</option>
+                                    @foreach (var jobType in jobTypes) {
+                                        <option value="@jobType.Id">@jobType.Name</option>
+                                    }
                                     </select>
                                 </div>
                                 </div>
@@ -150,9 +151,11 @@
                                     id="paymentType"
                                     autocomplete="off"
                                     class="form-select shadow-none"
-                                    >
-                                    <option value="0">Cash</option>
-                                    <option value="1">Direct Bank Transfer</option>
+                                    required>
+                                    <option value="">Select Payment Type</option>
+                                    @foreach (var paymentType in paymentTypes) {
+                                        <option value="@paymentType.Id">@paymentType.Name</option>
+                                    }
                                     </select>
                                 </div>
                                 </div>
@@ -187,7 +190,7 @@
                                 <div class="col-md-6">
                                 <div class="form-input">
                                     <label for="city" class="form-label">City <span class="text-lime-300">*</span></label>
-                                    <select 
+                                    <select @bind="jobDTO.LocationId"
                                     class="form-select shadow-none" name="country" id="country" required>
                                         <option value="">Select City</option>
                                         @if (cities != null) {
@@ -206,6 +209,9 @@
 
                         <!-- Submit Btn -->
                         <div>
+                            @if (hasError) {
+                                <p class="text-danger m-4">Error Message here</p>
+                            }
                             <button type="submit" class="w-btn-secondary-lg">
                             Publish Job
                             <svg
@@ -226,7 +232,7 @@
                             </button>
                         </div>
                         </div>
-                    </form>
+                    </EditForm>
                     </div>
                 </div>
                 </div>
@@ -242,12 +248,26 @@
 
 
 @code {
+    private JobDTO jobDTO = new JobDTO();
+
     private List<Location> countries = new();
     private List<Location>? regions = null;
     private List<Location>? cities = null;
+    private List<JobType> jobTypes = new List<JobType>();
+    private List<PaymentType> paymentTypes = new List<PaymentType>();
     private string endpoint = "countries";
     private int countryId;
     private int regionId;
+
+    private string jobDurationNumber;
+    private string jobDurationText;
+    private bool hasError = false;
+
+
+    private void PublishJob() {
+
+    }
+
 
      protected override async Task OnInitializedAsync()
     {

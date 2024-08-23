@@ -1,4 +1,4 @@
-namespace AbronalFreelacner.Shared.DTOs;
+namespace AbronalFreelance.Shared.DTOs;
 
 public class JobDTO {
     public int? Id { get; set; }

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AbronalFreelance.Server.Data;
 using Microsoft.AspNetCore.Authorization;
-using AbronalFreelacner.Shared.DTOs;
+using AbronalFreelance.Shared.DTOs;
 using Microsoft.EntityFrameworkCore;
 using AbronalFreelance.Shared.Models;
 
