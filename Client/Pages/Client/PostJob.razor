@@ -273,6 +273,8 @@
     {
         countries = await LocationService.GetLocations(endpoint);
         endpoint = "regions/";
+
+        jobTypes = await JobTypeService.GetAllJobTypesAsync();
     }
 
 

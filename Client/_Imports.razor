@@ -26,6 +26,7 @@
 @using AbronalFreelance.Client.Services.Auth
 @using global::AbronalFreelance.Client.State
 @using Microsoft.AspNetCore.Components.Authorization
+@using AbronalFreelance.Client.Services.JobTypeService
 @using AbronalFreelance.Client.Services.LocationServices
 
 
@@ -36,6 +37,7 @@
 @inject IJSRuntime JSRuntime
 @inject ICompany CompanyService
 @inject IAccount AccountService
+@inject IJobType JobTypeService
 @inject IProfile ProfileService
 @inject ILocation LocationService
 @inject IPortfolio PortfolioService
