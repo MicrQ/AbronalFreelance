@@ -3,6 +3,7 @@ using AbronalFreelance.Client;
 using AbronalFreelance.Client.State;
 using Microsoft.AspNetCore.Components.Web;
 using AbronalFreelance.Client.Services.Auth;
+using AbronalFreelance.Client.Services.JobService;
 using AbronalFreelance.Client.Services.SkillService;
 using AbronalFreelance.Client.Services.FieldService;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -28,6 +29,7 @@ builder.Services.AddAuthorizationCore();
 // builder.Services.AddScoped<LocationService>();
 
 
+builder.Services.AddScoped<IJob, JobService>();
 builder.Services.AddScoped<ISkill, SkillService>();
 builder.Services.AddScoped<IField, FieldService>();
 builder.Services.AddScoped<IAccount, AccountService>();

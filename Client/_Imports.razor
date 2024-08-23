@@ -25,6 +25,7 @@
 @using Microsoft.AspNetCore.Authorization
 @using AbronalFreelance.Client.Services.Auth
 @using global::AbronalFreelance.Client.State
+@using AbronalFreelance.Client.Services.JobService
 @using Microsoft.AspNetCore.Components.Authorization
 @using AbronalFreelance.Client.Services.JobTypeService
 @using AbronalFreelance.Client.Services.LocationServices
@@ -33,6 +34,7 @@
 
 
 
+@inject IJob JobService
 @inject ISkill SkillService
 @inject IField FieldService
 @inject IJSRuntime JSRuntime

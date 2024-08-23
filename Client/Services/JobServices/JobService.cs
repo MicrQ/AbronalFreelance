@@ -1,0 +1,18 @@
+using AbronalFreelance.Shared.DTOs;
+using System.Net.Http.Json;
+
+namespace AbronalFreelance.Client.Services.JobService;
+
+public class JobService : IJob
+{
+    private readonly HttpClient _http;
+
+    public JobService(HttpClient http)
+    {
+        _http = http;
+    }
+    public async Task<JobDTO> CreateJobAsync(JobDTO jobDTO) {
+        var res = await _http.PostAsJsonAsync("api/jobs", jobDTO);
+        return await res.Content.ReadFromJsonAsync<JobDTO>();
+    }
+}

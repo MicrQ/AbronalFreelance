@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-12">
                                 <label for="description" class="form-label"
-                                    >Description*</label>
+                                    >Description <span class="text-lime-300">*</span></label>
                                     <textarea @bind="jobDTO.Description"
                                     type="text"
                                     id="description"
@@ -81,7 +81,7 @@
                                 <div class="col-6">
                                 <div class="form-container">
                                     <label for="budget" class="form-label"
-                                    >Budget(ETB)</label>
+                                    >Budget(ETB) [ Optional ]</label>
                                     <input @bind="jobDTO.Budget"
                                     id="budget"
                                     type="text"
@@ -93,7 +93,7 @@
                                 <div class="col-md-6">
                                 <div class="form-container">
                                     <label for="jobDuration" class="form-label">
-                                    Job Duration<span class="text-lime-300"
+                                    Job Duration <span class="text-lime-300"
                                         >*</span>
                                     </label><br />
                                     <input @bind="jobDurationNumber"
@@ -119,7 +119,7 @@
                                     <label for="deadline" class="form-label"
                                     >Deadline
                                     <span class="text-lime-300">*</span></label>
-                                    <input
+                                    <input @bind="jobDTO.Deadline"
                                     id="location"
                                     type="date"
                                     class="form-control shadow-none"
@@ -131,7 +131,7 @@
                                 <div class="form-container">
                                     <label for="jobType" class="form-label"
                                     >Job Type</label>
-                                    <select
+                                    <select @bind="jobDTO.JobTypeId"
                                     id="jobType"
                                     autocomplete="off"
                                     class="form-select shadow-none"
@@ -147,7 +147,7 @@
                                 <div class="form-container">
                                     <label for="paymentType" class="form-label"
                                     >Payment Type <span class="text-lime-300">*</span></label>
-                                    <select
+                                    <select @bind="jobDTO.PaymentTypeId"
                                     id="paymentType"
                                     autocomplete="off"
                                     class="form-select shadow-none"
@@ -210,7 +210,11 @@
                         <!-- Submit Btn -->
                         <div>
                             @if (hasError) {
-                                <p class="text-danger m-4">Error Message here</p>
+                                <ul>
+                                    @foreach (var message in errorMessages) {
+                                        <li style="list-style: circle;" class="text-danger m-4">@message</li>
+                                    }
+                                </ul>
                             }
                             <button type="submit" class="w-btn-secondary-lg">
                             Publish Job
@@ -249,24 +253,21 @@
 
 @code {
     private JobDTO jobDTO = new JobDTO();
+    private string LoggedInUserId;
 
     private List<Location> countries = new();
     private List<Location>? regions = null;
     private List<Location>? cities = null;
     private List<JobType> jobTypes = new List<JobType>();
     private List<PaymentType> paymentTypes = new List<PaymentType>();
+    private List<string> errorMessages = new List<string>();
     private string endpoint = "countries";
     private int countryId;
     private int regionId;
 
-    private string jobDurationNumber;
-    private string jobDurationText;
+    private string jobDurationNumber = "";
+    private string jobDurationText = "";
     private bool hasError = false;
-
-
-    private void PublishJob() {
-
-    }
 
 
      protected override async Task OnInitializedAsync()
@@ -276,6 +277,9 @@
 
         jobTypes = await JobTypeService.GetAllJobTypesAsync();
         paymentTypes = await PaymentTypeService.GetAllPaymentTypesAsync();
+
+        var authState = AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = authState.Result.User.FindFirst(ClaimTypes.NameIdentifier).Value;
     }
 
 
@@ -289,5 +293,47 @@
     private async Task OnRegionChange()
     {
         cities = await LocationService.OnLocationChange(regionId, endpoint);
+    }
+
+
+    private async Task PublishJob() {
+        if (string.IsNullOrEmpty(jobDTO.Title)) {
+            errorMessages.Add("Job Title cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(jobDTO.Description)) {
+            errorMessages.Add("Description cannot be empty.");
+        }
+        if (jobDTO.Title == null) {
+            errorMessages.Add("Deadline cannot be empty.");
+        }
+        if (jobDTO.LocationId == null) {
+            errorMessages.Add("Location cannot be empty.");
+        }
+        if (jobDTO.PaymentTypeId == null) {
+            errorMessages.Add("Payment Type cannot be empty.");
+        }
+        if (jobDTO.JobTypeId == null) {
+            errorMessages.Add("Job Type cannot be empty.");
+        }
+
+        if (errorMessages.Count > 0) {
+            hasError = true;
+            return;
+        }
+
+        jobDTO.Duration = jobDurationNumber + " " + jobDurationText;
+        if (string.IsNullOrEmpty(jobDTO.Duration)) {
+            errorMessages.Add("Duration cannot be empty.");
+        }
+
+        // display success message if necessaryhere
+        jobDTO.UserId = LoggedInUserId;
+        var res = await JobService.CreateJobAsync(jobDTO);
+        if (res.Flag)
+            Navigation.NavigateTo("/dashboard");
+        else {
+            errorMessages.Add(res.Message);
+            hasError = true;
+        }
     }
 }
