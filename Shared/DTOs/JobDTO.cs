@@ -1,3 +1,5 @@
+using AbronalFreelance.Shared.Models;
+
 namespace AbronalFreelance.Shared.DTOs;
 
 public class JobDTO {
@@ -14,4 +16,6 @@ public class JobDTO {
     public DateTime? CreatedAt { get; set; }
     public bool Flag { get; set; } = false;
     public string? Message { get; set; }
+    public List<Skill> Skills { get; set; }
+    public List<Field> Fields { get; set; }
 }

@@ -206,6 +206,100 @@
                             </div>
                         </div>
 
+                        <div class="profile-info-card">
+                        <!-- Header -->
+                            <div class="profile-info-header">
+                                <h4 class="text-18 fw-semibold text-dark-300">
+                                Skills Required
+                                </h4>
+                            </div>
+                            <div class="profile-info-body bg-white">
+                                <div class="row g-4">
+                                <div class="col-12">
+                                    <select @bind="@SkillId"
+                                    class="form-select shadow-none">
+                                        <option value="" selected>Select Skills</option>
+                                        @foreach (var skl in AllSkills) {
+                                            <option value="@skl.Id" @onclick="AddSkill">@skl.Name</option>
+                                        }
+                                    </select>
+                                    <div
+                                    class="skill-cloud mt-4 d-flex align-items-center gap-3 flex-wrap">
+                                    @foreach(var skill in jobSkills) {
+                                        <span class="skill-cloud-item" style="cursor: pointer;" @onclick="@(() => removeSkill(@skill))">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="7"
+                                            height="8"
+                                            viewBox="0 0 7 8"
+                                            fill="none"
+                                        >
+                                            <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M0.214855 0.714855C0.501329 0.428382 0.965796 0.428382 1.25227 0.714855L3.5 2.96259L5.74773 0.714856C6.0342 0.428382 6.49867 0.428382 6.78514 0.714856C7.07162 1.00133 7.07162 1.4658 6.78514 1.75227L4.53741 4L6.78514 6.24773C7.07162 6.5342 7.07162 6.99867 6.78514 7.28514C6.49867 7.57162 6.0342 7.57162 5.74773 7.28514L3.5 5.03741L1.25227 7.28514C0.965796 7.57162 0.50133 7.57162 0.214856 7.28514C-0.0716182 6.99867 -0.0716181 6.5342 0.214856 6.24773L2.46259 4L0.214855 1.75227C-0.0716185 1.4658 -0.0716185 1.00133 0.214855 0.714855Z"
+                                            fill="#907386"
+                                            />
+                                        </svg>
+                                        @AllSkills.FirstOrDefault(f => f.Id == skill.SkillId).Name
+                                        </span>
+
+                                    }
+                                    @if (jobSkills.Count == 0) {
+                                        <p>No Skill selected.</p>
+                                    }
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-info-card">
+                        <!-- Header -->
+                            <div class="profile-info-header">
+                                <h4 class="text-18 fw-semibold text-dark-300">
+                                Possible Fields
+                                </h4>
+                            </div>
+                            <div class="profile-info-body bg-white">
+                                <div class="row g-4">
+                                <div class="col-12">
+                                    <select @bind="@FieldId"
+                                    class="form-select shadow-none">
+                                        <option value="" selected>Select Fields</option>
+                                        @foreach (var fld in AllFields) {
+                                            <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
+                                        }
+                                    </select>
+                                    <div
+                                    class="skill-cloud mt-4 d-flex align-items-center gap-3 flex-wrap">
+                                    @foreach(var field in jobFields) {
+                                        <span class="skill-cloud-item" style="cursor: pointer;" @onclick="@(() => removeField(@field))">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="7"
+                                            height="8"
+                                            viewBox="0 0 7 8"
+                                            fill="none"
+                                        >
+                                            <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M0.214855 0.714855C0.501329 0.428382 0.965796 0.428382 1.25227 0.714855L3.5 2.96259L5.74773 0.714856C6.0342 0.428382 6.49867 0.428382 6.78514 0.714856C7.07162 1.00133 7.07162 1.4658 6.78514 1.75227L4.53741 4L6.78514 6.24773C7.07162 6.5342 7.07162 6.99867 6.78514 7.28514C6.49867 7.57162 6.0342 7.57162 5.74773 7.28514L3.5 5.03741L1.25227 7.28514C0.965796 7.57162 0.50133 7.57162 0.214856 7.28514C-0.0716182 6.99867 -0.0716181 6.5342 0.214856 6.24773L2.46259 4L0.214855 1.75227C-0.0716185 1.4658 -0.0716185 1.00133 0.214855 0.714855Z"
+                                            fill="#907386"
+                                            />
+                                        </svg>
+                                        @AllFields.FirstOrDefault(f => f.Id == field.FieldId).Name
+                                        </span>
+
+                                    }
+                                    @if (jobFields.Count == 0) {
+                                        <p>No Field selected.</p>
+                                    }
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Submit Btn -->
                         <div>
@@ -264,6 +358,13 @@
     private string endpoint = "countries";
     private int countryId;
     private int regionId;
+    private int SkillId { get; set; }
+    private int FieldId { get; set; }
+    List<Field> AllFields = new List<Field>();
+    List<Skill> AllSkills = new List<Skill>();
+    List<FreelancerSkill> jobSkills = new List<FreelancerSkill>();
+    List<FreelancerField> jobFields = new List<FreelancerField>();
+
 
     private string jobDurationNumber = "";
     private string jobDurationText = "";
@@ -280,6 +381,9 @@
 
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+
+        AllFields = await FieldService.GetAllFieldsAsync();
+        AllSkills = await SkillService.GetAllSkillsAsync();
     }
 
 
@@ -334,5 +438,34 @@
             errorMessages.Add(res.Message);
             hasError = true;
         }
+    }
+
+    private void AddSkill() {
+        foreach(var ss in jobSkills) {
+            if (ss.SkillId == SkillId)
+                return;
+        }
+        jobSkills.Add(new FreelancerSkill() {
+            SkillId = SkillId,
+            UserId = LoggedInUserId
+        });
+    }
+    private void AddField() {
+
+        foreach(var ff in jobFields) {
+            if (ff.FieldId == FieldId)
+                return;
+        }
+        jobFields.Add(new FreelancerField() {
+            FieldId = FieldId,
+            UserId = LoggedInUserId
+        });
+    }
+
+    private void removeSkill(FreelancerSkill element) {
+        jobSkills.Remove(element);
+    }
+    private void removeField(FreelancerField element) {
+        jobFields.Remove(element);
     }
 }
