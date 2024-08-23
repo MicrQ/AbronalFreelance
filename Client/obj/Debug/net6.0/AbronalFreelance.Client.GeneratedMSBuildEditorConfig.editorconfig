@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aC9SZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/niq/AbronalFreelance/Client/Pages/Client/MyJobs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50L015Sm9icy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/niq/AbronalFreelance/Client/Pages/Client/PostJob.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50L1Bvc3RKb2IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
