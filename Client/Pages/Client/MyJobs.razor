@@ -175,7 +175,7 @@
                             <td>
                                 <div class="d-flex justify-content-end gap-2">
                                 <a
-                                    href="buyer-create-job-post.html"
+                                    href="edit-post/@job.Id"
                                     class="dashboard-action-btn"
                                 >
                                     <svg
@@ -2307,7 +2307,7 @@
 </div>
 
 @code {
-    private List<JobDTO> Jobs { get; set; }
+    private List<JobDTO> Jobs = new List<JobDTO>();
     private string LoggedInUserId { get; set; }
 
     protected async override Task OnInitializedAsync()

@@ -1,4 +1,5 @@
 @page "/post-job"
+@page "/edit-post/{id}"
 
 <AuthorizeView Roles="Client" Context="auth_post_job">
     <Authorized>
@@ -346,6 +347,8 @@
 
 
 @code {
+    [Parameter]
+    public string? Id { get; set; }
     private JobDTO jobDTO = new JobDTO();
     private string LoggedInUserId;
 
