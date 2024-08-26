@@ -430,6 +430,9 @@
             errorMessages.Add("Duration cannot be empty.");
         }
 
+        jobDTO.Skills = jobSkills;
+        jobDTO.Fields = jobFields;
+
         jobDTO.UserId = LoggedInUserId;
         var res = await JobService.CreateJobAsync(jobDTO);
         if (res.Flag)
