@@ -389,6 +389,12 @@
         AllSkills = await SkillService.GetAllSkillsAsync();
     }
 
+    protected override async Task OnParametersSetAsync() {
+        if (Id != null) {
+            jobDTO = await JobService.GetJobByIdAsync(Id);
+        }
+    }
+
 
      private async Task OnCountryChange()
     {

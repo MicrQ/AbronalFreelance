@@ -16,6 +16,10 @@ public class JobService : IJob
         return await _http.GetFromJsonAsync<List<JobDTO>>($"api/{userId}/jobs");
     }
 
+    public async Task<JobDTO> GetJobByIdAsync(string id) {
+        return await _http.GetFromJsonAsync<JobDTO>($"api/job/{id}");
+    }
+
     public async Task<JobDTO> CreateJobAsync(JobDTO jobDTO) {
         var res = await _http.PostAsJsonAsync("api/jobs", jobDTO);
         return await res.Content.ReadFromJsonAsync<JobDTO>();
