@@ -78,7 +78,39 @@ public class JobController : ControllerBase
         });
     }
 
+    [HttpGet("{userId}/jobs/recent")]
+    public async Task<IActionResult> GetRecentJobs(string userId, int limit = 5) {
+        // GET api/{userId}/jobs/recent?limit={limit}
+        var jobs = await _db.Jobs.Where(j => j.UserId == userId)
+            .OrderByDescending(j => j.CreatedAt)
+            .Take(limit)
+            .ToListAsync();
 
+        if (jobs == null) return NotFound(new JobDTO { Message = "No jobs found" });
+
+        List<JobDTO> userJobs = new List<JobDTO>();
+        foreach (Job job in jobs) {
+            (List<Skill> skillList, List<Field> fieldList) = await GetSkillsAndFields(job.Id);
+
+            userJobs.Add(new JobDTO {
+                Id = job.Id,
+                Title = job.Title,
+                Description = job.Description,
+                Budget = job.Budget,
+                Duration = job.Duration,
+                UserId = job.UserId,
+                Deadline = job.Deadline,
+                LocationId = job.LocationId,
+                PaymentTypeId = job.PaymentTypeId,
+                JobTypeId = job.JobTypeId,
+                CreatedAt = job.CreatedAt,
+                Skills = skillList,
+                Fields = fieldList,
+                Flag = true
+            });
+        }
+        return Ok(userJobs);
+    }
 
     [HttpPost("jobs")]
     [Authorize(Roles = "Client")]

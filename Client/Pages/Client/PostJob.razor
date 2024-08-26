@@ -392,6 +392,8 @@
     protected override async Task OnParametersSetAsync() {
         if (Id != null) {
             jobDTO = await JobService.GetJobByIdAsync(Id);
+            jobFields = jobDTO.Fields;
+            jobSkills = jobDTO.Skills;
         }
     }
 
