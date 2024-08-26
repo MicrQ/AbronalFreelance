@@ -27,8 +27,8 @@ public class JobController : ControllerBase
 
         List<JobDTO> userJobs = new List<JobDTO>();
         foreach (Job job in jobs) {
-            var skills = await _db.SkillsForJobs.Where(j => j.JobId == job.Id).ToListAsync();
-            var fields = await _db.JobFields.Where(j => j.JobId == job.Id).ToListAsync();
+            (List<Skill> skillList, List<Field> fieldList) = await GetSkillsAndFields(job.Id);
+
             userJobs.Add(new JobDTO {
                 Id = job.Id,
                 Title = job.Title,
@@ -41,8 +41,9 @@ public class JobController : ControllerBase
                 PaymentTypeId = job.PaymentTypeId,
                 JobTypeId = job.JobTypeId,
                 CreatedAt = job.CreatedAt,
-                Skills = skills != null ? skills : new List<SkillsForJob>(),
-                Fields = fields != null ? fields : new List<JobFields>()
+                Skills = skillList,
+                Fields = fieldList,
+                Flag = true
             });
         }
         return Ok(userJobs);
@@ -56,8 +57,8 @@ public class JobController : ControllerBase
         if (job == null) return NotFound(new JobDTO {
             Message = "Job with the given id is not found"
         });
-        var skills = await _db.SkillsForJobs.Where(j => j.JobId == id).ToListAsync();
-        var fields = await _db.JobFields.Where(j => j.JobId == id).ToListAsync();
+
+        (List<Skill> skills, List<Field> fields) = await GetSkillsAndFields(job.Id);
 
         return Ok(new JobDTO {
             Id = job.Id,
@@ -71,8 +72,8 @@ public class JobController : ControllerBase
             PaymentTypeId = job.PaymentTypeId,
             JobTypeId = job.JobTypeId,
             CreatedAt = job.CreatedAt,
-            Skills = skills != null ? skills : new List<SkillsForJob>(),
-            Fields = fields != null ? fields : new List<JobFields>(),
+            Skills = skills,
+            Fields = fields,
             Flag = true
         });
     }
@@ -87,7 +88,7 @@ public class JobController : ControllerBase
         if (user == null) {
             return NotFound(new JobDTO { Message = "User not found"});
         }
-
+        DateTime filter = DateTime.Now;
         Job job = new Job {
             Title = jobDTO.Title,
             Description = jobDTO.Description,
@@ -100,14 +101,25 @@ public class JobController : ControllerBase
             JobTypeId = (int)jobDTO.JobTypeId
         };
         _db.Jobs.Add(job);
-
-        foreach (var skill in jobDTO.Skills) {
-            _db.SkillsForJobs.Add(skill);
-        }
-        foreach (var field in jobDTO.Fields) {
-            _db.JobFields.Add(field);
-        }
         await _db.SaveChangesAsync();
+
+        var newJob = await _db.Jobs.FirstOrDefaultAsync(j => j.CreatedAt > filter);
+
+        if (newJob != null) {
+            foreach (var skill in jobDTO.Skills) {
+                _db.SkillsForJobs.Add(new SkillsForJob {
+                    JobId = newJob.Id,
+                    SkillId = skill.Id
+                });
+            }
+            foreach (var field in jobDTO.Fields) {
+                _db.JobFields.Add(new JobFields {
+                    JobId = newJob.Id,
+                    FieldId = field.Id
+                });
+            }
+            await _db.SaveChangesAsync();
+        }
 
         return Created("uri of the created job...", new JobDTO {
             Flag = true,
@@ -141,8 +153,8 @@ public class JobController : ControllerBase
         job.JobTypeId = (int)jobDTO.JobTypeId;
         _db.Jobs.Update(job);
 
-        var skills = await _db.SkillsForJobs.Where(j => j.Id == id).ToListAsync();
-        var fields = await _db.JobFields.Where(j => j.Id == id).ToListAsync();
+        var skills = await _db.SkillsForJobs.Where(j => j.JobId == id).ToListAsync();
+        var fields = await _db.JobFields.Where(j => j.JobId == id).ToListAsync();
 
         foreach (var skill in skills) {
             _db.SkillsForJobs.Remove(skill);
@@ -150,12 +162,19 @@ public class JobController : ControllerBase
         foreach (var field in fields) {
             _db.JobFields.Remove(field);
         }
+        await _db.SaveChangesAsync();
 
         foreach (var skill in jobDTO.Skills) {
-            _db.SkillsForJobs.Add(skill);
+            _db.SkillsForJobs.Add(new SkillsForJob {
+                JobId = job.Id,
+                SkillId = skill.Id
+            });
         }
         foreach (var field in jobDTO.Fields) {
-            _db.JobFields.Add(field);
+            _db.JobFields.Add(new JobFields {
+                JobId = job.Id,
+                FieldId = field.Id
+            });
         }
 
         await _db.SaveChangesAsync();
@@ -164,5 +183,21 @@ public class JobController : ControllerBase
             Flag = true,
             Message = "Job Updated Successfully."
         });
+    }
+
+    private async Task<(List<Skill>, List<Field>)> GetSkillsAndFields(int jobId) {
+        var skills = await _db.SkillsForJobs.Where(j => j.JobId == jobId).ToListAsync() ?? new List<SkillsForJob>();
+        var fields = await _db.JobFields.Where(j => j.JobId == jobId).ToListAsync() ?? new List<JobFields>();
+
+        List<Skill> skillList = new List<Skill>();
+        List<Field> fieldList = new List<Field>();
+        foreach (var jobSkill in skills) {
+            skillList.Add(await _db.Skills.FirstOrDefaultAsync(s => s.Id == jobSkill.SkillId));
+        }
+        foreach (var jobField in fields) {
+            fieldList.Add(await _db.Fields.FirstOrDefaultAsync(f => f.Id == jobField.FieldId));
+        }
+
+        return (skillList, fieldList);
     }
 }

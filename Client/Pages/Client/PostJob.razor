@@ -241,7 +241,7 @@
                                             fill="#907386"
                                             />
                                         </svg>
-                                        @AllSkills.FirstOrDefault(f => f.Id == skill.SkillId).Name
+                                        @skill.Name
                                         </span>
 
                                     }
@@ -288,7 +288,7 @@
                                             fill="#907386"
                                             />
                                         </svg>
-                                        @AllFields.FirstOrDefault(f => f.Id == field.FieldId).Name
+                                        @field.Name
                                         </span>
 
                                     }
@@ -362,8 +362,8 @@
     private int FieldId { get; set; }
     List<Field> AllFields = new List<Field>();
     List<Skill> AllSkills = new List<Skill>();
-    List<FreelancerSkill> jobSkills = new List<FreelancerSkill>();
-    List<FreelancerField> jobFields = new List<FreelancerField>();
+    List<Skill> jobSkills = new List<Skill>();
+    List<Field> jobFields = new List<Field>();
 
 
     private string jobDurationNumber = "";
@@ -442,30 +442,24 @@
 
     private void AddSkill() {
         foreach(var ss in jobSkills) {
-            if (ss.SkillId == SkillId)
+            if (ss.Id == SkillId)
                 return;
         }
-        jobSkills.Add(new FreelancerSkill() {
-            SkillId = SkillId,
-            UserId = LoggedInUserId
-        });
+        jobSkills.Add(AllSkills.FirstOrDefault(s => s.Id == SkillId));
     }
     private void AddField() {
 
         foreach(var ff in jobFields) {
-            if (ff.FieldId == FieldId)
+            if (ff.Id == FieldId)
                 return;
         }
-        jobFields.Add(new FreelancerField() {
-            FieldId = FieldId,
-            UserId = LoggedInUserId
-        });
+        jobFields.Add(AllFields.FirstOrDefault(f => f.Id == FieldId));
     }
 
-    private void removeSkill(FreelancerSkill element) {
+    private void removeSkill(Skill element) {
         jobSkills.Remove(element);
     }
-    private void removeField(FreelancerField element) {
+    private void removeField(Field element) {
         jobFields.Remove(element);
     }
 }
