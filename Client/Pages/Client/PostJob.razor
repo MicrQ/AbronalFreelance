@@ -339,6 +339,7 @@
             </main>
         </div>
         </div>
+        <LogoutPopUp />
     </Authorized>
     <NotAuthorized>
         401 page
@@ -436,16 +437,17 @@
             return;
         }
 
-        jobDTO.Duration = jobDurationNumber + " " + jobDurationText;
-        if (string.IsNullOrEmpty(jobDTO.Duration)) {
+        if (string.IsNullOrEmpty(jobDurationNumber) || string.IsNullOrEmpty(jobDurationText)) {
             errorMessages.Add("Duration cannot be empty.");
         }
 
+        jobDTO.Duration = jobDurationNumber + " " + jobDurationText;
         jobDTO.Skills = jobSkills;
         jobDTO.Fields = jobFields;
 
         jobDTO.UserId = LoggedInUserId;
-        var res = await JobService.CreateJobAsync(jobDTO);
+        var res = Id == null ? await JobService.CreateJobAsync(
+            jobDTO) : await JobService.UpdateJobAsync(LoggedInUserId, jobDTO);
         if (res.Flag)
             Navigation.NavigateTo("/dashboard");
         else {

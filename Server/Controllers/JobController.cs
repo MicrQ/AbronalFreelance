@@ -79,7 +79,7 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("{userId}/jobs/recent")]
-    public async Task<IActionResult> GetRecentJobs(string userId, int limit = 5) {
+    public async Task<IActionResult> GetRecentJobs(string userId, int limit = 3) {
         // GET api/{userId}/jobs/recent?limit={limit}
         var jobs = await _db.Jobs.Where(j => j.UserId == userId)
             .OrderByDescending(j => j.CreatedAt)
