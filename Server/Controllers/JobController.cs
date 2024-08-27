@@ -9,7 +9,6 @@ namespace AbronalFreelance.Server.Controllers;
 
 [ApiController]
 [Route("api")]
-[Authorize]
 public class JobController : ControllerBase
 {
     private readonly AppDbContext _db;
@@ -20,6 +19,7 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("{userId}/jobs")]
+    [Authorize]
     public async Task<IActionResult> GetAllJobs(string userId) {
         // GET api/jobs?userid={userid}
         var jobs = await _db.Jobs.Where(j => j.UserId == userId).ToListAsync();
@@ -50,6 +50,7 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("job/{id}")]
+    [Authorize]
     public async Task<IActionResult> GetJob(int id) {
         // GET api/job/{id}
         var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == id);
@@ -78,13 +79,21 @@ public class JobController : ControllerBase
         });
     }
 
-    [HttpGet("{userId}/jobs/recent")]
-    public async Task<IActionResult> GetRecentJobs(string userId, int limit = 3) {
-        // GET api/{userId}/jobs/recent?limit={limit}
-        var jobs = await _db.Jobs.Where(j => j.UserId == userId)
-            .OrderByDescending(j => j.CreatedAt)
-            .Take(limit)
-            .ToListAsync();
+    [HttpGet("jobs/recent")]
+    public async Task<IActionResult> GetRecentJobs(string? userId, int limit = 5) {
+        // GET api/jobs/recent?userid={userid}&limit={limit}
+        List<Job>? jobs;
+        if (userId != null) {
+            jobs = await _db.Jobs.Where(j => j.UserId == userId)
+                .OrderByDescending(j => j.CreatedAt)
+                .Take(limit)
+                .ToListAsync();
+        } else {
+            jobs = await _db.Jobs
+                .OrderByDescending(j => j.CreatedAt)
+                .Take(limit)
+                .ToListAsync();
+        }
 
         if (jobs == null) return NotFound(new JobDTO { Message = "No jobs found" });
 

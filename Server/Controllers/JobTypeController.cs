@@ -7,7 +7,6 @@ namespace AbronalFreelance.Server.Controllers;
 
 [ApiController]
 [Route("api")]
-[Authorize]
 public class JobTypeController : ControllerBase
 {
     private readonly AppDbContext _db;

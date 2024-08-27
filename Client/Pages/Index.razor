@@ -318,7 +318,7 @@
         <div class="row mb-40 justify-content-between align-items-end">
             <div class="col-md-auto">
                 <h2 class="fw-bold section-title">Recent Job Post</h2>
-                <p class="section-desc">Apply for a job and get paid!</p>
+                <p class="section-desc">Find your dream job and earn!</p>
             </div>
             <div class="col-md-auto position-relative mt-30 mt-md-0">
                 <div class="d-flex gap-3">
@@ -337,30 +337,33 @@
         </div>
         <div class="swiper recentJob">
             <div class="swiper-wrapper">
-                <article class="swiper-slide">
-                    <div class="job-post bg-offWhite position-relative">
-                        <div class="job-type-badge position-absolute d-flex flex-column gap-2">
-                            <p class="job-type-badge-primary">Hourly</p>
-                            <p class="job-type-badge-secondary">Urgent</p>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            <div class="job-post-icon">
-                                <img src="img/job/1.svg" alt="" />
+                @foreach (var job in Jobs) {
+                    <article class="swiper-slide">
+                        <div class="job-post bg-offWhite position-relative">
+                            <div class="job-type-badge position-absolute d-flex flex-column gap-2">
+                                @* <p class="job-type-badge-primary">Hourly</p> *@
+                                <p class="job-type-badge-secondary">
+                                    @(JobTypes.FirstOrDefault(jt => jt.Id == job.JobTypeId)?.Name)
+                                </p>
                             </div>
-                            <p class="job-post-subtitle fw-normal">$10 - $15</p>
-                            <h3 class="job-post-title fw-semibold">
-                                <a href="job-details.html">Senior Sales and Marketing Executive</a>
-                            </h3>
-                            <a href="job-details.html" class="w-btn-primary-xl">
-                                Apply Now
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
-                                    <path d="M9 9L13 5M13 5L9 1M13 5L1 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </a>
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <div class="job-post-icon">
+                                    <img src="img/job/1.svg" alt="" />
+                                </div>
+                                <p class="job-post-subtitle fw-normal">ETB @job.Budget</p>
+                                <h3 class="job-post-title fw-semibold">
+                                    <a href="job-details.html">@job.Title</a>
+                                </h3>
+                                <a href="job/@job.Id" class="w-btn-primary-xl">
+                                    Apply Now
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
+                                        <path d="M9 9L13 5M13 5L9 1M13 5L1 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </article>
-                
+                    </article>
+                }
                 
             </div>
         </div>
@@ -518,4 +521,11 @@
 </main>
 <Footer />
 
-
+@code {
+    private List<JobDTO> Jobs = new List<JobDTO>();
+    private List<JobType> JobTypes = new List<JobType>();
+    protected override async Task OnInitializedAsync() {
+        Jobs = await JobService.GetRecentJobsAsync(null, 10);
+        JobTypes = await JobTypeService.GetAllJobTypesAsync();
+    }
+}
