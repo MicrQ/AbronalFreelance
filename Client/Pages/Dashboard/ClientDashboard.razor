@@ -181,6 +181,6 @@
     protected override async Task OnInitializedAsync() {
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
-        Jobs = await JobService.GetRecentJobsAsync(LoggedInUserId);
+        Jobs = await JobService.GetRecentJobsAsync(null, LoggedInUserId);
     }
 }

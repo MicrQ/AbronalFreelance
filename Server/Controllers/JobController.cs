@@ -80,12 +80,20 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("jobs/recent")]
-    public async Task<IActionResult> GetRecentJobs(string? userId, int limit    ) {
+    public async Task<IActionResult> GetRecentJobs(string? userId, int? field,int limit) {
         // GET api/jobs/recent?userid={userid}&limit={limit}
         List<Job>? jobs;
         if (userId != null) {
             jobs = await _db.Jobs.Where(j => j.UserId == userId)
                 .OrderByDescending(j => j.CreatedAt)
+                .Take(limit)
+                .ToListAsync();
+        } else if (field != null) {
+            jobs = await (from j in _db.Jobs
+                join jf in _db.JobFields on j.Id equals jf.JobId
+                where jf.FieldId == field
+                orderby j.CreatedAt descending
+                select j)
                 .Take(limit)
                 .ToListAsync();
         } else {
