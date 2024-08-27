@@ -43,6 +43,17 @@
             </AuthorizeView>
 
             <AuthorizeView Roles="Client">
+                <Authorized>
+                    <li class="nav-item">
+                    <a
+                        class="nav-link "
+                        href="post-job"
+                        role="button"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false"
+                        >Post Jobs</a>
+                    </li>
+                </Authorized>
                 <NotAuthorized>
                     <li class="nav-item">
                     <a class="nav-link" href="find-jobs">Find Jobs</a>
@@ -63,15 +74,6 @@
                     </a>
                     </li>
 
-                    <li class="nav-item">
-                    <a
-                        class="nav-link "
-                        href="post-jobs"
-                        role="button"
-                        data-bs-auto-close="outside"
-                        aria-expanded="false"
-                        >Post Jobs</a>
-                    </li>
                 </NotAuthorized>
             </AuthorizeView>
             <li class="nav-item">
