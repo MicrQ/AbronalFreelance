@@ -20,7 +20,7 @@ public class JobService : IJob
         return await _http.GetFromJsonAsync<JobDTO>($"api/job/{id}");
     }
 
-    public async Task<List<JobDTO>> GetRecentJobsAsync(string? userId, int limit = 5) {
+    public async Task<List<JobDTO>> GetRecentJobsAsync(string? userId, int limit = 10) {
         return await _http.GetFromJsonAsync<List<JobDTO>>($"api/jobs/recent?userid={userId}&limit={limit}");
     }
 

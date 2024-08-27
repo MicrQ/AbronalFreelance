@@ -525,7 +525,7 @@
     private List<JobDTO> Jobs = new List<JobDTO>();
     private List<JobType> JobTypes = new List<JobType>();
     protected override async Task OnInitializedAsync() {
-        Jobs = await JobService.GetRecentJobsAsync(null, 10);
+        Jobs = await JobService.GetRecentJobsAsync(null);
         JobTypes = await JobTypeService.GetAllJobTypesAsync();
     }
 }

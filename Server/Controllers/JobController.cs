@@ -80,7 +80,7 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("jobs/recent")]
-    public async Task<IActionResult> GetRecentJobs(string? userId, int limit = 5) {
+    public async Task<IActionResult> GetRecentJobs(string? userId, int limit    ) {
         // GET api/jobs/recent?userid={userid}&limit={limit}
         List<Job>? jobs;
         if (userId != null) {
