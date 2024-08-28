@@ -1,4 +1,4 @@
-@page "/job/{id:int}"
+@page "/job/{id}"
 
 <NavMenu />
     <main class="bg-offWhite">
@@ -17,14 +17,7 @@
                 class="position-relative z-2"
                 >
                 <h2 class="section-title-light mb-2">Job Details</h2>
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb w-breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      Job Details
-                    </li>
-                  </ol>
-                </nav>
+                
               </div>
             </div>
           </div>
@@ -64,12 +57,16 @@
                               d="M7.02292 0H4.35625C3.80486 0 3.35625 0.448611 3.35625 1V1.33333H0.574219L1.83142 5.10547C1.877 5.24184 2.00425 5.33333 2.14783 5.33333H4.02292V5C4.02292 4.8158 4.17205 4.66667 4.35625 4.66667H7.02292C7.20712 4.66667 7.35625 4.8158 7.35625 5V5.33333H9.23134C9.37491 5.33333 9.50217 5.24184 9.54774 5.10547L10.805 1.33333H8.02292V1C8.02292 0.448611 7.57431 0 7.02292 0ZM4.02292 1.33333V1C4.02292 0.816059 4.17231 0.666667 4.35625 0.666667H7.02292C7.20686 0.666667 7.35625 0.816059 7.35625 1V1.33333H4.02292Z"
                               fill="#22BE0D"
                             /></svg>
-                          Job type: <span>Hourly</span>
+                          Job type: <span style="color:#22BE0D">@JobTypes.FirstOrDefault(jt =>jt.Id == job.JobTypeId).Name</span>
                         </p>
                         <h3 class="job-post-title fw-bold mb-1">
-                          Sr. Marketing Director
+                          @job.Title
                         </h3>
-                        <p class="job-company mb-2">QuomodoSoft</p>
+                        @if (profile.hasCompany) {
+                            <p class="job-company mb-2">
+                                @profile.CompanyName
+                            </p>
+                        }
                         <div class="d-flex gap-3">
                           <span class="job-post-date"
                             ><svg
@@ -85,7 +82,8 @@
                                 d="M3.81482 0.513554C3.81482 0.298962 3.64085 0.125 3.42626 0.125C3.21167 0.125 3.03771 0.298962 3.03771 0.513554V1.7167C2.1876 2.14527 1.51131 2.86822 1.14274 3.75163H9.85443C9.48587 2.86823 8.80959 2.14529 7.95951 1.71672V0.513554C7.95951 0.298962 7.78555 0.125 7.57095 0.125C7.35636 0.125 7.1824 0.298962 7.1824 0.513554V1.4222C6.85642 1.33638 6.51416 1.29067 6.16124 1.29067H4.83594C4.48302 1.29067 4.14078 1.33638 3.81482 1.42219V0.513554ZM0.835938 5.29067C0.835938 5.03013 0.860848 4.7754 0.908418 4.52874H10.0888C10.1363 4.7754 10.1612 5.03013 10.1612 5.29068V6.87501C10.1612 9.08415 8.37038 10.875 6.16124 10.875H4.83594C2.6268 10.875 0.835938 9.08415 0.835938 6.87501V5.29067ZM5.49857 7.76653C5.7847 7.76653 6.01664 7.53458 6.01664 7.24846C6.01664 6.96234 5.7847 6.73039 5.49857 6.73039C5.21245 6.73039 4.9805 6.96234 4.9805 7.24846C4.9805 7.53458 5.21245 7.76653 5.49857 7.76653ZM8.08868 7.24846C8.08868 7.53458 7.85673 7.76653 7.5706 7.76653C7.28448 7.76653 7.05253 7.53458 7.05253 7.24846C7.05253 6.96234 7.28448 6.73039 7.5706 6.73039C7.85673 6.73039 8.08868 6.96234 8.08868 7.24846ZM3.42623 7.76653C3.71235 7.76653 3.9443 7.53458 3.9443 7.24846C3.9443 6.96234 3.71235 6.73039 3.42623 6.73039C3.1401 6.73039 2.90815 6.96234 2.90815 7.24846C2.90815 7.53458 3.1401 7.76653 3.42623 7.76653Z"
                                 fill="#22BE0D"
                               /></svg>
-                            02 Days ago</span>
+                            @(GetTimeAgo((DateTime)job.CreatedAt))
+                            </span>
                           <span class="job-location">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +97,7 @@
                                 d="M5.15385 11C6.89904 11 9.80769 7.58895 9.80769 4.88889C9.80769 2.18883 7.72409 0 5.15385 0C2.5836 0 0.5 2.18883 0.5 4.88889C0.5 7.58895 3.40865 11 5.15385 11ZM5.15371 6.59992C6.01046 6.59992 6.70499 5.86119 6.70499 4.94992C6.70499 4.03865 6.01046 3.29992 5.15371 3.29992C4.29696 3.29992 3.60243 4.03865 3.60243 4.94992C3.60243 5.86119 4.29696 6.59992 5.15371 6.59992Z"
                                 fill="#13544E"
                               /></svg>
-                            Dhaka</span>
+                            @Locations.FirstOrDefault(c => c.Id == job.LocationId).Name</span>
                         </div>
                       </div>
                     </div>
@@ -113,7 +111,11 @@
                       >
                         Apply Now
                       </a>
-                      <h3 class="job-wage fw-bold mt-4">$1,000-1500/m</h3>
+                      @if (job.Budget != null) {
+                        <h3 class="job-wage fw-bold mt-4">ETB @job.Budget</h3>
+                      } else {
+                        <h3 class="job-wage fw-bold mt-4">Negotiable</h3>
+                      }
                     </div>
                   </div>
                   <div class="pt-5 border-top">
@@ -123,110 +125,7 @@
                           Job Description
                         </h4>
                         <p class="text-dark-200 lh-2">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi as architecto beatae vitae dicta
-                          sunt explicabo. Nemo enim ipsam voluptatem quia
-                          voluptas sit aspernatur aut odit aut fugit, Sed quia
-                          consequuntur magni dolores as eos qui ratione
-                          voluptatem our sequi nesciunt. Neque porro quisquam
-                          est, qui dolorem ipsum quia dolor sit amet,
-                          consectetur, adipisci velit, sed quia non numquam eius
-                          modi tempora incidunt ut laboxre et dolore magnam
-                          aliquam quaerat voluptatem. Ut enim ad minima veniam,
-                          quis nostrum exercitationem ullam corporis suscipit
-                          laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                          Quis autem vel eum iure reprehenderit qui in ea
-                          voluptate velit esse quam nihil molestiae consequatur,
-                          vel illum qui dolorem eum fugiat quo voluptas nulla
-                          pariatur?
-                        </p>
-                      </div>
-                      <div class="mb-30">
-                        <h4 class="fw-semibold text-18 text-dark-300 mb-2">
-                          The Work You’ll Do
-                        </h4>
-                        <ul>
-                          <li class="text-dark-200">
-                            Support the Creative Directors and Associate
-                            Creative Directors of experience design to concept
-                            andoversee the production of bold, innovative,
-                            award-winning campaigns and digital experiences.
-                          </li>
-                          <li class="text-dark-200">
-                            Make strategic and tactical UX decisions related to
-                            design and usability as well as features
-                            andfunctions.
-                          </li>
-                          <li class="text-dark-200">
-                            Creates low- and high-fidelity wireframes that
-                            represent a user’s journey.
-                          </li>
-                          <li class="text-dark-200">
-                            Effectively pitch wireframes to and solutions to
-                            stakeholders. You’ll be the greatest advocate forour
-                            work, but you’ll also listen and internalize
-                            feedback that we can come back with creative
-                            thatexceeds expectations.
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="mb-30">
-                        <h4 class="fw-semibold text-18 text-dark-300 mb-2">
-                          Qualifications
-                        </h4>
-                        <ul>
-                          <li class="text-dark-200">
-                            At least 5-8 years of experience with UX and UI
-                            design.
-                          </li>
-                          <li class="text-dark-200">
-                            2 years of experience with design thinking or
-                            similar framework that focuses on defining
-                            users’needs early.
-                          </li>
-                          <li class="text-dark-200">
-                            Strong portfolio showing expert concept, layout, and
-                            typographic skills, as well as creativity andability
-                            to adhere to brand standards.
-                          </li>
-                          <li class="text-dark-200">
-                            Expertise in Figma, Adobe Creative Cloud suite,
-                            Microsoft suite.
-                          </li>
-                          <li class="text-dark-200">
-                            Forever learning: Relentless desire to learn and
-                            leverage the latest web technologies.
-                          </li>
-                          <li class="text-dark-200">
-                            Independence: The ability to make things happen with
-                            limited direction. Excellent proactiveattitude,
-                            take-charge personality, and “can-do” demeanor.
-                            Proficiency with Front-End UI technologies a bonus
-                            but not necessary (such as HTML, CSS,JavaScript).
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="mb-30">
-                        <p class="text-dark-200">
-                          At vero eos et accusamus et iusto odio dignissimos
-                          ducimus qui blanditiis praesentium voluptatum deleniti
-                          atque corrupti quos dolores et quas molestias
-                          excepturi sint as occaecati cupiditate non provident,
-                          similique sunt in culpa qui officia deserunt mollitia
-                          animi, id est laborum et dolorum fuga. Et harum quidem
-                          rerum facilis est et expedita distinctio. Nam our
-                          libero tempore, cum soluta nobis est eligendi optio
-                          cumque nihil impedit quo minus id quod maxime placeat
-                          facere possimus, omnis voluptas assumenda est, omnis
-                          dolor here as repellendus. Temporibus autem quibusdam
-                          et aut officiis debitis aut rerum necessitatibus saepe
-                          eveniet ut et voluptates repudiandae sint et molestiae
-                          non recusandae. Itaque earum rerum hic tenetur a
-                          sapiente delectus, ut aut reiciendis voluptatibus
-                          maiores alias consequatur aut perferendis doloribus
-                          asperiores repellat.
+                          @job.Description
                         </p>
                       </div>
                     </div>
@@ -243,9 +142,16 @@
                     </div>
                     <div>
                       <h4 class="company-profile-card-title fw-bold">
-                        QuomodoSoft
+                        @profile.CompanyName
                       </h4>
-                      <p class="company-profile-card-desc">Dhaka, Bangladesh</p>
+                      @if (profile.hasCompany) {
+                          
+                        <p class="company-profile-card-desc">
+                            @Locations.FirstOrDefault(l => l.Id == profile.CompanyLocationId).Name, 
+                            @Locations.FirstOrDefault(
+                                l => l.Id == Locations.FirstOrDefault(l => l.Id == profile.CompanyLocationId).ParentId).Name
+                        </p>
+                      }
                     </div>
                   </div>
                   <ul class="company-card-list">
@@ -429,5 +335,37 @@
 <Footer />
 
 @code {
-    [Parameter] public int Id { get; set; }
+    [Parameter] public string Id { get; set; }
+    private JobDTO job = new JobDTO();
+    private List<JobType> JobTypes = new List<JobType>();
+    private List<Location> Locations = new List<Location>();
+    private ClientProfileDTO profile = new ClientProfileDTO();
+
+    protected override async Task OnParametersSetAsync() {
+        job = await JobService.GetJobByIdAsync(Id);
+        JobTypes = await JobTypeService.GetAllJobTypesAsync();
+        Locations = await LocationService.GetAllLocations();
+
+        profile = await ProfileService.GetClientProfileAsync(job.UserId);
+    }
+
+    public static string GetTimeAgo(DateTime time)
+    {
+        var timeSpan = DateTime.Now - time;
+        
+        if (timeSpan.TotalMinutes < 1)
+            return "Just now";
+        if (timeSpan.TotalMinutes < 60)
+            return $"{(int)timeSpan.TotalMinutes} mins ago";
+        if (timeSpan.TotalHours < 24)
+            return $"{(int)timeSpan.TotalHours} hrs ago";
+        if (timeSpan.TotalDays < 7)
+            return $"{(int)timeSpan.TotalDays} days ago";
+        if (timeSpan.TotalDays < 30)
+            return $"{(int)(timeSpan.TotalDays / 7)} weeks ago";
+        if (timeSpan.TotalDays < 365)
+            return $"{(int)(timeSpan.TotalDays / 30)} months ago";
+
+        return $"{(int)(timeSpan.TotalDays / 365)} years ago";
+    }
 }

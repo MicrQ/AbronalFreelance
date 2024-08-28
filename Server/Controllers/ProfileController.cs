@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 namespace AbronalFreelance.Server.Controllers;
 
 [Route("api")]
-[Authorize]
 [ApiController]
 public class ProfileController : ControllerBase
 {
@@ -24,6 +23,8 @@ public class ProfileController : ControllerBase
     }
 
     [HttpGet("freelancer/profile")]
+[Authorize]
+
     public async Task<IActionResult> GetFreelancerProfiles(string UserId) {
         // GET /api/user/profile?UserId={id}
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == UserId);

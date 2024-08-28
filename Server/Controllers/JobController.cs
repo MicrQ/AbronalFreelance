@@ -50,7 +50,6 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("job/{id}")]
-    [Authorize]
     public async Task<IActionResult> GetJob(int id) {
         // GET api/job/{id}
         var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == id);

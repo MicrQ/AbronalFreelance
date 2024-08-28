@@ -21,7 +21,7 @@ public class LocationController : ControllerBase
 
     // GET /api/locations
     [HttpGet("locations")]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetLocations() {
         var locations = await _db.Locations.ToListAsync();
         return Ok(locations);
