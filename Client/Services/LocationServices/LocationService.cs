@@ -73,6 +73,6 @@ public class LocationService : ILocation
     }
 
     public async Task<List<Location>> GetAllCities() {
-        return await _http.GetFromJsonAsync<List<Location>>(_url + "/cities");
+        return await _http.GetFromJsonAsync<List<Location>>("api/location/cities");
     }
 }

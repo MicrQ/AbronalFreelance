@@ -20,10 +20,17 @@ public class JobService : IJob
         return await _http.GetFromJsonAsync<JobDTO>($"api/job/{id}");
     }
 
-    public async Task<List<JobDTO>> GetRecentJobsAsync(int? field = null, string? userId = null, int limit = 10) {
+    public async Task<List<JobDTO>> GetRecentJobsAsync(int? field = null, int? locationId = null, string? title = null, string? userId = null, int limit = 10) {
         string uri = "api/jobs/recent?";
-        if (userId != null) uri += $"userId={userId}&";
-        return await _http.GetFromJsonAsync<List<JobDTO>>(uri + $"limit={limit}");
+        if (userId != null) {
+            uri += $"userId={userId}";
+            return await _http.GetFromJsonAsync<List<JobDTO>>(uri);
+        }
+        if (field != null) uri += $"field={field}&";
+        if (locationId != null) uri += $"locationId={locationId}&";
+        if (title != null) uri += $"title={title}&";
+        if (limit != 10) uri += $"limit={limit}";
+        return await _http.GetFromJsonAsync<List<JobDTO>>(uri);
     }
 
     public async Task<JobDTO> CreateJobAsync(JobDTO jobDTO) {

@@ -80,20 +80,33 @@ public class JobController : ControllerBase
     }
 
     [HttpGet("jobs/recent")]
-    public async Task<IActionResult> GetRecentJobs(string? userId, int? field,int limit) {
+    public async Task<IActionResult> GetRecentJobs(
+        int? field = null, int? locationId = null,
+        string? title = null, string? userId = null, int limit = 10) {
         // GET api/jobs/recent?userid={userid}&limit={limit}
         List<Job>? jobs;
-        if (userId != null) {
-            jobs = await _db.Jobs.Where(j => j.UserId == userId)
+        if (field.HasValue || locationId.HasValue || !string.IsNullOrEmpty(title) || !string.IsNullOrEmpty(userId)) {
+            var query = _db.Jobs.AsQueryable();
+            
+            if (field.HasValue) {
+                query = query.Where(j => _db.JobFields.Any(
+                    jf => jf.JobId == j.Id && jf.FieldId == field.Value));
+            }
+            
+            if (locationId.HasValue) {
+                query = query.Where(j => j.LocationId == locationId.Value);
+            }
+            
+            if (!string.IsNullOrEmpty(title)) {
+                query = query.Where(j => j.Title.Contains(title));
+            }
+            
+            if (!string.IsNullOrEmpty(userId)) {
+                query = query.Where(j => j.UserId == userId);
+            }
+            
+            jobs = await query
                 .OrderByDescending(j => j.CreatedAt)
-                .Take(limit)
-                .ToListAsync();
-        } else if (field != null) {
-            jobs = await (from j in _db.Jobs
-                join jf in _db.JobFields on j.Id equals jf.JobId
-                where jf.FieldId == field
-                orderby j.CreatedAt descending
-                select j)
                 .Take(limit)
                 .ToListAsync();
         } else {
