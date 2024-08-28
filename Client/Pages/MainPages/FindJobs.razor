@@ -223,6 +223,11 @@
                 >
                 <div
                     class="row row-gap-4 row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
+                    @if (empty) {
+                        <div class="alert alert-warning" role="alert">
+                            <h3> :( <i> No jobs found</i></h3>
+                        </div>
+                    }
                     @foreach (var job in Jobs) {
                         <article>
                         <div class="job-post bg-white position-relative">
@@ -340,6 +345,7 @@
     private List<Location> Cities = new List<Location>();
 
     private int? selectedField { get; set; }
+    private bool empty = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -359,6 +365,9 @@
                 jobFilter.LocationId,
                 jobFilter.Title
             );
+        }
+        if (Jobs.Count == 0) {
+            empty = true;
         }
     }
 
