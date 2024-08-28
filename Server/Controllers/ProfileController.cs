@@ -146,7 +146,8 @@ public class ProfileController : ControllerBase
             Email = user.Email,
             Phone = user.PhoneNumber,
             LocationId = user.LocationId,
-            UserId = user.Id
+            UserId = user.Id,
+            CreatedAt = user.CreatedAt
         };
         if (company != null) {
             profile.hasCompany = true;

@@ -205,7 +205,11 @@
                         </svg>
                         Member Since
                       </div>
-                      <span class="text-dark-200 fs-6">Software</span>
+                        @if (profile.hasCompany) {
+                            <span class="text-dark-200 fs-6">
+                                @(((DateTime)profile.CreatedAt).Year)
+                            </span>
+                        }
                     </li>
                     <li
                       class="py-3 d-flex justify-content-between gap-3 text-dark-200 company-card-list align-items-center"
@@ -239,10 +243,10 @@
                             stroke-width="1.4"
                           />
                         </svg>
-                        Categories
+                        Category
                       </div>
                       <div>
-                        <span class="text-dark-200 fs-6">Software</span>
+                        <span class="text-dark-200 fs-6">Job Category</span>
                       </div>
                     </li>
                     <li

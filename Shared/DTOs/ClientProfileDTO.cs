@@ -8,6 +8,7 @@ public class ClientProfileDTO {
     public string Email { get; set; }
     public string Phone { get; set; }
     public int LocationId { get; set; }
+    public DateTime? CreatedAt { get; set; }
     // public string? Location { get; set; }
 
     //
