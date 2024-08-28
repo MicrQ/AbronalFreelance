@@ -1,7 +1,7 @@
 {
   "entryAssembly": "AbronalFreelance.Client",
   "resources": {
-    "hash": "sha256-vlIlxvgoMdmopMviqFyL9rmo1WwOzxgU6bWrWjol3t4=",
+    "hash": "sha256-etjQSdVWT9lzONNDwwgJhEywbXDjeKIOZY+iaympzvY=",
     "runtime": {
       "dotnet.6.0.33.8fkbfr06dh.js": "sha256-3qQapGQ76xXOm4Dpi23h4jVNXH1bTJXQIuoMVyT5rnU=",
       "dotnet.timezones.blat": "sha256-P+/t9PCEv/9QsJggxMNw2wdb6fNvy1O6Es0UqrFfIPQ=",
@@ -217,12 +217,12 @@
       "mscorlib.dll": "sha256-B9j0sYk80myYI4rWEvcGR3X307RSTBIwNZyYmqssN/g=",
       "netstandard.dll": "sha256-OA2B0VuineNCslrp0x3+8GHIKIgroIXq3QAppg304/0=",
       "System.Private.CoreLib.dll": "sha256-5B68cmtop3I9GS2JqJJBZQG3XP0L8yLNq+EREukp2Zk=",
-      "AbronalFreelance.Shared.dll": "sha256-BngCb0u50sg+CzaknQy9QlNTKSZ12s08HV1W9jtnQks=",
-      "AbronalFreelance.Client.dll": "sha256-Jn+A7j7e28H8Yieq1o2hcbkJq7by4J4lmHQxAuSckyA="
+      "AbronalFreelance.Shared.dll": "sha256-InZRoTb7r2wWYSM4gVNr9E3cWYJTAqo4l11ICX8ujpw=",
+      "AbronalFreelance.Client.dll": "sha256-vcSA6R7RooGp9sczbizb8toQNDyLiIbbsFBeh7vNk7w="
     },
     "pdb": {
-      "AbronalFreelance.Shared.pdb": "sha256-9wPFZD8aTVNcSdy8GNx2Rj4aOLQfDP1YwvApqUCC/cE=",
-      "AbronalFreelance.Client.pdb": "sha256-OcJN+eqAW7lSyEpeEmYLeIQbpnxInVdfLN8S7wfoxD4="
+      "AbronalFreelance.Shared.pdb": "sha256-rmirrz9xof1IrJRCKqm8+3hyhqV2tTOF0Tleg2OzAFQ=",
+      "AbronalFreelance.Client.pdb": "sha256-Z5n/txm9hyxjkI/d03kan8xbCNvNmCBZFAisechCZgg="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
