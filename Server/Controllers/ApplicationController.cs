@@ -22,7 +22,20 @@ public class ApplicationController : ControllerBase
     [HttpGet("application/{id}")]
     public IActionResult GetApplication(int id) {
         // GET /api/application/{id}
-        return Ok(new ApplicationDTO { Flag = true, Message = "Application Found" });
+        var application = _db.Applications.FirstOrDefault(x => x.Id == id);
+        if (application == null) return NotFound(new ApplicationDTO { Message = "Application Not Found" });
+
+        return Ok(new ApplicationDTO {
+            Id = application.Id,
+            FreelancerId = application.FreelancerId,
+            JobId = application.JobId,
+            Proposal = application.Proposal,
+            DeliveryTime = application.DeliveryTime,
+            Amount = application.Amount,
+            CreatedAt = application.CreatedAt,
+            FavoriteFlag = application.FavoriteFlag,
+            Flag = true
+        });
     }
 
     [HttpPost("application")]
