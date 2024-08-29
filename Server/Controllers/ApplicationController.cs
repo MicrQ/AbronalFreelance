@@ -52,7 +52,7 @@ public class ApplicationController : ControllerBase
         );
 
         if (applicationExists != null) return BadRequest(new ApplicationDTO {
-            Message = "Application Already Exists"
+            Message = "Application-Already-Exists"
         });
 
         Application application = new Application {
@@ -66,6 +66,6 @@ public class ApplicationController : ControllerBase
         _db.Applications.Add(application);
         await _db.SaveChangesAsync();
 
-        return Ok(new ApplicationDTO { Flag = true, Message = "Application Created" });
+        return Ok(new ApplicationDTO { Flag = true, Message = "Application-Submitted-Successfully." });
     }
 }

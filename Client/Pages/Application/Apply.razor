@@ -138,8 +138,13 @@
         app.Amount = Convert.ToDouble(ProposalAmount);
         app.FreelancerId = LoggedInUserId;
         app.JobId = Convert.ToInt32(jobId);
-        await ApplicationService.CreateApplication(app);
-        Navigation.NavigateTo($"/job/{jobId}?message={"Application-submitted-successfully"}");
+        var response = await ApplicationService.CreateApplication(app);
+        if (response.Flag) {
+          NavigationManager.NavigateTo($"/job/{jobId}");
+        } else {
+          errorMessage = response.Message;
+          error = true;
+        }
       } catch (Exception) {
         errorMessage = "Please enter a valid amount(numbers only[1000, 1500.60])";
         error = true;
