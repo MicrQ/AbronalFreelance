@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+3vTd04u0gpPGJIR3U6+PcXxy8ntLwlj3iNiNnnyMwk=",
+  "Hash": "lcMwpJ+3yfVu2l0RXu4b1uH6Knm20r1IWsdWpc7EFb0=",
   "Source": "AbronalFreelance.Server",
   "BasePath": "_content/AbronalFreelance.Server",
   "Mode": "Default",
@@ -13422,6 +13422,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/editor.js",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "js/editor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/editor.js"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/glightbox.min.js",
