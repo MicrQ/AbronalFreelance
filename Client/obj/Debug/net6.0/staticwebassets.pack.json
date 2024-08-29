@@ -921,6 +921,10 @@
       "PackagePath": "staticwebassets/js/bootstrap.bundle.min.js"
     },
     {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/js/editor.js",
+      "PackagePath": "staticwebassets/js/editor.js"
+    },
+    {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/js/glightbox.min.js",
       "PackagePath": "staticwebassets/js/glightbox.min.js"
     },
@@ -959,6 +963,10 @@
     {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/js/quill.js",
       "PackagePath": "staticwebassets/js/quill.js"
+    },
+    {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
     },
     {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/js/swiper-bundle.min.js",

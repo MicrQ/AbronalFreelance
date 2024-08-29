@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lcMwpJ+3yfVu2l0RXu4b1uH6Knm20r1IWsdWpc7EFb0=",
+  "Hash": "0w4AEVQIO13VM0x/60LAP15etCe+4fD4QNPdO2F7N6Y=",
   "Source": "AbronalFreelance.Server",
   "BasePath": "_content/AbronalFreelance.Server",
   "Mode": "Default",
@@ -13631,6 +13631,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/quill.js"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/site.js",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/site.js"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/swiper-bundle.min.js",

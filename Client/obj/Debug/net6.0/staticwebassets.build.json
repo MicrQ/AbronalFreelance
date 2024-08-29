@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TbnlH+OXyvHTHSWXNT/KpHtqit9AXdHvRHILU3ucdLs=",
+  "Hash": "SAOAFXrilGTndDs5f6d1wdEXUjjXTB/OEnn6i1rVQcs=",
   "Source": "AbronalFreelance.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -13431,6 +13431,25 @@
       "OriginalItemSpec": "wwwroot/js/bootstrap.bundle.min.js"
     },
     {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/editor.js",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "js/editor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/editor.js"
+    },
+    {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/glightbox.min.js",
       "SourceId": "AbronalFreelance.Client",
       "SourceType": "Discovered",
@@ -13619,6 +13638,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/quill.js"
+    },
+    {
+      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/site.js",
+      "SourceId": "AbronalFreelance.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/site.js"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/js/swiper-bundle.min.js",
