@@ -1,5 +1,6 @@
 @page "/job/{jobId}/apply"
-
+<AuthorizeView Roles="Client" Context="clientExclude">
+  <NotAuthorized>
 <NavMenu />
 
 <main>
@@ -110,7 +111,11 @@
 
 
 <Footer />
-
+  </NotAuthorized>
+  <Authorized>
+    401 page
+  </Authorized>
+</AuthorizeView>
 @code {
     [Parameter]
     public string jobId { get; set; }
@@ -144,6 +149,8 @@
     protected override async Task OnInitializedAsync() {
       var authState = await AuthStateProvider.GetAuthenticationStateAsync();
       LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+
+
     }
 
     private async Task GetProposalContent()

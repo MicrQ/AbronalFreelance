@@ -47,6 +47,14 @@ public class ApplicationController : ControllerBase
         var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == applicationDTO.JobId);
         if (job == null) return BadRequest("Invalid Job Id");
 
+        var applicationExists = await _db.Applications.FirstOrDefaultAsync(
+            a => a.FreelancerId == applicationDTO.FreelancerId && a.JobId == applicationDTO.JobId
+        );
+
+        if (applicationExists != null) return BadRequest(new ApplicationDTO {
+            Message = "Application Already Exists"
+        });
+
         Application application = new Application {
             FreelancerId = applicationDTO.FreelancerId,
             JobId = (int)applicationDTO.JobId,
