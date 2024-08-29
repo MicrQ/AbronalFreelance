@@ -9,7 +9,7 @@ namespace AbronalFreelance.Server.Controllers;
 
 [Route("api")]
 [ApiController]
-[Authorize(Roles = "Freelancer")]
+[Authorize]
 public class ApplicationController : ControllerBase
 {
     private readonly AppDbContext _db;
@@ -19,6 +19,84 @@ public class ApplicationController : ControllerBase
         _db = db;
     }
 
+    [HttpGet("{userId}/applications")]
+    [Authorize(Roles = "Freelancer")]
+    public async Task<IActionResult> GetAllApplications(string userId) {
+        // GET /api/{userId}/applications
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        if (user == null) return NotFound(
+            new List<ApplicationDTO> {
+                new ApplicationDTO {
+                    Message = "User Not Found"
+                }
+            });
+
+        var applications = await _db.Applications
+            .Where(a => a.FreelancerId == userId)
+            .OrderByDescending(a => a.CreatedAt)
+            .ToListAsync();
+
+        List<ApplicationDTO> applicationDTOs = new List<ApplicationDTO>();
+            
+        foreach (var app in applications) {
+            applicationDTOs.Add(new ApplicationDTO {
+                Id = app.Id,
+                FreelancerId = app.FreelancerId,
+                JobId = app.JobId,
+                Proposal = app.Proposal,
+                DeliveryTime = app.DeliveryTime,
+                Amount = app.Amount,
+                CreatedAt = app.CreatedAt,
+                Flag = true
+            });
+        }
+        return Ok(applicationDTOs);
+    }
+
+
+    [HttpGet("job/{jobId}/applications")]
+    [Authorize(Roles = "Client")]
+    public async Task<IActionResult> GetAllApplicationsByJobId(string userId, int jobId) {
+        var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == jobId);
+        if (job == null) return NotFound(
+            new List<ApplicationDTO> {
+                new ApplicationDTO {
+                    Message = "User Not Found"
+                }
+            }
+        );
+
+        if (job.UserId != userId) return BadRequest(
+            new List<ApplicationDTO> {
+                new ApplicationDTO {
+                    Message = "You don't have permission to view this job"
+                }
+            }
+        );
+
+        var applications = await _db.Applications
+            .Where(a => a.JobId == jobId)
+            .OrderByDescending(a => a.CreatedAt)
+            .ToListAsync();
+        
+        List<ApplicationDTO> applicationDTOs = new List<ApplicationDTO>();
+            
+        foreach (var app in applications) {
+            applicationDTOs.Add(new ApplicationDTO {
+                Id = app.Id,
+                FreelancerId = app.FreelancerId,
+                JobId = app.JobId,
+                Proposal = app.Proposal,
+                DeliveryTime = app.DeliveryTime,
+                Amount = app.Amount,
+                CreatedAt = app.CreatedAt,
+                Flag = true
+            });
+        }
+        return Ok(applicationDTOs);
+    }
+
+    
     [HttpGet("application/{id}")]
     public IActionResult GetApplication(int id) {
         // GET /api/application/{id}
@@ -38,6 +116,7 @@ public class ApplicationController : ControllerBase
     }
 
     [HttpPost("application")]
+    [Authorize(Roles = "Freelancer")]
     public async Task<IActionResult> CreateApplication(ApplicationDTO applicationDTO) {
         // POST /api/application
         if (await _db.Users.FirstOrDefaultAsync(

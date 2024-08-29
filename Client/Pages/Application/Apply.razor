@@ -140,7 +140,7 @@
         app.JobId = Convert.ToInt32(jobId);
         var response = await ApplicationService.CreateApplication(app);
         if (response.Flag) {
-          NavigationManager.NavigateTo($"/job/{jobId}");
+          Navigation.NavigateTo($"/job/{jobId}");
         } else {
           errorMessage = response.Message;
           error = true;
