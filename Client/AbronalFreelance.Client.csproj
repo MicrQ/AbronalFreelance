@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.32" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.32" PrivateAssets="all" />
     <PackageReference Include="NetcodeHub.Packages.Components.Validations" Version="1.0.1" />
+    <PackageReference Include="Radzen.Blazor" Version="5.1.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.36.0" />
   </ItemGroup>
 

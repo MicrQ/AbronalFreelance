@@ -194,3 +194,5 @@
 /home/niq/mock/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.pdb
 /home/niq/mock/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.genruntimeconfig.cache
 /home/niq/mock/AbronalFreelance/Server/obj/Debug/net6.0/ref/AbronalFreelance.Server.dll
+/home/niq/AbronalFreelance/Server/bin/Debug/net6.0/Radzen.Blazor.dll
+/home/niq/AbronalFreelance/Server/bin/Debug/net6.0/System.Linq.Dynamic.Core.dll

@@ -33,7 +33,6 @@ public class ApplicationController : ControllerBase
             DeliveryTime = application.DeliveryTime,
             Amount = application.Amount,
             CreatedAt = application.CreatedAt,
-            FavoriteFlag = application.FavoriteFlag,
             Flag = true
         });
     }
@@ -53,8 +52,7 @@ public class ApplicationController : ControllerBase
             JobId = (int)applicationDTO.JobId,
             Proposal = applicationDTO.Proposal,
             DeliveryTime = applicationDTO.DeliveryTime,
-            Amount = (double)applicationDTO.Amount,
-            FavoriteFlag = applicationDTO.FavoriteFlag
+            Amount = (double)applicationDTO.Amount
         };
 
         _db.Applications.Add(application);
