@@ -17,6 +17,9 @@
                 class="position-relative z-2"
                 >
                 <h2 class="section-title-light mb-2">Job Details</h2>
+                @if (!string.IsNullOrEmpty(message)) {
+                  <p>@message</p>
+                }
                 
               </div>
             </div>
@@ -337,6 +340,7 @@
 
 @code {
     [Parameter] public string Id { get; set; }
+    [Parameter] public string? message { get; set; }
     private JobDTO job = new JobDTO();
     private List<JobType> JobTypes = new List<JobType>();
     private List<Location> Locations = new List<Location>();

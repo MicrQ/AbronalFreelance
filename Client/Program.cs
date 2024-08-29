@@ -14,6 +14,7 @@ using AbronalFreelance.Client.Services.LocationServices;
 using AbronalFreelance.Client.Services.PortfolioService;
 using AbronalFreelance.Client.Services.PaymentTypeService;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using AbronalFreelance.Client.Services.ApplicationService;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -39,6 +40,7 @@ builder.Services.AddScoped<IJobType, JobTypeService>();
 builder.Services.AddScoped<IPaymentType, PaymentTypeService>();
 builder.Services.AddScoped<ILocation, LocationService>();
 builder.Services.AddScoped<IPortfolio, PortfolioService>();
+builder.Services.AddScoped<IApplication, ApplicationService>();
 
 
 builder.Services.AddBlazoredLocalStorage();

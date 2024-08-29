@@ -15,7 +15,7 @@
         <div class="col-auto">
             <div
                 class="position-relative z-2" >
-                <h2 class="section-title-light mb-2">@Job.Title</h2>
+                <h2 class="section-title-light mb-2">Apply for your dream job!</h2>
             </div>
         </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="proposal-header">
                   <h3 class="text-dark-300 text-24 fw-bold">Submit Proposal</h3>
                 </div>
-                <form>
+                <EditForm Model="app" OnValidSubmit="apply">
                   <div class="d-flex flex-column gap-4">
                     <!-- Todo Need to add select -->
                     <div class="proposal-input-container">
@@ -63,7 +63,7 @@
                       <label for="amount" class="proposal-form-label">
                         Delivery Time <span class="text-lime-300">*</span>
                       </label>
-                      <input
+                      <input @bind="app.DeliveryTime"
                         type="text"
                         class="form-control shadow-none"
                         placeholder="3 Days"
@@ -73,7 +73,7 @@
                       <label for="amount" class="proposal-form-label">
                         Amount(ETB) <span class="text-lime-300">*</span>
                       </label>
-                      <input
+                      <input @bind="ProposalAmount"
                         type="text"
                         class="form-control shadow-none"
                         placeholder="1750.50"
@@ -82,17 +82,20 @@
                     <div
                       class="d-flex gap-4 align-items-center justify-content-end"
                     >
+                    @if (error) {
+                      <p class="text-danger">@errorMessage</p>
+                    }
                       <a href="job/@jobId">
                       <button class="w-btn-gray-sm">
                         Cancel
                       </button>
                       </a>
-                      <button class="w-btn-secondary-sm">
-                        Submit Proposal
+                      <button type="submit" class="w-btn-secondary-sm">
+                        Apply
                       </button>
                     </div>
                   </div>
-                </form>
+                </EditForm>
               </div>
             </div>
           </div>
@@ -111,15 +114,45 @@
 @code {
     [Parameter]
     public string jobId { get; set; }
+    private string? ProposalAmount { get; set; } = string.Empty;
+    private string LoggedInUserId { get; set; } = string.Empty;
+    private ApplicationDTO app = new ApplicationDTO();
+    private bool error = false;
+    private string errorMessage { get; set; } = "";
 
-    public JobDTO Job = new JobDTO();
+    private async Task apply() {
+      await GetProposalContent();
+
+      if (string.IsNullOrEmpty(ProposalAmount)
+        || string.IsNullOrEmpty(app.DeliveryTime)
+        || string.IsNullOrEmpty(app.Proposal)) {
+          errorMessage = "Please fill all required fields";
+          error = true;
+          return;
+      }
+      try {
+        app.Amount = Convert.ToDouble(ProposalAmount);
+        app.FreelancerId = LoggedInUserId;
+        app.JobId = Convert.ToInt32(jobId);
+        await ApplicationService.CreateApplication(app);
+        Navigation.NavigateTo($"/job/{jobId}?message={"Application-submitted-successfully"}");
+      } catch (Exception) {
+        errorMessage = "Please enter a valid amount(numbers only[1000, 1500.60])";
+        error = true;
+      }
+    }
+
+    protected override async Task OnInitializedAsync() {
+      var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+      LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+    }
 
     private async Task GetProposalContent()
     {
-        var proposal = await JSRuntime.InvokeAsync<string>("getEditorContent");
+        app.Proposal = await JSRuntime.InvokeAsync<string>("getEditorContent");
     }
 
-     protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
