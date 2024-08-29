@@ -105,12 +105,28 @@
                       </div>
                     </div>
                     <div class="col-auto">
-                      <a href="job/@Id/apply"
-                        type="button"
-                        class="header-btn"
-                      >
-                        Apply Now
-                      </a>
+                      <AuthorizeView Roles="Client" Context="excludeClient">
+                        <NotAuthorized>
+                          <AuthorizeView Context="excludeFreelancer">
+                            <Authorized>
+                              <a href="job/@Id/apply"
+                                type="button"
+                                class="header-btn"
+                              >
+                                Apply Now
+                              </a>
+                            </Authorized>
+                            <NotAuthorized>
+                              <a href="register"
+                                type="button"
+                                class="header-btn"
+                              >
+                                Apply Now
+                              </a>
+                            </NotAuthorized>
+                          </AuthorizeView>
+                        </NotAuthorized>
+                      </AuthorizeView>
                       @if (job.Budget != null) {
                         <h3 class="job-wage fw-bold mt-4">ETB @job.Budget</h3>
                       } else {
