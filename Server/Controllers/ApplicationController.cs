@@ -100,15 +100,17 @@ public class ApplicationController : ControllerBase
     }
 
     
-    [HttpGet("application/{id}")]
-    public IActionResult GetApplication(int id) {
-        // GET /api/application/{id}
-        var application = _db.Applications.FirstOrDefault(x => x.Id == id);
+    [HttpGet("application/{appId}")]
+    public IActionResult GetApplication(string userId,int appId) {
+        // GET /api/application/{appid}?userid={userid}
+        var application = _db.Applications.FirstOrDefault(
+            a => a.Id == appId && (a.FreelancerId == userId || a.Job.UserId == userId));
         if (application == null) return NotFound(new ApplicationDTO { Message = "Application Not Found" });
 
         return Ok(new ApplicationDTO {
             Id = application.Id,
             FreelancerId = application.FreelancerId,
+            FreelancerFullName = application.Freelancer.FirstName + " " + application.Freelancer.LastName,
             JobId = application.JobId,
             Proposal = application.Proposal,
             DeliveryTime = application.DeliveryTime,

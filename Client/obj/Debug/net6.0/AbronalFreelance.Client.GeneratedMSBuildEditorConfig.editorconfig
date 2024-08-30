@@ -26,6 +26,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/niq/AbronalFreelance/Client/Pages/Application/ApplicationDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb24vQXBwbGljYXRpb25EZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/niq/AbronalFreelance/Client/Pages/Application/Apply.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb24vQXBwbHkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

@@ -10,6 +10,7 @@ public class FreelancerProfileDTO
     public string Headline { get; set; }
     public string Email { get; set; }
     public string Phone { get; set; }
+    public DateTime? CreatedAt { get; set; }
     public string? Location { get; set; }
     public int LocationId { get; set; }
     public string? FreelancerFields { get; set; }

@@ -43,6 +43,7 @@ public class ProfileController : ControllerBase
             UserName = user.UserName,
             Email = user.Email,
             Phone = user.PhoneNumber,
+            CreatedAt = user.CreatedAt,
             Headline = profile != null ? profile.Headline : null,
             FreelancerFields = GetFreelancerFieldString(freelancerFields).Length > 0 ? GetFreelancerFieldString(freelancerFields) + ", ..." : "",
             FreelancerSkills = GetFreelancerSkillString(freelancerSkills).Length > 0 ? GetFreelancerSkillString(freelancerSkills) + ", ..." : "",
