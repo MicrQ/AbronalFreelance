@@ -10,6 +10,7 @@ public class ApplicationDTO {
     public string? DeliveryTime { get; set; }
     public double? Amount { get; set; }
     public DateTime? CreatedAt { get; set; }
+    public string? StatusName { get; set; }
     public bool FavoriteFlag { get; set; } = false;
 
     public bool Flag { get; set; } = false;

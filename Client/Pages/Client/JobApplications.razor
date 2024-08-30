@@ -50,546 +50,91 @@
                   <table class="w-100 dashboard-table applicant-table">
                     <thead class="pb-3">
                       <tr>
-                        <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
                         <th scope="col" class="text-end">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="text-dark-200">01</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-1.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
+                      @foreach (var app in Apps) {
+                        <tr>
+                            <td>
+                            <div
+                                class="d-flex gap-3 align-items-center project-name"
+                            >
+                                <div class="rounded-3">
+                                <img
+                                    src="img/dashboard/job/app-6.png"
+                                    class="img-fluid rounded-3"
+                                    alt=""
+                                />
+                                </div>
+                                <div>
+                                <p class="text-dark-200">@app.FreelancerFullName</p>
+                                </div>
                             </div>
+                            </td>
+                            <td>
+                            <span class="status-badge pending">
+                                @(app.StatusName == null ? "pending" : app.StatusName)
+                            </span>
+                            </td>
+                            <td class="text-end">
                             <div>
-                              <p class="text-dark-200">Nankathan</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
+                                <div class="dropdown dropstart">
+                                <button
+                                    class="dashboard-action-btn dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
                                 >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
+                                    <svg
+                                    width="4"
+                                    height="20"
+                                    viewBox="0 0 4 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                    <circle
+                                        cx="1.97917"
+                                        cy="1.97917"
+                                        r="1.97917"
+                                        fill="#5B5B5B"
+                                    />
+                                    <circle
+                                        cx="1.97917"
+                                        cy="9.89616"
+                                        r="1.97917"
+                                        fill="#5B5B5B"
+                                    />
+                                    <circle
+                                        cx="1.97917"
+                                        cy="17.8122"
+                                        r="1.97917"
+                                        fill="#5B5B5B"
+                                    />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu table-dropdown">
+                                    <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="buyer-message.html"
+                                        >Message</a
+                                    >
+                                    </li>
+                                    <li>
+                                    <a class="dropdown-item" href="#">Accept</a>
+                                    </li>
+                                    <li>
+                                    <a class="dropdown-item" href="#">Reject</a>
+                                    </li>
+                                </ul>
+                                </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-dark-200">01</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-2.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <p class="text-dark-200">Jorge Dan</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-    using home.niq.AbronalFreelance.Client;
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-dark-200">01</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-3.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <p class="text-dark-200">Brian Roberto</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-dark-200">01</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-4.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <p class="text-dark-200">Ramon Miles</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-dark-200">01</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-5.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <p class="text-dark-200">Liam Nathaniel</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-dark-200">06</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-6.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <p class="text-dark-200">Ethan Lewis</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-dark-200">07</td>
-                        <td>
-                          <div
-                            class="d-flex gap-3 align-items-center project-name"
-                          >
-                            <div class="rounded-3">
-                              <img
-                                src="img/dashboard/job/app-7.png"
-                                class="img-fluid rounded-3"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <p class="text-dark-200">Milton Claude</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="status-badge pending"> Pending </span>
-                        </td>
-                        <td class="text-end">
-                          <div>
-                            <div class="dropdown dropstart">
-                              <button
-                                class="dashboard-action-btn dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                <svg
-                                  width="4"
-                                  height="20"
-                                  viewBox="0 0 4 20"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle
-                                    cx="1.97917"
-                                    cy="1.97917"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="9.89616"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                  <circle
-                                    cx="1.97917"
-                                    cy="17.8122"
-                                    r="1.97917"
-                                    fill="#5B5B5B"
-                                  />
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu table-dropdown">
-                                <li>
-                                  <a
-                                    class="dropdown-item"
-                                    href="buyer-message.html"
-                                    >Message</a
-                                  >
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Accept</a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="#">Reject</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                            </td>
+                        </tr>
+                      }
                     </tbody>
                   </table>
                 </div>
