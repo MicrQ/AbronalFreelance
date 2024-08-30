@@ -116,7 +116,14 @@
                                 @(job.Status == null ? "Pending" : job.Status)
                             </span>
                             </td>
-                            <td class="text-dark-200">@job.TotalApplications</td>
+                            <td class="text-dark-200">
+                                <a
+                                href="my-jobs/@job.Id/applications"
+                                class="applicant-link"
+                                >
+                                @job.TotalApplications
+                                </a>
+                            </td>
                             <td>
                             <div class="d-flex justify-content-end gap-2">
                                 <button class="dashboard-action-btn">
