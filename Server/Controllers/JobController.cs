@@ -22,7 +22,9 @@ public class JobController : ControllerBase
     [Authorize]
     public async Task<IActionResult> GetAllJobs(string userId) {
         // GET api/jobs?userid={userid}
-        var jobs = await _db.Jobs.Where(j => j.UserId == userId).ToListAsync();
+        var jobs = await _db.Jobs.Where(j => j.UserId == userId)
+                        .OrderByDescending(j => j.CreatedAt)
+                        .ToListAsync();
         if (jobs == null) return NotFound(new JobDTO { Message = "No jobs found" });
 
         List<JobDTO> userJobs = new List<JobDTO>();
