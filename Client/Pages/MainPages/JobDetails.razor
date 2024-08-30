@@ -82,7 +82,7 @@
                                 d="M3.81482 0.513554C3.81482 0.298962 3.64085 0.125 3.42626 0.125C3.21167 0.125 3.03771 0.298962 3.03771 0.513554V1.7167C2.1876 2.14527 1.51131 2.86822 1.14274 3.75163H9.85443C9.48587 2.86823 8.80959 2.14529 7.95951 1.71672V0.513554C7.95951 0.298962 7.78555 0.125 7.57095 0.125C7.35636 0.125 7.1824 0.298962 7.1824 0.513554V1.4222C6.85642 1.33638 6.51416 1.29067 6.16124 1.29067H4.83594C4.48302 1.29067 4.14078 1.33638 3.81482 1.42219V0.513554ZM0.835938 5.29067C0.835938 5.03013 0.860848 4.7754 0.908418 4.52874H10.0888C10.1363 4.7754 10.1612 5.03013 10.1612 5.29068V6.87501C10.1612 9.08415 8.37038 10.875 6.16124 10.875H4.83594C2.6268 10.875 0.835938 9.08415 0.835938 6.87501V5.29067ZM5.49857 7.76653C5.7847 7.76653 6.01664 7.53458 6.01664 7.24846C6.01664 6.96234 5.7847 6.73039 5.49857 6.73039C5.21245 6.73039 4.9805 6.96234 4.9805 7.24846C4.9805 7.53458 5.21245 7.76653 5.49857 7.76653ZM8.08868 7.24846C8.08868 7.53458 7.85673 7.76653 7.5706 7.76653C7.28448 7.76653 7.05253 7.53458 7.05253 7.24846C7.05253 6.96234 7.28448 6.73039 7.5706 6.73039C7.85673 6.73039 8.08868 6.96234 8.08868 7.24846ZM3.42623 7.76653C3.71235 7.76653 3.9443 7.53458 3.9443 7.24846C3.9443 6.96234 3.71235 6.73039 3.42623 6.73039C3.1401 6.73039 2.90815 6.96234 2.90815 7.24846C2.90815 7.53458 3.1401 7.76653 3.42623 7.76653Z"
                                 fill="#22BE0D"
                               /></svg>
-                            @(GetTimeAgo((DateTime)job.CreatedAt))
+                            @(Utils.GetTimeAgo((DateTime)job.CreatedAt))
                             </span>
                           <span class="job-location">
                             <svg
@@ -367,23 +367,4 @@
         profile = await ProfileService.GetClientProfileAsync(job.UserId);
     }
 
-    public static string GetTimeAgo(DateTime time)
-    {
-        var timeSpan = DateTime.Now - time;
-        
-        if (timeSpan.TotalMinutes < 1)
-            return "Just now";
-        if (timeSpan.TotalMinutes < 60)
-            return $"{(int)timeSpan.TotalMinutes} mins ago";
-        if (timeSpan.TotalHours < 24)
-            return $"{(int)timeSpan.TotalHours} hrs ago";
-        if (timeSpan.TotalDays < 7)
-            return $"{(int)timeSpan.TotalDays} days ago";
-        if (timeSpan.TotalDays < 30)
-            return $"{(int)(timeSpan.TotalDays / 7)} weeks ago";
-        if (timeSpan.TotalDays < 365)
-            return $"{(int)(timeSpan.TotalDays / 30)} months ago";
-
-        return $"{(int)(timeSpan.TotalDays / 365)} years ago";
-    }
 }

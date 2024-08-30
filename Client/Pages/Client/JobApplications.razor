@@ -52,12 +52,17 @@
                       <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
-                        <th scope="col" class="text-end">Actions</th>
+                        <th scope="col" class="text-end">Submitted</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach (var app in Apps) {
-                        <tr>
+                        <tr
+                        style="
+                        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+                        border-radius: 10px;
+                        cursor: pointer;"
+                        @onclick="@(() => ApplicationDetails(app.Id))">
                             <td>
                             <div
                                 class="d-flex gap-3 align-items-center project-name"
@@ -76,61 +81,14 @@
                             </div>
                             </td>
                             <td>
-                            <span class="status-badge pending">
+                            <span class="status-badge @(app.StatusName == null ? "pending" : app.StatusName.ToLower())">
                                 @(app.StatusName == null ? "pending" : app.StatusName)
                             </span>
                             </td>
                             <td class="text-end">
                             <div>
-                                <div class="dropdown dropstart">
-                                <button
-                                    class="dashboard-action-btn dropdown-toggle"
-                                    type="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    <svg
-                                    width="4"
-                                    height="20"
-                                    viewBox="0 0 4 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                    <circle
-                                        cx="1.97917"
-                                        cy="1.97917"
-                                        r="1.97917"
-                                        fill="#5B5B5B"
-                                    />
-                                    <circle
-                                        cx="1.97917"
-                                        cy="9.89616"
-                                        r="1.97917"
-                                        fill="#5B5B5B"
-                                    />
-                                    <circle
-                                        cx="1.97917"
-                                        cy="17.8122"
-                                        r="1.97917"
-                                        fill="#5B5B5B"
-                                    />
-                                    </svg>
-                                </button>
-                                <ul class="dropdown-menu table-dropdown">
-                                    <li>
-                                    <a
-                                        class="dropdown-item"
-                                        href="buyer-message.html"
-                                        >Message</a
-                                    >
-                                    </li>
-                                    <li>
-                                    <a class="dropdown-item" href="#">Accept</a>
-                                    </li>
-                                    <li>
-                                    <a class="dropdown-item" href="#">Reject</a>
-                                    </li>
-                                </ul>
+                                <div>
+                                  <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p>
                                 </div>
                             </div>
                             </td>
@@ -165,5 +123,9 @@
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
         Apps = await ApplicationService.GetAllApplications(LoggedInUserId, jobId);
+    }
+
+    private void ApplicationDetails(int? appId) {
+        Navigation.NavigateTo($"my-jobs/{jobId}/applications/{appId}");
     }
 }
