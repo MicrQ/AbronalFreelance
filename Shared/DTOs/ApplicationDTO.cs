@@ -3,6 +3,8 @@ namespace AbronalFreelance.Shared.DTOs;
 public class ApplicationDTO {
     public int? Id { get; set; }
     public string? FreelancerId { get; set; }
+    public string? FreelancerFullName { get; set; }
+    public string? Picture { get; set; }
     public int? JobId { get; set; }
     public string? Proposal { get; set; }
     public string? DeliveryTime { get; set; }

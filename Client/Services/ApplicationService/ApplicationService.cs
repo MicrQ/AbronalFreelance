@@ -15,4 +15,9 @@ public class ApplicationService : IApplication
         var res = await _http.PostAsJsonAsync("api/application", appDTO);
         return await res.Content.ReadFromJsonAsync<ApplicationDTO>();
     }
+
+    public async Task<List<ApplicationDTO>> GetAllApplications(string userId, int jobId)
+    {
+        return await _http.GetFromJsonAsync<List<ApplicationDTO>>($"api/job/{jobId}/applications?userid={userId}");
+    }
 }

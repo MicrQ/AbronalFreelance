@@ -57,7 +57,7 @@ public class ApplicationController : ControllerBase
     [HttpGet("job/{jobId}/applications")]
     [Authorize(Roles = "Client")]
     public async Task<IActionResult> GetAllApplicationsByJobId(string userId, int jobId) {
-        // GET api/job/{jobId}?userid={userid}
+        // GET api/job/{jobId}/applications?userid={userid}
         var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == jobId);
         if (job == null) return NotFound(
             new List<ApplicationDTO> {
@@ -83,9 +83,11 @@ public class ApplicationController : ControllerBase
         List<ApplicationDTO> applicationDTOs = new List<ApplicationDTO>();
             
         foreach (var app in applications) {
+            var applicant = await _db.Users.FirstOrDefaultAsync(u => u.Id == app.FreelancerId);
             applicationDTOs.Add(new ApplicationDTO {
                 Id = app.Id,
                 FreelancerId = app.FreelancerId,
+                FreelancerFullName = applicant.FirstName + " " + applicant.LastName,
                 JobId = app.JobId,
                 Proposal = app.Proposal,
                 DeliveryTime = app.DeliveryTime,

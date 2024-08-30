@@ -1,4 +1,4 @@
-@page "/my-jobs/{jobId}/applications"
+@page "/my-jobs/{jobId:int}/applications"
 
 <AuthorizeView Roles="Client">
     <Authorized>
@@ -161,6 +161,7 @@
                                 class="dashboard-action-btn dropdown-toggle"
                                 type="button"
                                 data-bs-toggle="dropdown"
+    using home.niq.AbronalFreelance.Client;
                                 aria-expanded="false"
                               >
                                 <svg
@@ -608,5 +609,14 @@
 
 @code {
     [Parameter]
-    public string jobId { get; set; }
+    public int jobId { get; set; }
+    private string LoggedInUserId { get; set; }
+    private List<ApplicationDTO> Apps = new List<ApplicationDTO>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+        Apps = await ApplicationService.GetAllApplications(LoggedInUserId, jobId);
+    }
 }
