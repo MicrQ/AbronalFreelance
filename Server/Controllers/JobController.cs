@@ -130,6 +130,15 @@ public class JobController : ControllerBase
         List<JobDTO> userJobs = new List<JobDTO>();
         foreach (Job job in jobs) {
             (List<Skill> skillList, List<Field> fieldList) = await GetSkillsAndFields(job.Id);
+            int applications = await _db.Applications.CountAsync(a => a.JobId == job.Id);
+            string status = await _db.JobStatuses
+                                .Where(js => js.JobId == job.Id)
+                                .Join(_db.ApprovalStatuses,
+                                      js => js.ApprovalStatusId,
+                                      aps => aps.Id,
+                                      (js, aps) => aps.Name)
+                                .FirstOrDefaultAsync();
+
 
             userJobs.Add(new JobDTO {
                 Id = job.Id,
@@ -145,7 +154,9 @@ public class JobController : ControllerBase
                 CreatedAt = job.CreatedAt,
                 Skills = skillList,
                 Fields = fieldList,
-                Flag = true
+                Flag = true,
+                TotalApplications = applications,
+                Status = status
             });
         }
         return Ok(userJobs);

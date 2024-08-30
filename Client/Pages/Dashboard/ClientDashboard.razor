@@ -86,7 +86,7 @@
                         <th scope="col" class="ps-4">Project Name</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Days</th>
+                        <th scope="col">Applications</th>
                         <th scope="col" class="text-end pe-5">Actions</th>
                     </tr>
                     </thead>
@@ -112,9 +112,11 @@
                             </td>
                             <td class="text-dark-200">@job.Budget ETB</td>
                             <td>
-                            <span class="status-badge pending"> Close </span>
+                            <span class="status-badge pending">
+                                @(job.Status == null ? "Pending" : job.Status)
+                            </span>
                             </td>
-                            <td class="text-dark-200">02</td>
+                            <td class="text-dark-200">@job.TotalApplications</td>
                             <td>
                             <div class="d-flex justify-content-end gap-2">
                                 <button class="dashboard-action-btn">
