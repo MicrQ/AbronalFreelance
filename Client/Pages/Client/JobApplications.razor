@@ -70,7 +70,8 @@
                                 />
                                 </div>
                                 <div>
-                                <p class="text-dark-200">@app.FreelancerFullName</p>
+                                <h5 class="text-dark-200"><b>@app.FreelancerFullName</b></h5>
+                                <p>@(app.Proposal.Length > 80 ? app.Proposal.Substring(0, 80) + "..." : app.Proposal)</p>
                                 </div>
                             </div>
                             </td>
