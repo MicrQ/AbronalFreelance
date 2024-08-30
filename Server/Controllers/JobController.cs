@@ -189,6 +189,12 @@ public class JobController : ControllerBase
                     FieldId = field.Id
                 });
             }
+
+            _db.JobStatuses.Add(new JobStatus {
+                JobId = newJob.Id,
+                ApprovalStatusId = 1,
+                DateTime = DateTime.Now
+            });
             await _db.SaveChangesAsync();
         }
 

@@ -161,7 +161,9 @@
                             </td>
                             <td class="text-dark-200">@job.Budget ETB</td>
                             <td>
-                                <span class="status-badge pending"> Close </span>
+                                <span class="status-badge pending">
+                                    @(job.Status == null ? "Pending" : job.Status)
+                                </span>
                             </td>
                             <td class="text-dark-200">
                                 <a
