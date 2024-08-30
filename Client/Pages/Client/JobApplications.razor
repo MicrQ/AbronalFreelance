@@ -71,7 +71,7 @@
                                 </div>
                                 <div>
                                 <h5 class="text-dark-200"><b>@app.FreelancerFullName</b></h5>
-                                <p>@(app.Proposal.Length > 80 ? app.Proposal.Substring(0, 80) + "..." : app.Proposal)</p>
+                                <p>@(new MarkupString(app.Proposal.Length > 80 ? app.Proposal.Substring(0, 80) + "..." : app.Proposal))</p>
                                 </div>
                             </div>
                             </td>
@@ -157,6 +157,7 @@
     [Parameter]
     public int jobId { get; set; }
     private string LoggedInUserId { get; set; }
+    
     private List<ApplicationDTO> Apps = new List<ApplicationDTO>();
 
     protected override async Task OnInitializedAsync()
