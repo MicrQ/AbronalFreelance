@@ -18,4 +18,7 @@ public class JobDTO {
     public string? Message { get; set; }
     public List<Skill>? Skills { get; set; }
     public List<Field>? Fields { get; set; }
+    public int? TotalApplications { get; set; }
+    public string? Status { get; set; }
+    
 }

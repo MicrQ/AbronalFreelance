@@ -57,6 +57,7 @@ public class ApplicationController : ControllerBase
     [HttpGet("job/{jobId}/applications")]
     [Authorize(Roles = "Client")]
     public async Task<IActionResult> GetAllApplicationsByJobId(string userId, int jobId) {
+        // GET api/job/{jobId}?userid={userid}
         var job = await _db.Jobs.FirstOrDefaultAsync(j => j.Id == jobId);
         if (job == null) return NotFound(
             new List<ApplicationDTO> {

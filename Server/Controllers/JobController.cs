@@ -28,6 +28,7 @@ public class JobController : ControllerBase
         List<JobDTO> userJobs = new List<JobDTO>();
         foreach (Job job in jobs) {
             (List<Skill> skillList, List<Field> fieldList) = await GetSkillsAndFields(job.Id);
+            int applications = await _db.Applications.CountAsync(a => a.JobId == job.Id);
 
             userJobs.Add(new JobDTO {
                 Id = job.Id,
@@ -43,7 +44,8 @@ public class JobController : ControllerBase
                 CreatedAt = job.CreatedAt,
                 Skills = skillList,
                 Fields = fieldList,
-                Flag = true
+                Flag = true,
+                TotalApplications = applications,
             });
         }
         return Ok(userJobs);
