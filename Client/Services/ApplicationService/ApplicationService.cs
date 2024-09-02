@@ -29,4 +29,10 @@ public class ApplicationService : IApplication
         return await res.Content.ReadFromJsonAsync<ApplicationDTO>();
     }
 
+    public async Task<ApplicationDTO> UpdateApplicationStatus(string userId, int appId, int statusId) {
+        var res = await _http.PutAsJsonAsync(
+            $"api/application/{appId}/status?userid={userId}&statusId={statusId}", appId
+        );
+        return await res.Content.ReadFromJsonAsync<ApplicationDTO>();
+    }
 }

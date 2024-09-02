@@ -93,13 +93,25 @@
                                         >
                                             Schedule Interview
                                         </a> *@
-                                        <a href=""
+                                        <a @onclick="@(() => RejectApplication(app.Id))"
                                             type="button"
                                             class="header-btn m-2 p-3"
                                             style="background-color: rgb(231, 3, 3);"
                                         >
                                             Reject
                                         </a>
+                                        @if (displayMessage)
+                                        {
+                                            @if (response.Flag) {
+                                                <div class="alert alert-success" role="alert">
+                                                @response.Message
+                                                </div>
+                                            } else {
+                                                <div class="alert alert-danger" role="alert">
+                                                @response.Message
+                                                </div>
+                                            }
+                                        }
                                         
                                         <h3 class="job-wage fw-bold mt-4">ETB @app.Amount</h3>
                                         <style>
@@ -340,6 +352,8 @@
     private ApplicationDTO app = new ApplicationDTO();
     private FreelancerProfileDTO profile = new FreelancerProfileDTO();
     private List<Location> Locations = new List<Location>();
+    private bool displayMessage = false;
+    private ApplicationDTO response { get; set; }
 
     protected override async Task OnInitializedAsync() {
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
@@ -347,5 +361,11 @@
         app = await ApplicationService.GetApplicationByIdAsync(LoggedInUserId, appId);
         profile = await ProfileService.GetFreelancerProfileAsync(app.FreelancerId);
         Locations = await LocationService.GetAllLocations();
+    }
+
+    private async Task RejectApplication(int? appId) {
+        response = await ApplicationService.UpdateApplicationStatus(
+            LoggedInUserId, (int)appId, 3);
+        displayMessage = true;
     }
 }

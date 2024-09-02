@@ -36,6 +36,9 @@ public class ApplicationController : ControllerBase
             .Where(a => a.FreelancerId == userId)
             .OrderByDescending(a => a.CreatedAt)
             .ToListAsync();
+        var status = await _db.ApplicationStatuses
+                        .Include(s => s.ApprovalStatus)
+                        .ToListAsync();
 
         List<ApplicationDTO> applicationDTOs = new List<ApplicationDTO>();
             
@@ -50,6 +53,7 @@ public class ApplicationController : ControllerBase
                 DeliveryTime = app.DeliveryTime,
                 Amount = app.Amount,
                 CreatedAt = app.CreatedAt,
+                StatusName = status.FirstOrDefault(s => s.ApplicationId == app.Id)?.ApprovalStatus.Name ?? "Pending",
                 Flag = true
             });
         }
@@ -82,6 +86,9 @@ public class ApplicationController : ControllerBase
             .Where(a => a.JobId == jobId)
             .OrderByDescending(a => a.CreatedAt)
             .ToListAsync();
+        var status = await _db.ApplicationStatuses
+            .Include(s => s.ApprovalStatus)
+            .ToListAsync();
         
         List<ApplicationDTO> applicationDTOs = new List<ApplicationDTO>();
             
@@ -96,6 +103,7 @@ public class ApplicationController : ControllerBase
                 DeliveryTime = app.DeliveryTime,
                 Amount = app.Amount,
                 CreatedAt = app.CreatedAt,
+                StatusName = status.FirstOrDefault(s => s.ApplicationId == app.Id)?.ApprovalStatus.Name ?? "Pending",
                 Flag = true
             });
         }
@@ -160,9 +168,58 @@ public class ApplicationController : ControllerBase
             Amount = (double)applicationDTO.Amount
         };
 
+        var filter = DateTime.Now;
         _db.Applications.Add(application);
         await _db.SaveChangesAsync();
 
+        var newApplication = await _db.Applications
+                                .FirstOrDefaultAsync(a => a.CreatedAt > filter);
+        if (newApplication != null) {
+            _db.ApplicationStatuses.Add(new ApplicationStatus {
+                ApplicationId = newApplication.Id,
+                ApprovalStatusId = 1
+            });
+            await _db.SaveChangesAsync();
+        }
+
         return Ok(new ApplicationDTO { Flag = true, Message = "Application-Submitted-Successfully." });
+    }
+
+    [HttpPut("application/{appId}/status")]
+    public async Task<IActionResult> UpdateApplicationStatus(
+        [FromQuery] string userId, [FromRoute] int appId, [FromQuery] int statusId) {
+        // PUT /api/application/{appId}/status?userid={userid}&statusId={statusId}
+        var app = await _db.Applications
+                        .Include(a => a.Job)
+                        .FirstOrDefaultAsync(a => a.Id == appId);
+        if (app == null) return NotFound(
+            new ApplicationDTO { Message = "Application Not Found" });
+        if (app.Job.UserId != userId) return BadRequest(
+            new ApplicationDTO {
+                Message = "You don't have permission to update this application"
+            });
+        var approvalStatus = await _db.ApprovalStatuses
+                                .FirstOrDefaultAsync(s => s.Id == statusId);
+        if (approvalStatus == null) 
+            return BadRequest(new ApplicationDTO {
+                Message = "Invalid Approval Status Id"
+            });
+
+        var appStatus = await _db.ApplicationStatuses
+                            .FirstOrDefaultAsync(a => a.ApplicationId == appId);
+
+        if (appStatus == null) {
+            _db.ApplicationStatuses.Add(new ApplicationStatus {
+                ApplicationId = appId,
+                ApprovalStatusId = statusId
+            });
+        } else {
+            appStatus.ApprovalStatusId = statusId;
+            _db.ApplicationStatuses.Update(appStatus);
+        }
+        await _db.SaveChangesAsync();
+        return Ok(new ApplicationDTO {
+            Flag = true, Message = "Application Rejected"
+        });
     }
 }

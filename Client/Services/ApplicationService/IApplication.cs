@@ -9,4 +9,5 @@ public interface IApplication
     Task<List<ApplicationDTO>> GetAllApplications(string userId, int jobId);
     Task<ApplicationDTO> CreateApplication(ApplicationDTO appDTO);
     Task<List<ApplicationDTO>> GetAllUserApplications(string userId);
+    Task<ApplicationDTO> UpdateApplicationStatus(string userId, int appId, int statusId);
 }

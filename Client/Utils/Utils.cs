@@ -21,4 +21,15 @@ public class Utils
 
         return $"{(int)(timeSpan.TotalDays / 365)} years ago";
     }
+
+    public static string GetStatusColor(string status)
+    {
+        return status switch
+        {
+            "Pending" => "pending",
+            "Approved" => "in-progress",
+            "Declined" => "canceled",
+            _ => "text-dark"
+        };
+    }
 }

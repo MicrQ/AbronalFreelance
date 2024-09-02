@@ -81,8 +81,8 @@
                             </div>
                             </td>
                             <td>
-                            <span class="status-badge @(app.StatusName == null ? "pending" : app.StatusName.ToLower())">
-                                @(app.StatusName == null ? "pending" : app.StatusName)
+                            <span class="status-badge @(Utils.GetStatusColor(app.StatusName))">
+                                @app.StatusName
                             </span>
                             </td>
                             <td class="text-end">
