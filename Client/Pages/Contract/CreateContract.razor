@@ -44,7 +44,7 @@
                             <label for="amount" class="proposal-form-label">
                                 Starting Date <span class="text-lime-300">*</span>
                             </label>
-                            <input 
+                            <input @bind="ContractDTO.StartDate"
                                 type="date"
                                 class="form-control shadow-none"
                             />
@@ -53,7 +53,7 @@
                             <label for="amount" class="proposal-form-label">
                                 Ending Date <span class="text-lime-300">*</span>
                             </label>
-                            <input 
+                            <input @bind="EndDate"
                                 type="date"
                                 class="form-control shadow-none"
                             />
@@ -98,6 +98,6 @@
     private Contract ContractDTO = new Contract();
 
     private void createContract() {
-
+        ContractDTO.ApplicationId = appId;
     }
 }
