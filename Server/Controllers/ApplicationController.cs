@@ -218,6 +218,10 @@ public class ApplicationController : ControllerBase
                 ApprovalStatusId = statusId
             });
         } else {
+            if (appStatus.ApprovalStatusId == statusId)
+                return Ok(new ApplicationDTO {
+                    Flag = false, Message = "Application Status Already Set"
+                });
             appStatus.ApprovalStatusId = statusId;
             _db.ApplicationStatuses.Update(appStatus);
         }
