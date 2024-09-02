@@ -98,7 +98,7 @@ public class JobController : ControllerBase
         List<Job>? jobs;
         if (field.HasValue || locationId.HasValue || !string.IsNullOrEmpty(title) || !string.IsNullOrEmpty(userId)) {
             var query = _db.Jobs.AsQueryable();
-            
+
             if (field.HasValue) {
                 query = query.Where(j => _db.JobFields.Any(
                     jf => jf.JobId == j.Id && jf.FieldId == field.Value));
@@ -122,6 +122,7 @@ public class JobController : ControllerBase
                 .ToListAsync();
         } else {
             jobs = await _db.Jobs
+                .Where(j => !j.IsClosed)
                 .OrderByDescending(j => j.CreatedAt)
                 .Take(limit)
                 .ToListAsync();
