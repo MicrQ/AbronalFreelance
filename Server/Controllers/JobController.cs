@@ -117,6 +117,7 @@ public class JobController : ControllerBase
             }
             
             jobs = await query
+                .Where(j => !j.IsClosed)
                 .OrderByDescending(j => j.CreatedAt)
                 .Take(limit)
                 .ToListAsync();
