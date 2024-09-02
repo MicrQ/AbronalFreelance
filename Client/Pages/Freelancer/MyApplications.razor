@@ -128,15 +128,15 @@
                     <thead class="pb-3">
                         <tr>
                         <th scope="col" class="ps-4">Project Name</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">Budget</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Proposal</th>
-                        <th scope="col">Days</th>
+                        <th scope="col">My Offer</th>
+                        <th scope="col">Submitted</th>
                         <th scope="col" class="pe-5 text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @* loop *@
+                        @foreach (var app in Apps) {
                             <tr>
                             <td>
                                 <div
@@ -150,24 +150,23 @@
                                 </div>
                                 <div>
                                     <p class="text-dark-200">
-                                    Title
+                                    @app.JobTitle
                                     </p>
                                 </div>
                                 </div>
                             </td>
-                            <td class="text-dark-200"> ETB</td>
+                            <td class="text-dark-200"> ETB @app.JobBudget</td>
                             <td>
-                                <span class="status-badge pending"> Close </span>
+                                <span class="status-badge pending">
+                                    @(app.StatusName == null ? "pending" : app.StatusName)
+                                </span>
                             </td>
                             <td class="text-dark-200">
-                                <a
-                                href="buyer-job-applicant-list.html"
-                                class="applicant-link"
-                                >
-                                18
-                                </a>
+                                ETB @app.Amount
                             </td>
-                            <td class="text-dark-200">02</td>
+                            <td class="text-dark-200">
+                                @(Utils.GetTimeAgo((DateTime)app.CreatedAt))
+                            </td>
                             <td>
                                 <div class="d-flex justify-content-end gap-2">
                                 <a
@@ -189,6 +188,7 @@
                                     />
                                     </svg>
                                 </a>
+                                <a href="my-applications/@app.Id">
                                 <button class="dashboard-action-btn">
                                     <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -217,10 +217,11 @@
                                     />
                                     </svg>
                                 </button>
+                                </a>
                                 </div>
                             </td>
                             </tr>
-                        @* close loop *@
+                        }
                     </tbody>
                     </table>
                 </div>

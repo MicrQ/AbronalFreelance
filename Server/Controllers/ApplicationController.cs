@@ -31,7 +31,8 @@ public class ApplicationController : ControllerBase
                 }
             });
 
-        var applications = await _db.Applications
+        var applications = await _db.Applications.
+            Include(a => a.Job)
             .Where(a => a.FreelancerId == userId)
             .OrderByDescending(a => a.CreatedAt)
             .ToListAsync();
@@ -40,9 +41,11 @@ public class ApplicationController : ControllerBase
             
         foreach (var app in applications) {
             applicationDTOs.Add(new ApplicationDTO {
-                 Id = app.Id,
+                Id = app.Id,
                 FreelancerId = app.FreelancerId,
                 JobId = app.JobId,
+                JobTitle = app.Job.Title,
+                JobBudget = app.Job.Budget,
                 Proposal = app.Proposal,
                 DeliveryTime = app.DeliveryTime,
                 Amount = app.Amount,

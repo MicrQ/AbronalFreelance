@@ -6,6 +6,8 @@ public class ApplicationDTO {
     public string? FreelancerFullName { get; set; }
     public string? Picture { get; set; }
     public int? JobId { get; set; }
+    public string? JobTitle { get; set; }
+    public decimal? JobBudget { get; set; }
     public string? Proposal { get; set; }
     public string? DeliveryTime { get; set; }
     public double? Amount { get; set; }
