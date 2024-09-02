@@ -32,7 +32,7 @@
             <!-- Job Details -->
             <section class="py-110">
                 <div class="container">
-                <div class="">
+                <div class="cont">
                     <div class="row pb-4">
                     <div class="col-lg-8 mb-30 mb-lg-0">
                         <div class="job-posts-container bg-white">
@@ -77,16 +77,34 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="col-auto">
-                                    @* <a href=""
-                                        type="button"
-                                        class="header-btn"
-                                    >
-                                        Apply Now
-                                    </a> *@
-                                    
-                                <h3 class="job-wage fw-bold mt-4">ETB @app.Amount</h3>
-                            </div>
+                            <AuthorizeView Roles="Client" Context="actions">
+                                <Authorized>
+                                    <div class="col-auto">
+                                        <a href="/my-jobs/@jobId/applications/@appId/contract"
+                                            type="button"
+                                            class="header-btn m-2 p-3"
+                                        >
+                                            Create Contract
+                                        </a>
+                                        <a href=""
+                                            type="button"
+                                            class="header-btn m-2 p-3"
+                                            style="background-color: rgb(231, 189, 3);"
+                                        >
+                                            Schedule Interview
+                                        </a>
+                                        <a href=""
+                                            type="button"
+                                            class="header-btn m-2 p-3"
+                                            style="background-color: rgb(231, 3, 3);"
+                                        >
+                                            Reject
+                                        </a>
+                                        
+                                        <h3 class="job-wage fw-bold mt-4">ETB @app.Amount</h3>
+                                    </div>
+                                </Authorized>
+                            </AuthorizeView>
                         </div>
                         <div class="pt-5 border-top">
                             <div class="content-details">
