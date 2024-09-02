@@ -1,0 +1,103 @@
+@page "/my-jobs/{jobId:int}/applications/{appId:int}/contract"
+
+<AuthorizeView Roles="Client" Context="auth_Client">
+    <Authorized>
+        <NavMenu />
+
+        <main>
+            <!-- Breadcrumb -->
+            <section
+            class="w-breadcrumb-area"
+            style="
+                background: url('img/common/breadcrumb-bg.png') no-repeat
+                center center/cover;
+            ">
+            <div class="container">
+                <div class="row">
+                <div class="col-auto">
+                    <div
+                        class="position-relative z-2" >
+                        <h2 class="section-title-light mb-2">Create Contract</h2>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </section>
+            <section class="py-110 bg-offWhite">
+                <div class="container">
+
+            <div
+            class="modal-fade">
+            <div class="modal-dialog modal-lg"
+            style="box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1); width: 100%;">
+                <div class="modal-content">
+                <div class="modal-body" >
+                    <div class="bg-white p-lg-5 rounded-3">
+                    <div class="proposal-container">
+                        <div class="proposal-header">
+                        <h3 class="text-dark-300 text-24 fw-bold">Contract</h3>
+                        </div>
+                        <EditForm Model="ContractDTO" OnValidSubmit="createContract">
+                        <div class="d-flex flex-column gap-4">
+                            
+                            <div class="proposal-input-container">
+                            <label for="amount" class="proposal-form-label">
+                                Starting Date <span class="text-lime-300">*</span>
+                            </label>
+                            <input 
+                                type="date"
+                                class="form-control shadow-none"
+                            />
+                            </div>
+                            <div class="proposal-input-container">
+                            <label for="amount" class="proposal-form-label">
+                                Ending Date <span class="text-lime-300">*</span>
+                            </label>
+                            <input 
+                                type="date"
+                                class="form-control shadow-none"
+                            />
+                            </div>
+                            <div
+                            class="d-flex gap-4 align-items-center justify-content-end">
+                            <a href="">
+                            <button class="w-btn-gray-sm">
+                                Cancel
+                            </button>
+                            </a>
+                            <button type="submit" class="w-btn-secondary-sm">
+                                Apply
+                            </button>
+                            </div>
+                        </div>
+                        </EditForm>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </section>
+            <!-- Login Form End -->
+        </main>
+
+
+
+        <Footer />
+    </Authorized>
+    <NotAuthorized>
+        401 page
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    [Parameter] public int jobId { get; set; }
+    [Parameter] public int appId { get; set; }
+
+    private Contract ContractDTO = new Contract();
+
+    private void createContract() {
+
+    }
+}
