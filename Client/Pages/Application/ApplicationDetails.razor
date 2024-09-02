@@ -86,13 +86,13 @@
                                         >
                                             Create Contract
                                         </a>
-                                        <a href=""
+                                        @* <a href=""
                                             type="button"
                                             class="header-btn m-2 p-3"
-                                            style="background-color: rgb(231, 189, 3);"
+                                            style="color: #000; background-color: rgb(231, 189, 3);"
                                         >
                                             Schedule Interview
-                                        </a>
+                                        </a> *@
                                         <a href=""
                                             type="button"
                                             class="header-btn m-2 p-3"
@@ -102,6 +102,12 @@
                                         </a>
                                         
                                         <h3 class="job-wage fw-bold mt-4">ETB @app.Amount</h3>
+                                        <style>
+                                            .header-btn:hover {
+                                                opacity: .8;
+                                                box-shadow: 1px 4px 4px rgba(0,0,0,.25);
+                                            }
+                                        </style>
                                     </div>
                                 </Authorized>
                             </AuthorizeView>

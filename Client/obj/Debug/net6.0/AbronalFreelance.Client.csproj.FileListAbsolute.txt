@@ -1809,4 +1809,3 @@
 /home/niq/AbronalFreelance/Client/bin/Debug/net6.0/System.Linq.Dynamic.Core.dll
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/fwvosshj9n.gz
 /home/niq/AbronalFreelance/Client/obj/Debug/net6.0/compressed/hymbv4fagz.gz
-/home/niq/AbronalFreelance/Client/obj/Debug/net6.0/scopedcss/Pages/Application/ApplicationDetails.razor.rz.scp.css
