@@ -49,7 +49,7 @@
                         <input
                           type="text"
                           class="form-control shadow-none"
-                          placeholder="Search for any service..."
+                          placeholder="Search for any Job..."
                         />
                         <button class="hero-form-btn position-absolute">
                           <svg
@@ -260,22 +260,44 @@
                 available, but the majority have suffered alteration in some
                 form, by injected humour, or randomised words.
                 </p>
-                <a href="buyer-dashboard.html" class="cta-btn-link">
-                Post Job Now
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="10"
-                    viewBox="0 0 14 10"
-                    fill="none">
-                    <path
-                    d="M9 9L13 5M13 5L9 1M13 5L1 5"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-                </a>
+                <AuthorizeView Roles="Client">
+                    <Authorized>
+                        <a href="post-job" class="cta-btn-link">
+                            Post Job Now
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="10"
+                                viewBox="0 0 14 10"
+                                fill="none">
+                                <path
+                                d="M9 9L13 5M13 5L9 1M13 5L1 5"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </Authorized>
+                    <NotAuthorized>
+                        <a href="register" class="cta-btn-link">
+                            Post Job Now
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="10"
+                                viewBox="0 0 14 10"
+                                fill="none">
+                                <path
+                                d="M9 9L13 5M13 5L9 1M13 5L1 5"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </NotAuthorized>
+                </AuthorizeView>
             </div>
             <div class="cta-counter mt-5">
                 <div class="cta-counter-item">
@@ -352,7 +374,7 @@
                                 </div>
                                 <p class="job-post-subtitle fw-normal">ETB @job.Budget</p>
                                 <h3 class="job-post-title fw-semibold">
-                                    <a href="job-details.html">@job.Title</a>
+                                    <a href="job/@job.Id">@job.Title</a>
                                 </h3>
                                 <a href="job/@job.Id" class="w-btn-primary-xl">
                                     Apply Now
