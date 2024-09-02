@@ -350,12 +350,12 @@
 @code {
     [Parameter] public int jobId { get; set; }
     [Parameter] public int appId { get; set; }
-    private string LoggedInUserId { get; set; }
+    private string LoggedInUserId { get; set; } = "";
     private ApplicationDTO app = new ApplicationDTO();
     private FreelancerProfileDTO profile = new FreelancerProfileDTO();
     private List<Location> Locations = new List<Location>();
     private bool displayMessage = false;
-    private ApplicationDTO response { get; set; }
+    private ApplicationDTO response = new ApplicationDTO();
 
     protected override async Task OnInitializedAsync() {
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
