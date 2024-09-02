@@ -8,4 +8,5 @@ public interface IApplication
     Task<ApplicationDTO> GetApplicationByIdAsync(string userId, int appId);
     Task<List<ApplicationDTO>> GetAllApplications(string userId, int jobId);
     Task<ApplicationDTO> CreateApplication(ApplicationDTO appDTO);
+    Task<List<ApplicationDTO>> GetAllUserApplications(string userId);
 }

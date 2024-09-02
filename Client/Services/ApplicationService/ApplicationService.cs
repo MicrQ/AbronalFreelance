@@ -15,7 +15,9 @@ public class ApplicationService : IApplication
         return await _http.GetFromJsonAsync<ApplicationDTO>($"api/application/{appId}?userid={userId}");
     }
 
-
+    public async Task<List<ApplicationDTO>> GetAllUserApplications(string userId) {
+        return await _http.GetFromJsonAsync<List<ApplicationDTO>>($"api/users/{userId}/applications");
+    }
     public async Task<List<ApplicationDTO>> GetAllApplications(string userId, int jobId)
     {
         return await _http.GetFromJsonAsync<List<ApplicationDTO>>($"api/job/{jobId}/applications?userid={userId}");

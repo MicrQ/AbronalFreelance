@@ -2307,3 +2307,15 @@
         401 page
     </NotAuthorized>
 </AuthorizeView>
+
+
+@code {
+    private List<ApplicationDTO> Apps = new List<ApplicationDTO>();
+    private string LoggedInUserId { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+        Apps = await ApplicationService.GetAllUserApplications(LoggedInUserId);
+    }
+}
