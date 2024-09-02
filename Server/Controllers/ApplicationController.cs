@@ -125,6 +125,9 @@ public class ApplicationController : ControllerBase
             (application.Job == null || application.Job.UserId != userId)) {
             return BadRequest(new ApplicationDTO { Message = "You don't have permission to view this application" });
         }
+        var status = await _db.ApplicationStatuses
+            .Include(s => s.ApprovalStatus)
+            .ToListAsync();
 
         return Ok(new ApplicationDTO {
             Id = application.Id,
@@ -135,6 +138,7 @@ public class ApplicationController : ControllerBase
             DeliveryTime = application.DeliveryTime,
             Amount = application.Amount,
             CreatedAt = application.CreatedAt,
+            StatusName = status.FirstOrDefault(s => s.ApplicationId == application.Id)?.ApprovalStatus.Name ?? "Pending",
             Flag = true
         });
     }

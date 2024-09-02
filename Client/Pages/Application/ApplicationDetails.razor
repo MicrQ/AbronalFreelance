@@ -39,7 +39,9 @@
                         <div class="row justify-content-between pb-5">
                             <div class="col-auto mb-40 mb-md-0">
                             <div>
-                                
+                                <span class="status-badge @(Utils.GetStatusColor(app.StatusName))">
+                                    @app.StatusName
+                                </span>
                                 <h3 class="job-post-title fw-bold mb-1">
                                 @app.FreelancerFullName
                                 </h3>
