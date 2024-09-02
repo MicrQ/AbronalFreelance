@@ -99,13 +99,21 @@ public class ApplicationController : ControllerBase
         return Ok(applicationDTOs);
     }
 
-    
+
     [HttpGet("application/{appId}")]
-    public IActionResult GetApplication(string userId,int appId) {
+    public async Task<IActionResult> GetApplication([FromQuery] string userId, int appId) {
         // GET /api/application/{appid}?userid={userid}
-        var application = _db.Applications.FirstOrDefault(
-            a => a.Id == appId && (a.FreelancerId == userId || a.Job.UserId == userId));
-        if (application == null) return NotFound(new ApplicationDTO { Message = "Application Not Found" });
+        var application = await _db.Applications
+                                .Include(a => a.Job)
+                                .Include(a => a.Freelancer)
+                                .FirstOrDefaultAsync(a => a.Id == appId);
+        if (application == null) 
+            return NotFound(new ApplicationDTO { Message = "Application Not Found" });
+
+        if (application.FreelancerId != userId && 
+            (application.Job == null || application.Job.UserId != userId)) {
+            return BadRequest(new ApplicationDTO { Message = "You don't have permission to view this application" });
+        }
 
         return Ok(new ApplicationDTO {
             Id = application.Id,
@@ -119,6 +127,8 @@ public class ApplicationController : ControllerBase
             Flag = true
         });
     }
+
+
 
     [HttpPost("application")]
     [Authorize(Roles = "Freelancer")]
