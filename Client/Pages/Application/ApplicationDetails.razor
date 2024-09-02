@@ -113,14 +113,11 @@
                             <h4 class="company-profile-card-title fw-bold">
                                 @app.FreelancerFullName
                             </h4>
-                            @* @if (profile.hasCompany) {
-                                
-                                <p class="company-profile-card-desc">
-                                    @Locations.FirstOrDefault(l => l.Id == profile.CompanyLocationId).Name, 
-                                    @Locations.FirstOrDefault(
-                                        l => l.Id == Locations.FirstOrDefault(l => l.Id == profile.CompanyLocationId).ParentId).Name
-                                </p>
-                            } *@
+                            <p class="company-profile-card-desc">
+                                @Locations.FirstOrDefault(l => l.Id == profile.LocationId).Name, 
+                                @Locations.FirstOrDefault(
+                                    l => l.Id == Locations.FirstOrDefault(l => l.Id == profile.LocationId).ParentId).Name
+                            </p>
                             </div>
                         </div>
                         <ul class="company-card-list">
@@ -305,6 +302,9 @@
             </main>
         <Footer />
     </Authorized>
+    <NotAuthorized>
+        401 page
+    </NotAuthorized>
 </AuthorizeView>
 
 
@@ -314,11 +314,13 @@
     private string LoggedInUserId { get; set; }
     private ApplicationDTO app = new ApplicationDTO();
     private FreelancerProfileDTO profile = new FreelancerProfileDTO();
+    private List<Location> Locations = new List<Location>();
 
     protected override async Task OnInitializedAsync() {
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
         app = await ApplicationService.GetApplicationByIdAsync(LoggedInUserId, appId);
         profile = await ProfileService.GetFreelancerProfileAsync(app.FreelancerId);
+        Locations = await LocationService.GetAllLocations();
     }
 }
