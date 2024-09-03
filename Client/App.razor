@@ -7,7 +7,33 @@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            <main>
+            <section class="bg-offWhite py-80">
+                <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7 col-12">
+                    <div
+                        class="bg-white p-5 rounded-3 not-found-img d-flex flex-column flex-wrap align-items-center"
+                    >
+                        <img
+                        src="img/others/404.svg"
+                        class="img-fluid"
+                        alt=""
+                        />
+                    </div>
+                    <div class="pt-5 text-center">
+                        <h2 class="section-title mb-4">Oops! Seems like you lost your way.</h2>
+                        <div>
+                        <a href="" class="w-btn-secondary-lg d-inline-flex">
+                            Back to Home Page
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+            </main>
         </LayoutView>
     </NotFound>
 </Router>
