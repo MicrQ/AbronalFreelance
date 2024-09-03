@@ -28,7 +28,10 @@ public class Utils
         {
             "Pending" => "pending",
             "Approved" => "in-progress",
-            "Declined" => "canceled",
+            "Rejected" => "canceled",
+            "Completed" => "completed",
+            "Canceled" => "canceled",
+            "Interviewing" => "in-progress",
             _ => "text-dark"
         };
     }
