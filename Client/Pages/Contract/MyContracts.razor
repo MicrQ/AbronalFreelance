@@ -1,0 +1,132 @@
+@page "/my-contracts"
+
+
+<AuthorizeView Roles="Client,Freelancer">
+    <Authorized>
+        <div class="d-xl-flex">
+            <!-- Sidebar -->
+            <SideBar />
+            <!-- Mobile Menu -->
+            <MobileMenu />
+            <!-- Mobile Menu End -->
+
+            <div class="flex-grow-1 align-items-center">
+            <!-- Header -->
+            <DashboardHeader />
+            <!-- Main -->
+            <main class="dashboard-main min-vh-100">
+                <div class="d-flex flex-column gap-4">
+                    <!-- Header -->
+                    <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h3 class="text-24 fw-bold text-dark-300 mb-2">My Jobs</h3>
+                        <ul class="d-flex align-items-center gap-2">
+                        <li class="text-dark-200 fs-6">Dashboard</li>
+                        <li>
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="5"
+                            height="11"
+                            viewBox="0 0 5 11"
+                            fill="none"
+                            >
+                            <path
+                                d="M1 10L4 5.5L1 1"
+                                stroke="#5B5B5B"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            </svg>
+                        </li>
+                        <li class="text-lime-300 fs-6">My Jobs</li>
+                        </ul>
+                    </div>
+                    </div>
+                    <!-- Content -->
+                    <div>
+                    <!-- My Job -->
+                    <div class="overflow-x-auto">
+                        <div class="w-100">
+                        <table class="w-100 dashboard-table applicant-table">
+                            <thead class="pb-3">
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Starts</th>
+                                <th scope="col">Ends</th>
+                                <th scope="col" class="text-end">Created</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @* @foreach (var app in Apps) { *@
+                                <tr
+                                style="
+                                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+                                border-radius: 10px;
+                                cursor: pointer;">
+                                    <td>
+                                    <div
+                                        class="d-flex gap-3 align-items-center project-name"
+                                    >
+                                        <div class="rounded-3">
+                                        <img
+                                            src="img/dashboard/job/app-6.png"
+                                            class="img-fluid rounded-3"
+                                            alt=""
+                                        />
+                                        </div>
+                                        <div>
+                                        <h5 class="text-dark-200"><b>Job Title</b></h5>
+                                        @* <p>@(new MarkupString(app.Proposal.Length > 80 ? app.Proposal.Substring(0, 80) + "..." : app.Proposal))</p> *@
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <td>
+                                    @* 
+                                    <span class="status-badge @(Utils.GetStatusColor(app.StatusName))">
+                                        @app.StatusName
+                                    </span> *@
+                                    status
+                                    </td>
+                                    <td>
+                                    <div>
+                                        <div>
+                                        @* <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p> *@
+                                        starts
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <td>
+                                    <div>
+                                        <div>
+                                        @* <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p> *@
+                                        ends
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <td class="text-end">
+                                    <div>
+                                        <div>
+                                        @* <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p> *@
+                                        created
+                                        </div>
+                                    </div>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </main>
+            </div>
+        </div>
+        <LogoutPopUp />
+    </Authorized>
+    <NotAuthorized>
+        401 page
+    </NotAuthorized>
+</AuthorizeView>
