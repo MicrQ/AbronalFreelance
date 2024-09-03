@@ -19,4 +19,9 @@ public class ContractService : IContract
     public async Task<List<ContractDTO>> GetContractsByUserIdAsync(string userId) {
         return await _http.GetFromJsonAsync<List<ContractDTO>>($"api/user/{userId}/contracts");
     }
+
+    public async Task<List<ContractDTO>> GetFreelancerContractsByUserIdAsync(string userId) {
+        return await _http.GetFromJsonAsync<List<ContractDTO>>($"api/freelancer/{userId}/contracts");
+    }
+    
 }
