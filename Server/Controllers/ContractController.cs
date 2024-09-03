@@ -79,7 +79,9 @@ public class ContractController : ControllerBase
         List<ContractDTO> contractDTO = new List<ContractDTO>();
         if (contracts != null) {
             foreach (var contract in contracts) {
-                var status = await _db.CO
+                var status = await _db.ContractStatuses
+                    .Include(cs => cs.ApprovalStatus)
+                    .FirstOrDefaultAsync(cs => cs.ContractId == contract.Id);
                 contractDTO.Add(new ContractDTO {
                     Id = contract.Id,
                     ApplicationId = contract.ApplicationId,
@@ -88,6 +90,7 @@ public class ContractController : ControllerBase
                     CreatedAt = contract.CreatedAt,
                     UpdatedAt = contract.UpdatedAt,
                     JobTitle = contract.Application.Job.Title,
+                    StatusName = status?.ApprovalStatus.Name ?? "Pending",
                     Flag = true
                 });
             }

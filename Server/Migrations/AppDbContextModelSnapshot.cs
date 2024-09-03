@@ -178,42 +178,22 @@ namespace AbronalFreelance.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ContractId")
+                    b.Property<int>("ApprovalStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ContractStatusTypeId")
+                    b.Property<int>("ContractId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ApprovalStatusId");
 
                     b.HasIndex("ContractId");
 
-                    b.HasIndex("ContractStatusTypeId");
-
                     b.ToTable("ContractStatuses");
-                });
-
-            modelBuilder.Entity("AbronalFreelance.Shared.Models.ContractStatusType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ContractStatusTypes");
                 });
 
             modelBuilder.Entity("AbronalFreelance.Shared.Models.EducationLevel", b =>
@@ -1141,21 +1121,21 @@ namespace AbronalFreelance.Server.Migrations
 
             modelBuilder.Entity("AbronalFreelance.Shared.Models.ContractStatus", b =>
                 {
+                    b.HasOne("AbronalFreelance.Shared.Models.ApprovalStatus", "ApprovalStatus")
+                        .WithMany()
+                        .HasForeignKey("ApprovalStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AbronalFreelance.Shared.Models.Contract", "Contract")
                         .WithMany()
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AbronalFreelance.Shared.Models.ContractStatusType", "ContractStatusType")
-                        .WithMany()
-                        .HasForeignKey("ContractStatusTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("ApprovalStatus");
 
                     b.Navigation("Contract");
-
-                    b.Navigation("ContractStatusType");
                 });
 
             modelBuilder.Entity("AbronalFreelance.Shared.Models.Feedback", b =>
