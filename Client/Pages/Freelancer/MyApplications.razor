@@ -157,8 +157,8 @@
                             </td>
                             <td class="text-dark-200"> ETB @app.JobBudget</td>
                             <td>
-                                <span class="status-badge pending">
-                                    @(app.StatusName == null ? "pending" : app.StatusName)
+                                <span class="status-badge @(Utils.GetStatusColor(app.StatusName))">
+                                    @app.StatusName
                                 </span>
                             </td>
                             <td class="text-dark-200">
