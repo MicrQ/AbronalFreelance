@@ -28,10 +28,7 @@ public class ContractController : ControllerBase
             new ContractDTO { Message = "You don't have permission to create a contract for this application" }
         );
 
-        var contractExists = await _db.Contracts.FirstOrDefaultAsync(
-            c => c.ApplicationId == contractDTO.ApplicationId
-        );
-        if (contractExists != null) return BadRequest(
+        if (app.Job.IsClosed) return BadRequest(
             new ContractDTO { Message = "You can only create one contract for a Job." }
         );
 
