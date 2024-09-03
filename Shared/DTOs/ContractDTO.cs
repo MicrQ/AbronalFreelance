@@ -8,6 +8,8 @@ public class ContractDTO
     public DateTime? EndDate { get; set; }
     public DateTime? CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
+    public string? StatusName { get; set; }
+    public string? JobTitle { get; set; }
     public bool Flag { get; set; } = false;
     public string? Message { get; set; }
 }

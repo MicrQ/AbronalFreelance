@@ -59,7 +59,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @* @foreach (var app in Apps) { *@
+                            @foreach (var contract in contracts) {
                                 <tr
                                 style="
                                 box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -77,8 +77,7 @@
                                         />
                                         </div>
                                         <div>
-                                        <h5 class="text-dark-200"><b>Job Title</b></h5>
-                                        @* <p>@(new MarkupString(app.Proposal.Length > 80 ? app.Proposal.Substring(0, 80) + "..." : app.Proposal))</p> *@
+                                        <h5 class="text-dark-200"><b>@contract.JobTitle</b></h5>
                                         </div>
                                     </div>
                                     </td>
@@ -130,3 +129,16 @@
         401 page
     </NotAuthorized>
 </AuthorizeView>
+
+
+@code {
+    private string LoggedInUserId = "";
+    List<ContractDTO> contracts = new List<ContractDTO>();
+
+    protected override async Task OnInitializedAsync() {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+
+        contracts = await ContractService.GetContractsByUserIdAsync(LoggedInUserId);
+    }
+}

@@ -15,4 +15,8 @@ public class ContractService : IContract
         var res = await _http.PostAsJsonAsync($"api/contract?userId={userId}", contractDTO);
         return await res.Content.ReadFromJsonAsync<ContractDTO>();
     }
+
+    public async Task<List<ContractDTO>> GetContractsByUserIdAsync(string userId) {
+        return await _http.GetFromJsonAsync<List<ContractDTO>>($"api/user/{userId}/contracts");
+    }
 }

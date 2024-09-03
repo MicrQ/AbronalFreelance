@@ -59,4 +59,40 @@ public class ContractController : ControllerBase
             Message = "Contract Created Successfully!"
         });
     }
+
+    [HttpGet("user/{userId}/contracts")]
+    [Authorize(Roles = "Client")]
+    public async Task<IActionResult> GetAllContracts(string userId) {
+        // GET api/user/{userid}/contracts
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        if (user == null)
+            return NotFound(new List<ContractDTO> {
+                new ContractDTO { Message = "User Not Found" }
+            });
+
+        var contracts = await _db.Contracts
+            .Include(c => c.Application)
+            .Include(c => c.Application.Job)
+            .Where(c => c.Application.Job.UserId == userId)
+            .ToListAsync();
+
+        List<ContractDTO> contractDTO = new List<ContractDTO>();
+        if (contracts != null) {
+            foreach (var contract in contracts) {
+                var status = await _db.CO
+                contractDTO.Add(new ContractDTO {
+                    Id = contract.Id,
+                    ApplicationId = contract.ApplicationId,
+                    StartDate = contract.StartDate,
+                    EndDate = contract.EndDate,
+                    CreatedAt = contract.CreatedAt,
+                    UpdatedAt = contract.UpdatedAt,
+                    JobTitle = contract.Application.Job.Title,
+                    Flag = true
+                });
+            }
+        }
+
+        return Ok(contractDTO);
+    }
 }
