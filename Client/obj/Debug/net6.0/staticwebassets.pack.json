@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets/css/glightbox.min.css"
     },
     {
+      "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/loading.css",
+      "PackagePath": "staticwebassets/css/loading.css"
+    },
+    {
       "Id": "/home/niq/AbronalFreelance/Client/wwwroot/css/nice-select.css",
       "PackagePath": "staticwebassets/css/nice-select.css"
     },
