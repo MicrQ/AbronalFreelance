@@ -12,6 +12,7 @@
 @using AbronalFreelance.Client.Services.FieldService
 @using AbronalFreelance.Client.Services.CompanyService
 @using AbronalFreelance.Client.Services.ProfileService
+@using AbronalFreelance.Client.Services.ContractServices
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
 @using AbronalFreelance.Client.Services.PortfolioService
 @using Microsoft.AspNetCore.Components.Web.Virtualization
@@ -44,10 +45,11 @@
 @inject ICompany CompanyService
 @inject IAccount AccountService
 @inject IJobType JobTypeService
-@inject IApplication ApplicationService
-@inject IPaymentType PaymentTypeService
 @inject IProfile ProfileService
+@inject IContract ContractService
 @inject ILocation LocationService
 @inject IPortfolio PortfolioService
 @inject NavigationManager Navigation
+@inject IApplication ApplicationService
+@inject IPaymentType PaymentTypeService
 @inject AuthenticationStateProvider AuthStateProvider

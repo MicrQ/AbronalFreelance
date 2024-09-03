@@ -53,7 +53,7 @@
                             <label for="amount" class="proposal-form-label">
                                 Ending Date <span class="text-lime-300">*</span>
                             </label>
-                            <input @bind="EndDate"
+                            <input @bind="ContractDTO.EndDate"
                                 type="date"
                                 class="form-control shadow-none"
                             />
@@ -94,10 +94,18 @@
 @code {
     [Parameter] public int jobId { get; set; }
     [Parameter] public int appId { get; set; }
+    private string LoggedInUserId = "";
 
-    private Contract ContractDTO = new Contract();
+    private ContractDTO ContractDTO = new ContractDTO();
+    private ContractDTO response = new ContractDTO();
 
-    private void createContract() {
+    private async Task createContract() {
         ContractDTO.ApplicationId = appId;
+        response = await ContractService.CreateContractAsync(LoggedInUserId, ContractDTO);
+    }
+
+    protected override async Task OnInitializedAsync() {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
     }
 }
