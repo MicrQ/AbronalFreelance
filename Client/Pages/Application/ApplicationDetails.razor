@@ -62,21 +62,7 @@
                                     /></svg>
                                     @(Utils.GetTimeAgo((DateTime)app.CreatedAt))
                                     </span>
-                                @* <span class="job-location">
-                                    <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="10"
-                                    height="11"
-                                    viewBox="0 0 10 11"
-                                    fill="none">
-                                    <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M5.15385 11C6.89904 11 9.80769 7.58895 9.80769 4.88889C9.80769 2.18883 7.72409 0 5.15385 0C2.5836 0 0.5 2.18883 0.5 4.88889C0.5 7.58895 3.40865 11 5.15385 11ZM5.15371 6.59992C6.01046 6.59992 6.70499 5.86119 6.70499 4.94992C6.70499 4.03865 6.01046 3.29992 5.15371 3.29992C4.29696 3.29992 3.60243 4.03865 3.60243 4.94992C3.60243 5.86119 4.29696 6.59992 5.15371 6.59992Z"
-                                        fill="#13544E"
-                                    /></svg>
-                                    @Locations.FirstOrDefault(c => c.Id == job.LocationId).Name</span> *@
-                                </div>
+                               </div>
                             </div>
                             </div>
                             <AuthorizeView Roles="Client" Context="actions">
