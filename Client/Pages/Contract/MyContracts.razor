@@ -82,33 +82,29 @@
                                     </div>
                                     </td>
                                     <td>
-                                    @* 
-                                    <span class="status-badge @(Utils.GetStatusColor(app.StatusName))">
-                                        @app.StatusName
-                                    </span> *@
-                                    status
+                                    
+                                    <span class="status-badge @(Utils.GetStatusColor(contract.StatusName))">
+                                        @contract.StatusName
+                                    </span>
                                     </td>
                                     <td>
                                     <div>
                                         <div>
-                                        @* <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p> *@
-                                        starts
+                                        <p class="text-dark-200">@(((DateTime)contract.StartDate).ToString("MMM dd/yyyy"))</p>
                                         </div>
                                     </div>
                                     </td>
                                     <td>
                                     <div>
                                         <div>
-                                        @* <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p> *@
-                                        ends
+                                        <p class="text-dark-200">@(((DateTime)contract.EndDate).ToString("MMM dd/yyyy"))</p>
                                         </div>
                                     </div>
                                     </td>
                                     <td class="text-end">
                                     <div>
                                         <div>
-                                        @* <p class="text-dark-200">@(Utils.GetTimeAgo((DateTime)app.CreatedAt))</p> *@
-                                        created
+                                        <p class="text-dark-200">@(((DateTime)contract.CreatedAt).ToString("MMM dd/yyyy"))</p>
                                         </div>
                                     </div>
                                     </td>
