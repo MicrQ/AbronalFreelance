@@ -112,6 +112,7 @@
                             </div>
                         </div>
                         <div class="d-grid mt-4">
+                            @if (showMessage) {<p class="text-danger">@message</p>}
                             <button class="w-btn-secondary-lg">Create Account</button>
                         </div>
                     </div>
@@ -144,6 +145,8 @@
     private string endpoint = "countries";
     private string clientClass = "w-form-btn-outline";
     private string freelancerClass = "w-form-btn";
+    private bool showMessage = false;
+    private string message = "";
 
     private int countryId;
     private int regionId;
@@ -151,10 +154,18 @@
     
     private async Task RegisterAsync()
     {
+        if (registerModel.Password != registerModel.ConfirmPassword) {
+            message = "Password doesn't match";
+            showMessage = true;
+            return;
+        }
+
         var result = await AccountService.RegisterUserAsync(registerModel);
         var customAuthStateProvider = (CustomAuthState)AuthStateProvider;
 
-        Navigation.NavigateTo("/", forceLoad: true);
+
+
+        Navigation.NavigateTo("/login");
     }
 
     protected override async Task OnInitializedAsync()
