@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W3w7EupAcTBjzIuyXhwKYh2tuLDV/jNPcA1g6feircA=",
+  "Hash": "0w4AEVQIO13VM0x/60LAP15etCe+4fD4QNPdO2F7N6Y=",
   "Source": "AbronalFreelance.Server",
   "BasePath": "_content/AbronalFreelance.Server",
   "Mode": "Default",
@@ -9242,25 +9242,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/glightbox.min.css"
-    },
-    {
-      "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/css/loading.css",
-      "SourceId": "AbronalFreelance.Client",
-      "SourceType": "Project",
-      "ContentRoot": "/home/niq/AbronalFreelance/Client/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "css/loading.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/loading.css"
     },
     {
       "Identity": "/home/niq/AbronalFreelance/Client/wwwroot/css/nice-select.css",
