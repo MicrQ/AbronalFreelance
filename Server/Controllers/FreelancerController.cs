@@ -55,7 +55,7 @@ public class FreelancerController : ControllerBase
         return Ok(topFreelancersDTO);
     }
 
-    [HttpPost("top-freelancers/filter")]
+    [HttpGet("top-freelancers/filter")]
     public async Task<IActionResult> GetFreelancersByFilter(int? locationId, int? categoryId, double? rating)
     {
         var freelancerRoleId = await _roleManager.Roles

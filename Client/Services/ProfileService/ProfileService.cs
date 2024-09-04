@@ -48,11 +48,6 @@ public class ProfileService : IProfile
 
     public async Task<List<FreelancerProfileDTO>> GetTopFreelancersByFilterAsync(
         int? categoryId, int? locationId, double? rating) {
-        var res = await _http.PostAsJsonAsync("api/top-freelancers/filter", new {
-            categoryId,
-            locationId,
-            rating
-        });
-        return await res.Content.ReadFromJsonAsync<List<FreelancerProfileDTO>>();
+        return await _http.GetFromJsonAsync<List<FreelancerProfileDTO>>("api/top-freelancers/filter?categoryId=" + categoryId + "&locationId=" + locationId + "&rating=" + rating);
     }
 }

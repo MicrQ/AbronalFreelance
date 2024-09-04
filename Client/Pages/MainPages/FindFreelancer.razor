@@ -83,8 +83,12 @@
                             stroke-linecap="round"
                             />
                         </svg>
-                        <select class="form-select shadow-none">
-                            <option value="">All Locations</option>
+                        <select @bind="filterModel.LocationId"
+                        class="form-select shadow-none">
+                            <option>All Locations</option>
+                            @foreach (var city in Cities) {
+                                <option value="@city.Id">@city.Name</option>
+                            }
                         </select>
                         </div>
                         <div class="d-flex align-items-center job-post-input">
@@ -105,6 +109,11 @@
                 </div>
                 </div>
             </div>
+            @if (empty) {
+                <div class="alert alert-warning" role="alert">
+                    <h3> :( <i> No jobs found</i></h3>
+                </div>
+            }
             <!-- Content -->
             <div
                 class="row row-gap-4 row-cols-xl-5 row-cols-lg-3 row-cols-md-2 justify-content-center"
@@ -213,28 +222,15 @@
 </AuthorizeView>
 
 @code {
-    private string displayFilters = "";
-    private List<Skill> AllSkills = new List<Skill>();
-    private List<Field> AllFields = new List<Field>();
     private List<Location> Cities = new List<Location>();
-
-    private List<int> Skills = new List<int>();
-    private List<int> Fields = new List<int>();
-    private List<int> Locations = new List<int>();
     private FilterModel filterModel = new FilterModel();
+    private bool empty = false;
     private List<FreelancerProfileDTO> topFreelancers = new List<FreelancerProfileDTO>();
 
 
-    private void displayFiltersFunc() {
-        displayFilters = "" == displayFilters ? "display: block;" : "";
-    }
-
     protected async override Task OnInitializedAsync() {
-        AllSkills = await SkillService.GetAllSkillsAsync();
-        AllFields = await FieldService.GetAllFieldsAsync();
-        Cities = await LocationService.GetAllCities();
-
         topFreelancers = await ProfileService.GetTopFreelancersAsync();
+        Cities = await LocationService.GetAllCities();
     }
 
     private async Task Filter() {
@@ -244,6 +240,7 @@
                 filterModel.LocationId,
                 filterModel.Rating
             );
+            empty = topFreelancers.Count == 0 ? true : false;
         }
     }
 
