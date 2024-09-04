@@ -9,4 +9,6 @@ public interface IProfile
     Task UpdateFreelancerProfileAsync(FreelancerProfileDTO FreelancerProfileDTO, string UserId); //return response object...maybe
     Task UpdateClientProfileAsync(ClientProfileDTO ClientProfileDTO);
     Task<PasswordDTO> ChangePasswordAsync(string UserId, PasswordDTO PasswordDTO);
+
+    Task<List<FreelancerProfileDTO>> GetTopFreelancersAsync();
 }

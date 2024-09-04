@@ -40,4 +40,9 @@ public class ProfileService : IProfile
         var response = await _http.PutAsJsonAsync("api/user/change-password?UserId=" + UserId, PasswordDTO);
         return await response.Content.ReadFromJsonAsync<PasswordDTO>();
     }
+
+    public async Task<List<FreelancerProfileDTO>> GetTopFreelancersAsync()
+    {
+        return await _http.GetFromJsonAsync<List<FreelancerProfileDTO>>("api/top-freelancers");
+    }
 }
