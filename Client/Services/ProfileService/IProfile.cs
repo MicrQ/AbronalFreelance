@@ -11,4 +11,7 @@ public interface IProfile
     Task<PasswordDTO> ChangePasswordAsync(string UserId, PasswordDTO PasswordDTO);
 
     Task<List<FreelancerProfileDTO>> GetTopFreelancersAsync();
+    Task<List<FreelancerProfileDTO>> GetTopFreelancersByFilterAsync(
+        int? categoryId, int? locationId, double? rating
+    );
 }

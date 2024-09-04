@@ -54,4 +54,54 @@ public class FreelancerController : ControllerBase
 
         return Ok(topFreelancersDTO);
     }
+
+    [HttpPost("top-freelancers/filter")]
+    public async Task<IActionResult> GetFreelancersByFilter(int? locationId, int? categoryId, double? rating)
+    {
+        var freelancerRoleId = await _roleManager.Roles
+            .Where(r => r.Name == "Freelancer")
+            .Select(r => r.Id)
+            .FirstOrDefaultAsync();
+
+        List<Profile> freelancers = await _db.Profiles
+            .Include(p => p.User)
+            .Where(p => _db.UserRoles.Any(ur => ur.UserId == p.User.Id && ur.RoleId == freelancerRoleId))
+            .ToListAsync();
+
+        if (locationId != null)
+        {
+            freelancers = freelancers.Where(f => f.User.LocationId == locationId).ToList();
+        }
+
+        // if (categoryId != null)
+        // {
+        //     freelancers = freelancers.Where(f => f.User.CategoryId == categoryId).ToList();
+        // }
+
+        if (rating != null)
+        {
+            freelancers = freelancers.Where(f => f.AverageRating >= rating).ToList();
+        }
+
+        List<FreelancerProfileDTO> freelancersDTO = new List<FreelancerProfileDTO>();
+
+        foreach (var profile in freelancers)
+        {
+            freelancersDTO.Add(new FreelancerProfileDTO
+            {
+                UserId = profile.UserId,
+                AverageRating = profile.AverageRating,
+                FirstName = profile.User.FirstName,
+                LastName = profile.User.LastName,
+                Headline = profile.Headline,
+                Email = profile.User.Email,
+                Phone = profile.User.PhoneNumber,
+                CreatedAt = profile.CreatedAt,
+                LocationId = profile.User.LocationId,
+                Flag = true
+            });
+        }
+
+        return Ok(freelancersDTO);
+    }
 }

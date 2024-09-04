@@ -237,7 +237,15 @@
         topFreelancers = await ProfileService.GetTopFreelancersAsync();
     }
 
-    private void Filter() {}
+    private async Task Filter() {
+        if (filterModel.CategoryId != null || filterModel.LocationId != null || filterModel.Rating != null) {
+            topFreelancers = await ProfileService.GetTopFreelancersByFilterAsync(
+                filterModel.CategoryId,
+                filterModel.LocationId,
+                filterModel.Rating
+            );
+        }
+    }
 
     private class FilterModel {
         public int? CategoryId { get; set; }
