@@ -266,7 +266,7 @@
                                     id="region"
                                     autocomplete="off"
                                     class="form-select shadow-none">
-                                    <option value="">Select City</option>
+                                    <option value="">Select Region</option>
                                     @if (companyRegions != null) {
                                         @foreach (var region in companyRegions)
                                         {
@@ -345,6 +345,7 @@
     private bool error = false;
 
     private int countryId { get; set; }
+
     private int regionId { get; set; }
     private int companyCountryId { get; set; }
     private int companyRegionId { get; set; }
@@ -361,14 +362,14 @@
 
     private async Task SaveChanges() {
         if (clientProfileDTO.CompanyLocationId != null ||
-            clientProfileDTO.CompanyName != null ||
-            clientProfileDTO.TinNo != null ||
+            !string.IsNullOrEmpty(clientProfileDTO.CompanyName) ||
+            !string.IsNullOrEmpty(clientProfileDTO.TinNo) ||
             clientProfileDTO.EstablishedDate != null) {
             
             clientProfileDTO.hasCompany = true;
             if (clientProfileDTO.CompanyLocationId == null ||
-                clientProfileDTO.CompanyName == null ||
-                clientProfileDTO.TinNo == null ||
+                string.IsNullOrEmpty(clientProfileDTO.CompanyName) ||
+                string.IsNullOrEmpty(clientProfileDTO.TinNo) ||
                 clientProfileDTO.EstablishedDate == null) {
                     error = true;
                     return;
@@ -404,7 +405,7 @@
 
     private async Task OnCompanyCountryChange()
     {
-        companyRegions = await LocationService.OnLocationChange(countryId, endpoint);
+        companyRegions = await LocationService.OnLocationChange(companyCountryId, endpoint);
         if (regions != null)
             endpoint = "cities/";
     }
