@@ -110,6 +110,6 @@ public class LocationController : ControllerBase
     // GET all cities only
     [HttpGet("location/cities")]
     public async Task<IActionResult> GetAllCities() {
-        return Ok(_db.Locations.Where(l => l.LocationTypeId == 3));
+        return Ok(_db.Locations.Include(l => l.LocationTypeId).Where(l => l.LocationType.Name == "CTY"));
     }
 }

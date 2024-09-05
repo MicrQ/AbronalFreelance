@@ -1,4 +1,6 @@
-﻿namespace AbronalFreelance.Shared.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AbronalFreelance.Shared.Models;
 
 public class Location
 {
@@ -8,4 +10,6 @@ public class Location
     // public LocationType LocationType { get; set; }
     public int? ParentId { get; set; }
     public bool isActive { get; set; } = true;
+    [ForeignKey("LocationTypeId")]
+    public LocationType LocationType { get; set; }
 }
