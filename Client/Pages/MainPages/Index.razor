@@ -398,7 +398,7 @@
             </div>
             <div class="col-auto mt-30 mt-md-0">
                 <div class="d-flex justify-content-end">
-                    <a href="find-freelancers" class="w-btn-link">
+                    <a href="find-freelancer" class="w-btn-link">
                         View More
                         <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 9L13 5M13 5L9 1M13 5L1 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -409,6 +409,7 @@
         </div>
         <div class="row row-gap-4 justify-content-center row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
             @foreach (var freelancer in topFreelancers) {
+                @if (count == 5) { break;}
                 <article>
                     <div class="bg-white top-seller-card position-relative">
                         <div class="job-type-badge position-absolute d-flex flex-column gap-2">
@@ -440,6 +441,7 @@
                         </div>
                     </div>
                 </article>
+                count++;
             }
         </div>
     </div>
@@ -485,6 +487,7 @@
 
 @code {
     private List<JobDTO> Jobs = new List<JobDTO>();
+    private int count = 0;
     private List<JobType> JobTypes = new List<JobType>();
     private List<FreelancerProfileDTO> topFreelancers = new List<FreelancerProfileDTO>();
     protected override async Task OnInitializedAsync() {
