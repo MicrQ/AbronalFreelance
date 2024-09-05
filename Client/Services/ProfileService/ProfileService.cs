@@ -50,4 +50,9 @@ public class ProfileService : IProfile
         int? categoryId, int? locationId, double? rating) {
         return await _http.GetFromJsonAsync<List<FreelancerProfileDTO>>("api/top-freelancers/filter?categoryId=" + categoryId + "&locationId=" + locationId + "&rating=" + rating);
     }
+
+    public async Task<InfoDTO> GetInfoAsync(string UserId)
+    {
+        return await _http.GetFromJsonAsync<InfoDTO>("api/client/" + UserId + "/info");
+    }
 }

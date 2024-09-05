@@ -14,4 +14,5 @@ public interface IProfile
     Task<List<FreelancerProfileDTO>> GetTopFreelancersByFilterAsync(
         int? categoryId, int? locationId, double? rating
     );
+    Task<InfoDTO> GetInfoAsync(string UserId);
 }

@@ -33,7 +33,7 @@
                 >
                 <div>
                     <h3 class="dashboard-widget-title fw-bold text-dark-300">
-                    50
+                    @Info.Jobs
                     </h3>
                     <p class="text-18 text-dark-200">Total Jobs</p>
                 </div>
@@ -188,10 +188,13 @@
 @code {
     private List<JobDTO> Jobs = new List<JobDTO>();
     private string LoggedInUserId { get; set; }
+    private InfoDTO Info { get; set; }
 
     protected override async Task OnInitializedAsync() {
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
         Jobs = await JobService.GetRecentJobsAsync(userId: LoggedInUserId);
+
+        Info = await ProfileService.GetInfoAsync(LoggedInUserId);
     }
 }
