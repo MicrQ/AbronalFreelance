@@ -23,4 +23,13 @@ public class InfoController : ControllerBase
         var numberOfJobs = await _db.Jobs.Where(j => j.UserId == userId).CountAsync();
         return Ok(new InfoDTO { Flag = true, Message = "Info Retrieved Successfully", Jobs = numberOfJobs });
     }
+
+    [HttpGet("freelancer/{userId}/info")]
+    public async Task<IActionResult> GetFreelancerInfo(string userId) {
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        if (user == null) return NotFound(new InfoDTO { Flag = false, Message = "User Not Found" });
+
+        var numberOfApps = await _db.Applications.Where(a => a.FreelancerId == userId).CountAsync();
+        return Ok(new InfoDTO { Flag = true, Message = "Info Retrieved Successfully", Apps = numberOfApps });
+    }
 }

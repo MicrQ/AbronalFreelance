@@ -27,9 +27,9 @@
             >
             <div>
                 <h3 class="dashboard-widget-title fw-bold text-dark-300">
-                50
+                @Info.Apps
                 </h3>
-                <p class="text-18 text-dark-200">Total Job</p>
+                <p class="text-18 text-dark-200">Total Applications</p>
             </div>
             <div class="dashboard-widget-icon">
                 <img src="img/dashboard/icon/icon-2.png" alt="" />
@@ -193,7 +193,17 @@
 <LogoutPopUp />
 
 @code {
+    private string LoggedInUserId { get; set; }
+    private InfoDTO Info { get; set; } = new InfoDTO();
+
     private void Logout() {
         Navigation.NavigateTo("/logout");
+    }
+
+    protected override async Task OnInitializedAsync() {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        LoggedInUserId = AccountService.GetLoggedInUserIdAsync(authState).Value;
+
+        Info = await ProfileService.GetAppInfoAsync(LoggedInUserId);
     }
 }

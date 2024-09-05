@@ -15,4 +15,6 @@ public interface IProfile
         int? categoryId, int? locationId, double? rating
     );
     Task<InfoDTO> GetInfoAsync(string UserId);
+    Task<InfoDTO> GetAppInfoAsync(string UserId);
+
 }

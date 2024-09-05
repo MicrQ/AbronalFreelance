@@ -55,4 +55,9 @@ public class ProfileService : IProfile
     {
         return await _http.GetFromJsonAsync<InfoDTO>("api/client/" + UserId + "/info");
     }
+
+    public async Task<InfoDTO> GetAppInfoAsync(string UserId)
+    {
+        return await _http.GetFromJsonAsync<InfoDTO>("api/freelancer/" + UserId + "/info");
+    }
 }
