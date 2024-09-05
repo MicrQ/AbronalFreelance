@@ -174,8 +174,6 @@ public class ProfileController : ControllerBase
 
         user.FirstName = cpDTO.FirstName;
         user.LastName = cpDTO.LastName;
-        // user.UserName = cpDTO.UserName;
-        // user.Email = cpDTO.Email;
         user.PhoneNumber = cpDTO.Phone;
         user.LocationId = cpDTO.LocationId;
         if (profile == null) {

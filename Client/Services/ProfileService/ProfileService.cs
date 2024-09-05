@@ -27,7 +27,7 @@ public class ProfileService : IProfile
 
     public async Task UpdateClientProfileAsync(ClientProfileDTO ClientProfileDTO)
     {
-        await _http.PutAsJsonAsync(_url_client, ClientProfileDTO);
+        await _http.PutAsJsonAsync("api/client/profile", ClientProfileDTO);
     }
 
     public async Task UpdateFreelancerProfileAsync(FreelancerProfileDTO FreelancerProfileDTO, string UserId)
