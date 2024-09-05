@@ -161,14 +161,14 @@
 
     private async Task GetProposalContent()
     {
-        app.Proposal = await JSRuntime.InvokeAsync<string>("getEditorContent");
+      app.Proposal = await JSRuntime.InvokeAsync<string>("getEditorContent");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            await JSRuntime.InvokeVoidAsync("initializeEditor");
-        }
+      if (firstRender)
+      {
+          await JSRuntime.InvokeVoidAsync("initializeEditor");
+      }
     }
 }
