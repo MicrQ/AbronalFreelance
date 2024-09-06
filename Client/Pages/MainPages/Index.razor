@@ -144,7 +144,7 @@
                             <path d="M16 7V5a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v2" />
                         </svg>
                         <h3 class="feature-category-link fw-semibold">
-                            <a>@field.Name</a>
+                            <a>@(field.Name.Length > 17 ? field.Name.Substring(0, 15) + "..." : field.Name)</a>
                         </h3>
                         <p class="feature-category-desc fs-6">20 Skills</p>
                     </div>
