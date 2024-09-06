@@ -136,97 +136,20 @@
         <div class="position-relative">
         <div class="swiper featureCategory">
             <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/1.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">Graphics & Design</a>
-                </h3>
-                <p class="feature-category-desc fs-6">20 Skills</p>
+            @foreach(var field in Fields) {
+                <div class="swiper-slide">
+                    <div class="feature-category-card bg-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-4" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#22be0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 7V5a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v2" />
+                        </svg>
+                        <h3 class="feature-category-link fw-semibold">
+                            <a>@field.Name</a>
+                        </h3>
+                        <p class="feature-category-desc fs-6">20 Skills</p>
+                    </div>
                 </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/2.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">Digital Marketing</a>
-                </h3>
-                <p class="feature-category-desc fs-6">22 Skills</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/3.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">Branding Design</a>
-                </h3>
-                <p class="feature-category-desc fs-6">39 Skills</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/4.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">AI Services</a>
-                </h3>
-                <p class="feature-category-desc fs-6">30 Skills</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/5.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">Sales & Marketing</a>
-                </h3>
-                <p class="feature-category-desc fs-6">50 Skills</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/6.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">Design & Creative</a>
-                </h3>
-                <p class="feature-category-desc fs-6">30 Skills</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="feature-category-card bg-white">
-                <img
-                    src="img/categories/5.svg"
-                    class="mb-4"
-                    alt=""
-                />
-                <h3 class="feature-category-link fw-semibold">
-                    <a href="services.html">Sales & Marketing</a>
-                </h3>
-                <p class="feature-category-desc fs-6">85 Skills</p>
-                </div>
-            </div>
+            }
             </div>
         </div>
         </div>
@@ -489,11 +412,13 @@
     private List<JobDTO> Jobs = new List<JobDTO>();
     private int count = 0;
     private List<JobType> JobTypes = new List<JobType>();
+    private List<Field> Fields = new List<Field>();
     private List<FreelancerProfileDTO> topFreelancers = new List<FreelancerProfileDTO>();
     protected override async Task OnInitializedAsync() {
         Jobs = await JobService.GetRecentJobsAsync(null);
         JobTypes = await JobTypeService.GetAllJobTypesAsync();
 
         topFreelancers = await ProfileService.GetTopFreelancersAsync();
+        Fields = await FieldService.GetAllFieldsAsync();
     }
 }
