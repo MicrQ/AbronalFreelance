@@ -6,9 +6,7 @@
 /home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.AssemblyInfoInputs.cache
 /home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.AssemblyInfo.cs
 /home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.csproj.CoreCompileInputs.cache
-/home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.sourcelink.json
 /home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.dll
-/home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/refint/AbronalFreelance.Shared.dll
 /home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.pdb
 /home/niq/AbronalFreelance/Shared/obj/Debug/net6.0/ref/AbronalFreelance.Shared.dll
 /home/niq/mock/AbronalFreelance/Shared/bin/Debug/net6.0/AbronalFreelance.Shared.deps.json
@@ -24,3 +22,4 @@
 /home/niq/mock/AbronalFreelance/Shared/obj/Debug/net6.0/refint/AbronalFreelance.Shared.dll
 /home/niq/mock/AbronalFreelance/Shared/obj/Debug/net6.0/AbronalFreelance.Shared.pdb
 /home/niq/mock/AbronalFreelance/Shared/obj/Debug/net6.0/ref/AbronalFreelance.Shared.dll
+/home/niq/AbronalFreelance/Shared/bin/Debug/net6.0/ref/AbronalFreelance.Shared.dll

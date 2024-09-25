@@ -6,7 +6,6 @@
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.MvcApplicationPartsAssemblyInfo.cache
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.RazorAssemblyInfo.cache
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.RazorAssemblyInfo.cs
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.sourcelink.json
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/AbronalFreelance.Client.staticwebassets.runtime.json
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/appsettings.Development.json
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/appsettings.json
@@ -80,15 +79,8 @@
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/AbronalFreelance.Shared.pdb
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets.build.json
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets.development.json
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets/msbuild.AbronalFreelance.Server.Microsoft.AspNetCore.StaticWebAssets.props
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets/msbuild.build.AbronalFreelance.Server.props
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.AbronalFreelance.Server.props
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.AbronalFreelance.Server.props
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/staticwebassets.pack.json
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/scopedcss/bundle/AbronalFreelance.Server.styles.css
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalF.E0E714E1.Up2Date
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.dll
-/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/refint/AbronalFreelance.Server.dll
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.pdb
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.genruntimeconfig.cache
 /home/niq/AbronalFreelance/Server/obj/Debug/net6.0/ref/AbronalFreelance.Server.dll
@@ -196,3 +188,5 @@
 /home/niq/mock/AbronalFreelance/Server/obj/Debug/net6.0/ref/AbronalFreelance.Server.dll
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/Radzen.Blazor.dll
 /home/niq/AbronalFreelance/Server/bin/Debug/net6.0/System.Linq.Dynamic.Core.dll
+/home/niq/AbronalFreelance/Server/bin/Debug/net6.0/ref/AbronalFreelance.Server.dll
+/home/niq/AbronalFreelance/Server/obj/Debug/net6.0/AbronalFreelance.Server.csproj.CopyComplete

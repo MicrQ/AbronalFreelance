@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ur+bCKbjuI4=",
+  "dgSpecHash": "pHwbDRTUUwkYajqbs53TQISBrTa06UkMHnkEbb2mOIFx1DAVjXOWmMytNHa79YvAil3VvFTp6jdg1vu6Ye1tUA==",
   "success": true,
   "projectFilePath": "/home/niq/AbronalFreelance/Client/AbronalFreelance.Client.csproj",
   "expectedPackageFiles": [
@@ -47,9 +47,6 @@
     "/home/niq/.nuget/packages/microsoft.identitymodel.tokens/6.36.0/microsoft.identitymodel.tokens.6.36.0.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.jsinterop/6.0.32/microsoft.jsinterop.6.0.32.nupkg.sha512",
     "/home/niq/.nuget/packages/microsoft.jsinterop.webassembly/6.0.32/microsoft.jsinterop.webassembly.6.0.32.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.net.illink.analyzers/7.0.100-1.23401.1/microsoft.net.illink.analyzers.7.0.100-1.23401.1.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.net.illink.tasks/7.0.100-1.23401.1/microsoft.net.illink.tasks.7.0.100-1.23401.1.nupkg.sha512",
-    "/home/niq/.nuget/packages/microsoft.net.sdk.webassembly.pack/8.0.8/microsoft.net.sdk.webassembly.pack.8.0.8.nupkg.sha512",
     "/home/niq/.nuget/packages/netcodehub.packages.components.validations/1.0.1/netcodehub.packages.components.validations.1.0.1.nupkg.sha512",
     "/home/niq/.nuget/packages/radzen.blazor/5.1.5/radzen.blazor.5.1.5.nupkg.sha512",
     "/home/niq/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
