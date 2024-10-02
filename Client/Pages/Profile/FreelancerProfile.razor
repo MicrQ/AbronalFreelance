@@ -200,11 +200,11 @@
                         <div class="profile-info-body bg-white">
                             <div class="row g-4">
                             <div class="col-12">
-                                <select @bind="@FieldId"
+                                <select @onchange="AddField"
                                 class="form-select shadow-none">
                                     <option value="" selected>Select Fields</option>
                                     @foreach (var fld in AllFields) {
-                                        <option value="@fld.Id" @onclick="AddField">@fld.Name</option>
+                                        <option value="@fld.Id">@fld.Name</option>
                                     }
                                 </select>
                                 <div
@@ -247,11 +247,11 @@
                         <div class="profile-info-body bg-white">
                             <div class="row g-4">
                             <div class="col-12">
-                                <select @bind="@SkillId"
+                                <select @onchange="AddSkill"
                                 class="form-select shadow-none">
                                     <option value="" selected>Select Skills</option>
                                     @foreach (var skl in AllSkills) {
-                                        <option value="@skl.Id" @onclick="AddSkill">@skl.Name</option>
+                                        <option value="@skl.Id">@skl.Name</option>
                                     }
                                 </select>
                                 <div
@@ -330,8 +330,6 @@
     private List<Location>? regions = new List<Location>();
     private List<Location>? cities = new List<Location>();
 
-    private int SkillId { get; set; }
-    private int FieldId { get; set; }
     private string endpoint = "countries";
 
     List<FreelancerSkill> freelancerSkills = new List<FreelancerSkill>();
@@ -344,7 +342,8 @@
     
 
 
-    private void AddSkill() {
+    private void AddSkill(ChangeEventArgs e) {
+        int SkillId = Convert.ToInt32(e.Value);
         foreach(var ss in freelancerSkills) {
             if (ss.SkillId == SkillId)
                 return;
@@ -354,8 +353,8 @@
             UserId = LoggedInUserId
         });
     }
-    private void AddField() {
-
+    private void AddField(ChangeEventArgs e) {
+        int FieldId = Convert.ToInt32(e.Value);
         foreach(var ff in freelancerFields) {
             if (ff.FieldId == FieldId)
                 return;
